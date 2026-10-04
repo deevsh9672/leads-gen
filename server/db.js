@@ -19,7 +19,7 @@ const DEFAULT_CONFIG = {
   max_leads_per_day: 25,
   sender_name: 'Alex Morgan',
   sender_email: 'alex@siteselleragent.com',
-  sender_whatsapp: '918929698191',
+  sender_whatsapp: '918920608191',
   physical_mailing_address: '100 Congress Ave, Suite 2000, Austin, TX 78701, USA',
   smtp_host: 'smtp.gmail.com',
   smtp_port: 587,
@@ -27,6 +27,12 @@ const DEFAULT_CONFIG = {
   smtp_pass: '',
   auto_pilot: false,
   email_subject_template: 'Free modern website demo for {{business_name}}',
+  whatsapp_message_template: `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}, even though you have great local reviews!
+
+To help out, my team and I built you a complete, high-converting demo website — 100% free with no strings attached:
+👉 View your live website demo here: {{demo_url}}
+
+If you'd like to claim this design, customize the text/photos, or connect your domain, just reply here!`,
   email_body_template: `Hi team at {{business_name}},
 
 I noticed you don't have a website listed for {{business_name}} in {{city}}, even though you have great local reviews!
@@ -43,6 +49,7 @@ Or simply reply directly to this email!
 Best regards,
 {{sender_name}}
 Growth & Web Development
+WhatsApp: +91 8920608191
 
 ---
 CAN-SPAM Notice: You are receiving this because your business is publicly listed in {{city}}.
@@ -183,8 +190,10 @@ const db = {
       id: uuidv4(),
       prospect_id: logData.prospect_id,
       prospect_name: logData.prospect_name || '',
+      channel: logData.channel || 'email', // email or whatsapp
       recipient_email: logData.recipient_email || '',
-      email_subject: logData.email_subject || '',
+      recipient_phone: logData.recipient_phone || '',
+      email_subject: logData.email_subject || (logData.channel === 'whatsapp' ? 'WhatsApp Direct Outreach' : ''),
       email_body: logData.email_body || '',
       sent_date: new Date().toISOString(),
       reply_received: logData.reply_received || 'no', // yes / no

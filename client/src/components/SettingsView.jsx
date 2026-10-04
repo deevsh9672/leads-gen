@@ -161,7 +161,7 @@ export default function SettingsView({ config, onConfigSaved }) {
               <div className="flex items-center justify-between mb-1">
                 <label className="block text-slate-400 font-semibold">Agency WhatsApp *</label>
                 <a
-                  href={`https://wa.me/${(formData.sender_whatsapp || '918929698191').replace(/[^0-9]/g, '')}`}
+                  href={`https://wa.me/${(formData.sender_whatsapp || '918920608191').replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] text-emerald-400 hover:underline font-bold"
@@ -172,9 +172,9 @@ export default function SettingsView({ config, onConfigSaved }) {
               <input
                 type="text"
                 required
-                value={formData.sender_whatsapp || '918929698191'}
+                value={formData.sender_whatsapp || '918920608191'}
                 onChange={e => setFormData({ ...formData, sender_whatsapp: e.target.value })}
-                placeholder="8929698191"
+                placeholder="8920608191"
                 className="w-full bg-slate-950 border border-emerald-500/40 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-emerald-500 font-mono"
               />
             </div>

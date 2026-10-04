@@ -120,7 +120,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   const reviews = prospect.review_count || 48;
   const baseUrl = options.baseUrl || 'http://localhost:5000';
   const config = db.getConfig();
-  const agencyWhatsApp = (config.sender_whatsapp || '918929698191').replace(/[^0-9]/g, '');
+  const agencyWhatsApp = (config.sender_whatsapp || '918920608191').replace(/[^0-9]/g, '');
 
   const testimonials = [
     {
@@ -172,7 +172,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       <div class="flex items-center gap-2.5">
         <a href="https://wa.me/${agencyWhatsApp}?text=Hi,%20I%20am%20from%20${encodeURIComponent(bizName)}%20and%20I%20want%20to%20claim%20this%20demo%20website!" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-3 py-1 rounded-full text-xs shadow flex items-center gap-1.5 transition-all hover:scale-105">
           <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>WhatsApp Developer (+91 8929698191)</span>
+          <span>WhatsApp Developer (+91 8920608191)</span>
         </a>
         <a href="#claim-modal" onclick="document.getElementById('claim-modal').classList.remove('hidden')" class="bg-white text-indigo-900 hover:bg-indigo-50 font-bold px-3 py-1 rounded-full text-xs shadow transition-all hover:scale-105">
           Claim Website
@@ -499,7 +499,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       <div class="mt-6 flex flex-col gap-2.5">
         <a href="https://wa.me/${agencyWhatsApp}?text=Hi%20Alex,%20I%20reviewed%20our%20website%20demo%20for%20${encodeURIComponent(bizName)}%20and%20want%20to%20claim%20it%20now!" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-600/30">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>Claim via WhatsApp (+91 8929698191)</span>
+          <span>Claim via WhatsApp (+91 8920608191)</span>
         </a>
         <a href="mailto:alex@siteselleragent.com?subject=Claim%20Website%20for%20${encodeURIComponent(bizName)}&body=Hi,%20I%20would%20like%20to%20claim%20the%20website%20demo%20for%20${encodeURIComponent(bizName)}." class="w-full text-center py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition">
           Claim via Email

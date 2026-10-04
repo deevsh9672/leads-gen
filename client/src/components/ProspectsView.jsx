@@ -13,7 +13,8 @@ import {
   Filter,
   Trash2,
   ExternalLink,
-  ChevronDown
+  ChevronDown,
+  MessageCircle
 } from 'lucide-react';
 
 export default function ProspectsView({ 
@@ -25,6 +26,7 @@ export default function ProspectsView({
   onDeleteProspect,
   onGenerateSite,
   onSendOutreach,
+  onSendWhatsAppOutreach,
   onSelectForStudio
 }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -260,6 +262,14 @@ export default function ProspectsView({
                             className="p-2 rounded-lg bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white transition"
                           >
                             <Send className="w-4 h-4" />
+                          </button>
+
+                          <button
+                            onClick={() => onSendWhatsAppOutreach(p.id)}
+                            title="Send WhatsApp Outreach with Demo Link (Direct to Client)"
+                            className="p-2 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white transition shadow-sm"
+                          >
+                            <MessageCircle className="w-4 h-4" />
                           </button>
 
                           <button

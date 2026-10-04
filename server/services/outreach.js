@@ -115,7 +115,83 @@ async function sendDemoOutreach(prospectId, customOptions = {}) {
   };
 }
 
+/**
+ * Skill 5 (WhatsApp): Outreach
+ * Dispatches personalized WhatsApp message to the prospect with demo link & CTA
+ */
+async function sendWhatsAppOutreach(prospectId, customOptions = {}) {
+  const prospect = db.getProspectById(prospectId);
+  if (!prospect) {
+    throw new Error(`Prospect with ID ${prospectId} not found`);
+  }
+
+  const config = db.getConfig();
+  const baseUrl = customOptions.baseUrl || 'http://localhost:5000';
+
+  // Ensure demo site is generated & hosted
+  const site = await hostDemoSite(prospect.id, baseUrl);
+
+  const rawAgencyWa = config.sender_whatsapp || '918920608191';
+
+  const templateVars = {
+    business_name: prospect.business_name,
+    city: prospect.city,
+    category: prospect.category,
+    demo_url: site.demo_url,
+    sender_name: config.sender_name || 'Alex Morgan',
+    sender_whatsapp: rawAgencyWa
+  };
+
+  const messageText = customOptions.message || renderTemplate(
+    config.whatsapp_message_template ||
+    `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}.\n\nTo help out, we built you a free modern demo website: {{demo_url}}\n\nReply here or visit the link to claim it!`,
+    templateVars
+  );
+
+  const recipientPhone = customOptions.phone || prospect.phone || '';
+  const cleanRecipientPhone = recipientPhone.replace(/[^0-9]/g, '');
+
+  // Generate WhatsApp deep links for web and native app
+  const waWebLink = `https://wa.me/${cleanRecipientPhone}?text=${encodeURIComponent(messageText)}`;
+  const waAppLink = `whatsapp://send?phone=${cleanRecipientPhone}&text=${encodeURIComponent(messageText)}`;
+
+  // Skill 6: Log the WhatsApp outreach
+  const logRecord = recordOutreach({
+    prospect_id: prospect.id,
+    prospect_name: prospect.business_name,
+    channel: 'whatsapp',
+    recipient_email: prospect.email || '',
+    recipient_phone: recipientPhone,
+    email_subject: `WhatsApp Outreach to ${prospect.business_name}`,
+    email_body: messageText,
+    reply_received: 'no',
+    reply_text: null,
+    status: 'delivered',
+    demo_url: site.demo_url
+  });
+
+  // Update prospect status from 'new' to 'contacted'
+  db.updateProspect(prospect.id, {
+    status: 'contacted',
+    last_contacted_at: new Date().toISOString()
+  });
+
+  console.log(`[WhatsApp Outreach] Prepared and logged message for ${prospect.business_name} (${recipientPhone})`);
+
+  return {
+    success: true,
+    channel: 'whatsapp',
+    log: logRecord,
+    prospect: db.getProspectById(prospect.id),
+    wa_web_link: waWebLink,
+    wa_app_link: waAppLink,
+    message_text: messageText,
+    recipient_phone: recipientPhone
+  };
+}
+
 module.exports = {
   sendDemoOutreach,
+  sendWhatsAppOutreach,
   renderTemplate
 };

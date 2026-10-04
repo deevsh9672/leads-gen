@@ -16,6 +16,7 @@ import {
   runDiscoverSkill,
   runGenerateSkill,
   runOutreachSkill,
+  runWhatsAppOutreachSkill,
   updateProspect,
   deleteProspect,
   addProspect
@@ -126,6 +127,19 @@ export default function App() {
     }
   };
 
+  const handleSendWhatsAppOutreach = async (prospectId) => {
+    try {
+      const res = await runWhatsAppOutreachSkill(prospectId, {});
+      if (res.data?.wa_web_link) {
+        window.open(res.data.wa_web_link, '_blank');
+      }
+      alert(`WhatsApp outreach logged! Ready to send to ${res.data?.prospect?.business_name || 'prospect'}.`);
+      loadInitialData();
+    } catch (err) {
+      alert('Error initiating WhatsApp outreach: ' + err.message);
+    }
+  };
+
   const handleUpdateStatus = async (prospectId, status) => {
     try {
       await updateProspect(prospectId, { status });
@@ -192,6 +206,7 @@ export default function App() {
             onDeleteProspect={handleDeleteProspect}
             onGenerateSite={handleGenerateSite}
             onSendOutreach={handleSendOutreach}
+            onSendWhatsAppOutreach={handleSendWhatsAppOutreach}
             onSelectForStudio={(p) => {
               setSelectedProspect(p);
               setActiveTab('studio');

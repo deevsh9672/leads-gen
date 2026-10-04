@@ -8,7 +8,9 @@ function recordOutreach(logData) {
   const saved = db.addLog({
     prospect_id: logData.prospect_id,
     prospect_name: logData.prospect_name || '',
+    channel: logData.channel || 'email',
     recipient_email: logData.recipient_email || '',
+    recipient_phone: logData.recipient_phone || '',
     email_subject: logData.email_subject || '',
     email_body: logData.email_body || '',
     reply_received: logData.reply_received || 'no',

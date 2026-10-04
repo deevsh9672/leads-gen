@@ -6,7 +6,7 @@ const { discoverLeads } = require('./services/discover');
 const { scoreProspect } = require('./services/score');
 const { generateWebsiteForProspect } = require('./services/generator');
 const { hostDemoSite } = require('./services/host');
-const { sendDemoOutreach } = require('./services/outreach');
+const { sendDemoOutreach, sendWhatsAppOutreach } = require('./services/outreach');
 const { recordOutreach, getOutreachLogs } = require('./services/logger');
 const { handleIncomingReply } = require('./services/replies');
 const { runAutonomousPipeline, getPipelineStatus } = require('./services/pipeline');
@@ -221,6 +221,21 @@ app.post('/api/skills/outreach/:id', async (req, res) => {
       subject: req.body.subject,
       body: req.body.body,
       email: req.body.email
+    });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// SKILL 5 (WhatsApp): DIRECT WHATSAPP OUTREACH
+app.post('/api/skills/outreach/whatsapp/:id', async (req, res) => {
+  try {
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const result = await sendWhatsAppOutreach(req.params.id, {
+      baseUrl,
+      message: req.body.message,
+      phone: req.body.phone
     });
     res.json(result);
   } catch (err) {

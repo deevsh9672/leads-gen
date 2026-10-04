@@ -60,15 +60,15 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
           {/* Quick Action Buttons */}
           <div className="flex items-center gap-2.5">
             <a
-              href={`https://wa.me/${(config?.sender_whatsapp || '918929698191').replace(/[^0-9]/g, '')}`}
+              href={`https://wa.me/${(config?.sender_whatsapp || '918920608191').replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              title="WhatsApp Agency Line Connected (+91 8929698191)"
+              title="WhatsApp Agency Line Connected (+91 8920608191)"
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600/20 hover:bg-emerald-600 border border-emerald-500/30 text-emerald-400 hover:text-white transition shadow-sm"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span className="hidden sm:inline">WhatsApp:</span>
-              <span>+91 8929698191</span>
+              <span>+91 8920608191</span>
             </a>
 
             <button

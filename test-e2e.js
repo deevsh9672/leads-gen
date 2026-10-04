@@ -110,6 +110,13 @@ async function runTests() {
     assert(outreachRes.data.log.demo_url === hostRes.data.demo_url, 'Outreach email body correctly contains live demo website link');
     assert(outreachRes.data.prospect.status === 'contacted', 'Prospect status transitioned to "contacted"');
 
+    // Test WhatsApp Direct Outreach Skill
+    console.log('\n[Testing Skill 5: Direct WhatsApp Outreach to Client]');
+    const waOutreachRes = await makeRequest('POST', `/api/skills/outreach/whatsapp/${testProspect.id}`, {});
+    assert(waOutreachRes.status === 200 && waOutreachRes.data.success, 'Skill 5 (WhatsApp Outreach) prepared message successfully');
+    assert(waOutreachRes.data.channel === 'whatsapp', 'Outreach channel correctly identified as WhatsApp');
+    assert(waOutreachRes.data.wa_web_link.includes('wa.me'), 'Generated direct click-to-send WhatsApp link with personalized demo');
+
     // Check OutreachLog audit trail
     const logsRes = await makeRequest('GET', '/api/logs');
     assert(logsRes.data.length > 0, `Skill 6 (Log) recorded outreach in OutreachLog table (${logsRes.data.length} total entries)`);
