@@ -1,0 +1,21 @@
+{
+  "name": "siteseller-agent",
+  "version": "1.0.0",
+  "description": "Autonomous AI Superagent for Lead-Gen, AI Demo Website Building & Gmail Outreach",
+  "scripts": {
+    "build": "npm run build --prefix client",
+    "start": "node server/index.js",
+    "server": "node server/index.js",
+    "client": "npm run dev --prefix client",
+    "test": "node test-e2e.js"
+  },
+  "keywords": [
+    "ai-agent",
+    "superagent",
+    "lead-gen",
+    "automated-outreach",
+    "website-builder"
+  ],
+  "author": "SiteSeller Agent Team",
+  "license": "ISC"
+}
