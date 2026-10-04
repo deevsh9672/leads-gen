@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: siteseller-agent
+    runtime: node
+    plan: free
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
