@@ -14,8 +14,21 @@ const { runAutonomousPipeline, getPipelineStatus } = require('./services/pipelin
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.set('trust proxy', 1);
+
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
+
+function getAppBaseUrl(req) {
+  if (process.env.RENDER_EXTERNAL_URL) return process.env.RENDER_EXTERNAL_URL.replace(/\/+$/, '');
+  if (process.env.BASE_URL) return process.env.BASE_URL.replace(/\/+$/, '');
+  const proto = req.headers['x-forwarded-proto'] || req.protocol;
+  return `${proto}://${req.get('host')}`;
+}
 
 // Initialize seed data if database is empty so user has immediate rich data
 function ensureSeedData() {
@@ -159,7 +172,7 @@ app.post('/api/skills/score/:id', (req, res) => {
 // SKILL 3: GENERATE
 app.post('/api/skills/generate/:id', async (req, res) => {
   try {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getAppBaseUrl(req);
     const site = await generateWebsiteForProspect(req.params.id, baseUrl);
     res.json(site);
   } catch (err) {
@@ -170,7 +183,7 @@ app.post('/api/skills/generate/:id', async (req, res) => {
 // SKILL 4: HOST (Get/publish demo site)
 app.post('/api/skills/host/:id', async (req, res) => {
   try {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getAppBaseUrl(req);
     const site = await hostDemoSite(req.params.id, baseUrl);
     res.json(site);
   } catch (err) {
@@ -215,7 +228,7 @@ app.get('/api/sites/:siteId', (req, res) => {
 // SKILL 5 & 6: OUTREACH & LOG
 app.post('/api/skills/outreach/:id', async (req, res) => {
   try {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getAppBaseUrl(req);
     const result = await sendDemoOutreach(req.params.id, {
       baseUrl,
       subject: req.body.subject,
@@ -231,7 +244,7 @@ app.post('/api/skills/outreach/:id', async (req, res) => {
 // SKILL 5 (WhatsApp): DIRECT WHATSAPP OUTREACH
 app.post('/api/skills/outreach/whatsapp/:id', async (req, res) => {
   try {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getAppBaseUrl(req);
     const result = await sendWhatsAppOutreach(req.params.id, {
       baseUrl,
       message: req.body.message,
@@ -263,7 +276,7 @@ app.post('/api/skills/replies/simulate', (req, res) => {
 
 // AUTONOMOUS SUPERAGENT PIPELINE
 app.post('/api/pipeline/run', (req, res) => {
-  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  const baseUrl = getAppBaseUrl(req);
   // Run asynchronously so frontend receives instant kickoff
   runAutonomousPipeline({ ...req.body, baseUrl });
   res.json({ message: 'Pipeline cycle launched', status: getPipelineStatus() });

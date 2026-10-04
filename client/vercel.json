@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://leads-gen-b3uj.onrender.com/api/:path*"
+    },
+    {
+      "source": "/demos/:path*",
+      "destination": "https://leads-gen-b3uj.onrender.com/demos/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

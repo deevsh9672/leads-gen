@@ -77,8 +77,9 @@ export default function SiteStudioView({
   };
 
   const handleCopyUrl = () => {
-    if (!siteData?.demo_url) return;
-    navigator.clipboard.writeText(siteData.demo_url);
+    const urlToCopy = publicDemoUrl || siteData?.demo_url;
+    if (!urlToCopy) return;
+    navigator.clipboard.writeText(urlToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -94,7 +95,17 @@ export default function SiteStudioView({
     URL.revokeObjectURL(url);
   };
 
-  const demoUrl = siteData?.id ? `/demos/${siteData.id}` : null;
+  const backendOrigin = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+    ? ''
+    : 'https://leads-gen-b3uj.onrender.com';
+
+  const demoUrl = siteData?.id ? `${backendOrigin}/demos/${siteData.id}` : null;
+
+  const publicDemoUrl = siteData?.demo_url
+    ? (siteData.demo_url.includes('localhost') && typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+        ? siteData.demo_url.replace(/http:\/\/localhost:\d+/, 'https://leads-gen-b3uj.onrender.com')
+        : siteData.demo_url)
+    : demoUrl;
 
   return (
     <div className="space-y-6">
@@ -190,7 +201,7 @@ export default function SiteStudioView({
               </button>
 
               <a
-                href={siteData.demo_url}
+                href={publicDemoUrl || siteData.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded-xl text-xs font-bold transition border border-emerald-500/30"

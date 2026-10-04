@@ -1,7 +1,19 @@
 import axios from 'axios';
 
+export const BACKEND_URL = 'https://leads-gen-b3uj.onrender.com';
+
+const getBaseURL = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api`;
+  }
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return '/api';
+  }
+  return `${BACKEND_URL}/api`;
+};
+
 const api = axios.create({
-  baseURL: '/api'
+  baseURL: getBaseURL()
 });
 
 export const getHealth = () => api.get('/health');
