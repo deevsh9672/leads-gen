@@ -9,7 +9,11 @@ import {
   Save, 
   CheckCircle2, 
   Info,
-  Sliders
+  Sliders,
+  Database,
+  Zap,
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import { updateConfig } from '../api';
 
@@ -19,8 +23,12 @@ export default function SettingsView({ config, onConfigSaved }) {
     target_country: 'United States',
     business_niche: 'Plumbers',
     max_leads_per_day: 25,
+    discovery_source: 'auto',
+    apify_api_token: '',
+    apollo_api_key: '',
     sender_name: 'Alex Morgan',
     sender_email: 'alex@siteselleragent.com',
+    sender_whatsapp: '918920608191',
     physical_mailing_address: '100 Congress Ave, Suite 2000, Austin, TX 78701, USA',
     smtp_host: 'smtp.gmail.com',
     smtp_port: 587,
@@ -127,7 +135,106 @@ export default function SettingsView({ config, onConfigSaved }) {
           </div>
         </div>
 
-        {/* Section 2: CAN-SPAM Compliance & Sender Identity */}
+        {/* Section 2: Apify & Apollo.io Discovery Integrations */}
+        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+            <div className="flex items-center gap-2 text-white font-bold text-sm">
+              <Database className="w-4 h-4 text-cyan-400" />
+              <span>Lead Intelligence & Scraping Engines (Apify & Apollo.io)</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300">
+              <Zap className="w-3 h-3" />
+              <span>Live Multi-Source Pipeline</span>
+            </div>
+          </div>
+
+          <div className="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs text-slate-400 space-y-2">
+            <div className="flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-slate-200">How Lead Discovery Works:</strong> SiteSeller Agent queries <strong>Apify Google Places Scraper</strong> and <strong>Apollo.io B2B Intelligence</strong> to find local businesses without websites. If API keys are empty or reach limits, the system automatically falls back to <strong>OpenStreetMap Live</strong> and our <strong>Smart AI Local Generator</strong> with 0 downtime.
+              </div>
+            </div>
+          </div>
+
+          {/* Discovery Source Selector */}
+          <div className="text-xs">
+            <label className="block text-slate-400 font-semibold mb-1">Default Discovery Source</label>
+            <select
+              value={formData.discovery_source || 'auto'}
+              onChange={e => setFormData({ ...formData, discovery_source: e.target.value })}
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-cyan-500"
+            >
+              <option value="auto">Auto Smart Cascade (Apify → Apollo.io → OpenStreetMap → Smart AI Fallback)</option>
+              <option value="apify">Apify Only (Google Places / Maps Scraper Actor)</option>
+              <option value="apollo">Apollo.io Only (B2B Lead Search API)</option>
+              <option value="osm">OpenStreetMap Only (Live Overpass Geo Data)</option>
+              <option value="smart">Smart AI Local Generator Only (High-Converting Realistic Profiles)</option>
+            </select>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4 text-xs pt-1">
+            {/* Apify API Token */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-slate-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Apify API Token</span>
+                </label>
+                <a
+                  href="https://console.apify.com/account/integrations"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[10px] text-cyan-400 hover:underline flex items-center gap-1"
+                >
+                  <span>Get Apify Token</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
+              <input
+                type="password"
+                value={formData.apify_api_token || ''}
+                onChange={e => setFormData({ ...formData, apify_api_token: e.target.value })}
+                placeholder="apify_api_xxxxxxxxxxxxxxxxxxxxxx"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-cyan-500"
+              />
+              <p className="text-[10px] text-slate-500">
+                Crawls Google Maps in {formData.target_city || 'target city'} and extracts places with zero website listed.
+              </p>
+            </div>
+
+            {/* Apollo.io API Key */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-slate-400 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-purple-400"></span>
+                  <span>Apollo.io API Key</span>
+                </label>
+                <a
+                  href="https://app.apollo.io/#/settings/integrations/api"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[10px] text-purple-400 hover:underline flex items-center gap-1"
+                >
+                  <span>Get Apollo Key</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
+              <input
+                type="password"
+                value={formData.apollo_api_key || ''}
+                onChange={e => setFormData({ ...formData, apollo_api_key: e.target.value })}
+                placeholder="xxxxxxxxxxxxxxxxxxxxxxxx"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-purple-500"
+              />
+              <p className="text-[10px] text-slate-500">
+                Discovers local B2B organizations, verified business phone numbers, and decision-maker contact details.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 3: CAN-SPAM Compliance & Sender Identity */}
         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center gap-2 text-white font-bold text-sm pb-2 border-b border-slate-800">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />

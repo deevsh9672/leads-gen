@@ -91,14 +91,15 @@ export default function App() {
     }
   };
 
-  const handleDiscover = async () => {
+  const handleDiscover = async (customParams) => {
     try {
       const res = await runDiscoverSkill({
-        city: config?.target_city,
-        niche: config?.business_niche,
-        limit: config?.max_leads_per_day || 10
+        city: customParams?.city || config?.target_city,
+        niche: customParams?.niche || config?.business_niche,
+        limit: customParams?.limit || config?.max_leads_per_day || 10,
+        source: customParams?.source || config?.discovery_source || 'auto'
       });
-      alert(`Discovery Complete! Found ${res.data.discovered_count} qualified businesses lacking websites in ${res.data.city}!`);
+      alert(`Discovery Complete! Found ${res.data.discovered_count} qualified businesses lacking websites from ${res.data.discovery_source || 'selected source'} in ${res.data.city}!`);
       loadInitialData();
     } catch (err) {
       alert('Error running discovery skill: ' + err.message);

@@ -14,7 +14,10 @@ import {
   Trash2,
   ExternalLink,
   ChevronDown,
-  MessageCircle
+  MessageCircle,
+  Database,
+  Compass,
+  Zap
 } from 'lucide-react';
 
 export default function ProspectsView({ 
@@ -32,13 +35,23 @@ export default function ProspectsView({
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDiscoverModal, setShowDiscoverModal] = useState(false);
+  const [discovering, setDiscovering] = useState(false);
   const [selectedBreakdown, setSelectedBreakdown] = useState(null);
+
+  // Discover Parameters State
+  const [discoverForm, setDiscoverForm] = useState({
+    city: 'Jaipur',
+    niche: 'Cafe',
+    source: 'auto',
+    limit: 10
+  });
 
   // New Prospect Form State
   const [newProspect, setNewProspect] = useState({
     business_name: '',
-    category: 'Plumbing',
-    city: 'Austin',
+    category: 'Cafe',
+    city: 'Jaipur',
     phone: '',
     email: '',
     has_website: 'no',
@@ -88,11 +101,11 @@ export default function ProspectsView({
 
         <div className="flex flex-wrap items-center gap-2.5">
           <button
-            onClick={onDiscover}
-            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition flex items-center gap-2"
+            onClick={() => setShowDiscoverModal(true)}
+            className="px-4 py-2 bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition flex items-center gap-2"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Discover Qualified Leads (Skill 1)</span>
+            <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+            <span>Discover Qualified Leads (Apify / Apollo / OSM)</span>
           </button>
           <button
             onClick={() => setShowAddModal(true)}
@@ -174,6 +187,20 @@ export default function ProspectsView({
                               <span>•</span>
                               <span className="text-amber-400 font-medium">★ {p.rating || 4.8}</span>
                               <span className="text-slate-500">({p.review_count || 40} revs)</span>
+                            </div>
+                            <div className="mt-1 flex items-center gap-1.5">
+                              <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-md border flex items-center gap-1 ${
+                                (p.discovery_source || '').includes('Apify') 
+                                  ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
+                                  : (p.discovery_source || '').includes('Apollo')
+                                  ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
+                                  : (p.discovery_source || '').includes('OpenStreet')
+                                  ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
+                                  : 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
+                              }`}>
+                                <Database className="w-2.5 h-2.5" />
+                                <span>{p.discovery_source || 'Smart AI Engine'}</span>
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -456,6 +483,133 @@ export default function ProspectsView({
                   className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold shadow-md"
                 >
                   Save & Score Prospect
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Discover Qualified Leads Modal */}
+      {showDiscoverModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 text-slate-100 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2 font-bold text-white text-base">
+                <Sparkles className="w-5 h-5 text-indigo-400" />
+                <span>Launch Multi-Source Lead Discovery</span>
+              </div>
+              <button 
+                onClick={() => setShowDiscoverModal(false)}
+                className="text-slate-400 hover:text-white text-sm"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setDiscovering(true);
+                try {
+                  await onDiscover(discoverForm);
+                  setShowDiscoverModal(false);
+                } finally {
+                  setDiscovering(false);
+                }
+              }}
+              className="space-y-4 text-xs"
+            >
+              {/* Target City */}
+              <div>
+                <label className="block text-slate-400 font-semibold mb-1">Target City *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Jaipur, Austin, London, Mumbai"
+                  value={discoverForm.city}
+                  onChange={e => setDiscoverForm({ ...discoverForm, city: e.target.value })}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+                />
+              </div>
+
+              {/* Business Niche */}
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-slate-400 font-semibold">Business Niche / Category *</label>
+                  <span className="text-[10px] text-slate-500">Quick Select:</span>
+                </div>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Cafe, Restaurant, Salon, Gym, Roofer, Dentist"
+                  value={discoverForm.niche}
+                  onChange={e => setDiscoverForm({ ...discoverForm, niche: e.target.value })}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+                />
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {['Cafe', 'Restaurant', 'Salon & Spa', 'Fitness Gym', 'Real Estate', 'Clinic', 'Plumber', 'Bakery'].map(n => (
+                    <button
+                      key={n}
+                      type="button"
+                      onClick={() => setDiscoverForm({ ...discoverForm, niche: n })}
+                      className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-medium border border-slate-700 transition"
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Discovery Source Selector */}
+              <div>
+                <label className="block text-slate-400 font-semibold mb-1">Discovery Engine Source</label>
+                <select
+                  value={discoverForm.source}
+                  onChange={e => setDiscoverForm({ ...discoverForm, source: e.target.value })}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+                >
+                  <option value="auto">Auto Smart Cascade (Apify → Apollo.io → OpenStreetMap → Smart AI)</option>
+                  <option value="apify">Apify Only (Google Maps / Places Scraper)</option>
+                  <option value="apollo">Apollo.io Only (B2B Lead Intelligence API)</option>
+                  <option value="osm">OpenStreetMap Only (Live Geo Query)</option>
+                  <option value="smart">Smart AI Local Generator Only (Instant Zero-Delay Profiles)</option>
+                </select>
+                <p className="text-[10px] text-slate-500 mt-1">
+                  Filters specifically for businesses without websites so you can pitch them modern website builds.
+                </p>
+              </div>
+
+              {/* Lead Count */}
+              <div>
+                <label className="block text-slate-400 font-semibold mb-1">Number of Leads to Fetch</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="50"
+                  value={discoverForm.limit}
+                  onChange={e => setDiscoverForm({ ...discoverForm, limit: parseInt(e.target.value) || 10 })}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+                />
+              </div>
+
+              {/* Submit Buttons */}
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+                <button
+                  type="button"
+                  disabled={discovering}
+                  onClick={() => setShowDiscoverModal(false)}
+                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={discovering}
+                  className="px-6 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl font-bold shadow-lg flex items-center gap-2"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>{discovering ? 'Crawling & Scoring Leads...' : 'Start Lead Discovery'}</span>
                 </button>
               </div>
             </form>

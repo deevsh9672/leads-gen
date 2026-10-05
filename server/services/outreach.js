@@ -23,13 +23,13 @@ async function sendDemoOutreach(prospectId, customOptions = {}) {
   }
 
   const config = db.getConfig();
-  const baseUrl = customOptions.baseUrl || 'http://localhost:5000';
+  const baseUrl = customOptions.baseUrl || (process.env.RENDER_EXTERNAL_URL ? process.env.RENDER_EXTERNAL_URL.replace(/\/+$/, '') : 'https://leads-gen-b3uj.onrender.com');
 
   // Ensure demo site is generated & hosted
   const site = await hostDemoSite(prospect.id, baseUrl);
 
   // Template variables
-  const rawWa = config.sender_whatsapp || '918929698191';
+  const rawWa = config.sender_whatsapp || '918920608191';
   const cleanWa = rawWa.replace(/[^0-9]/g, '');
   const waLink = `https://wa.me/${cleanWa}?text=${encodeURIComponent(`Hi! I received your email regarding the website demo for ${prospect.business_name}. I would like to claim it!`)}`;
 
@@ -38,8 +38,8 @@ async function sendDemoOutreach(prospectId, customOptions = {}) {
     city: prospect.city,
     category: prospect.category,
     demo_url: site.demo_url,
-    sender_name: config.sender_name || 'Alex Morgan',
-    sender_email: config.sender_email || 'alex@siteselleragent.com',
+    sender_name: config.sender_name || 'Devesh Kumar',
+    sender_email: config.sender_email || 'deveshtesting9672@gmail.com',
     sender_whatsapp: rawWa,
     whatsapp_link: waLink,
     physical_mailing_address: config.physical_mailing_address || '100 Congress Ave, Suite 2000, Austin, TX 78701, USA'
@@ -126,7 +126,7 @@ async function sendWhatsAppOutreach(prospectId, customOptions = {}) {
   }
 
   const config = db.getConfig();
-  const baseUrl = customOptions.baseUrl || 'http://localhost:5000';
+  const baseUrl = customOptions.baseUrl || (process.env.RENDER_EXTERNAL_URL ? process.env.RENDER_EXTERNAL_URL.replace(/\/+$/, '') : 'https://leads-gen-b3uj.onrender.com');
 
   // Ensure demo site is generated & hosted
   const site = await hostDemoSite(prospect.id, baseUrl);
@@ -138,18 +138,31 @@ async function sendWhatsAppOutreach(prospectId, customOptions = {}) {
     city: prospect.city,
     category: prospect.category,
     demo_url: site.demo_url,
-    sender_name: config.sender_name || 'Alex Morgan',
+    sender_name: config.sender_name || 'Devesh Kumar',
     sender_whatsapp: rawAgencyWa
   };
 
+  // Category specific default message if not customized
+  const cat = (prospect.category || '').toLowerCase();
+  const categoryGreeting = (cat.includes('cafe') || cat.includes('coffee')) 
+    ? `Hi team at {{business_name}}! ☕ I noticed you don't have a modern website listed on Google for your cafe in {{city}}, even though you have great local reviews!\n\nTo help out, my team and I built you a complete, high-converting demo website — 100% free with no strings attached:\n👉 View your live website demo here: {{demo_url}}\n\nIf you'd like to claim this design, customize the menu/photos, or connect your own domain, just reply here!`
+    : (cat.includes('restaurant') || cat.includes('dining'))
+    ? `Hi team at {{business_name}}! 🍽️ I noticed you don't have a website listed on Google for your restaurant in {{city}}.\n\nTo help you get more table bookings, we designed you a complete live demo website:\n👉 View your website demo here: {{demo_url}}\n\nReply here if you'd like to claim it!`
+    : (config.whatsapp_message_template || `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}.\n\nTo help out, we built you a free modern demo website: {{demo_url}}\n\nReply here or visit the link to claim it!`);
+
   const messageText = customOptions.message || renderTemplate(
-    config.whatsapp_message_template ||
-    `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}.\n\nTo help out, we built you a free modern demo website: {{demo_url}}\n\nReply here or visit the link to claim it!`,
+    config.whatsapp_message_template || categoryGreeting,
     templateVars
   );
 
   const recipientPhone = customOptions.phone || prospect.phone || '';
-  const cleanRecipientPhone = recipientPhone.replace(/[^0-9]/g, '');
+  let cleanRecipientPhone = recipientPhone.replace(/[^0-9]/g, '');
+  if (cleanRecipientPhone.length === 10 && ['6', '7', '8', '9'].includes(cleanRecipientPhone[0])) {
+    cleanRecipientPhone = '91' + cleanRecipientPhone;
+  }
+  if (!cleanRecipientPhone) {
+    cleanRecipientPhone = rawAgencyWa.replace(/[^0-9]/g, '');
+  }
 
   // Generate WhatsApp deep links for web and native app
   const waWebLink = `https://wa.me/${cleanRecipientPhone}?text=${encodeURIComponent(messageText)}`;

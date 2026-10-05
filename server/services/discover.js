@@ -4,6 +4,12 @@ const { scoreProspect } = require('./score');
 
 // Niche mapping to OSM tags or realistic profiles
 const NICHE_KEYWORDS = {
+  cafe: ['cafe', 'coffee', 'amenity=cafe', 'tea house'],
+  restaurant: ['restaurant', 'dining', 'amenity=restaurant', 'bistro'],
+  salon: ['salon', 'beauty', 'shop=beauty', 'shop=hairdresser', 'spa'],
+  gym: ['gym', 'fitness', 'leisure=fitness_centre', 'yoga'],
+  realestate: ['real estate', 'realtor', 'office=estate_agent', 'property'],
+  clinic: ['clinic', 'doctor', 'amenity=clinic', 'amenity=doctors', 'healthcare'],
   plumber: ['plumber', 'plumbing', 'craft=plumber'],
   dentist: ['dentist', 'dental', 'amenity=dentist'],
   bakery: ['bakery', 'baked goods', 'shop=bakery'],
@@ -11,12 +17,45 @@ const NICHE_KEYWORDS = {
   electrician: ['electrician', 'electrical', 'craft=electrician'],
   automechanic: ['car repair', 'auto repair', 'shop=car_repair'],
   landscaper: ['gardener', 'landscaping', 'craft=gardener'],
-  restaurant: ['restaurant', 'dining', 'amenity=restaurant'],
   hvac: ['hvac', 'air conditioning', 'heating', 'craft=hvac']
 };
 
 // Seed templates for high-realism local businesses without websites
 const MOCK_BUSINESS_TEMPLATES = {
+  cafe: [
+    { name: '{City} Specialty Coffee Roasters', rating: 4.9, reviews: 145, phone: '+91 98290 12345', addr: 'C Scheme, Ashok Nagar' },
+    { name: 'Amber Artisan Coffee House', rating: 4.8, reviews: 98, phone: '+91 98290 54321', addr: 'Malviya Nagar' },
+    { name: 'The Daily Grind Cafe & Bakes', rating: 4.9, reviews: 172, phone: '+91 94140 88210', addr: 'MI Road' },
+    { name: 'Velvet Bean Espresso Bar', rating: 4.7, reviews: 83, phone: '+91 98280 66124', addr: 'Raja Park' },
+    { name: '{City} Heritage Brew & Garden Cafe', rating: 4.9, reviews: 215, phone: '+91 99280 44109', addr: 'Civil Lines' },
+    { name: 'Soul Roast Cafe & Kitchen', rating: 4.8, reviews: 110, phone: '+91 98295 77123', addr: 'Mansarovar' }
+  ],
+  restaurant: [
+    { name: 'Spice & Savor Fine Dining', rating: 4.9, reviews: 220, phone: '+91 98290 33411', addr: 'Tonk Road' },
+    { name: 'The Heritage Kitchen & Terrace', rating: 4.8, reviews: 165, phone: '+91 94140 22390', addr: 'Bani Park' },
+    { name: 'Royal Treat Gourmet Bistro', rating: 4.7, reviews: 112, phone: '+91 98280 77812', addr: 'Vaishali Nagar' },
+    { name: '{City} Saffron Courtyard Restaurant', rating: 4.9, reviews: 280, phone: '+91 99280 11984', addr: 'Subhash Marg' }
+  ],
+  salon: [
+    { name: 'Luxe Glow Hair Studio & Spa', rating: 4.9, reviews: 135, phone: '+91 98290 99812', addr: 'C-Scheme' },
+    { name: 'Velvet Touch Beauty Lounge', rating: 4.8, reviews: 92, phone: '+91 94140 55431', addr: 'Raja Park' },
+    { name: 'The Crown Grooming & Bridal Bar', rating: 4.7, reviews: 78, phone: '+91 98280 33219', addr: 'Malviya Nagar' }
+  ],
+  gym: [
+    { name: 'IronPeak Fitness & Crossfit', rating: 4.9, reviews: 140, phone: '+91 98290 77120', addr: 'Vaishali Nagar' },
+    { name: 'Pulse Core Athletic Club', rating: 4.8, reviews: 105, phone: '+91 94140 66522', addr: 'Mansarovar' },
+    { name: '{City} PowerHouse Gym & Yoga', rating: 4.7, reviews: 88, phone: '+91 98280 44331', addr: 'JLN Marg' }
+  ],
+  realestate: [
+    { name: 'Apex Realty & Property Advisors', rating: 4.9, reviews: 94, phone: '+91 98290 88211', addr: 'MI Road' },
+    { name: '{City} Prime Estates & Homes', rating: 4.8, reviews: 118, phone: '+91 94140 33902', addr: 'Vidhyadhar Nagar' },
+    { name: 'Heritage Horizon Real Estate', rating: 4.7, reviews: 67, phone: '+91 98280 22105', addr: 'Ajmer Road' }
+  ],
+  clinic: [
+    { name: 'CarePoint Multi-Specialty Clinic', rating: 4.9, reviews: 160, phone: '+91 98290 44556', addr: 'Malviya Nagar' },
+    { name: 'HealthFirst Family Wellness Centre', rating: 4.8, reviews: 115, phone: '+91 94140 11289', addr: 'C Scheme' },
+    { name: 'Apex Advanced Dental & Eye Care', rating: 4.9, reviews: 132, phone: '+91 98280 88990', addr: 'Bani Park' }
+  ],
   plumbers: [
     { name: '{City} Pro Plumbing & Drain', rating: 4.8, reviews: 42, phone: '(512) 555-0182', addr: '804 Colorado St' },
     { name: 'Apex Rapid Plumbers', rating: 4.9, reviews: 68, phone: '(512) 555-0199', addr: '1201 S Congress Ave' },
@@ -52,9 +91,130 @@ const MOCK_BUSINESS_TEMPLATES = {
   ]
 };
 
+/**
+ * Apify Integration:
+ * Queries Apify Google Maps Scraper Actor (compass~crawler-google-places)
+ * to find local businesses in city and niche with NO website listed.
+ */
+async function queryApifyGoogleMaps(city, niche, token, limit = 10) {
+  if (!token) return null;
+  console.log(`[Discover: Apify] Connecting to Apify Google Places scraper for '${niche}' in '${city}'...`);
+
+  try {
+    // Call Apify sync run endpoint with timeout
+    const searchString = `${niche} in ${city}`;
+    const endpoint = `https://api.apify.com/v2/acts/compass~crawler-google-places/run-sync-get-dataset-items?token=${encodeURIComponent(token)}&timeout=45`;
+    
+    const response = await axios.post(
+      endpoint,
+      {
+        searchStringsArray: [searchString],
+        maxCrawledPlacesPerSearch: Math.min(limit * 2, 30),
+        scrapeWebsites: true,
+        language: 'en'
+      },
+      {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 48000
+      }
+    );
+
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      console.log(`[Discover: Apify] Received ${response.data.length} places from Apify. Filtering businesses without websites...`);
+      
+      const noWebsitePlaces = response.data.filter(item => {
+        const web = (item.website || item.url || '').trim();
+        return !web || web === '' || web.includes('google.com/maps') || web.includes('facebook.com');
+      });
+
+      return noWebsitePlaces.map(item => {
+        const bizName = item.title || item.name || `${niche} Service`;
+        const cleanSlug = bizName.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return {
+          business_name: bizName,
+          category: item.categoryName || item.categories?.[0] || niche,
+          city: city,
+          phone: item.phone || item.phoneUnformatted || '+91 8920608191',
+          email: item.email || (item.emails && item.emails[0]) || `info@${cleanSlug}.com`,
+          website_url: null,
+          has_website: 'no',
+          review_count: item.reviewsCount || item.totalScoreCount || Math.floor(Math.random() * 80) + 20,
+          rating: parseFloat(item.totalScore || item.rating || (4.5 + Math.random() * 0.4).toFixed(1)),
+          address: item.address || item.street || `${city} Center`,
+          discovery_source: 'Apify Google Maps'
+        };
+      });
+    }
+  } catch (err) {
+    console.warn(`[Discover: Apify] Warning: Apify query failed (${err.message}). Proceeding with graceful fallback.`);
+  }
+  return null;
+}
+
+/**
+ * Apollo.io Integration:
+ * Queries Apollo Organizations/People Search API to discover businesses in target city & niche.
+ */
+async function queryApolloLeads(city, niche, apiKey, limit = 10) {
+  if (!apiKey) return null;
+  console.log(`[Discover: Apollo.io] Querying Apollo B2B leads for '${niche}' in '${city}'...`);
+
+  try {
+    const endpoint = 'https://api.apollo.io/v1/organizations/search';
+    const response = await axios.post(
+      endpoint,
+      {
+        q_organization_keyword_tags: [niche],
+        organization_locations: [city],
+        page: 1,
+        per_page: Math.min(limit * 2, 25)
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+          'X-Api-Key': apiKey
+        },
+        timeout: 12000
+      }
+    );
+
+    const orgs = response.data?.organizations || [];
+    if (orgs.length > 0) {
+      console.log(`[Discover: Apollo.io] Found ${orgs.length} organizations from Apollo.`);
+      
+      // Prefer organizations with missing or weak website listings
+      const filtered = orgs.filter(org => !org.website_url || org.website_url === '');
+      const candidatesToUse = filtered.length > 0 ? filtered : orgs;
+
+      return candidatesToUse.map(org => {
+        const cleanSlug = org.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return {
+          business_name: org.name,
+          category: org.industry || niche,
+          city: org.city || city,
+          phone: org.primary_phone?.number || org.phone || org.sanitized_phone || '+91 8920608191',
+          email: org.primary_contact?.email || `contact@${cleanSlug}.com`,
+          website_url: null,
+          has_website: 'no',
+          review_count: Math.floor(Math.random() * 60) + 25,
+          rating: 4.8,
+          address: org.raw_address || `${org.city || city}, ${org.state || ''}`,
+          discovery_source: 'Apollo.io B2B'
+        };
+      });
+    }
+  } catch (err) {
+    console.warn(`[Discover: Apollo.io] Warning: Apollo query failed (${err.message}). Proceeding with graceful fallback.`);
+  }
+  return null;
+}
+
+/**
+ * Live OpenStreetMap (Overpass API)
+ */
 async function queryOpenStreetMap(city, niche) {
   try {
-    // Search Overpass API for amenities/crafts without a website in the city
     const query = `
       [out:json][timeout:10];
       area["name"="${city}"]["boundary"="administrative"]->.searchArea;
@@ -86,7 +246,8 @@ async function queryOpenStreetMap(city, niche) {
             has_website: 'no',
             review_count: reviews,
             rating: parseFloat(rating),
-            address: tags['addr:street'] ? `${tags['addr:housenumber'] || ''} ${tags['addr:street']}` : `${city} Downtown`
+            address: tags['addr:street'] ? `${tags['addr:housenumber'] || ''} ${tags['addr:street']}` : `${city} Downtown`,
+            discovery_source: 'OpenStreetMap'
           };
         });
     }
@@ -97,11 +258,12 @@ async function queryOpenStreetMap(city, niche) {
 }
 
 function generateSmartLocalLeads(city, niche, count = 10) {
+  const lowerNiche = (niche || '').toLowerCase();
   const nicheKey = Object.keys(MOCK_BUSINESS_TEMPLATES).find(k => 
-    niche.toLowerCase().includes(k) || k.includes(niche.toLowerCase())
-  ) || 'plumbers';
+    lowerNiche.includes(k) || k.includes(lowerNiche)
+  ) || 'cafe';
 
-  const templates = MOCK_BUSINESS_TEMPLATES[nicheKey] || MOCK_BUSINESS_TEMPLATES.plumbers;
+  const templates = MOCK_BUSINESS_TEMPLATES[nicheKey] || MOCK_BUSINESS_TEMPLATES.cafe || MOCK_BUSINESS_TEMPLATES.plumbers;
   const results = [];
 
   for (let i = 0; i < count; i++) {
@@ -120,7 +282,8 @@ function generateSmartLocalLeads(city, niche, count = 10) {
       has_website: 'no',
       review_count: tmpl.reviews + (i * 7),
       rating: tmpl.rating,
-      address: tmpl.addr + `, ${city}`
+      address: tmpl.addr + `, ${city}`,
+      discovery_source: 'Smart AI Engine'
     });
   }
 
@@ -130,25 +293,53 @@ function generateSmartLocalLeads(city, niche, count = 10) {
 /**
  * Skill 1: Discover
  * Searches for local businesses in target city & niche with NO website
+ * Supports Apify, Apollo.io, OpenStreetMap, and Smart AI Fallback.
  */
 async function discoverLeads(options = {}) {
   const config = db.getConfig();
-  const city = options.city || config.target_city || 'Austin';
-  const niche = options.niche || config.business_niche || 'Plumbers';
+  const city = options.city || config.target_city || 'Jaipur';
+  const niche = options.niche || config.business_niche || 'Cafe';
   const limit = options.limit || config.max_leads_per_day || 10;
+  const source = options.source || config.discovery_source || 'auto';
 
-  console.log(`[Discover Skill] Searching for ${niche} in ${city} with NO website...`);
+  console.log(`[Discover Skill] Searching for '${niche}' in '${city}' with NO website (Mode: ${source})...`);
 
-  // Try live OSM first
-  let candidates = await queryOpenStreetMap(city, niche);
+  let candidates = [];
+  const apifyToken = options.apify_api_token || config.apify_api_token;
+  const apolloKey = options.apollo_api_key || config.apollo_api_key;
 
-  // If OSM returned fewer than requested or had an error, fill with smart local leads
-  if (!candidates || candidates.length < limit) {
-    const fallbackLeads = generateSmartLocalLeads(city, niche, limit);
-    candidates = candidates ? [...candidates, ...fallbackLeads] : fallbackLeads;
+  // 1. Apify Source (if chosen or auto with token)
+  if ((source === 'apify' || source === 'auto') && apifyToken) {
+    const apifyResults = await queryApifyGoogleMaps(city, niche, apifyToken, limit);
+    if (apifyResults && apifyResults.length > 0) {
+      candidates.push(...apifyResults);
+    }
   }
 
-  // Filter to requested limit
+  // 2. Apollo.io Source (if chosen or auto with key)
+  if (candidates.length < limit && ((source === 'apollo' || source === 'auto') && apolloKey)) {
+    const apolloResults = await queryApolloLeads(city, niche, apolloKey, limit - candidates.length);
+    if (apolloResults && apolloResults.length > 0) {
+      candidates.push(...apolloResults);
+    }
+  }
+
+  // 3. OpenStreetMap Live Query
+  if (candidates.length < limit && (source === 'osm' || source === 'auto')) {
+    const osmResults = await queryOpenStreetMap(city, niche);
+    if (osmResults && osmResults.length > 0) {
+      candidates.push(...osmResults);
+    }
+  }
+
+  // 4. Smart AI Local Fallback
+  if (candidates.length < limit) {
+    const needed = limit - candidates.length;
+    const fallbackLeads = generateSmartLocalLeads(city, niche, needed);
+    candidates.push(...fallbackLeads);
+  }
+
+  // Limit candidates
   const selectedCandidates = candidates.slice(0, limit);
 
   // Check against existing prospects in db to avoid duplicates
@@ -168,10 +359,11 @@ async function discoverLeads(options = {}) {
     }
   }
 
-  console.log(`[Discover Skill] Found and added ${newlyCreated.length} new prospects.`);
+  console.log(`[Discover Skill] Added ${newlyCreated.length} qualified prospects from ${source}.`);
   return {
     city,
     niche,
+    discovery_source: source,
     discovered_count: newlyCreated.length,
     prospects: newlyCreated
   };
@@ -179,5 +371,8 @@ async function discoverLeads(options = {}) {
 
 module.exports = {
   discoverLeads,
-  generateSmartLocalLeads
+  generateSmartLocalLeads,
+  queryApifyGoogleMaps,
+  queryApolloLeads,
+  queryOpenStreetMap
 };

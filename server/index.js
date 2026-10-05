@@ -152,8 +152,8 @@ app.delete('/api/prospects/:id', (req, res) => {
 // SKILL 1: DISCOVER
 app.post('/api/skills/discover', async (req, res) => {
   try {
-    const { city, niche, limit } = req.body;
-    const result = await discoverLeads({ city, niche, limit });
+    const { city, niche, limit, source, apify_api_token, apollo_api_key } = req.body;
+    const result = await discoverLeads({ city, niche, limit, source, apify_api_token, apollo_api_key });
     res.json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });

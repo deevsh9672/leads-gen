@@ -17,6 +17,9 @@ const DEFAULT_CONFIG = {
   target_country: 'United States',
   business_niche: 'Plumbers',
   max_leads_per_day: 25,
+  discovery_source: 'auto',
+  apify_api_token: '',
+  apollo_api_key: '',
   sender_name: 'Alex Morgan',
   sender_email: 'alex@siteselleragent.com',
   sender_whatsapp: '918920608191',
@@ -122,6 +125,9 @@ const db = {
         website_need: 85,
         rating: 4.8
       },
+      rating: prospectData.rating || 4.8,
+      review_count: prospectData.review_count || 30,
+      discovery_source: prospectData.discovery_source || 'Smart AI Engine',
       status: prospectData.status || 'new', // new / contacted / replied / opted-out / client
       created_at: new Date().toISOString()
     };
