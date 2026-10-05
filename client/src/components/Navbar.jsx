@@ -87,38 +87,25 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center justify-between overflow-x-auto py-2 border-t border-slate-800/60 no-scrollbar">
-          <div className="flex space-x-1 sm:space-x-4">
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const active = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
-                    active
-                      ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {onSwitchToCafe && (
-            <button
-              onClick={onSwitchToCafe}
-              className="ml-3 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-300 hover:text-stone-950 transition shadow-sm"
-              title="Open Demo Café Website"
-            >
-              <span>☕ Demo Café Site</span>
-              <span className="text-[10px] px-1.5 py-0.2 bg-amber-500/30 text-amber-200 rounded font-mono">DEMO</span>
-            </button>
-          )}
+        <div className="flex space-x-1 sm:space-x-4 overflow-x-auto py-2 border-t border-slate-800/60 no-scrollbar">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const active = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                  active
+                    ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
     </header>

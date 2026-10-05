@@ -7,7 +7,6 @@ import OutreachView from './components/OutreachView';
 import InboxCRMView from './components/InboxCRMView';
 import SettingsView from './components/SettingsView';
 import AutonomousModal from './components/AutonomousModal';
-import CafeApp from './components/cafe/CafeApp';
 import { 
   getProspects, 
   getLogs, 
@@ -24,22 +23,6 @@ import {
 } from './api';
 
 export default function App() {
-  const [appMode, setAppMode] = useState(() => {
-    // Only switch to demo cafe if explicitly passed ?view=cafe in URL
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'cafe') return 'cafe';
-    return 'agent'; // Always default to AI Site Seller Agent!
-  });
-
-  const handleSetAppMode = (mode) => {
-    setAppMode(mode);
-    if (mode === 'cafe') {
-      window.history.pushState({}, '', '?view=cafe');
-    } else {
-      window.history.pushState({}, '', window.location.pathname);
-    }
-  };
-
   const [activeTab, setActiveTab] = useState('dashboard');
   const [prospects, setProspects] = useState([]);
   const [logs, setLogs] = useState([]);
@@ -186,12 +169,6 @@ export default function App() {
     }
   };
 
-  if (appMode === 'cafe') {
-    return (
-      <CafeApp onSwitchToSuperagent={() => handleSetAppMode('agent')} />
-    );
-  }
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white">
       
@@ -202,7 +179,6 @@ export default function App() {
         config={config}
         onRunPipeline={handleRunPipeline}
         isPipelineRunning={pipelineStatus?.running}
-        onSwitchToCafe={() => handleSetAppMode('cafe')}
       />
 
       {/* Main Body */}
@@ -245,7 +221,6 @@ export default function App() {
             selectedProspect={selectedProspect}
             onSelectProspect={setSelectedProspect}
             onSendOutreach={handleSendOutreach}
-            onOpenCafeDemo={() => handleSetAppMode('cafe')}
           />
         )}
 
