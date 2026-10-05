@@ -32,6 +32,7 @@ export const runGenerateSkill = (id) => api.post(`/skills/generate/${id}`);
 export const runHostSkill = (id) => api.post(`/skills/host/${id}`);
 export const runOutreachSkill = (id, data) => api.post(`/skills/outreach/${id}`, data);
 export const runWhatsAppOutreachSkill = (id, data) => api.post(`/skills/outreach/whatsapp/${id}`, data);
+export const runBothOutreachSkill = (id, data) => api.post(`/skills/outreach/both/${id}`, data);
 export const getLogs = () => api.get('/logs');
 export const simulateReply = (data) => api.post('/skills/replies/simulate', data);
 

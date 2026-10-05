@@ -256,6 +256,36 @@ app.post('/api/skills/outreach/whatsapp/:id', async (req, res) => {
   }
 });
 
+// SKILL 5 (Multi-Channel): BOTH EMAIL & WHATSAPP SIMULTANEOUS OUTREACH
+app.post('/api/skills/outreach/both/:id', async (req, res) => {
+  try {
+    const baseUrl = getAppBaseUrl(req);
+    // Send email outreach
+    const emailRes = await sendDemoOutreach(req.params.id, {
+      baseUrl,
+      subject: req.body.subject,
+      body: req.body.body,
+      email: req.body.email
+    });
+    // Send WhatsApp outreach
+    const waRes = await sendWhatsAppOutreach(req.params.id, {
+      baseUrl,
+      message: req.body.waMessage || req.body.message,
+      phone: req.body.phone
+    });
+    res.json({
+      success: true,
+      email: emailRes,
+      whatsapp: waRes,
+      wa_web_link: waRes.wa_web_link,
+      wa_app_link: waRes.wa_app_link,
+      prospect: waRes.prospect
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.get('/api/logs', (req, res) => {
   res.json(getOutreachLogs());
 });

@@ -17,6 +17,7 @@ import {
   runGenerateSkill,
   runOutreachSkill,
   runWhatsAppOutreachSkill,
+  runBothOutreachSkill,
   updateProspect,
   deleteProspect,
   addProspect
@@ -141,6 +142,19 @@ export default function App() {
     }
   };
 
+  const handleSendBothOutreach = async (prospectId) => {
+    try {
+      const res = await runBothOutreachSkill(prospectId, {});
+      if (res.data?.wa_web_link) {
+        window.open(res.data.wa_web_link, '_blank');
+      }
+      alert(`🚀 Multi-Channel Outreach Dispatched!\n\n📧 Email sent & logged in CRM.\n📲 WhatsApp demo message prepared! Opening WhatsApp Web...`);
+      loadInitialData();
+    } catch (err) {
+      alert('Error sending multi-channel outreach: ' + err.message);
+    }
+  };
+
   const handleUpdateStatus = async (prospectId, status) => {
     try {
       await updateProspect(prospectId, { status });
@@ -208,6 +222,7 @@ export default function App() {
             onGenerateSite={handleGenerateSite}
             onSendOutreach={handleSendOutreach}
             onSendWhatsAppOutreach={handleSendWhatsAppOutreach}
+            onSendBothOutreach={handleSendBothOutreach}
             onSelectForStudio={(p) => {
               setSelectedProspect(p);
               setActiveTab('studio');
@@ -221,6 +236,8 @@ export default function App() {
             selectedProspect={selectedProspect}
             onSelectProspect={setSelectedProspect}
             onSendOutreach={handleSendOutreach}
+            onSendWhatsAppOutreach={handleSendWhatsAppOutreach}
+            onSendBothOutreach={handleSendBothOutreach}
           />
         )}
 
@@ -230,6 +247,7 @@ export default function App() {
             logs={logs}
             config={config}
             onRefreshLogs={loadInitialData}
+            onSendBothOutreach={handleSendBothOutreach}
             onSimulateReplyClick={(log) => {
               setPreselectedLog(log);
               setActiveTab('inbox');

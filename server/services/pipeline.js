@@ -3,7 +3,7 @@ const { discoverLeads } = require('./discover');
 const { scoreProspect } = require('./score');
 const { generateWebsiteForProspect } = require('./generator');
 const { hostDemoSite } = require('./host');
-const { sendDemoOutreach } = require('./outreach');
+const { sendDemoOutreach, sendWhatsAppOutreach } = require('./outreach');
 
 // In-memory status for running pipeline
 let currentRun = {
@@ -100,26 +100,38 @@ async function runAutonomousPipeline(options = {}) {
       currentRun.progress = 50 + Math.round(((i + 1) / topProspects.length) * 20);
     }
 
-    // SKILLS 5 & 6: OUTREACH & LOG
+    // SKILLS 5 & 6: OUTREACH & LOG (Simultaneous Email + WhatsApp)
     currentRun.stage = 'outreaching';
     currentRun.progress = 75;
-    addPipelineLog(`Skill 5 & 6 [Outreach & Log]: Dispatching personalized CAN-SPAM compliant emails...`, 'info');
+    addPipelineLog(`Skill 5 & 6 [Outreach & Log]: Dispatching multi-channel outreach (Email + WhatsApp) with demo links...`, 'info');
 
     const outreachResults = [];
+    const waResults = [];
     for (let i = 0; i < topProspects.length; i++) {
       const p = topProspects[i];
-      addPipelineLog(`📧 Sending personalized demo invitation to "${p.business_name}" (${p.email})...`, 'info');
+      addPipelineLog(`📧 Sending personalized demo invitation email to "${p.business_name}" (${p.email})...`, 'info');
       
       const res = await sendDemoOutreach(p.id, { baseUrl });
       outreachResults.push(res);
-      addPipelineLog(`✅ Sent & Logged! Recipient: ${p.email} | Status: ${res.log.status}`, 'success');
+      addPipelineLog(`✅ Email Delivered & Logged! Recipient: ${p.email} | Status: ${res.log.status}`, 'success');
+
+      // WhatsApp outreach with live demo link
+      try {
+        addPipelineLog(`📲 Dispatching WhatsApp outreach with live demo link for "${p.business_name}" (${p.phone || 'WhatsApp'})...`, 'info');
+        const waRes = await sendWhatsAppOutreach(p.id, { baseUrl });
+        waResults.push(waRes);
+        addPipelineLog(`✅ WhatsApp outreach logged & click-to-chat ready for "${p.business_name}" (${waRes.recipient_phone})!`, 'success');
+      } catch (waErr) {
+        addPipelineLog(`⚠️ WhatsApp note for "${p.business_name}": ${waErr.message}`, 'warning');
+      }
+
       currentRun.progress = 75 + Math.round(((i + 1) / topProspects.length) * 20);
     }
 
     // SKILL 7: REPLY READY
     currentRun.stage = 'reply_ready';
     currentRun.progress = 100;
-    addPipelineLog(`Skill 7 [Reply Monitor]: Active. Superagent is now listening for lead responses.`, 'success');
+    addPipelineLog(`Skill 7 [Reply Monitor]: Active. Superagent is listening for client email and WhatsApp responses.`, 'success');
 
     currentRun.running = false;
     currentRun.stage = 'completed';
@@ -129,10 +141,11 @@ async function runAutonomousPipeline(options = {}) {
       discovered_count: discoveryResult.discovered_count,
       sites_generated: generatedSites.length,
       emails_sent: outreachResults.length,
+      whatsapp_sent: waResults.length,
       completed_at: new Date().toISOString()
     };
 
-    addPipelineLog(`🎉 Full Autonomous Cycle Finished Successfully! Processed ${topProspects.length} high-scoring leads.`, 'success');
+    addPipelineLog(`🎉 Full Autonomous Cycle Finished Successfully! Dispatched Email + WhatsApp demo outreach to ${topProspects.length} high-scoring leads.`, 'success');
 
   } catch (err) {
     console.error('[Pipeline] Error executing cycle:', err);

@@ -14,16 +14,17 @@ import {
   MessageCircle,
   Phone
 } from 'lucide-react';
-import { runOutreachSkill, runWhatsAppOutreachSkill } from '../api';
+import { runOutreachSkill, runWhatsAppOutreachSkill, runBothOutreachSkill } from '../api';
 
 export default function OutreachView({ 
   prospects, 
   logs, 
   config, 
   onRefreshLogs, 
+  onSendBothOutreach,
   onSimulateReplyClick 
 }) {
-  const [activeChannel, setActiveChannel] = useState('email'); // 'email' or 'whatsapp'
+  const [activeChannel, setActiveChannel] = useState('both'); // 'both', 'email', or 'whatsapp'
   const [selectedProspectId, setSelectedProspectId] = useState(prospects[0]?.id || '');
   
   // Email Form State
@@ -91,6 +92,28 @@ export default function OutreachView({
     }
   };
 
+  const handleSendBoth = async () => {
+    if (!selectedProspect) return;
+    setSending(true);
+    try {
+      const res = await runBothOutreachSkill(selectedProspect.id, {
+        subject: customSubject,
+        body: customBody,
+        waMessage: customWaMessage,
+        phone: selectedProspect.phone
+      });
+      if (res.data?.wa_web_link) {
+        window.open(res.data.wa_web_link, '_blank');
+      }
+      alert(`🚀 Multi-Channel Outreach Sent to ${selectedProspect.business_name}!\n\n📧 Cold email delivered to ${selectedProspect.email}.\n📲 WhatsApp demo message prepared! Opened WhatsApp Web chat.`);
+      if (onRefreshLogs) onRefreshLogs();
+    } catch (err) {
+      alert('Error sending multi-channel outreach: ' + err.message);
+    } finally {
+      setSending(false);
+    }
+  };
+
   // Preview generated body with tags replaced
   const previewBody = (template) => {
     if (!selectedProspect) return template;
@@ -137,29 +160,41 @@ export default function OutreachView({
       </div>
 
       {/* Channel Switcher */}
-      <div className="flex items-center gap-2 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl max-w-md">
+      <div className="flex items-center gap-2 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl max-w-xl">
+        <button
+          onClick={() => setActiveChannel('both')}
+          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition ${
+            activeChannel === 'both'
+              ? 'bg-gradient-to-r from-purple-600 via-indigo-600 to-emerald-600 text-white shadow-lg'
+              : 'text-slate-400 hover:text-white'
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>🚀 Dual (Email + WhatsApp)</span>
+        </button>
+
         <button
           onClick={() => setActiveChannel('email')}
-          className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-bold transition ${
+          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition ${
             activeChannel === 'email'
               ? 'bg-purple-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white'
           }`}
         >
           <Mail className="w-4 h-4" />
-          <span>Email Outreach (Gmail)</span>
+          <span>Email Only</span>
         </button>
 
         <button
           onClick={() => setActiveChannel('whatsapp')}
-          className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-bold transition ${
+          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold transition ${
             activeChannel === 'whatsapp'
               ? 'bg-emerald-600 text-white shadow-md'
               : 'text-slate-400 hover:text-white'
           }`}
         >
           <MessageCircle className="w-4 h-4" />
-          <span>WhatsApp Direct</span>
+          <span>WhatsApp Only</span>
         </button>
       </div>
 
@@ -170,7 +205,12 @@ export default function OutreachView({
         <div className="lg:col-span-8 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-800">
             <h3 className="font-bold text-white text-sm flex items-center gap-2">
-              {activeChannel === 'email' ? (
+              {activeChannel === 'both' ? (
+                <>
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span>Dual Outreach: Simultaneous Email & WhatsApp Dispatch</span>
+                </>
+              ) : activeChannel === 'email' ? (
                 <>
                   <Mail className="w-4 h-4 text-purple-400" />
                   <span>Personalized Email Composer</span>
@@ -185,7 +225,7 @@ export default function OutreachView({
             
             {/* Prospect selector */}
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-slate-400">To Prospect:</span>
+              <span className="text-slate-400">Target Lead:</span>
               <select
                 value={selectedProspectId}
                 onChange={(e) => setSelectedProspectId(e.target.value)}
@@ -220,7 +260,70 @@ export default function OutreachView({
             ))}
           </div>
 
-          {activeChannel === 'email' ? (
+          {activeChannel === 'both' ? (
+            <>
+              {/* Dual View: Both forms */}
+              <div className="space-y-4">
+                <div className="p-4 bg-slate-950/70 rounded-xl border border-purple-500/30 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-purple-300 flex items-center gap-1.5">
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Channel 1: Personalized Email (Gmail CAN-SPAM)</span>
+                    </label>
+                    <span className="text-[11px] text-slate-400">To: {selectedProspect?.email}</span>
+                  </div>
+                  <input
+                    type="text"
+                    value={customSubject}
+                    onChange={(e) => setCustomSubject(e.target.value)}
+                    placeholder="Email Subject"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500"
+                  />
+                  <textarea
+                    rows="4"
+                    value={customBody}
+                    onChange={(e) => setCustomBody(e.target.value)}
+                    placeholder="Email Body"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-white font-mono leading-relaxed focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+
+                <div className="p-4 bg-slate-950/70 rounded-xl border border-emerald-500/30 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Channel 2: Direct WhatsApp Pitch with Demo Link</span>
+                    </label>
+                    <span className="text-[11px] text-emerald-400 font-semibold">To: {selectedProspect?.phone || 'Client WhatsApp'}</span>
+                  </div>
+                  <textarea
+                    rows="4"
+                    value={customWaMessage}
+                    onChange={(e) => setCustomWaMessage(e.target.value)}
+                    placeholder="WhatsApp Message"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-white font-mono leading-relaxed focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+              </div>
+
+              {/* Dual Action Row */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                <div className="text-xs text-slate-400">
+                  Your WhatsApp: <strong className="text-emerald-400 font-mono">+91 8920608191</strong>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSendBoth}
+                    disabled={sending}
+                    className="px-6 py-2.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-emerald-600 hover:from-purple-500 hover:to-emerald-500 text-white rounded-xl text-xs font-bold shadow-xl transition flex items-center gap-2"
+                  >
+                    <Sparkles className={`w-4 h-4 ${sending ? 'animate-spin' : ''}`} />
+                    <span>{sending ? 'Dispatching Multi-Channel...' : '🚀 Send Both (Email + WhatsApp Demo)'}</span>
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : activeChannel === 'email' ? (
             <>
               {/* Subject Line */}
               <div>
@@ -249,14 +352,24 @@ export default function OutreachView({
                 <div className="text-xs text-slate-400">
                   Sender: <strong className="text-white">{config?.sender_name || 'Alex Morgan'}</strong> ({config?.sender_email || 'alex@siteselleragent.com'})
                 </div>
-                <button
-                  onClick={handleSendEmail}
-                  disabled={sending}
-                  className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-lg transition flex items-center gap-2"
-                >
-                  <Send className={`w-4 h-4 ${sending ? 'animate-spin' : ''}`} />
-                  <span>{sending ? 'Sending...' : 'Send Email Outreach (Skill 5)'}</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSendBoth}
+                    disabled={sending}
+                    className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-purple-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Send Both Channels</span>
+                  </button>
+                  <button
+                    onClick={handleSendEmail}
+                    disabled={sending}
+                    className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold shadow-lg transition flex items-center gap-2"
+                  >
+                    <Send className={`w-4 h-4 ${sending ? 'animate-spin' : ''}`} />
+                    <span>{sending ? 'Sending...' : 'Send Email Outreach (Skill 5)'}</span>
+                  </button>
+                </div>
               </div>
             </>
           ) : (
@@ -283,14 +396,24 @@ export default function OutreachView({
                 <div className="text-xs text-slate-400">
                   Your WhatsApp: <strong className="text-emerald-400 font-mono">+91 8920608191</strong>
                 </div>
-                <button
-                  onClick={handleSendWhatsApp}
-                  disabled={sending}
-                  className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow-lg transition flex items-center gap-2"
-                >
-                  <MessageCircle className={`w-4 h-4 ${sending ? 'animate-spin' : ''}`} />
-                  <span>{sending ? 'Dispatching...' : 'Send WhatsApp Message to Client'}</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleSendBoth}
+                    disabled={sending}
+                    className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-emerald-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Send Both Channels</span>
+                  </button>
+                  <button
+                    onClick={handleSendWhatsApp}
+                    disabled={sending}
+                    className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl text-xs font-bold shadow-lg transition flex items-center gap-2"
+                  >
+                    <MessageCircle className={`w-4 h-4 ${sending ? 'animate-spin' : ''}`} />
+                    <span>{sending ? 'Dispatching...' : 'Send WhatsApp Message to Client'}</span>
+                  </button>
+                </div>
               </div>
             </>
           )}
@@ -300,7 +423,35 @@ export default function OutreachView({
         {/* Compliance / Live Preview (4 cols) */}
         <div className="lg:col-span-4 space-y-6">
           
-          {activeChannel === 'email' ? (
+          {activeChannel === 'both' ? (
+            <div className="bg-slate-900/60 border border-indigo-500/30 rounded-2xl p-5 shadow-xl space-y-3">
+              <div className="flex items-center gap-2 text-indigo-400 font-bold text-sm">
+                <Sparkles className="w-5 h-5" />
+                <span>Simultaneous Dual-Channel Power</span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Reaches decision makers across both their business inbox and direct personal smartphone:
+              </p>
+              <div className="space-y-2 text-xs pt-1 text-slate-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span><strong>Email</strong> provides formal proposal & CAN-SPAM proof</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span><strong>WhatsApp</strong> delivers 98% open rate & instant demo click</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Sender WhatsApp: <strong>+91 8920608191</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Both dispatches recorded in CRM audit trail</span>
+                </div>
+              </div>
+            </div>
+          ) : activeChannel === 'email' ? (
             <div className="bg-slate-900/60 border border-emerald-500/30 rounded-2xl p-5 shadow-xl space-y-3">
               <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
                 <ShieldCheck className="w-5 h-5" />

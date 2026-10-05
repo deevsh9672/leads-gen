@@ -30,6 +30,7 @@ export default function ProspectsView({
   onGenerateSite,
   onSendOutreach,
   onSendWhatsAppOutreach,
+  onSendBothOutreach,
   onSelectForStudio
 }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -298,6 +299,16 @@ export default function ProspectsView({
                           >
                             <MessageCircle className="w-4 h-4" />
                           </button>
+
+                          {onSendBothOutreach && (
+                            <button
+                              onClick={() => onSendBothOutreach(p.id)}
+                              title="🚀 Send Multi-Channel (Email + WhatsApp Demo simultaneously)"
+                              className="p-2 rounded-lg bg-gradient-to-r from-purple-600/30 to-emerald-600/30 hover:from-purple-600 hover:to-emerald-600 text-amber-300 hover:text-white transition shadow-sm border border-purple-500/30"
+                            >
+                              <Sparkles className="w-4 h-4" />
+                            </button>
+                          )}
 
                           <button
                             onClick={() => onDeleteProspect(p.id)}

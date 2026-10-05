@@ -31,9 +31,9 @@ export default function AutonomousModal({ isOpen, onClose, pipelineStatus, onRef
     { id: 'scoring', label: '2. Score', icon: BarChart3, desc: 'Evaluating 1-100 opportunity value & review trust' },
     { id: 'generating', label: '3. Generate', icon: Layers, desc: 'Building category-tailored responsive demo site' },
     { id: 'hosting', label: '4. Host', icon: Server, desc: 'Publishing live demo link at /demos/:id' },
-    { id: 'outreaching', label: '5. Outreach', icon: Send, desc: 'Dispatching CAN-SPAM compliant email via Gmail' },
-    { id: 'logging', label: '6. Log', icon: FileText, desc: 'Recording audit in OutreachLog' },
-    { id: 'reply_ready', label: '7. Reply Monitor', icon: MessageSquare, desc: 'Listening for responses & ready to close deals' },
+    { id: 'outreaching', label: '5. Outreach', icon: Send, desc: 'Simultaneous Email + WhatsApp direct dispatch with live demo link' },
+    { id: 'logging', label: '6. Log', icon: FileText, desc: 'Recording dual-channel audit in CRM log' },
+    { id: 'reply_ready', label: '7. Reply Monitor', icon: MessageSquare, desc: 'Listening for client email & WhatsApp responses' },
   ];
 
   const currentStage = pipelineStatus?.stage || 'idle';
