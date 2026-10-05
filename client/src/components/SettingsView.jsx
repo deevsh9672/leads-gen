@@ -13,28 +13,32 @@ import {
   Database,
   Zap,
   ExternalLink,
-  Sparkles
+  Sparkles,
+  MessageCircle
 } from 'lucide-react';
 import { updateConfig } from '../api';
 
 export default function SettingsView({ config, onConfigSaved }) {
   const [formData, setFormData] = useState({
-    target_city: 'Austin',
-    target_country: 'United States',
-    business_niche: 'Plumbers',
-    max_leads_per_day: 25,
+    target_city: 'Jaipur',
+    target_country: 'India',
+    business_niche: 'cafe',
+    max_leads_per_day: 18,
     discovery_source: 'auto',
     apify_api_token: '',
     apollo_api_key: '',
-    sender_name: 'Alex Morgan',
-    sender_email: 'alex@siteselleragent.com',
+    sender_name: 'Devesh Kumar',
+    sender_email: 'deveshtesting9672@gmail.com',
     sender_whatsapp: '918920608191',
     physical_mailing_address: '100 Congress Ave, Suite 2000, Austin, TX 78701, USA',
     smtp_host: 'smtp.gmail.com',
     smtp_port: 587,
     smtp_user: '',
     smtp_pass: '',
-    auto_pilot: false
+    auto_pilot: false,
+    email_subject_template: 'Free modern website demo for {{business_name}}',
+    whatsapp_message_template: '',
+    email_body_template: ''
   });
   const [saving, setSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -343,6 +347,60 @@ export default function SettingsView({ config, onConfigSaved }) {
                 onChange={e => setFormData({ ...formData, smtp_pass: e.target.value })}
                 placeholder="xxxx xxxx xxxx xxxx"
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Multi-Channel Outreach Templates (Email & WhatsApp Hinglish) */}
+        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+            <div className="flex items-center gap-2 text-white font-bold text-sm">
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span>Outreach Pitch Copy (Hinglish WhatsApp & Email)</span>
+            </div>
+            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">
+              High-Converting Indian Market Defaults
+            </span>
+          </div>
+
+          <div className="text-xs space-y-4">
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-slate-300 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>WhatsApp Message Pitch (Natural Hinglish)</span>
+                </label>
+                <span className="text-[10px] text-slate-500">Supports variables: {'{{business_name}}'}, {'{{city}}'}, {'{{demo_url}}'}, {'{{sender_name}}'}</span>
+              </div>
+              <textarea
+                rows="6"
+                value={formData.whatsapp_message_template || ''}
+                onChange={e => setFormData({ ...formData, whatsapp_message_template: e.target.value })}
+                placeholder="Namaste {{business_name}} team! ☕..."
+                className="w-full bg-slate-950 border border-emerald-500/30 rounded-xl p-3.5 text-white font-mono leading-relaxed focus:outline-none focus:border-emerald-500 text-xs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-slate-300 font-semibold mb-1.5">Cold Email Subject Line</label>
+              <input
+                type="text"
+                value={formData.email_subject_template || ''}
+                onChange={e => setFormData({ ...formData, email_subject_template: e.target.value })}
+                placeholder="Free modern website demo for {{business_name}}"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500 font-mono text-xs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-slate-300 font-semibold mb-1.5">Cold Email Body Template</label>
+              <textarea
+                rows="6"
+                value={formData.email_body_template || ''}
+                onChange={e => setFormData({ ...formData, email_body_template: e.target.value })}
+                placeholder="Hi team at {{business_name}}..."
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-white font-mono leading-relaxed focus:outline-none focus:border-indigo-500 text-xs"
               />
             </div>
           </div>

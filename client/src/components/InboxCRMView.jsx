@@ -10,7 +10,10 @@ import {
   TrendingUp,
   RefreshCw,
   CornerDownRight,
-  ShieldAlert
+  ShieldAlert,
+  MessageCircle,
+  ExternalLink,
+  Phone
 } from 'lucide-react';
 import { simulateReply, updateProspect } from '../api';
 
@@ -24,7 +27,7 @@ export default function InboxCRMView({
     preselectedLog?.id || logs.find(l => l.reply_received === 'yes')?.id || logs[0]?.id || ''
   );
   const [simText, setSimText] = useState(
-    "Hi Alex, wow this demo website you made for us looks fantastic! How much do you charge to connect our domain and launch it?"
+    "Namaste Devesh ji, demo website dekhi bohot achi lagi! Kya charges hain isko hamare domain par live karne ke?"
   );
   const [processing, setProcessing] = useState(false);
   const [suggestedDraft, setSuggestedDraft] = useState('');
@@ -33,27 +36,27 @@ export default function InboxCRMView({
   const currentLog = logs.find(l => l.id === selectedLogId) || logs[0];
   const linkedProspect = prospects.find(p => p.id === currentLog?.prospect_id);
 
-  // Pre-baked quick reply simulation templates
+  // Pre-baked quick reply simulation templates (Hinglish for Indian local businesses)
   const SIMULATION_PRESETS = [
     {
-      label: 'Positive & Demo Claim',
+      label: 'Positive & Claim Demo',
       sentiment: 'positive',
-      text: "Hi Alex, we saw the demo site you built for our plumbing business. We love it! How do we claim it and get our logo on it?"
+      text: "Bhai website dekhi, bohot badiya lagi! Isme humara actual menu aur photos kaise lagwayein?"
     },
     {
       label: 'Price & Package Inquiry',
       sentiment: 'pricing',
-      text: "Hello, thanks for sending over the link. What are your monthly hosting fees or one-time setup cost for this website?"
+      text: "Namaste Devesh ji, demo pasand aaya. Total cost kitna aayega website setup aur domain ka?"
     },
     {
       label: 'Ready to Sign Deal',
       sentiment: 'client-ready',
-      text: "Hey Alex, let's do it! Send over the invoice and agreement so we can launch this right away."
+      text: "Deal done bhai! Invoice aur payment details bhejo, hume ye 3D website launch karni hai."
     },
     {
-      label: 'CAN-SPAM Opt-Out',
+      label: 'CAN-SPAM / Opt-Out',
       sentiment: 'opt-out',
-      text: "Please unsubscribe us and remove this address from your mailing list. Thank you."
+      text: "Please hume koi aur message mat bhejo. Unsubscribe."
     }
   ];
 
@@ -241,19 +244,41 @@ export default function InboxCRMView({
 
                 <textarea
                   rows="5"
-                  value={suggestedDraft || (currentLog.reply_received === 'yes' ? "Hi team, so glad you liked the demo! Let's connect this week to launch your custom domain." : "Select or simulate a reply below to generate an AI response...")}
+                  value={suggestedDraft || (currentLog.reply_received === 'yes' ? "Namaste team, bohot accha laga sunkar ki aapko demo pasand aayi! Chaliye discuss karte hain aapke custom domain par launch karne ke liye." : "Select or simulate a reply below to generate an AI response...")}
                   onChange={(e) => setSuggestedDraft(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white font-mono leading-relaxed focus:outline-none focus:border-indigo-500"
                 />
 
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => alert(`Email sent to ${currentLog.recipient_email}!`)}
-                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Send Reply</span>
-                  </button>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="text-[11px] text-slate-400 flex items-center gap-1.5">
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Lead Phone: <strong className="text-white font-mono">{linkedProspect?.phone || currentLog?.recipient_phone || '8920608191'}</strong></span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        let phone = (linkedProspect?.phone || currentLog?.recipient_phone || '8920608191').replace(/[^0-9]/g, '');
+                        if (phone.length === 10 && ['6', '7', '8', '9'].includes(phone[0])) phone = '91' + phone;
+                        if (!phone) phone = '918920608191';
+                        const textToSend = suggestedDraft || "Namaste team, aapki demo website ready hai!";
+                        const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(textToSend)}`;
+                        window.open(waUrl, '_blank');
+                      }}
+                      className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Send WhatsApp Reply (Hinglish)</span>
+                    </button>
+
+                    <button
+                      onClick={() => alert(`Email reply queued for ${currentLog.recipient_email}!`)}
+                      className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Send Email</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 

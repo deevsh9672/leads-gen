@@ -35,10 +35,10 @@ export default function OutreachView({
     config?.email_body_template || ''
   );
 
-  // WhatsApp Form State
+  // WhatsApp Form State (Hinglish for Indian local businesses & cafes)
   const [customWaMessage, setCustomWaMessage] = useState(
     config?.whatsapp_message_template || 
-    `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}.\n\nTo help out, my team and I built you a complete, high-converting demo website — 100% free with no strings attached:\n👉 View your live website demo here: {{demo_url}}\n\nIf you'd like to claim this design, customize the text/photos, or connect your domain, just reply here!`
+    `Namaste {{business_name}} team! ☕\n\nMaine dekha ki Google par {{city}} me aapke cafe ke reviews aur rating kaafi ache hain, par online koi official modern website nahi hai.\n\nAapke cafe ke liye humne ek luxury, fully 3D animated demo website design ki hai — bilkul free:\n👉 Live demo website link: {{demo_url}}\n\n✨ Features:\n• Realistic 3D Espresso Cup & Latte Art\n• Interactive Digital Menu & Special Blends\n• AI Barista Table & Coffee Recommendation\n• Direct WhatsApp Table Booking & Order System\n\nAgar aap ise claim karna chahte hain ya apna custom menu/photos add karwana chahte hain, toh bas yahan WhatsApp par reply karein! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`
   );
 
   const [sending, setSending] = useState(false);
@@ -292,7 +292,7 @@ export default function OutreachView({
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
                       <MessageCircle className="w-3.5 h-3.5" />
-                      <span>Channel 2: Direct WhatsApp Pitch with Demo Link</span>
+                      <span>Channel 2: Direct WhatsApp Pitch (Hinglish) with 3D Demo Link</span>
                     </label>
                     <span className="text-[11px] text-emerald-400 font-semibold">To: {selectedProspect?.phone || 'Client WhatsApp'}</span>
                   </div>

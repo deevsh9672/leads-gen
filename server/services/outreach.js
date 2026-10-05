@@ -142,18 +142,21 @@ async function sendWhatsAppOutreach(prospectId, customOptions = {}) {
     sender_whatsapp: rawAgencyWa
   };
 
-  // Category specific default message if not customized
+  // Category specific Hinglish default message for Indian local business & cafe owners
   const cat = (prospect.category || '').toLowerCase();
   const categoryGreeting = (cat.includes('cafe') || cat.includes('coffee')) 
-    ? `Hi team at {{business_name}}! ☕ I noticed you don't have a modern website listed on Google for your cafe in {{city}}, even though you have great local reviews!\n\nTo help out, my team and I built you a complete, high-converting demo website — 100% free with no strings attached:\n👉 View your live website demo here: {{demo_url}}\n\nIf you'd like to claim this design, customize the menu/photos, or connect your own domain, just reply here!`
-    : (cat.includes('restaurant') || cat.includes('dining'))
-    ? `Hi team at {{business_name}}! 🍽️ I noticed you don't have a website listed on Google for your restaurant in {{city}}.\n\nTo help you get more table bookings, we designed you a complete live demo website:\n👉 View your website demo here: {{demo_url}}\n\nReply here if you'd like to claim it!`
-    : (config.whatsapp_message_template || `Hi team at {{business_name}}! 👋 I noticed you don't have a website listed on Google for {{category}} services in {{city}}.\n\nTo help out, we built you a free modern demo website: {{demo_url}}\n\nReply here or visit the link to claim it!`);
+    ? `Namaste {{business_name}} team! ☕\n\nMaine dekha ki Google par {{city}} me aapke cafe ke reviews aur rating kaafi ache hain, par online koi official modern website nahi hai.\n\nAapke cafe ke liye humne ek luxury, fully 3D animated demo website design ki hai — bilkul free:\n👉 Live demo website link: {{demo_url}}\n\n✨ Features:\n• Realistic 3D Espresso Cup & Latte Art\n• Interactive Digital Menu & Special Blends\n• AI Barista Table & Coffee Recommendation\n• Direct WhatsApp Table Booking & Order System\n\nAgar aap ise claim karna chahte hain ya apna custom menu/photos add karwana chahte hain, toh bas yahan WhatsApp par reply karein! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`
+    : (cat.includes('restaurant') || cat.includes('dining') || cat.includes('food') || cat.includes('dhaba'))
+    ? `Namaste {{business_name}} team! 🍽️\n\nMaine dekha ki Google par {{city}} me aapke restaurant ke customer reviews zabardast hain, lekin online koi official website nahi hai jisse log direct table book kar sakein.\n\nAapke restaurant ke liye humne ek premium, fully animated live demo website design ki hai — 100% free:\n👉 Live demo website link: {{demo_url}}\n\n✨ Features:\n• Chef's Special Live Food Menu\n• Instant WhatsApp Table Reservation\n• Customer Reviews & Photo Showcase\n• Mobile & Google Optimized Speed\n\nAgar aap ise claim karna chahte hain ya apna custom menu add karwana chahte hain, toh bas yahan WhatsApp par reply karein! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`
+    : `Namaste {{business_name}} team! 👋\n\nMaine dekha ki {{city}} me aapke {{category}} business ke local reviews kaafi ache hain, lekin Google par aapki koi modern official website listed nahi hai.\n\nAapke business ki online branding aur naye customers attract karne ke liye humne ek high-converting live demo website ready ki hai — 100% free:\n👉 Aapka live demo website link: {{demo_url}}\n\nAgar aapko ye design pasand aaye aur aap ise claim karna chahte hain, ya koi details edit karwani ho, toh bas yahan WhatsApp par reply karein! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`;
 
-  const messageText = customOptions.message || renderTemplate(
-    config.whatsapp_message_template || categoryGreeting,
-    templateVars
+  const templateToUse = customOptions.message || (
+    config.whatsapp_message_template && !config.whatsapp_message_template.startsWith('Hi team') 
+      ? config.whatsapp_message_template 
+      : categoryGreeting
   );
+
+  const messageText = renderTemplate(templateToUse, templateVars);
 
   const recipientPhone = customOptions.phone || prospect.phone || '';
   let cleanRecipientPhone = recipientPhone.replace(/[^0-9]/g, '');
