@@ -18,8 +18,11 @@ export default function CafeNavbar({
   onOpenCart, 
   onBookTable, 
   onSwitchToAgent,
-  onOpenAdmin
+  onSwitchToSuperagent,
+  onOpenAdmin,
+  onOpenAI
 }) {
+  const switchBack = onSwitchToSuperagent || onSwitchToAgent;
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -84,15 +87,16 @@ export default function CafeNavbar({
           {/* Right Action Icons & CTAs */}
           <div className="flex items-center gap-3">
             
-            {/* Superagent Switcher (For Pair Programming / Demo Control) */}
-            {onSwitchToAgent && (
+            {/* Superagent Switcher (Return to Agent Dashboard) */}
+            {switchBack && (
               <button
-                onClick={onSwitchToAgent}
-                title="Switch to Superagent Ops Dashboard"
-                className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 text-[11px] font-medium transition"
+                onClick={switchBack}
+                title="Return to AI SiteSeller Agent"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-950/70 hover:bg-indigo-900 text-indigo-200 hover:text-white border border-indigo-700/60 text-xs font-semibold transition"
               >
                 <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Superagent Ops</span>
+                <span className="hidden sm:inline">Back to</span>
+                <span>SiteSeller Agent</span>
               </button>
             )}
 
@@ -206,16 +210,16 @@ export default function CafeNavbar({
                 )}
               </div>
 
-              {onSwitchToAgent && (
+              {switchBack && (
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onSwitchToAgent();
+                    switchBack();
                   }}
-                  className="w-full py-2.5 bg-slate-900 border border-slate-800 text-indigo-300 rounded-xl text-xs font-medium flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 bg-indigo-950/80 hover:bg-indigo-900 border border-indigo-700/60 text-indigo-200 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Return to SiteSeller Superagent</span>
+                  <span>Return to AI SiteSeller Agent</span>
                 </button>
               )}
             </div>

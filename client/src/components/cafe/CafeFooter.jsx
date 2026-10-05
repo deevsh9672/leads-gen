@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Coffee, ArrowRight, Camera, MessageCircle, Heart, CheckCircle2 } from 'lucide-react';
 import { CAFE_INFO } from './cafeData';
 
-export default function CafeFooter({ onBookTable, onOpenMenu }) {
+export default function CafeFooter({ onBookTable, onOpenMenu, onSwitchToSuperagent }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -138,6 +138,17 @@ export default function CafeFooter({ onBookTable, onOpenMenu }) {
             <a href="#hero" className="hover:text-slate-300">Terms of Service</a>
             <span>•</span>
             <span className="text-amber-400/80">WhatsApp: +91 8920608191</span>
+            {onSwitchToSuperagent && (
+              <>
+                <span>•</span>
+                <button
+                  onClick={onSwitchToSuperagent}
+                  className="text-indigo-400 hover:text-indigo-300 font-semibold"
+                >
+                  Return to AI SiteSeller Agent
+                </button>
+              </>
+            )}
           </div>
         </div>
 

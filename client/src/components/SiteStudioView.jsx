@@ -21,7 +21,8 @@ export default function SiteStudioView({
   prospects, 
   selectedProspect, 
   onSelectProspect, 
-  onSendOutreach 
+  onSendOutreach,
+  onOpenCafeDemo
 }) {
   const [activeProspectId, setActiveProspectId] = useState(
     selectedProspect?.id || (prospects[0]?.id || '')
@@ -151,6 +152,17 @@ export default function SiteStudioView({
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
             <span>{loading ? 'Generating...' : 'Re-Generate'}</span>
           </button>
+
+          {onOpenCafeDemo && (
+            <button
+              onClick={onOpenCafeDemo}
+              className="px-3.5 py-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-stone-950 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-950/40"
+              title="Open full interactive luxury Café Demo Website"
+            >
+              <span>☕ View Café Demo Site</span>
+              <span className="text-[10px] bg-stone-950/20 px-1.5 py-0.5 rounded text-stone-900 font-extrabold">DEMO</span>
+            </button>
+          )}
         </div>
       </div>
 

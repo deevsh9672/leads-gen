@@ -221,7 +221,10 @@ export default function CafeApp({ onSwitchToSuperagent }) {
       </main>
 
       {/* Dark Luxury Footer */}
-      <CafeFooter onOpenAdmin={() => setIsAdminOpen(true)} />
+      <CafeFooter 
+        onOpenAdmin={() => setIsAdminOpen(true)} 
+        onSwitchToSuperagent={onSwitchToSuperagent}
+      />
 
       {/* Floating Floating Barista & Action Hub */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">

@@ -25,16 +25,19 @@ import {
 
 export default function App() {
   const [appMode, setAppMode] = useState(() => {
+    // Only switch to demo cafe if explicitly passed ?view=cafe in URL
     const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'agent') return 'agent';
     if (params.get('view') === 'cafe') return 'cafe';
-    const saved = localStorage.getItem('siteseller_app_mode');
-    return saved || 'cafe';
+    return 'agent'; // Always default to AI Site Seller Agent!
   });
 
   const handleSetAppMode = (mode) => {
     setAppMode(mode);
-    localStorage.setItem('siteseller_app_mode', mode);
+    if (mode === 'cafe') {
+      window.history.pushState({}, '', '?view=cafe');
+    } else {
+      window.history.pushState({}, '', window.location.pathname);
+    }
   };
 
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -242,6 +245,7 @@ export default function App() {
             selectedProspect={selectedProspect}
             onSelectProspect={setSelectedProspect}
             onSendOutreach={handleSendOutreach}
+            onOpenCafeDemo={() => handleSetAppMode('cafe')}
           />
         )}
 

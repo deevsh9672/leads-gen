@@ -112,11 +112,11 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
           {onSwitchToCafe && (
             <button
               onClick={onSwitchToCafe}
-              className="ml-3 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-amber-600/30 to-amber-500/30 border border-amber-500/40 text-amber-300 hover:bg-amber-500 hover:text-stone-950 transition shadow-sm"
-              title="Switch to Aura Artisan Café Client Experience"
+              className="ml-3 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-300 hover:text-stone-950 transition shadow-sm"
+              title="Open Demo Café Website"
             >
-              <span>☕ Aura Café Experience</span>
-              <span className="text-[10px] px-1.5 py-0.2 bg-amber-500/30 text-amber-200 rounded font-mono">LIVE</span>
+              <span>☕ Demo Café Site</span>
+              <span className="text-[10px] px-1.5 py-0.2 bg-amber-500/30 text-amber-200 rounded font-mono">DEMO</span>
             </button>
           )}
         </div>
