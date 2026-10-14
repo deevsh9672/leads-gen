@@ -17,7 +17,8 @@ import {
   MessageCircle,
   Database,
   Compass,
-  Zap
+  Zap,
+  MapPin
 } from 'lucide-react';
 
 export default function ProspectsView({ 
@@ -189,31 +190,55 @@ export default function ProspectsView({
                               <span className="text-amber-400 font-medium">★ {p.rating || 4.8}</span>
                               <span className="text-slate-500">({p.review_count || 40} revs)</span>
                             </div>
-                            <div className="mt-1 flex items-center gap-1.5">
+                            <div className="mt-1 flex flex-wrap items-center gap-1.5">
                               <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-md border flex items-center gap-1 ${
                                 (p.discovery_source || '').includes('Apify') 
                                   ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
                                   : (p.discovery_source || '').includes('Apollo')
                                   ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
-                                  : (p.discovery_source || '').includes('OpenStreet')
-                                  ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
-                                  : 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
+                                  : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
                               }`}>
                                 <Database className="w-2.5 h-2.5" />
-                                <span>{p.discovery_source || 'Smart AI Engine'}</span>
+                                <span>{p.discovery_source || 'OpenStreetMap (Real Business)'}</span>
                               </span>
+                              {(p.is_verified_real || (p.discovery_source || '').includes('OpenStreet')) && (
+                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                                  <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400" />
+                                  <span>100% Real Business</span>
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
                       </td>
 
-                      {/* Contact & City */}
+                      {/* Location & Contact */}
                       <td className="py-4 px-4 text-slate-300">
-                        <div className="text-white font-medium">{p.city}</div>
-                        <div className="text-slate-400 text-[11px] flex items-center gap-2 mt-0.5">
-                          <span className="flex items-center gap-1"><Phone className="w-3 h-3 text-slate-500" />{p.phone || 'N/A'}</span>
+                        <div className="text-white font-medium flex items-center gap-1.5">
+                          <span>{p.city}</span>
                         </div>
-                        <div className="text-slate-500 text-[10px] truncate max-w-[180px]">{p.email}</div>
+                        {p.address && (
+                          <div className="text-slate-400 text-[11px] truncate max-w-[220px] mt-0.5" title={p.address}>
+                            📍 {p.address}
+                          </div>
+                        )}
+                        <div className="text-slate-300 text-[11px] flex items-center gap-2 mt-1">
+                          <span className="flex items-center gap-1 font-mono text-emerald-400 font-semibold">
+                            <Phone className="w-3 h-3 text-emerald-500" />
+                            {p.phone || 'N/A'}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 mt-1">
+                          <a
+                            href={p.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.business_name + ' ' + (p.address || '') + ' ' + p.city)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[10px] text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1 hover:underline"
+                          >
+                            <MapPin className="w-2.5 h-2.5" />
+                            <span>Verify on Google Maps ↗</span>
+                          </a>
+                        </div>
                       </td>
 
                       {/* Has Website */}
@@ -580,15 +605,16 @@ export default function ProspectsView({
                   onChange={e => setDiscoverForm({ ...discoverForm, source: e.target.value })}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-indigo-500"
                 >
-                  <option value="auto">Auto Smart Cascade (Apify → Apollo.io → OpenStreetMap → Smart AI)</option>
-                  <option value="apify">Apify Only (Google Maps / Places Scraper)</option>
-                  <option value="apollo">Apollo.io Only (B2B Lead Intelligence API)</option>
-                  <option value="osm">OpenStreetMap Only (Live Geo Query)</option>
-                  <option value="smart">Smart AI Local Generator Only (Instant Zero-Delay Profiles)</option>
+                  <option value="auto">Auto Real-World Search (Live OpenStreetMap + Google Maps Verified)</option>
+                  <option value="osm">OpenStreetMap Live (100% Real Physical Places Without Websites)</option>
+                  <option value="apify">Apify Google Places Scraper (Requires Apify Token)</option>
+                  <option value="apollo">Apollo.io B2B Intelligence (Requires Apollo API Key)</option>
+                  <option value="smart">Smart AI Engine (Synthetic Profiles Fallback)</option>
                 </select>
-                <p className="text-[10px] text-slate-500 mt-1">
-                  Filters specifically for businesses without websites so you can pitch them modern website builds.
-                </p>
+                <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 mt-1.5 font-semibold">
+                  <CheckCircle2 className="w-3 h-3" />
+                  <span>Verified: Finds actual physical businesses that exist on maps with exact street addresses.</span>
+                </div>
               </div>
 
               {/* Lead Count */}

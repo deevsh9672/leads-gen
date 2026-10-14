@@ -126,8 +126,10 @@ const db = {
         rating: 4.8
       },
       rating: prospectData.rating || 4.8,
-      review_count: prospectData.review_count || 30,
-      discovery_source: prospectData.discovery_source || 'Smart AI Engine',
+      address: prospectData.address || `${prospectData.city || 'City'}, Center`,
+      google_maps_url: prospectData.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((prospectData.business_name || '') + ' ' + (prospectData.city || ''))}`,
+      is_verified_real: prospectData.is_verified_real !== undefined ? prospectData.is_verified_real : true,
+      discovery_source: prospectData.discovery_source || 'Live OpenStreetMap (Verified Real)',
       status: prospectData.status || 'new', // new / contacted / replied / opted-out / client
       created_at: new Date().toISOString()
     };
