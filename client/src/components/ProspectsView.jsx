@@ -18,9 +18,14 @@ import {
   Database,
   Compass,
   Zap,
-  MapPin
+  MapPin,
+  Download,
+  FileSpreadsheet,
+  FileJson,
+  Copy,
+  Check
 } from 'lucide-react';
-import { clearDatabase } from '../api';
+import { clearDatabase, getExportCsvUrl, getExportJsonUrl } from '../api';
 
 export default function ProspectsView({ 
   prospects, 
@@ -87,6 +92,109 @@ export default function ProspectsView({
     });
   };
 
+  const [showExportDropdown, setShowExportDropdown] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleDownloadCsv = (leadsToExport = filtered) => {
+    if (!leadsToExport || leadsToExport.length === 0) {
+      alert("No leads found to download!");
+      return;
+    }
+    const headers = [
+      'Business Name',
+      'Category',
+      'City',
+      'Phone Number',
+      'Email Address',
+      'MX Verified',
+      'Lead Score',
+      'Star Rating',
+      'Reviews Count',
+      'Address',
+      'Google Maps URL',
+      'Has Website',
+      'Status',
+      'Discovery Source',
+      'Created At'
+    ];
+
+    const escapeCsv = (str) => {
+      if (str === null || str === undefined) return '""';
+      const s = String(str).replace(/"/g, '""');
+      return `"${s}"`;
+    };
+
+    const rows = leadsToExport.map(p => [
+      escapeCsv(p.business_name),
+      escapeCsv(p.category),
+      escapeCsv(p.city),
+      escapeCsv(p.phone),
+      escapeCsv(p.email),
+      escapeCsv(p.is_email_verified ? 'Yes (Valid MX)' : 'Standard'),
+      escapeCsv(p.lead_score),
+      escapeCsv(p.rating),
+      escapeCsv(p.review_count),
+      escapeCsv(p.address),
+      escapeCsv(p.google_maps_url),
+      escapeCsv(p.has_website),
+      escapeCsv(p.status),
+      escapeCsv(p.discovery_source),
+      escapeCsv(p.created_at)
+    ].join(','));
+
+    // UTF-8 BOM so Excel opens Hindi / Indian names & special characters cleanly
+    const csvContent = '\uFEFF' + [headers.map(h => `"${h}"`).join(','), ...rows].join('\r\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `leads_export_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    setShowExportDropdown(false);
+  };
+
+  const handleDownloadJson = (leadsToExport = filtered) => {
+    if (!leadsToExport || leadsToExport.length === 0) {
+      alert("No leads found to download!");
+      return;
+    }
+    const blob = new Blob([JSON.stringify(leadsToExport, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `leads_export_${new Date().toISOString().slice(0, 10)}.json`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    setShowExportDropdown(false);
+  };
+
+  const handleCopyToClipboard = (leadsToExport = filtered) => {
+    if (!leadsToExport || leadsToExport.length === 0) return;
+    const headers = ['Business Name', 'Category', 'City', 'Phone', 'Email', 'Lead Score', 'Rating', 'Reviews', 'Address', 'Google Maps'];
+    const rows = leadsToExport.map(p => [
+      p.business_name || '',
+      p.category || '',
+      p.city || '',
+      p.phone || '',
+      p.email || '',
+      p.lead_score || '',
+      p.rating || '',
+      p.review_count || '',
+      p.address || '',
+      p.google_maps_url || ''
+    ].join('\t'));
+    const tsv = [headers.join('\t'), ...rows].join('\n');
+    navigator.clipboard.writeText(tsv);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+    setShowExportDropdown(false);
+  };
+
   const handleClearDatabase = async () => {
     if (window.confirm("Kya aap sach me saare leads, demo websites, aur outreach logs delete/clear karna chahte hain?")) {
       try {
@@ -122,6 +230,77 @@ export default function ProspectsView({
             <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
             <span>Discover Qualified Leads (Google Maps / OSM)</span>
           </button>
+
+          {/* Export / Download Leads Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setShowExportDropdown(!showExportDropdown)}
+              disabled={filtered.length === 0}
+              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 border shadow-sm ${
+                filtered.length === 0 
+                  ? 'bg-slate-900 border-slate-800 text-slate-500 cursor-not-allowed'
+                  : 'bg-emerald-600/15 hover:bg-emerald-600/25 text-emerald-400 hover:text-emerald-300 border-emerald-500/30'
+              }`}
+              title="Download or Export Leads"
+            >
+              <Download className="w-4 h-4 text-emerald-400" />
+              <span>Export Leads ({filtered.length})</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showExportDropdown ? 'rotate-180' : ''}`} />
+            </button>
+
+            {showExportDropdown && (
+              <div 
+                className="absolute right-0 mt-2 w-64 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl z-50 p-2 space-y-1 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="px-3 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 flex items-center justify-between">
+                  <span>Export Options</span>
+                  <span className="text-emerald-400">{filtered.length} Leads</span>
+                </div>
+
+                {/* CSV Download (Excel/Sheets) */}
+                <button
+                  onClick={() => handleDownloadCsv(filtered)}
+                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-slate-800 hover:text-emerald-400 flex items-center gap-2.5 transition"
+                >
+                  <FileSpreadsheet className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <div>
+                    <div className="font-bold">Download CSV</div>
+                    <div className="text-[10px] text-slate-400">Excel & Google Sheets compatible</div>
+                  </div>
+                </button>
+
+                {/* JSON Download */}
+                <button
+                  onClick={() => handleDownloadJson(filtered)}
+                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-slate-800 hover:text-amber-400 flex items-center gap-2.5 transition"
+                >
+                  <FileJson className="w-4 h-4 text-amber-400 shrink-0" />
+                  <div>
+                    <div className="font-bold">Download JSON</div>
+                    <div className="text-[10px] text-slate-400">Complete raw structured data</div>
+                  </div>
+                </button>
+
+                {/* Copy to Clipboard (Table) */}
+                <button
+                  onClick={() => handleCopyToClipboard(filtered)}
+                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-slate-800 hover:text-indigo-400 flex items-center gap-2.5 transition"
+                >
+                  {copied ? (
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                  ) : (
+                    <Copy className="w-4 h-4 text-indigo-400 shrink-0" />
+                  )}
+                  <div>
+                    <div className="font-bold">{copied ? 'Copied to Clipboard!' : 'Copy to Clipboard'}</div>
+                    <div className="text-[10px] text-slate-400">Paste directly into Sheets or Excel</div>
+                  </div>
+                </button>
+              </div>
+            )}
+          </div>
+
           <button
             onClick={() => setShowAddModal(true)}
             className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5"

@@ -160,6 +160,73 @@ app.post('/api/leads/verify-email', async (req, res) => {
   }
 });
 
+// Export Leads as CSV (Excel / Google Sheets compatible)
+app.get('/api/leads/export/csv', (req, res) => {
+  try {
+    const list = db.getProspects();
+    const headers = [
+      'Business Name',
+      'Category',
+      'City',
+      'Phone',
+      'Email',
+      'Lead Score',
+      'Rating',
+      'Reviews Count',
+      'Address',
+      'Google Maps URL',
+      'Has Website',
+      'Status',
+      'Discovery Source',
+      'Created At'
+    ];
+
+    const escapeCsv = (str) => {
+      if (str === null || str === undefined) return '""';
+      const s = String(str).replace(/"/g, '""');
+      return `"${s}"`;
+    };
+
+    const rows = list.map(p => [
+      escapeCsv(p.business_name),
+      escapeCsv(p.category),
+      escapeCsv(p.city),
+      escapeCsv(p.phone),
+      escapeCsv(p.email),
+      escapeCsv(p.lead_score),
+      escapeCsv(p.rating),
+      escapeCsv(p.review_count),
+      escapeCsv(p.address),
+      escapeCsv(p.google_maps_url),
+      escapeCsv(p.has_website),
+      escapeCsv(p.status),
+      escapeCsv(p.discovery_source),
+      escapeCsv(p.created_at)
+    ].join(','));
+
+    // UTF-8 BOM for clean Excel display of phone numbers & regional names
+    const csvContent = '\uFEFF' + [headers.map(h => `"${h}"`).join(','), ...rows].join('\r\n');
+
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="leads_export_${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.status(200).send(csvContent);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Export Leads as JSON
+app.get('/api/leads/export/json', (req, res) => {
+  try {
+    const list = db.getProspects();
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="leads_export_${new Date().toISOString().slice(0, 10)}.json"`);
+    res.status(200).send(JSON.stringify(list, null, 2));
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // SKILL 1: DISCOVER
 app.post('/api/skills/discover', async (req, res) => {
   try {

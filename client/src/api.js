@@ -50,4 +50,8 @@ export const clearDatabase = () => api.post('/db/clear');
 // Email MX Verification
 export const verifyLeadEmail = (data) => api.post('/leads/verify-email', data);
 
+// Export Leads
+export const getExportCsvUrl = () => `${getBaseURL()}/leads/export/csv`;
+export const getExportJsonUrl = () => `${getBaseURL()}/leads/export/json`;
+
 export default api;
