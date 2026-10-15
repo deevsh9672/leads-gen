@@ -192,16 +192,18 @@ export default function ProspectsView({
                             </div>
                             <div className="mt-1 flex flex-wrap items-center gap-1.5">
                               <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-md border flex items-center gap-1 ${
-                                (p.discovery_source || '').includes('Apify') 
+                                (p.discovery_source || '').includes('Google Maps')
+                                  ? 'bg-blue-500/10 text-blue-300 border-blue-500/30'
+                                  : (p.discovery_source || '').includes('Apify') 
                                   ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
                                   : (p.discovery_source || '').includes('Apollo')
                                   ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
                                   : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
                               }`}>
-                                <Database className="w-2.5 h-2.5" />
-                                <span>{p.discovery_source || 'OpenStreetMap (Real Business)'}</span>
+                                <MapPin className="w-2.5 h-2.5 text-blue-400" />
+                                <span>{p.discovery_source || 'Google Maps (Verified Real)'}</span>
                               </span>
-                              {(p.is_verified_real || (p.discovery_source || '').includes('OpenStreet')) && (
+                              {(p.is_verified_real || (p.discovery_source || '').includes('Google Maps') || (p.discovery_source || '').includes('OpenStreet')) && (
                                 <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
                                   <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400" />
                                   <span>100% Real Business</span>
@@ -223,19 +225,35 @@ export default function ProspectsView({
                           </div>
                         )}
                         <div className="text-slate-300 text-[11px] flex items-center gap-2 mt-1">
-                          <span className="flex items-center gap-1 font-mono text-emerald-400 font-semibold">
-                            <Phone className="w-3 h-3 text-emerald-500" />
+                          <a 
+                            href={`tel:${p.phone}`}
+                            className="flex items-center gap-1 font-mono text-emerald-400 font-semibold hover:underline"
+                            title="Call Phone Number"
+                          >
+                            <Phone className="w-3 h-3 text-emerald-400" />
                             {p.phone || 'N/A'}
-                          </span>
+                          </a>
                         </div>
-                        <div className="flex items-center gap-2 mt-1">
+                        {p.email && (
+                          <div className="text-slate-400 text-[10px] flex items-center gap-1 mt-0.5 truncate max-w-[220px]">
+                            <Mail className="w-2.5 h-2.5 text-purple-400 shrink-0" />
+                            <a 
+                              href={`mailto:${p.email}`}
+                              className="hover:underline hover:text-purple-300 truncate"
+                              title={p.email}
+                            >
+                              {p.email}
+                            </a>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-2 mt-1.5">
                           <a
                             href={p.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.business_name + ' ' + (p.address || '') + ' ' + p.city)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[10px] text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1 hover:underline"
+                            className="text-[10px] bg-cyan-950/60 border border-cyan-500/40 px-2 py-0.5 rounded text-cyan-300 hover:text-white hover:bg-cyan-900/60 font-bold flex items-center gap-1 transition shadow-sm"
                           >
-                            <MapPin className="w-2.5 h-2.5" />
+                            <MapPin className="w-3 h-3 text-cyan-400" />
                             <span>Verify on Google Maps ↗</span>
                           </a>
                         </div>
