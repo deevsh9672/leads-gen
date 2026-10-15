@@ -223,6 +223,14 @@ const db = {
       return list[idx];
     }
     return null;
+  },
+
+  // Clear all leads, demo sites, and outreach logs
+  clearDatabase() {
+    writeJSON(PROSPECTS_FILE, []);
+    writeJSON(SITES_FILE, []);
+    writeJSON(LOGS_FILE, []);
+    return { success: true, message: 'All prospects, demo sites, and outreach logs have been cleared.' };
   }
 };
 

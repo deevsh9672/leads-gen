@@ -44,4 +44,7 @@ export const getPipelineStatus = () => api.get('/pipeline/status');
 export const getSiteForProspect = (prospectId) => api.get(`/sites/prospect/${prospectId}`);
 export const getSiteById = (siteId) => api.get(`/sites/${siteId}`);
 
+// Database reset
+export const clearDatabase = () => api.post('/db/clear');
+
 export default api;

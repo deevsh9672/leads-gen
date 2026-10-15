@@ -316,6 +316,16 @@ app.get('/api/pipeline/status', (req, res) => {
   res.json(getPipelineStatus());
 });
 
+// DATABASE RESET / CLEAR
+app.post('/api/db/clear', (req, res) => {
+  try {
+    const result = db.clearDatabase();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Serve static frontend assets if built
 const clientDist = path.join(__dirname, '../client/dist');
 const fs = require('fs');

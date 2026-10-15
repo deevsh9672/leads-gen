@@ -20,6 +20,7 @@ import {
   Zap,
   MapPin
 } from 'lucide-react';
+import { clearDatabase } from '../api';
 
 export default function ProspectsView({ 
   prospects, 
@@ -86,6 +87,18 @@ export default function ProspectsView({
     });
   };
 
+  const handleClearDatabase = async () => {
+    if (window.confirm("Kya aap sach me saare leads, demo websites, aur outreach logs delete/clear karna chahte hain?")) {
+      try {
+        await clearDatabase();
+        if (onRefresh) onRefresh();
+        alert("Database successfully clear ho gaya!");
+      } catch (err) {
+        alert("Error clearing database: " + err.message);
+      }
+    }
+  };
+
   return (
     <div className="space-y-6">
       
@@ -107,7 +120,7 @@ export default function ProspectsView({
             className="px-4 py-2 bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-            <span>Discover Qualified Leads (Apify / Apollo / OSM)</span>
+            <span>Discover Qualified Leads (Google Maps / OSM)</span>
           </button>
           <button
             onClick={() => setShowAddModal(true)}
@@ -115,6 +128,14 @@ export default function ProspectsView({
           >
             <Plus className="w-4 h-4" />
             <span>Add Prospect</span>
+          </button>
+          <button
+            onClick={handleClearDatabase}
+            title="Clear all leads, demo sites & logs from database"
+            className="px-3.5 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 hover:text-rose-300 border border-rose-500/30 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-1.5"
+          >
+            <Trash2 className="w-4 h-4" />
+            <span>Clear Database</span>
           </button>
         </div>
       </div>
