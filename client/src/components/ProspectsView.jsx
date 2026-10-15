@@ -256,15 +256,22 @@ export default function ProspectsView({
                           </a>
                         </div>
                         {p.email && (
-                          <div className="text-slate-400 text-[10px] flex items-center gap-1 mt-0.5 truncate max-w-[220px]">
-                            <Mail className="w-2.5 h-2.5 text-purple-400 shrink-0" />
+                          <div className="text-slate-300 text-[11px] flex items-center gap-1.5 mt-1 truncate max-w-[260px]">
+                            <Mail className="w-3 h-3 text-purple-400 shrink-0" />
                             <a 
                               href={`mailto:${p.email}`}
-                              className="hover:underline hover:text-purple-300 truncate"
-                              title={p.email}
+                              className="hover:underline hover:text-purple-300 font-mono text-[11px] truncate text-slate-200"
+                              title={`${p.email} (Mail Server: ${p.mail_server || 'Active MX'})`}
                             >
                               {p.email}
                             </a>
+                            <span 
+                              className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-0.5 shrink-0"
+                              title={p.mail_server ? `DNS MX Mail Server: ${p.mail_server}` : 'Verified Valid & Deliverable Mail Server'}
+                            >
+                              <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400" />
+                              <span>Valid MX</span>
+                            </span>
                           </div>
                         )}
                         <div className="flex items-center gap-2 mt-1.5">

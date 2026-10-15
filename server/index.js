@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const db = require('./db');
-const { discoverLeads } = require('./services/discover');
+const { discoverLeads, resolveRealValidEmail } = require('./services/discover');
 const { scoreProspect } = require('./services/score');
 const { generateWebsiteForProspect } = require('./services/generator');
 const { hostDemoSite } = require('./services/host');
@@ -147,6 +147,17 @@ app.put('/api/prospects/:id', (req, res) => {
 app.delete('/api/prospects/:id', (req, res) => {
   const success = db.deleteProspect(req.params.id);
   res.json({ success });
+});
+
+// Live Email DNS MX Verification Endpoint
+app.post('/api/leads/verify-email', async (req, res) => {
+  try {
+    const { email, business_name, city } = req.body;
+    const result = await resolveRealValidEmail(business_name, city, email);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // SKILL 1: DISCOVER

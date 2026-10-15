@@ -47,4 +47,7 @@ export const getSiteById = (siteId) => api.get(`/sites/${siteId}`);
 // Database reset
 export const clearDatabase = () => api.post('/db/clear');
 
+// Email MX Verification
+export const verifyLeadEmail = (data) => api.post('/leads/verify-email', data);
+
 export default api;
