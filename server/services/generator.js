@@ -259,9 +259,10 @@ function generateSiteHTML(prospect, siteId, options = {}) {
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>${bizName} | Luxury Specialty Cafe & Coffee House (${city})</title>
   <meta name="description" content="${profile.heroTagline}">
+  <meta name="theme-color" content="#120d09">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -270,12 +271,20 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
+    html {
+      -webkit-tap-highlight-color: transparent;
+      scroll-padding-top: 90px;
+    }
     body { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
       background-color: #070504; 
       color: #f5f5f4; 
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .touch-pan-y { touch-action: pan-y; }
     .font-serif-luxury {
       font-family: 'Playfair Display', serif;
     }
@@ -427,50 +436,51 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     }
   </style>
 </head>
-<body class="selection:bg-amber-500 selection:text-black">
+<body class="selection:bg-amber-500 selection:text-black pb-24 md:pb-0">
 
-  <!-- Top Sticky Agency Claim Banner -->
-  <div class="bg-gradient-to-r from-[#17100b] via-[#24170e] to-[#17100b] text-white text-xs sm:text-sm py-2.5 px-4 shadow-2xl sticky top-0 z-50 border-b border-amber-500/30 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
-      <div class="flex items-center gap-2 font-medium">
-        <span class="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-600 text-black rounded-full w-5 h-5 text-xs font-black shadow animate-pulse">✨</span>
-        <span class="text-amber-200/90"><strong>Luxury AI Website Demo</strong> handcrafted for <strong>${bizName}</strong></span>
+  <!-- Top Sticky Agency Claim Banner (Responsive & Compact) -->
+  <div id="agency-claim-banner" class="bg-gradient-to-r from-[#17100b] via-[#24170e] to-[#17100b] text-white text-xs py-2 px-3 sm:px-4 shadow-xl sticky top-0 z-50 border-b border-amber-500/30 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 sm:gap-2 font-medium truncate">
+        <span class="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-600 text-black rounded-full w-5 h-5 text-xs font-black shadow shrink-0 animate-pulse">✨</span>
+        <span class="text-amber-200/90 text-[11px] sm:text-xs truncate">Demo for <strong>${bizName}</strong></span>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold px-4 py-1.5 rounded-full text-xs shadow-lg flex items-center gap-2 transition-all hover:scale-105">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>Claim on WhatsApp (+91 8920608191)</span>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold px-3 py-1 rounded-full text-[11px] sm:text-xs shadow flex items-center gap-1.5 transition active:scale-95">
+          <i class="fa-brands fa-whatsapp text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">Claim on WhatsApp</span>
+          <span class="sm:hidden">Claim</span>
         </a>
-        <button onclick="document.getElementById('claim-modal').classList.remove('hidden')" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold px-3.5 py-1.5 rounded-full text-xs transition hover:scale-105">
-          Claim Demo
+        <button onclick="document.getElementById('claim-modal').classList.remove('hidden')" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition active:scale-95">
+          Details
         </button>
       </div>
     </div>
   </div>
 
   <!-- Main Navigation -->
-  <header class="bg-[#120d09]/90 backdrop-blur-xl border-b border-amber-950/60 sticky top-11 z-40 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <header class="bg-[#120d09]/95 backdrop-blur-xl border-b border-amber-950/60 sticky top-[37px] z-40 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-600 via-amber-700 to-amber-950 text-amber-100 flex items-center justify-center font-bold text-xl shadow-xl shadow-amber-950/40 border border-amber-500/30 group-hover:scale-105 transition duration-300">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group max-w-[200px] sm:max-w-none">
+        <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-600 via-amber-700 to-amber-950 text-amber-100 flex items-center justify-center font-bold text-lg sm:text-xl shadow-xl shadow-amber-950/40 border border-amber-500/30 group-hover:scale-105 transition duration-300 shrink-0">
           <i class="fa-solid fa-mug-hot text-amber-200"></i>
           <!-- Steam Lines Animation -->
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none">
-            <span class="w-1 h-3 bg-amber-300/60 rounded-full steam-line-1"></span>
-            <span class="w-1 h-4 bg-amber-200/80 rounded-full steam-line-2"></span>
-            <span class="w-1 h-3 bg-amber-400/60 rounded-full steam-line-3"></span>
+          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none">
+            <span class="w-0.5 sm:w-1 h-2.5 sm:h-3 bg-amber-300/60 rounded-full steam-line-1"></span>
+            <span class="w-0.5 sm:w-1 h-3 sm:h-4 bg-amber-200/80 rounded-full steam-line-2"></span>
+            <span class="w-0.5 sm:w-1 h-2.5 sm:h-3 bg-amber-400/60 rounded-full steam-line-3"></span>
           </div>
         </div>
-        <div>
-          <span class="text-xl sm:text-2xl font-serif-luxury font-bold tracking-wide text-amber-50 block leading-tight group-hover:text-amber-300 transition">${bizName}</span>
-          <span class="text-[11px] uppercase tracking-widest text-amber-500/90 font-semibold">${city} • Specialty Roastery & Cafe</span>
+        <div class="truncate">
+          <span class="text-base sm:text-xl lg:text-2xl font-serif-luxury font-bold tracking-wide text-amber-50 block leading-tight group-hover:text-amber-300 transition truncate">${bizName}</span>
+          <span class="text-[9px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-amber-500/90 font-semibold block truncate">${city} • Specialty Cafe</span>
         </div>
       </a>
       
       <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 font-medium text-stone-300 text-sm">
+      <nav class="hidden md:flex items-center gap-7 lg:gap-8 font-medium text-stone-300 text-sm">
         <a href="#about" class="hover:text-amber-400 transition">Our Story</a>
         <a href="#menu" class="hover:text-amber-400 transition flex items-center gap-1.5">
           <span>Artisan Menu</span>
@@ -481,17 +491,63 @@ function generateSiteHTML(prospect, siteId, options = {}) {
         <a href="#reserve" class="hover:text-amber-400 transition">Table Booking</a>
       </nav>
 
-      <!-- Header Action -->
-      <div class="flex items-center gap-3">
+      <!-- Desktop & Mobile Header Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
         <a href="tel:${phone}" class="hidden lg:flex items-center gap-2 text-stone-300 font-medium hover:text-amber-400 text-xs px-3 py-2 rounded-xl border border-stone-800 hover:border-amber-500/30 transition">
           <i class="fa-solid fa-phone text-amber-400"></i>
           <span>${phone}</span>
         </a>
-        <a href="#reserve" class="gold-shimmer-btn text-black font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-amber-900/40 transition hover:scale-105 active:scale-95">
+        <a href="#reserve" class="gold-shimmer-btn text-black font-extrabold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-lg shadow-amber-900/40 transition hover:scale-105 active:scale-95 shrink-0">
           ${profile.navCta}
         </a>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-stone-900/90 border border-amber-500/30 flex items-center justify-center text-amber-300 hover:text-amber-100 hover:border-amber-400 transition active:scale-95 shrink-0" aria-label="Toggle navigation menu">
+          <i id="mobile-menu-icon" class="fa-solid fa-bars text-base"></i>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="hidden md:hidden bg-[#120d09]/98 border-t border-amber-500/20 px-5 py-4 space-y-3.5 backdrop-blur-2xl shadow-2xl transition-all">
+      <nav class="flex flex-col space-y-2.5 font-medium text-sm text-stone-200">
+        <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
+          <i class="fa-solid fa-book-open text-amber-400 w-5"></i>
+          <span>Our Story & Philosophy</span>
+        </a>
+        <a href="#menu" onclick="toggleMobileMenu()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-mug-hot text-amber-400 w-5"></i>
+            <span>Artisan Menu & Bakes</span>
+          </div>
+          <span class="text-[9px] uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">Explore</span>
+        </a>
+        <a href="#ambiance" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
+          <i class="fa-solid fa-images text-amber-400 w-5"></i>
+          <span>Warm Ambiance & Seating</span>
+        </a>
+        <a href="#reviews" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
+          <i class="fa-solid fa-star text-amber-400 w-5"></i>
+          <span>Customer Reviews (${rating}★)</span>
+        </a>
+        <a href="#reserve" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold transition">
+          <i class="fa-solid fa-calendar-check text-amber-400 w-5"></i>
+          <span>Instant Table Reservation</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Drawer Contact Card -->
+      <div class="pt-3 border-t border-stone-800/80 flex items-center justify-between text-xs">
+        <a href="tel:${phone}" class="flex items-center gap-2 text-stone-300 hover:text-amber-400 py-1 font-mono">
+          <i class="fa-solid fa-phone text-amber-400"></i>
+          <span>${phone}</span>
+        </a>
+        <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-emerald-400 font-bold py-1">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -524,20 +580,20 @@ function generateSiteHTML(prospect, siteId, options = {}) {
             ${profile.heroSub}
           </p>
 
-          <!-- Interactive Action Buttons -->
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="#menu" class="gold-shimmer-btn text-black font-extrabold px-8 py-3.5 rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-105 flex items-center gap-2 text-sm sm:text-base">
+          <!-- Interactive Action Buttons (Full Width on Mobile) -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
+            <a href="#menu" class="gold-shimmer-btn text-black font-extrabold px-6 sm:px-8 py-3.5 rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base">
               <i class="fa-solid fa-mug-hot"></i>
               <span>Explore Artisan Menu</span>
             </a>
-            <a href="#reserve" class="bg-stone-900/80 hover:bg-stone-800 text-stone-200 border border-amber-500/30 hover:border-amber-500/60 font-bold px-7 py-3.5 rounded-2xl transition flex items-center gap-2 text-sm sm:text-base backdrop-blur-md">
+            <a href="#reserve" class="bg-stone-900/90 hover:bg-stone-800 text-stone-200 border border-amber-500/30 hover:border-amber-500/60 font-bold px-6 sm:px-7 py-3.5 rounded-2xl transition active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base backdrop-blur-md">
               <i class="fa-solid fa-calendar-check text-amber-400"></i>
               <span>Reserve a Table</span>
             </a>
           </div>
 
           <!-- Social Proof & Badges -->
-          <div class="pt-6 border-t border-stone-800/80 flex flex-wrap items-center gap-6 sm:gap-8 text-xs text-stone-300">
+          <div class="pt-6 border-t border-stone-800/80 flex flex-wrap items-center gap-4 sm:gap-8 text-xs text-stone-300">
             <div class="flex items-center gap-2">
               <div class="flex text-amber-400 text-sm">
                 <i class="fa-solid fa-star"></i>
@@ -569,7 +625,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
             <div class="glare-3d"></div>
 
             <!-- Top 3D Control Header -->
-            <div class="px-5 py-3.5 border-b border-amber-500/20 bg-black/40 backdrop-blur-md flex items-center justify-between z-20 relative depth-layer-2">
+            <div class="px-4 sm:px-5 py-3 border-b border-amber-500/20 bg-black/40 backdrop-blur-md flex items-center justify-between z-20 relative depth-layer-2">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
                 <span class="text-xs font-bold text-amber-300 font-mono tracking-wider">3D REAL-TIME STUDIO</span>
@@ -579,32 +635,32 @@ function generateSiteHTML(prospect, siteId, options = {}) {
               </span>
             </div>
 
-            <!-- 3D Three.js Container -->
-            <div id="canvas-3d-container" class="relative w-full h-[420px] sm:h-[460px] cursor-grab active:cursor-grabbing flex items-center justify-center bg-radial from-[#1e130b] via-[#100b07] to-[#070504]">
+            <!-- 3D Three.js Container with Touch pan-y -->
+            <div id="canvas-3d-container" class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] cursor-grab active:cursor-grabbing flex items-center justify-center bg-radial from-[#1e130b] via-[#100b07] to-[#070504] touch-pan-y select-none">
               <!-- Ambient 3D Rotating Rings Background -->
-              <div class="absolute w-72 h-72 rounded-full border border-amber-500/20 orbital-ring-1 pointer-events-none"></div>
-              <div class="absolute w-84 h-84 rounded-full border border-amber-400/10 orbital-ring-2 pointer-events-none"></div>
+              <div class="absolute w-60 sm:w-72 h-60 sm:h-72 rounded-full border border-amber-500/20 orbital-ring-1 pointer-events-none"></div>
+              <div class="absolute w-72 sm:w-84 h-72 sm:h-84 rounded-full border border-amber-400/10 orbital-ring-2 pointer-events-none"></div>
 
               <!-- Interactive Drag & Tap Prompt -->
-              <div class="absolute top-4 left-4 z-10 pointer-events-none depth-layer-1">
-                <span class="text-[10px] text-stone-300 bg-black/70 px-3 py-1 rounded-full border border-amber-500/30 flex items-center gap-1.5 backdrop-blur-md shadow-lg">
+              <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 pointer-events-none depth-layer-1">
+                <span class="text-[10px] text-stone-300 bg-black/75 px-3 py-1 rounded-full border border-amber-500/30 flex items-center gap-1.5 backdrop-blur-md shadow-lg">
                   <i class="fa-solid fa-arrows-up-down-left-right text-amber-400"></i>
-                  <span>Drag 360° • Click cup for steam burst</span>
+                  <span>Drag 360° • Tap cup for steam burst</span>
                 </span>
               </div>
             </div>
             
             <!-- Floating Live Status Overlay with 3D Depth Layers -->
-            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl glass-card text-white z-20 depth-layer-3 border border-amber-500/30 shadow-2xl">
-              <div class="flex items-center justify-between mb-1.5">
+            <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 p-3.5 sm:p-4 rounded-2xl glass-card text-white z-20 depth-layer-3 border border-amber-500/30 shadow-2xl">
+              <div class="flex items-center justify-between mb-1">
                 <span class="text-[10px] uppercase tracking-wider font-bold text-amber-400 flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                   Open Today In ${city}
                 </span>
-                <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">Micro-Batch Roastery</span>
+                <span class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">Micro-Batch Roastery</span>
               </div>
-              <h4 class="font-serif-luxury font-bold text-lg text-amber-100">${bizName}</h4>
-              <p class="text-xs text-stone-300">${prospect.address || city + ' Downtown'}</p>
+              <h4 class="font-serif-luxury font-bold text-base sm:text-lg text-amber-100 truncate">${bizName}</h4>
+              <p class="text-xs text-stone-300 truncate">${prospect.address || city + ' Downtown'}</p>
             </div>
           </div>
         </div>
@@ -709,21 +765,21 @@ function generateSiteHTML(prospect, siteId, options = {}) {
           </h2>
         </div>
         
-        <!-- Menu Tabs -->
-        <div class="flex flex-wrap items-center gap-2" id="menu-tabs">
-          <button onclick="filterMenu('all', this)" class="menu-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-500 text-black shadow-md">
+        <!-- Menu Tabs (Mobile Horizontal Touch Scroll) -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:flex-wrap" id="menu-tabs">
+          <button onclick="filterMenu('all', this)" class="menu-tab-btn active px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-black shadow-md shrink-0 whitespace-nowrap active:scale-95">
             All Items
           </button>
-          <button onclick="filterMenu('brews', this)" class="menu-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800">
+          <button onclick="filterMenu('brews', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
             ☕ Specialty Brews
           </button>
-          <button onclick="filterMenu('bakes', this)" class="menu-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800">
+          <button onclick="filterMenu('bakes', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
             🥐 Artisanal Bakes
           </button>
-          <button onclick="filterMenu('brunch', this)" class="menu-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800">
+          <button onclick="filterMenu('brunch', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
             🥑 Gourmet Brunch
           </button>
-          <button onclick="filterMenu('coolers', this)" class="menu-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800">
+          <button onclick="filterMenu('coolers', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
             ✨ Coolers & Tonics
           </button>
         </div>
@@ -980,18 +1036,18 @@ function generateSiteHTML(prospect, siteId, options = {}) {
               <div class="grid sm:grid-cols-2 gap-3 pt-1">
                 <div>
                   <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">Your Full Name</label>
-                  <input type="text" id="res-name" required placeholder="Aarav Sharma" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-sm text-white">
+                  <input type="text" id="res-name" required placeholder="Aarav Sharma" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-white">
                 </div>
                 <div>
                   <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">WhatsApp / Phone</label>
-                  <input type="tel" id="res-phone" required placeholder="${phone}" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-sm text-white font-mono">
+                  <input type="tel" id="res-phone" required placeholder="${phone}" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-white font-mono">
                 </div>
               </div>
 
               <!-- Seating Preference -->
               <div>
                 <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">${profile.formServiceLabel}</label>
-                <select id="res-seating" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-sm text-stone-200">
+                <select id="res-seating" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-stone-200">
                   ${profile.formOptions.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
                 </select>
               </div>
@@ -1000,14 +1056,14 @@ function generateSiteHTML(prospect, siteId, options = {}) {
               <div>
                 <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">Preferred Timing</label>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="time-selector">
-                  <button type="button" onclick="selectTime('09:30 AM', this)" class="time-btn py-1.5 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-[11px] font-bold transition hover:border-amber-500/40">09:30 AM</button>
-                  <button type="button" onclick="selectTime('01:30 PM', this)" class="time-btn py-1.5 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-[11px] font-bold transition hover:border-amber-500/40">01:30 PM</button>
-                  <button type="button" onclick="selectTime('05:30 PM', this)" class="time-btn active py-1.5 rounded-xl border border-amber-500 bg-amber-500 text-black text-[11px] font-bold transition shadow">05:30 PM</button>
-                  <button type="button" onclick="selectTime('08:30 PM', this)" class="time-btn py-1.5 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-[11px] font-bold transition hover:border-amber-500/40">08:30 PM</button>
+                  <button type="button" onclick="selectTime('09:30 AM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">09:30 AM</button>
+                  <button type="button" onclick="selectTime('01:30 PM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">01:30 PM</button>
+                  <button type="button" onclick="selectTime('05:30 PM', this)" class="time-btn active py-2 rounded-xl border border-amber-500 bg-amber-500 text-black text-xs font-bold transition active:scale-95 shadow">05:30 PM</button>
+                  <button type="button" onclick="selectTime('08:30 PM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">08:30 PM</button>
                 </div>
               </div>
 
-              <button type="submit" class="w-full py-3.5 gold-shimmer-btn text-black font-extrabold rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-[1.02] text-sm mt-3">
+              <button type="submit" class="w-full py-3.5 gold-shimmer-btn text-black font-extrabold rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-[1.02] active:scale-95 text-sm mt-3">
                 ${profile.formSubmitText}
               </button>
             </form>
@@ -1034,11 +1090,11 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </footer>
 
-  <!-- Floating Customer WhatsApp Chat with Animated Radar Ring -->
+  <!-- Floating Customer WhatsApp Chat with Animated Radar Ring (Desktop & Tablet) -->
   <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" 
      target="_blank" 
      rel="noopener noreferrer"
-     class="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 radar-pulse group"
+     class="hidden md:flex fixed bottom-6 right-6 z-50 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-4 rounded-full shadow-2xl items-center justify-center transition-all hover:scale-110 radar-pulse group"
      title="Message ${bizName} on WhatsApp">
     <i class="fa-brands fa-whatsapp text-2xl"></i>
     <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-bold text-xs group-hover:ml-2">
@@ -1046,10 +1102,39 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </span>
   </a>
 
-  <!-- Claim Modal (For Business Owner to connect with Devesh) -->
-  <div id="claim-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-    <div class="bg-[#17100b] border border-amber-500/40 rounded-3xl max-w-md w-full p-6 text-stone-100 shadow-2xl relative">
-      <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="absolute top-4 right-4 text-stone-400 hover:text-white">
+  <!-- Dedicated Mobile Quick Action Bar (Touch-Optimized for Mobile Customers) -->
+  <aside class="fixed bottom-0 left-0 right-0 z-40 bg-[#100b08]/98 backdrop-blur-2xl border-t border-amber-500/30 px-3 py-2 flex items-center justify-between gap-1 shadow-[0_-8px_30px_rgba(0,0,0,0.8)] md:hidden">
+    <a href="tel:${phone}" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-amber-400 py-1 rounded-xl active:bg-amber-500/10 active:scale-95 transition">
+      <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-amber-400 text-xs border border-amber-500/20">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <span class="text-[10px] font-semibold">Call</span>
+    </a>
+
+    <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-emerald-400 py-1 rounded-xl active:bg-emerald-500/10 active:scale-95 transition">
+      <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm border border-emerald-500/40">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <span class="text-[10px] font-bold text-emerald-400">WhatsApp</span>
+    </a>
+
+    <a href="${prospect.google_maps_url || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(bizName + ' ' + (prospect.address || city)))}" target="_blank" rel="noopener noreferrer" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-amber-400 py-1 rounded-xl active:bg-amber-500/10 active:scale-95 transition">
+      <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-amber-400 text-xs border border-amber-500/20">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <span class="text-[10px] font-semibold">Map</span>
+    </a>
+
+    <a href="#reserve" class="flex-1 py-2 px-2.5 gold-shimmer-btn text-black font-extrabold rounded-xl text-xs flex items-center justify-center gap-1 shadow-lg active:scale-95 transition">
+      <i class="fa-solid fa-calendar-check text-xs"></i>
+      <span>Reserve</span>
+    </a>
+  </aside>
+
+  <!-- Claim Modal (For Business Owner to connect with Developer) -->
+  <div id="claim-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-[#17100b] border border-amber-500/40 rounded-3xl max-w-md w-full p-5 sm:p-6 text-stone-100 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="absolute top-4 right-4 text-stone-400 hover:text-white p-1">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
       
@@ -1057,9 +1142,9 @@ function generateSiteHTML(prospect, siteId, options = {}) {
         ✨
       </div>
       
-      <h3 class="font-serif-luxury text-2xl font-bold text-amber-50">Claim ${bizName}'s Website</h3>
+      <h3 class="font-serif-luxury text-xl sm:text-2xl font-bold text-amber-50">Claim ${bizName}'s Website</h3>
       <p class="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-        This luxury, fully animated website was custom designed for <strong>${bizName}</strong>. Connect your domain, customize photos & prices, and accept online table reservations today!
+        This luxury, fully animated mobile-responsive website was custom designed for <strong>${bizName}</strong>. Connect your custom domain, update photos, and receive direct WhatsApp table bookings today!
       </p>
 
       <div class="bg-[#0d0906] p-3.5 rounded-2xl border border-amber-900/40 mt-4 text-xs text-amber-200/80 space-y-1">
@@ -1067,11 +1152,11 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       </div>
 
       <div class="mt-6 flex flex-col gap-2.5">
-        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold rounded-2xl transition flex items-center justify-center gap-2 shadow-lg">
+        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold rounded-2xl transition active:scale-95 flex items-center justify-center gap-2 shadow-lg text-xs sm:text-sm">
           <i class="fa-brands fa-whatsapp text-lg"></i>
           <span>Claim via WhatsApp (+91 8920608191)</span>
         </a>
-        <a href="mailto:${senderEmail}?subject=${encodeURIComponent(`Claim Website for ${bizName}`)}&body=${encodeURIComponent(claimWaText)}" class="w-full text-center py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-200 border border-stone-800 font-bold rounded-2xl text-xs transition">
+        <a href="mailto:${senderEmail}?subject=${encodeURIComponent(`Claim Website for ${bizName}`)}&body=${encodeURIComponent(claimWaText)}" class="w-full text-center py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-200 border border-stone-800 font-bold rounded-2xl text-xs transition active:scale-95">
           Claim via Email
         </a>
         <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="w-full py-2 text-stone-400 hover:text-stone-200 text-xs font-semibold">
@@ -1083,6 +1168,27 @@ function generateSiteHTML(prospect, siteId, options = {}) {
 
   <!-- Interactive JavaScript Engine -->
   <script>
+    // 0. Mobile Navigation Drawer Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (!drawer) return;
+      const isHidden = drawer.classList.contains('hidden');
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        if (icon) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        }
+      } else {
+        drawer.classList.add('hidden');
+        if (icon) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      }
+    }
+
     // 1. AI Barista Concierge Logic
     const baristaRecommendations = {
       work: {
@@ -1207,8 +1313,11 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       alert("✨ Table Reservation Sent for " + name + "! In production, this directly notifies ${bizName} on WhatsApp.");
     }
 
-    // 5. Smooth 3D Card Tilt Engine
+    // 5. Smooth 3D Card Tilt Engine (Active on Pointer/Mouse Devices)
     function init3dTiltEngine() {
+      if (window.matchMedia && !window.matchMedia('(pointer: fine)').matches) {
+        return; // Skip mouse tilt on touch devices to ensure silky smooth scrolling
+      }
       const cards = document.querySelectorAll('.tilt-card-3d');
       cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -1422,6 +1531,17 @@ function generateSiteHTML(prospect, siteId, options = {}) {
         }
       });
 
+      function triggerSteamBurst() {
+        const pos = particleGeo.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+          pos[i * 3 + 1] = 1.35;
+        }
+        particleGeo.attributes.position.needsUpdate = true;
+        coffeeGroup.position.y = 0.25;
+        setTimeout(() => { coffeeGroup.position.y = 0; }, 300);
+      }
+
+      // Mouse Interaction
       container.addEventListener('mousedown', (e) => {
         isDragging = true;
         previousMousePosition = { x: e.clientX, y: e.clientY };
@@ -1436,16 +1556,44 @@ function generateSiteHTML(prospect, siteId, options = {}) {
           previousMousePosition = { x: e.clientX, y: e.clientY };
         }
       });
+      container.addEventListener('click', triggerSteamBurst);
 
-      // Tap burst
-      container.addEventListener('click', () => {
-        const pos = particleGeo.attributes.position.array;
-        for (let i = 0; i < particleCount; i++) {
-          pos[i * 3 + 1] = 1.35;
+      // Mobile Touch Interaction (360° Rotate & Tap)
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchMoved = false;
+
+      container.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          touchMoved = false;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          previousMousePosition = { x: touchStartX, y: touchStartY };
         }
-        particleGeo.attributes.position.needsUpdate = true;
-        coffeeGroup.position.y = 0.25;
-        setTimeout(() => { coffeeGroup.position.y = 0; }, 300);
+      }, { passive: true });
+
+      container.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const curX = e.touches[0].clientX;
+          const curY = e.touches[0].clientY;
+          const deltaX = curX - previousMousePosition.x;
+          const deltaY = curY - previousMousePosition.y;
+
+          if (Math.abs(deltaX) > 2 || Math.abs(deltaY) > 2) {
+            touchMoved = true;
+            coffeeGroup.rotation.y += deltaX * 0.014;
+            coffeeGroup.rotation.x += deltaY * 0.014;
+            previousMousePosition = { x: curX, y: curY };
+          }
+        }
+      }, { passive: true });
+
+      container.addEventListener('touchend', () => {
+        isDragging = false;
+        if (!touchMoved) {
+          triggerSteamBurst();
+        }
       });
 
       // Responsive Resize
