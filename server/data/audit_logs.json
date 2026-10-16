@@ -1,0 +1,75 @@
+[
+  {
+    "id": "audit-0a577a52",
+    "action": "CAMPAIGN_COMPLETED",
+    "description": "Campaign finished execution: camp-c0308d86",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "campaign_id": "camp-c0308d86"
+    },
+    "timestamp": "2026-10-16T16:29:48.935Z"
+  },
+  {
+    "id": "audit-b191c32c",
+    "action": "CAMPAIGN_LAUNCHED",
+    "description": "Launched broadcast campaign: Toronto Clinics Test Broadcast",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "campaign_id": "camp-c0308d86",
+      "audience_count": 58
+    },
+    "timestamp": "2026-10-16T16:29:31.551Z"
+  },
+  {
+    "id": "audit-c8412705",
+    "action": "INTERNAL_NOTE_ADDED",
+    "description": "Added team note on conversation conv-89f1770a",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "author": "Devesh Kumar"
+    },
+    "timestamp": "2026-10-16T16:29:31.502Z"
+  },
+  {
+    "id": "audit-5738b97d",
+    "action": "WHATSAPP_MESSAGE_RECEIVED",
+    "description": "Received WhatsApp message from +1 416-782-7772",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "text": "Namaste! We received your preview demo website for Bathurst ",
+      "is_opt_out": false
+    },
+    "timestamp": "2026-10-16T16:29:31.482Z"
+  },
+  {
+    "id": "audit-0a041504",
+    "action": "SUPPRESSION_REMOVED",
+    "description": "Number removed from suppression list: +1 416-999-0001",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "phone": "+1 416-999-0001"
+    },
+    "timestamp": "2026-10-16T16:29:31.451Z"
+  },
+  {
+    "id": "audit-2b232c4a",
+    "action": "COMPLIANCE_OPTOUT_ENFORCED",
+    "description": "Enforced marketing suppression on +1 416-999-0001",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "reason": "Customer texted STOP"
+    },
+    "timestamp": "2026-10-16T16:29:31.446Z"
+  },
+  {
+    "id": "audit-1474d00a",
+    "action": "SUPPRESSION_ADDED",
+    "description": "Number added to suppression list: +1 416-999-0001",
+    "user": "Devesh Kumar",
+    "metadata": {
+      "phone": "+1 416-999-0001",
+      "reason": "Customer texted STOP"
+    },
+    "timestamp": "2026-10-16T16:29:31.441Z"
+  }
+]

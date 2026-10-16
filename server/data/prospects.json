@@ -2,9 +2,14 @@
   {
     "id": "b9d71987-85ba-4fcd-876f-d3f9cbcb2602",
     "business_name": "Bathurst Lawrence Walk-In Clinic",
+    "contact_person": "Bathurst Lawrence Walk-In Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 416-782-7772",
+    "clean_phone": "14167827772",
     "email": "bathurstlawrencewalkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -21,19 +26,72 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "3077, Bathurst Street, Eglinton—Lawrence, Toronto, Ontario, M6A 1Z9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Bathurst%20Lawrence%20Walk-In%20Clinic%20Bathurst%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.674Z"
+    "status": "REPLIED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead",
+      "Interested"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.674Z",
+    "custom_fields": {},
+    "internal_notes": [
+      {
+        "id": "note-545cd76c",
+        "author": "Devesh Kumar",
+        "text": "Spoke with clinic receptionist, doctor will review at 2 PM",
+        "created_at": "2026-10-16T16:29:31.491Z"
+      }
+    ],
+    "timeline": [
+      {
+        "id": "11bc2185-37d2-4c95-a3fc-d3a62a35c7d1",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to REPLIED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:31.478Z"
+      },
+      {
+        "id": "bb5e5582-aeb5-479f-8608-debd9c166526",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.674Z"
+      }
+    ],
+    "last_incoming_at": "2026-10-16T16:29:31.474Z",
+    "last_outgoing_at": "2026-10-16T16:29:31.509Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.674Z",
+    "updated_at": "2026-10-16T16:29:33.110Z"
   },
   {
     "id": "7bb50004-b148-429a-8d08-4cd3288e46a5",
     "business_name": "Laser Hair Removal",
+    "contact_person": "Laser Hair Removal",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 328-5882",
+    "clean_phone": "16473285882",
     "email": "laserhairremovaltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -50,19 +108,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "Keele Street, York Centre, Toronto, Ontario, M3M 2W9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Laser%20Hair%20Removal%20Keele%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.671Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.671Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "4f9eb689-0b1e-4fea-bc82-188a447ffee5",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:32.376Z"
+      },
+      {
+        "id": "60e8bbaa-32ec-4361-b711-a724b0a312b3",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.671Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:32.374Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.671Z",
+    "updated_at": "2026-10-16T16:29:32.376Z"
   },
   {
     "id": "2ea91065-66ac-4faf-a8c0-4772234c5bbd",
     "business_name": "Yorkview Medical Clinic",
+    "contact_person": "Yorkview Medical Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 786-6362",
+    "clean_phone": "14377866362",
     "email": "yorkviewtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -79,19 +182,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "3695, Keele Street, York Centre, Toronto, Ontario, M3J 1N2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Yorkview%20Medical%20Clinic%20Keele%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.668Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.668Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3807643e-5261-4185-a9f8-0e7875b82919",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:32.386Z"
+      },
+      {
+        "id": "bd504d9f-ab41-4a8d-b0b4-3c85b09fbf37",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.668Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:32.383Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.668Z",
+    "updated_at": "2026-10-16T16:29:32.386Z"
   },
   {
     "id": "daa4b8b1-7790-49b6-a682-7cc4ad45e821",
     "business_name": "Divine Spine",
+    "contact_person": "Divine Spine",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 416-440-3358",
+    "clean_phone": "14164403358",
     "email": "divinespinetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -108,19 +256,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Dufferin Street, Eglinton—Lawrence, Toronto, Ontario, M6A 2T1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Divine%20Spine%20Dufferin%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.664Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.664Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "043c27c6-24c2-4b87-b3c3-21403849db2e",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:32.401Z"
+      },
+      {
+        "id": "f98e284a-da89-481e-9b8e-4f78b116b219",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.664Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:32.399Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.664Z",
+    "updated_at": "2026-10-16T16:29:32.401Z"
   },
   {
     "id": "c8c23be9-14d0-4234-95d0-c493d6a4d063",
     "business_name": "Cosmetic Surgery Institute",
+    "contact_person": "Cosmetic Surgery Institute",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 438-7176",
+    "clean_phone": "14164387176",
     "email": "cosmeticsurgeryinstitutetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -137,19 +330,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "325, Eglinton Avenue East, Don Valley West, Toronto, Ontario, M4P 2N1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Cosmetic%20Surgery%20Institute%20Eglinton%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.660Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.660Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "bbb38f9a-990d-426b-a18f-37e03c84bebc",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:32.425Z"
+      },
+      {
+        "id": "81c548ca-4ee3-4205-a2c5-88622802fc70",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.660Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:32.420Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.660Z",
+    "updated_at": "2026-10-16T16:29:32.425Z"
   },
   {
     "id": "23e3671c-c1a2-4c28-ba4f-8eda8515d9e6",
     "business_name": "Stretch well",
+    "contact_person": "Stretch well",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 459-2698",
+    "clean_phone": "14164592698",
     "email": "stretchwelltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -166,19 +404,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Deloraine Avenue, Eglinton—Lawrence, Toronto, Ontario, M4N 2N2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Stretch%20well%20Deloraine%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.657Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.657Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "0cd166d4-4430-4d54-95af-05886ccd9af5",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:33.849Z"
+      },
+      {
+        "id": "391ee615-5d04-4d17-9d13-7654a0ef5f43",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.657Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:33.846Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.657Z",
+    "updated_at": "2026-10-16T16:29:33.849Z"
   },
   {
     "id": "fa521702-b7c9-4479-9862-f2b0dd9af621",
     "business_name": "Eye Laser Cosmetic",
+    "contact_person": "Eye Laser Cosmetic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Vaughan",
+    "state": "",
+    "country": "India",
     "phone": "+1 (416) 318-2849",
+    "clean_phone": "14163182849",
     "email": "lasercosmeticvaughan@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -195,19 +478,56 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "2180, Steeles Avenue West, Vaughan, Ontario, L4K 2Y7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Eye%20Laser%20Cosmetic%20Steeles%20Avenue%20West%20Vaughan",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.654Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.654Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "e503492c-ef98-4594-9ab7-682d03ea2d96",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.654Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.654Z",
+    "updated_at": "2026-10-16T16:29:31.476Z"
   },
   {
     "id": "52adc76d-5b43-44f7-90c1-e9af5be7668a",
     "business_name": "The Doctor's Office Therapy Centre",
+    "contact_person": "The Doctor's Office Therapy Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 589-4686",
+    "clean_phone": "14375894686",
     "email": "sofficetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -224,19 +544,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Forman Avenue, Don Valley West, Toronto, Ontario, M4S 2P2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The%20Doctor's%20Office%20Therapy%20Centre%20Forman%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.651Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.651Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "d7c21299-8ac3-43e2-a7ec-493f3d4a71a9",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:33.863Z"
+      },
+      {
+        "id": "71c0b1af-bc9e-4238-a202-dd5d24ff2a81",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.651Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:33.859Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.651Z",
+    "updated_at": "2026-10-16T16:29:33.863Z"
   },
   {
     "id": "0f50711d-d6d7-47a0-a9a4-fc00e65f0bcc",
     "business_name": "Rehab on Finch",
+    "contact_person": "Rehab on Finch",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 492-2607",
+    "clean_phone": "16474922607",
     "email": "rehabonfinchtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -253,19 +618,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Finch Avenue East, Don Valley North, Toronto, Ontario, M2K 2E6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Rehab%20on%20Finch%20Finch%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.648Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.648Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "8f10ce03-be2e-4f09-a33e-7e4aefc5b36b",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:33.878Z"
+      },
+      {
+        "id": "db5aecae-e897-4499-ae92-99080d3396f0",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.648Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:33.873Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.648Z",
+    "updated_at": "2026-10-16T16:29:33.878Z"
   },
   {
     "id": "a83efcf5-3c4f-4cb2-a344-52e4c9b7ffb9",
     "business_name": "True TLC",
+    "contact_person": "True TLC",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 363-8633",
+    "clean_phone": "14163638633",
     "email": "truetlctoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -282,19 +692,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Dufferin Street, Eglinton—Lawrence, Toronto, Ontario, M6A 3B2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=True%20TLC%20Dufferin%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.645Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.645Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3a401b77-ae62-4517-ac34-5b5e660b2505",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:33.889Z"
+      },
+      {
+        "id": "6f46581c-d0f4-43d2-b9e7-4ca7c5bbe66f",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.645Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:33.886Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.645Z",
+    "updated_at": "2026-10-16T16:29:33.889Z"
   },
   {
     "id": "abbcd2d5-fefc-47f0-a82f-d9e0e6eb7ca2",
     "business_name": "Leaside Therapy Centre",
+    "contact_person": "Leaside Therapy Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 843-8448",
+    "clean_phone": "14378438448",
     "email": "leasidetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -311,19 +766,64 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "McRae Drive, Don Valley West, Toronto, Ontario, M4G 3A6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Leaside%20Therapy%20Centre%20McRae%20Drive%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.642Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.642Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "f0d9acab-6f9e-4ea1-8b67-fc5bb2413585",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:33.903Z"
+      },
+      {
+        "id": "ec8025f0-67f6-41bf-97bd-6696c4448af6",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.642Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:33.900Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.642Z",
+    "updated_at": "2026-10-16T16:29:33.903Z"
   },
   {
     "id": "fd42dcd3-0849-41c6-9a78-d32a6dc0449e",
     "business_name": "Global Health Pain & Injury Clinic",
+    "contact_person": "Global Health Pain & Injury Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-500-4200",
+    "clean_phone": "14165004200",
     "email": "globalpaininjurytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -340,19 +840,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "545, Eglinton Avenue East, Don Valley West, Toronto, Ontario, M4P 1P1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Global%20Health%20Pain%20%26%20Injury%20Clinic%20Eglinton%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.640Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.640Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3dcd2111-84b6-4736-a59c-4539d7c384c1",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:35.331Z"
+      },
+      {
+        "id": "223db434-6777-476c-b836-2228c5c31e55",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.640Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:35.329Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.640Z",
+    "updated_at": "2026-10-16T16:29:35.331Z"
   },
   {
     "id": "bf87ed36-1bf9-49c6-8fcf-e7c13b83e533",
     "business_name": "CReATe Fertility Centre",
+    "contact_person": "CReATe Fertility Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 664-4645",
+    "clean_phone": "14166644645",
     "email": "createfertilitytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -369,19 +914,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "York Mills Road, Don Valley West, Toronto, Ontario, M2P 2E3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=CReATe%20Fertility%20Centre%20York%20Mills%20Road%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.637Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.637Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "b4718caf-6fd8-4fd8-8fa5-ac57926b59f7",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:35.345Z"
+      },
+      {
+        "id": "c432377d-c809-4dc8-bde7-900af3667bad",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.637Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:35.342Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.637Z",
+    "updated_at": "2026-10-16T16:29:35.345Z"
   },
   {
     "id": "28a20b89-031f-4bb8-b1b2-14d860f3d343",
     "business_name": "Finch Avenue West",
+    "contact_person": "Finch Avenue West",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 382-9666",
+    "clean_phone": "14373829666",
     "email": "finchavenuewesttoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -398,19 +988,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Finch Avenue West, York Centre, Toronto, Ontario, M3J 2P7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Finch%20Avenue%20West%20Finch%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.635Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.635Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "02e9e5a5-6edd-43f1-ad56-ba8f3b1f9c83",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:35.360Z"
+      },
+      {
+        "id": "7dc06be4-32d1-4bfe-af21-a4d3b70e369c",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.635Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:35.357Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.635Z",
+    "updated_at": "2026-10-16T16:29:35.360Z"
   },
   {
     "id": "38cd82eb-0854-455b-a7dd-edae884495bb",
     "business_name": "The Centre for Minor Surgery",
+    "contact_person": "The Centre for Minor Surgery",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 549-2273",
+    "clean_phone": "16475492273",
     "email": "forminorsurgerytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -427,19 +1062,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Yonge Street, Don Valley West, Toronto, Ontario, M2P 2E3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The%20Centre%20for%20Minor%20Surgery%20Yonge%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.632Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.632Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "965007be-adc5-419c-b635-4220c46b9447",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:35.375Z"
+      },
+      {
+        "id": "559e5a38-c03e-43ed-98c5-4ddddd2a9d87",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.632Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:35.371Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.632Z",
+    "updated_at": "2026-10-16T16:29:35.375Z"
   },
   {
     "id": "7c28f458-5f0e-484a-9c21-2e36ee9c31fa",
     "business_name": "Passport Health North York Travel Clinic",
+    "contact_person": "Passport Health North York Travel Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 684-8493",
+    "clean_phone": "14166848493",
     "email": "passportnorthyorktraveltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -456,19 +1136,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "620, Wilson Avenue, York Centre, Toronto, Ontario, M3K 1Z3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Passport%20Health%20North%20York%20Travel%20Clinic%20Wilson%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.628Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.628Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "ff78a533-a45e-4acb-b7fc-8383fd6827b0",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:35.386Z"
+      },
+      {
+        "id": "24f103e1-02b7-4a72-853a-85d855c480eb",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.628Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:35.383Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.628Z",
+    "updated_at": "2026-10-16T16:29:35.386Z"
   },
   {
     "id": "50cfb12e-e345-4359-8440-04bfb28c86f6",
     "business_name": "Bayview-Sheppard Health Care Clinic",
+    "contact_person": "Bayview-Sheppard Health Care Clinic",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 267-4083",
+    "clean_phone": "16472674083",
     "email": "bayviewsheppardtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -485,19 +1210,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Sheppard Avenue East, Willowdale, Toronto, Ontario, M2N 3B1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Bayview-Sheppard%20Health%20Care%20Clinic%20Sheppard%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.626Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.626Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "abda127d-75ee-4a6b-8896-6cb528dfe509",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:36.827Z"
+      },
+      {
+        "id": "faa96412-5c12-4a97-8685-02f897af4f9b",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.626Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:36.822Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.626Z",
+    "updated_at": "2026-10-16T16:29:36.827Z"
   },
   {
     "id": "9a76ec0f-13c1-473c-9958-29c9b1cbf720",
     "business_name": "Jin Clinic",
+    "contact_person": "Jin Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 579-8890",
+    "clean_phone": "14165798890",
     "email": "jintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -514,19 +1284,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Finch Avenue West, Willowdale, Toronto, Ontario, M2R 1X8, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Jin%20Clinic%20Finch%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.624Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.624Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "4faa1dd4-5453-4617-9a51-db2df002e558",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:36.846Z"
+      },
+      {
+        "id": "7a818130-5a56-4fc7-956a-00d8c0481a4a",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.624Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:36.841Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.624Z",
+    "updated_at": "2026-10-16T16:29:36.846Z"
   },
   {
     "id": "5cf9a11e-cb0b-4b0a-b37c-ce3bc93dc0de",
     "business_name": "Good Life Wellness Centre",
+    "contact_person": "Good Life Wellness Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 529-2138",
+    "clean_phone": "14375292138",
     "email": "goodlifetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -543,19 +1358,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "222, Finch Avenue West, Willowdale, Toronto, Ontario, M2R 1K1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Good%20Life%20Wellness%20Centre%20Finch%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.622Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.622Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "a431ab4c-3ebe-4245-9dfb-8f716e2a321e",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:36.865Z"
+      },
+      {
+        "id": "d71c38bd-710f-4500-9c6c-8101710a74e7",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.622Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:36.860Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.622Z",
+    "updated_at": "2026-10-16T16:29:36.865Z"
   },
   {
     "id": "811e6417-c9ef-4c8a-aa00-b178cab5c4ef",
     "business_name": "Upper East Dental & Wellness Hub",
+    "contact_person": "Upper East Dental & Wellness Hub",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 567-2100",
+    "clean_phone": "14375672100",
     "email": "uppereasthubtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -572,19 +1432,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Brentcliffe Road, Don Valley West, Toronto, Ontario, M4G 4B5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Upper%20East%20Dental%20%26%20Wellness%20Hub%20Brentcliffe%20Road%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.619Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.619Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "ff93d3e2-0613-48b2-8bd8-795e3155a0c4",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:36.881Z"
+      },
+      {
+        "id": "7e5a4147-2e0f-43cf-b090-92941cbb8970",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.619Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:36.877Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.619Z",
+    "updated_at": "2026-10-16T16:29:36.881Z"
   },
   {
     "id": "8b74424c-84eb-40cd-9d11-dc29455bff57",
     "business_name": "Regain Health",
+    "contact_person": "Regain Health",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 339-9048",
+    "clean_phone": "14373399048",
     "email": "regaintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -601,19 +1506,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Connaught Avenue, Willowdale, Toronto, Ontario, M2M 1C8, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Regain%20Health%20Connaught%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.617Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.617Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "b600c1df-c2fc-4272-abd5-e690f4cc7e96",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:36.897Z"
+      },
+      {
+        "id": "4333724b-908c-4688-80a6-5bfa28e57c3a",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.617Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:36.893Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.617Z",
+    "updated_at": "2026-10-16T16:29:36.897Z"
   },
   {
     "id": "820529cb-df6f-41bf-9860-510bb00151ab",
     "business_name": "The Sheppard Heart Centre",
+    "contact_person": "The Sheppard Heart Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-224-0375",
+    "clean_phone": "14162240375",
     "email": "sheppardhearttoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -630,19 +1580,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "100, Sheppard Avenue East, Toronto, Ontario, M2N 6N5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The%20Sheppard%20Heart%20Centre%20Sheppard%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.613Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.613Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "adda41ef-cfb0-48b8-8524-4e98cdac14bd",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:38.332Z"
+      },
+      {
+        "id": "ce36f913-96ae-4278-bf9d-b66ac3e45177",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.613Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:38.329Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.613Z",
+    "updated_at": "2026-10-16T16:29:38.332Z"
   },
   {
     "id": "0d0f2899-aa6c-42cc-adcd-b0fe8cfd3847",
     "business_name": "Renew Cosmetic Clinic",
+    "contact_person": "Renew Cosmetic Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 469-2314",
+    "clean_phone": "14164692314",
     "email": "renewcosmetictoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -659,19 +1654,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Sheppard Avenue West, Willowdale, Toronto, Ontario, M2N 6K9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Renew%20Cosmetic%20Clinic%20Sheppard%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.610Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.610Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "9fc43433-2297-4e04-8e84-e065eb1d5507",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:38.351Z"
+      },
+      {
+        "id": "9db591d7-18de-4216-bd40-ee94622e921d",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.610Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:38.348Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.610Z",
+    "updated_at": "2026-10-16T16:29:38.351Z"
   },
   {
     "id": "06c6943b-de96-4a63-bed8-0308c1debf8c",
     "business_name": "Motioncare Massage + Rehab",
+    "contact_person": "Motioncare Massage + Rehab",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 669-7714",
+    "clean_phone": "16476697714",
     "email": "motioncaremassagerehabtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -688,19 +1728,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Sheppard Avenue West, Willowdale, Toronto, Ontario, M2N 6K9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Motioncare%20Massage%20%2B%20Rehab%20Sheppard%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.608Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.608Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "f4630fa4-179a-4775-a90f-b605531683ac",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:38.369Z"
+      },
+      {
+        "id": "a7d331f1-63b9-4c0b-8a5c-7cd12c3a8eed",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.608Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:38.367Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.608Z",
+    "updated_at": "2026-10-16T16:29:38.369Z"
   },
   {
     "id": "c317791c-15c2-4cc1-b375-5a1cd6de1237",
     "business_name": "North York Eye Clinic",
+    "contact_person": "North York Eye Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 649-9846",
+    "clean_phone": "16476499846",
     "email": "northyorktoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -717,19 +1802,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Yonge Street, Willowdale, Toronto, Ontario, M2N 7L3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=North%20York%20Eye%20Clinic%20Yonge%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.605Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.605Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "2679db4e-be2d-42b7-90d7-af8999e1b4a4",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:38.386Z"
+      },
+      {
+        "id": "fbae7f98-f389-45a2-9669-a08d33b37436",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.605Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:38.384Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.605Z",
+    "updated_at": "2026-10-16T16:29:38.386Z"
   },
   {
     "id": "2b9007ac-5e49-404b-93e5-5d7d69e903b4",
     "business_name": "Travel Vaccine Clinic",
+    "contact_person": "Travel Vaccine Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 664-6896",
+    "clean_phone": "14166646896",
     "email": "travelvaccinetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -746,19 +1876,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Sheppard Avenue West, York Centre, Toronto, Ontario, M3H 2S6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Travel%20Vaccine%20Clinic%20Sheppard%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.603Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.603Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "e750c674-2b07-4e40-a7d3-be54d6c2ef3d",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:38.402Z"
+      },
+      {
+        "id": "c839d4de-1dab-47d8-8cd8-c9da82c694bf",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.603Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:38.400Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.603Z",
+    "updated_at": "2026-10-16T16:29:38.402Z"
   },
   {
     "id": "8808e0d5-5dab-4078-a5b1-2a2dd8412554",
     "business_name": "Lakeshore Village Walk-In Medical Clinic",
+    "contact_person": "Lakeshore Village Walk-In Medical Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 714-8269",
+    "clean_phone": "14377148269",
     "email": "lakeshorevillagewalkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -775,19 +1950,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "2885, Lake Shore Boulevard West, Etobicoke—Lakeshore, Toronto, Ontario, M8V 1H8, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Lakeshore%20Village%20Walk-In%20Medical%20Clinic%20Lake%20Shore%20Boulevard%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.601Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.601Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "9a11a33f-e851-47ef-8dea-950fe0bd65c9",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:39.844Z"
+      },
+      {
+        "id": "d0c7712b-fc68-49e1-8337-1d570199c4c5",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.601Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:39.839Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.601Z",
+    "updated_at": "2026-10-16T16:29:39.844Z"
   },
   {
     "id": "c74cb7e2-3021-46d4-881b-499b7a879b1b",
     "business_name": "St. Gabriel Medical Centre Walk-In Clinic",
+    "contact_person": "St. Gabriel Medical Centre Walk-In Clinic",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-222-7775",
+    "clean_phone": "14162227775",
     "email": "stgabrielwalkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -804,19 +2024,64 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "Sheppard Avenue East, Don Valley North, Toronto, Ontario, M2K 0A4, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=St.%20Gabriel%20Medical%20Centre%20Walk-In%20Clinic%20Sheppard%20Avenue%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.598Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.598Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "1d819e25-cbf0-480b-ba94-fcb609990016",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:39.859Z"
+      },
+      {
+        "id": "a6c73b2d-ba76-4783-9aff-c2e652b4cf1d",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.598Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:39.854Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.598Z",
+    "updated_at": "2026-10-16T16:29:39.859Z"
   },
   {
     "id": "94b9a207-3bbe-4414-b1e9-6981025ef281",
     "business_name": "Walk-in Medical Clinic",
+    "contact_person": "Walk-in Medical Clinic",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 763-5149",
+    "clean_phone": "16477635149",
     "email": "walkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -833,19 +2098,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Coxwell Avenue, Beaches—East York, Toronto, Ontario, M4L 3B6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Walk-in%20Medical%20Clinic%20Coxwell%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.595Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.595Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "bcceeafa-0c52-41d3-ab61-1d273987d1b8",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:39.873Z"
+      },
+      {
+        "id": "6cd87d05-0d6e-4ea3-85a0-371d3bf8674c",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.595Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:39.869Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.595Z",
+    "updated_at": "2026-10-16T16:29:39.873Z"
   },
   {
     "id": "e73b0b31-2bce-484a-bc24-cc9580578532",
     "business_name": "Keele & Rogers Medical Centre Walk-In Clinic",
+    "contact_person": "Keele & Rogers Medical Centre Walk-In Clinic",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 549-2456",
+    "clean_phone": "14375492456",
     "email": "keelerogerswalkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -862,19 +2172,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Rogers Road, York South—Weston, Toronto, Ontario, M6M 1B9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Keele%20%26%20Rogers%20Medical%20Centre%20Walk-In%20Clinic%20Rogers%20Road%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.592Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.592Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3b09b85d-123c-4aa7-8f7f-b38fb4e21ca6",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:39.886Z"
+      },
+      {
+        "id": "fa841185-4863-4fe6-a8b8-08abbdd5ba21",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.592Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:39.883Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.592Z",
+    "updated_at": "2026-10-16T16:29:39.886Z"
   },
   {
     "id": "9a1c3f89-34da-44ad-8f76-1c2ac82dcc38",
     "business_name": "Danforth Main Medical Clinic Walk-in & Family Practice",
+    "contact_person": "Danforth Main Medical Clinic Walk-in & Family Practice",
     "category": "Family Medicine Clinic",
+    "industry": "Family Medicine Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-647-340-5550",
+    "clean_phone": "16473405550",
     "email": "danforthmainwalkinpracticetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -891,19 +2246,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Danforth Avenue, Beaches—East York, Toronto, Ontario, M4C 1L7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Danforth%20Main%20Medical%20Clinic%20Walk-in%20%26%20Family%20Practice%20Danforth%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.589Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.589Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "bdf65bb3-e5da-49d0-a99b-917c19b19a66",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:39.902Z"
+      },
+      {
+        "id": "f8e8da90-26fa-4efc-8db4-3797ec095405",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.589Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:39.899Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.589Z",
+    "updated_at": "2026-10-16T16:29:39.902Z"
   },
   {
     "id": "493615de-5458-46f3-be2d-90fa1112690c",
     "business_name": "Marlee Medical Centre Walk-In Clinic and Family Practice",
+    "contact_person": "Marlee Medical Centre Walk-In Clinic and Family Practice",
     "category": "Family Medicine Clinic",
+    "industry": "Family Medicine Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 297-5839",
+    "clean_phone": "14372975839",
     "email": "marleewalkinpracticetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -920,19 +2320,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "Stayner Avenue, Eglinton—Lawrence, Toronto, Ontario, M6B 1K3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Marlee%20Medical%20Centre%20Walk-In%20Clinic%20and%20Family%20Practice%20Stayner%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.587Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.587Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "92cee27c-7937-465f-a17e-f42cc5e7e117",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:41.336Z"
+      },
+      {
+        "id": "c8bdb97b-d980-42d9-bd90-16abbb167806",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.587Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:41.333Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.587Z",
+    "updated_at": "2026-10-16T16:29:41.336Z"
   },
   {
     "id": "4851c194-f330-44cd-9c1a-099574dab428",
     "business_name": "Oakdale Medical Walk-In Clinic",
+    "contact_person": "Oakdale Medical Walk-In Clinic",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 643-3248",
+    "clean_phone": "16476433248",
     "email": "oakdalewalkintoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -949,19 +2394,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "2065, Finch Avenue West, Humber River—Black Creek, Toronto, Ontario, M3N 1M9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Oakdale%20Medical%20Walk-In%20Clinic%20Finch%20Avenue%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.585Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.585Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "5481fcc2-a949-4718-b566-c2aa78ca63ed",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:41.366Z"
+      },
+      {
+        "id": "6fa7e323-1fca-45ba-81ac-a14d76a4f9e6",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.585Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:41.364Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.585Z",
+    "updated_at": "2026-10-16T16:29:41.366Z"
   },
   {
     "id": "9bbf9c8c-7f28-40e0-87b3-3dba485f35b2",
     "business_name": "Calle N-27",
+    "contact_person": "Calle N-27",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Apodaca",
+    "state": "",
+    "country": "India",
     "phone": "+1 (647) 405-1269",
+    "clean_phone": "16474051269",
     "email": "callen27apodaca@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -978,19 +2468,56 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Calle N-27, Apodaca, Nuevo León, 66612, México",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Calle%20N-27%20Calle%20N-27%20Apodaca",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.583Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.583Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "c27fcf85-9f6d-46db-afa7-49499af07727",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.583Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.583Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "f760199e-a42d-4044-9f1a-25acdfc009d4",
     "business_name": "Centro de Salud La Huayrona",
+    "contact_person": "Centro de Salud La Huayrona",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "El Agustino",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3877400",
+    "clean_phone": "5113877400",
     "email": "centrodesaludlahuayronaelagustino@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1007,19 +2534,56 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Calle Las Gemas, Ancieta Alta, El Agustino, Lima, 15006, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20La%20Huayrona%20Calle%20Las%20Gemas%20El%20Agustino",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.580Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.580Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "abd30a3a-84ea-42ee-bfe2-256437c83df6",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.580Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.580Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "ed074845-654d-43d3-96ca-93d7a8813e8a",
     "business_name": "Policlinico Tucuman",
+    "contact_person": "Policlinico Tucuman",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+1 (647) 204-7906",
+    "clean_phone": "16472047906",
     "email": "policlinicotucumansanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1036,19 +2600,56 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Avenida Próceres de la Independencia, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Policlinico%20Tucuman%20Avenida%20Pr%C3%B3ceres%20de%20la%20Independencia%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.577Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.577Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "2b6bd282-a60c-4b4b-9871-717dc470504f",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.577Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.577Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "e3679dfe-5772-4e0a-9d15-627e94a7cccf",
     "business_name": "Medical Roma Policlinico",
+    "contact_person": "Medical Roma Policlinico",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+1 (437) 443-3659",
+    "clean_phone": "14374433659",
     "email": "romapoliclinicosanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1065,19 +2666,56 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Avenida Las Flores de Primavera, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Medical%20Roma%20Policlinico%20Avenida%20Las%20Flores%20de%20Primavera%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.575Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.575Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "81c364b1-d76a-421c-980e-c16addf15d39",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.575Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.575Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "540f6c15-6f42-4038-a87d-65d06f7d22c1",
     "business_name": "Centro de Salud Huascar II",
+    "contact_person": "Centro de Salud Huascar II",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3882482",
+    "clean_phone": "5113882482",
     "email": "centrodesaludhuascariisanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1094,19 +2732,56 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "Arica, Huáscar, San Juan de Lurigancho, Lima, 15423, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20Huascar%20II%20Arica%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.573Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.573Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3fde3be1-69e3-402b-919a-9443edc771cb",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.573Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.573Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "c8a87e51-e744-4e14-b9be-5117eb1392f2",
     "business_name": "Fonasa",
+    "contact_person": "Fonasa",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Santiago",
+    "state": "",
+    "country": "India",
     "phone": "+1 (437) 346-4495",
+    "clean_phone": "14373464495",
     "email": "fonasasantiago@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1123,19 +2798,56 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Avenida Vicuña Mackenna Poniente, Santiago, Región Metropolitana de Santiago, 8320000, Chile",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Fonasa%20Avenida%20Vicu%C3%B1a%20Mackenna%20Poniente%20Santiago",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.571Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.571Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "71a9da0f-9dce-4544-b572-69e9038f1a85",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.571Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.571Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "588d9a2b-4a75-47d6-aad7-e1851b9824aa",
     "business_name": "San Camilo Medic Center",
+    "contact_person": "San Camilo Medic Center",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+1 (437) 508-2194",
+    "clean_phone": "14375082194",
     "email": "sancamilomedicsanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1152,19 +2864,56 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "Avenida San Hilaron Este, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=San%20Camilo%20Medic%20Center%20Avenida%20San%20Hilaron%20Este%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.568Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.568Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "c4484732-a935-4c64-87f6-fa3b526c0014",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.568Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.568Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "8929087b-6018-4f91-bead-279e9d1504b0",
     "business_name": "Centro de Salud San Hilarión",
+    "contact_person": "Centro de Salud San Hilarión",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3882500",
+    "clean_phone": "5113882500",
     "email": "centrodesaludsanhilarinsanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1181,19 +2930,56 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "Jirón Los Silicio, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20San%20Hilari%C3%B3n%20Jir%C3%B3n%20Los%20Silicio%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.566Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.566Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "3f7667a7-1574-4129-b6f5-814cb1e63dba",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.566Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.566Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "c9469209-6dc9-47b0-b075-5068246e30d6",
     "business_name": "Centro de Salud Medalla Milagrosa",
+    "contact_person": "Centro de Salud Medalla Milagrosa",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3882503",
+    "clean_phone": "5113882503",
     "email": "centrodesaludmedallamilagrosasanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1210,19 +2996,56 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Avenida del Parque, San Juan de Lurigancho, Lima, 15423, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20Medalla%20Milagrosa%20Avenida%20del%20Parque%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.562Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.562Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "af6ba06d-5482-40fe-936d-5a2808d08cac",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.562Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.562Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "a4473e26-6ec4-486a-bcd1-9664ee777033",
     "business_name": "Centro de Salud Doctor Arturo Baeza Goni",
+    "contact_person": "Centro de Salud Doctor Arturo Baeza Goni",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "San Joaquín",
+    "state": "",
+    "country": "India",
     "phone": "+1 (437) 660-9984",
+    "clean_phone": "14376609984",
     "email": "centrodesaludarturobaezagonisanjoaqun@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1239,19 +3062,56 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Teniente Soto, San Joaquín, Región Metropolitana de Santiago, 8940000, Chile",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20Doctor%20Arturo%20Baeza%20Goni%20Teniente%20Soto%20San%20Joaqu%C3%ADn",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.560Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.560Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "c3cf91b7-8d4a-4316-8657-27b3441d1e7b",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.560Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.560Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "d280e2fd-9049-4a9a-9568-04d39cd76cbc",
     "business_name": "Doctor Luis Quito",
+    "contact_person": "Doctor Luis Quito",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+1 (647) 418-1995",
+    "clean_phone": "16474181995",
     "email": "luisquitosanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1268,19 +3128,56 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "2717, Avenida Próceres de la Independencia, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Doctor%20Luis%20Quito%20Avenida%20Pr%C3%B3ceres%20de%20la%20Independencia%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.558Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.558Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "b8384673-fdde-424b-a41e-0ec0c8c7fa3a",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.558Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.558Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "fc509641-9691-4679-beba-0bd7e41f850e",
     "business_name": "CESFAM/ SAPU San Joaquín",
+    "contact_person": "CESFAM/ SAPU San Joaquín",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Joaquín",
+    "state": "",
+    "country": "India",
     "phone": "+1 (416) 646-3259",
+    "clean_phone": "14166463259",
     "email": "cesfamsapusanjoaqunsanjoaqun@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1297,19 +3194,56 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "3223, Francesca de Rímini, San Joaquín, Región Metropolitana de Santiago, 8940000, Chile",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=CESFAM%2F%20SAPU%20San%20Joaqu%C3%ADn%20Francesca%20de%20R%C3%ADmini%20San%20Joaqu%C3%ADn",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.556Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.556Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "fa0d2122-7fce-4733-bf3a-9c4b0532caa2",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.556Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.556Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "62e248c5-b4ad-40bd-9a0c-5d32059c7475",
     "business_name": "Policlínico San Pablo",
+    "contact_person": "Policlínico San Pablo",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+1 (647) 854-5596",
+    "clean_phone": "16478545596",
     "email": "policlnicosanpablosanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1326,19 +3260,56 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Avenida Jorge Basadre Oeste, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Policl%C3%ADnico%20San%20Pablo%20Avenida%20Jorge%20Basadre%20Oeste%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.554Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.554Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "b77f3410-a30c-4b95-8068-88e46b676d00",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.554Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.554Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "e77be078-4a09-4e79-838e-8db8af49c784",
     "business_name": "Centro de Salud Ganimedes",
+    "contact_person": "Centro de Salud Ganimedes",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3872790",
+    "clean_phone": "5113872790",
     "email": "centrodesaludganimedessanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1355,19 +3326,56 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Avenida El Sol, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20de%20Salud%20Ganimedes%20Avenida%20El%20Sol%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.552Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.552Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "2895de1f-09ba-4028-b54f-9b50b3f73b28",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.552Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.552Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "67fd985d-946a-4c93-a950-604796e8465b",
     "business_name": "Centro Médico UC San Joaquín",
+    "contact_person": "Centro Médico UC San Joaquín",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "San Joaquín",
+    "state": "",
+    "country": "India",
     "phone": "+1 (647) 499-9926",
+    "clean_phone": "16474999926",
     "email": "centromdicoucsanjoaqunsanjoaqun@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1384,19 +3392,56 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "4860, Avenida Vicuña Mackenna, San Joaquín, Región Metropolitana de Santiago, 8320000, Chile",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Centro%20M%C3%A9dico%20UC%20San%20Joaqu%C3%ADn%20Avenida%20Vicu%C3%B1a%20Mackenna%20San%20Joaqu%C3%ADn",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.550Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.550Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "d7a3f29a-ceff-4226-8a3e-2db421aac3a6",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.550Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.550Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "ad9a0af0-df93-4418-98f9-3816fefb621c",
     "business_name": "Ayacucho",
+    "contact_person": "Ayacucho",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "San Juan de Lurigancho",
+    "state": "",
+    "country": "India",
     "phone": "+51 1 3877580",
+    "clean_phone": "5113877580",
     "email": "ayacuchosanjuandelurigancho@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1413,19 +3458,56 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Jirón Juana I, San Juan de Lurigancho, Lima, 15419, Perú",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Ayacucho%20Jir%C3%B3n%20Juana%20I%20San%20Juan%20de%20Lurigancho",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.547Z"
+    "status": "NEW",
+    "tags": [
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.547Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "983193f3-3d5b-466a-bc4f-b45b0a5a6d02",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.547Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": null,
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.547Z",
+    "updated_at": "2026-10-16T16:29:31.478Z"
   },
   {
     "id": "bca4472b-4afe-4acb-9db0-3502b0cb1694",
     "business_name": "College Street Medical Laboratories",
+    "contact_person": "College Street Medical Laboratories",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-324-8839",
+    "clean_phone": "14163248839",
     "email": "collegestreetlaboratoriestoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1442,19 +3524,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "540, College Street, University—Rosedale, Toronto, Ontario, M6G 1A9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=College%20Street%20Medical%20Laboratories%20College%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.544Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.544Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "8437f478-3e9a-47b6-873a-3b0f1188923a",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:41.382Z"
+      },
+      {
+        "id": "6c806441-c916-4267-94b0-e12c30c0de19",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.544Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:41.379Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.544Z",
+    "updated_at": "2026-10-16T16:29:41.382Z"
   },
   {
     "id": "9100aa15-b2dc-4c31-b88d-f27a88e81b47",
     "business_name": "College St. Medical Offices",
+    "contact_person": "College St. Medical Offices",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-551-6528",
+    "clean_phone": "14165516528",
     "email": "collegestofficestoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1471,19 +3598,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "531, College Street, University—Rosedale, Toronto, Ontario, M6G 1A6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=College%20St.%20Medical%20Offices%20College%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.542Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.542Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "b21b7e51-e069-48ea-a568-5c568354393a",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:41.395Z"
+      },
+      {
+        "id": "d26599c5-3976-4a5c-b3cb-72ae151e1db4",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.542Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:41.393Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.542Z",
+    "updated_at": "2026-10-16T16:29:41.395Z"
   },
   {
     "id": "0d7d9ddc-d573-4a59-9d89-23caf2b8f0fe",
     "business_name": "Immigrant Women's Health Centre",
+    "contact_person": "Immigrant Women's Health Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1-416-323-9986",
+    "clean_phone": "14163239986",
     "email": "immigrantwomenstoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1500,19 +3672,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "489, College Street, University—Rosedale, Toronto, Ontario, M6G 1A5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Immigrant%20Women's%20Health%20Centre%20College%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.540Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.540Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "90a29b6e-fcda-40aa-b86d-dd9f13c10776",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:41.408Z"
+      },
+      {
+        "id": "7ffa4474-dc87-4d79-a719-2bfdf4b18ead",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.540Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:41.405Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.540Z",
+    "updated_at": "2026-10-16T16:29:41.408Z"
   },
   {
     "id": "0394d00b-f3ae-4f4b-a73f-0f2e1ca8ec46",
     "business_name": "Spiral Movement Center",
+    "contact_person": "Spiral Movement Center",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 683-9923",
+    "clean_phone": "16476839923",
     "email": "spiralmovementtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1529,19 +3746,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "King Street East, Downtown, Toronto, Ontario, M5A 3E1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Spiral%20Movement%20Center%20King%20Street%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.539Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.539Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "355717a4-23df-4cb2-bc42-0114963745d7",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:42.852Z"
+      },
+      {
+        "id": "e8452042-8ae1-4454-bbb7-006f34a45bc4",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.539Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:42.842Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.539Z",
+    "updated_at": "2026-10-16T16:29:42.852Z"
   },
   {
     "id": "68a51bef-0e8f-4f00-b1e3-a3ad2ac23fcf",
     "business_name": "The Look Lab",
+    "contact_person": "The Look Lab",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 456-1071",
+    "clean_phone": "16474561071",
     "email": "looklabtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1558,19 +3820,64 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "Wellington Street West, Spadina—Fort York, Toronto, Ontario, M5V 1C9, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The%20Look%20Lab%20Wellington%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.537Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.537Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "d85515fa-381b-4454-be28-27d201b8e23e",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:42.888Z"
+      },
+      {
+        "id": "9cd227cf-0504-4125-9401-2457ca48fa3e",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.537Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:42.884Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.537Z",
+    "updated_at": "2026-10-16T16:29:42.888Z"
   },
   {
     "id": "54223a7e-6dda-4fa0-8e38-aedebaee61a6",
     "business_name": "Sunrose Wellness Clinic",
+    "contact_person": "Sunrose Wellness Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 888-2548",
+    "clean_phone": "14378882548",
     "email": "sunrosetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1587,19 +3894,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Willis Street, Spadina—Fort York, Toronto, Ontario, M6J 1E3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Sunrose%20Wellness%20Clinic%20Willis%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.535Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.535Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "2d160984-4c59-44e2-a343-fdb96faaffda",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:42.907Z"
+      },
+      {
+        "id": "9dd3bfea-a6df-42d8-a843-ee055755947b",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.535Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:42.903Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.535Z",
+    "updated_at": "2026-10-16T16:29:42.907Z"
   },
   {
     "id": "28927928-2e00-4ed5-b581-72152e97bb3a",
     "business_name": "My Best Clinic",
+    "contact_person": "My Best Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 415-5642",
+    "clean_phone": "14374155642",
     "email": "mybesttoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1616,19 +3968,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "King Street West, Downtown, Toronto, Ontario, M5V 1M7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=My%20Best%20Clinic%20King%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.533Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.533Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "5c1c02c4-4c69-4453-8853-761b0f0bf79f",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:42.923Z"
+      },
+      {
+        "id": "d26d1cb1-103f-4a42-b855-689ac573ee29",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.533Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:42.920Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.533Z",
+    "updated_at": "2026-10-16T16:29:42.923Z"
   },
   {
     "id": "120ec018-d3bc-471b-a313-b32343b02c45",
     "business_name": "Eesha Health Centre",
+    "contact_person": "Eesha Health Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+16472622302",
+    "clean_phone": "16472622302",
     "email": "eeshatoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1645,19 +4042,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "600, Sherbourne Street, Downtown, Toronto, Ontario, M4X 1W4, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Eesha%20Health%20Centre%20Sherbourne%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.532Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.532Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "e0f42415-a37e-4aa2-b5a8-abc10d9ebb94",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:42.938Z"
+      },
+      {
+        "id": "725406fb-d191-4238-a9ba-4acad1ff30e8",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.532Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:42.935Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.532Z",
+    "updated_at": "2026-10-16T16:29:42.938Z"
   },
   {
     "id": "12f3cea2-5b8b-49d1-8b5a-da4daf75a288",
     "business_name": "St. James Town Family Medical Dental Centre",
+    "contact_person": "St. James Town Family Medical Dental Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 781-3684",
+    "clean_phone": "16477813684",
     "email": "stjamestowntoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1674,19 +4116,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Wellesley Street East, Downtown, Toronto, Ontario, M4X 1X3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=St.%20James%20Town%20Family%20Medical%20Dental%20Centre%20Wellesley%20Street%20East%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.529Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.529Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "e4fe9d0f-b390-423f-82f3-d48101f750a0",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:44.368Z"
+      },
+      {
+        "id": "d9b22b0a-7a9c-4e35-9b41-c1ddbb19c010",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.529Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:44.365Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.529Z",
+    "updated_at": "2026-10-16T16:29:44.368Z"
   },
   {
     "id": "9f35aa9b-c011-4cad-bf05-868775217957",
     "business_name": "Bellair Laser Clinic",
+    "contact_person": "Bellair Laser Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 509-4147",
+    "clean_phone": "16475094147",
     "email": "bellairlasertoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1703,19 +4190,64 @@
       "rating": 4.6
     },
     "rating": 4.6,
+    "review_count": 35,
     "address": "Cumberland Street, Downtown, Toronto, Ontario, M5R 3V5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Bellair%20Laser%20Clinic%20Cumberland%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.527Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.527Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "305b6bd4-dabf-487e-9aee-d650357b0b24",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:44.385Z"
+      },
+      {
+        "id": "f4619bda-38fe-4f6b-9696-fb67bab294c1",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.527Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:44.382Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.527Z",
+    "updated_at": "2026-10-16T16:29:44.385Z"
   },
   {
     "id": "e8487682-3014-4069-a8ef-9f0086d105a8",
     "business_name": "Passport Health Yorkville Travel Clinic",
+    "contact_person": "Passport Health Yorkville Travel Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 590-3541",
+    "clean_phone": "14165903541",
     "email": "passportyorkvilletraveltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1732,19 +4264,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "77, Bloor Street West, Downtown, Toronto, Ontario, M5S 2B4, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Passport%20Health%20Yorkville%20Travel%20Clinic%20Bloor%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.526Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.526Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "e084b8b5-ec20-4bed-ae90-ee199e263ab9",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:44.403Z"
+      },
+      {
+        "id": "8d2b9386-cc20-4934-9733-76b28ff5a3ad",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.526Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:44.400Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.526Z",
+    "updated_at": "2026-10-16T16:29:44.403Z"
   },
   {
     "id": "be776319-9117-46ba-8cfa-65d99ee0b8ec",
     "business_name": "The Health Clinic/The Beauty Clinic",
+    "contact_person": "The Health Clinic/The Beauty Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 235-7602",
+    "clean_phone": "14372357602",
     "email": "beautytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1761,19 +4338,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Charles Street West, Toronto Centre, Toronto, Ontario, M4Y 2B7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=The%20Health%20Clinic%2FThe%20Beauty%20Clinic%20Charles%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.524Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.524Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "69ec57d9-c54d-4a68-974b-df973a3388cb",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:44.419Z"
+      },
+      {
+        "id": "14102db7-6103-4cb0-8168-235795496004",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.524Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:44.417Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.524Z",
+    "updated_at": "2026-10-16T16:29:44.419Z"
   },
   {
     "id": "dd31ac96-ecd3-4998-a2fe-66d0c141bf7a",
     "business_name": "Spadina Clinic",
+    "contact_person": "Spadina Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 465-5428",
+    "clean_phone": "14164655428",
     "email": "spadinatoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1790,19 +4412,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "347, Spadina Avenue, Downtown, Toronto, Ontario, M5T 2G3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Spadina%20Clinic%20Spadina%20Avenue%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.522Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.522Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "d3ac5936-bce6-45b1-a8c9-f38b0f24d3db",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:44.434Z"
+      },
+      {
+        "id": "20f5bef8-6b0e-4d2b-afa5-e3c6cefe72ce",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.522Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:44.431Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.522Z",
+    "updated_at": "2026-10-16T16:29:44.434Z"
   },
   {
     "id": "744a7de9-9cec-4427-bfb5-d8b84d50b2a9",
     "business_name": "Sherbourne Health Centre",
+    "contact_person": "Sherbourne Health Centre",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 358-7026",
+    "clean_phone": "14163587026",
     "email": "sherbournetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1819,19 +4486,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "333, Sherbourne Street, Downtown, Toronto, Ontario, M5A 2S5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Sherbourne%20Health%20Centre%20Sherbourne%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.520Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.520Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "d992b6ba-8093-4ebe-8d2c-b019f9cae8db",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:45.874Z"
+      },
+      {
+        "id": "3716f847-1ade-4828-bd2e-eab1dde127fe",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.520Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:45.869Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.520Z",
+    "updated_at": "2026-10-16T16:29:45.874Z"
   },
   {
     "id": "d3c24fea-9ec8-4621-a7ab-2f1c341c439d",
     "business_name": "Aegis Clinical",
+    "contact_person": "Aegis Clinical",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 538-8067",
+    "clean_phone": "16475388067",
     "email": "aegisclinicaltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1848,19 +4560,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "436, Dundas Street West, Downtown, Toronto, Ontario, M5T 1G7, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Aegis%20Clinical%20Dundas%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.519Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.519Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "eaa7d668-f384-4116-8bbb-d17a7287f463",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:45.888Z"
+      },
+      {
+        "id": "5d73f972-c584-4d4b-9c87-69c19bf81129",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.519Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:45.885Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.519Z",
+    "updated_at": "2026-10-16T16:29:45.888Z"
   },
   {
     "id": "8522772f-354a-4470-a11d-1e6458654233",
     "business_name": "University Eye Clinic",
+    "contact_person": "University Eye Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 730-7372",
+    "clean_phone": "14167307372",
     "email": "universitytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1877,19 +4634,64 @@
       "rating": 4.9
     },
     "rating": 4.9,
+    "review_count": 35,
     "address": "College Street, Downtown, Toronto, Ontario, M5S 3M2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=University%20Eye%20Clinic%20College%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.517Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.517Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "23eeb6ea-508f-4573-8696-b0469985a710",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:45.902Z"
+      },
+      {
+        "id": "fad5079e-7d25-4e76-b091-eda9d64efa76",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.517Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:45.900Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.517Z",
+    "updated_at": "2026-10-16T16:29:45.902Z"
   },
   {
     "id": "bfa8e335-03bc-4a02-8b4b-6abaff3ebee9",
     "business_name": "Athlete’s Care",
+    "contact_person": "Athlete’s Care",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 728-8683",
+    "clean_phone": "16477288683",
     "email": "athletestoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1906,19 +4708,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Richmond Street West, Downtown, Toronto, Ontario, M5V 1X2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Athlete%E2%80%99s%20Care%20Richmond%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.515Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.515Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "24b0b8a9-0ad5-4267-b11a-ba222a36e952",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:45.917Z"
+      },
+      {
+        "id": "ed4e8c0b-fa60-43ad-ad4b-e0ebda7ee7fe",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.515Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:45.914Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.515Z",
+    "updated_at": "2026-10-16T16:29:45.917Z"
   },
   {
     "id": "215d3fbc-cb44-49f9-8ada-e856f58d26fa",
     "business_name": "Gallery Wellness",
+    "contact_person": "Gallery Wellness",
     "category": "Walk-in & Family Clinic",
+    "industry": "Walk-in & Family Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (437) 525-7150",
+    "clean_phone": "14375257150",
     "email": "gallerytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1935,19 +4782,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "Dundas Street West, Downtown, Toronto, Ontario, M5T 1G5, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Gallery%20Wellness%20Dundas%20Street%20West%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.512Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.512Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "a203d3fa-7f89-4626-bb9f-e4153abc52be",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:45.931Z"
+      },
+      {
+        "id": "39154a5e-9790-47db-bd1a-efd0984fb244",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.512Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:45.928Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.512Z",
+    "updated_at": "2026-10-16T16:29:45.931Z"
   },
   {
     "id": "b8940e3c-7620-4064-92e9-3133b4c866ec",
     "business_name": "Myo Brookfield Place",
+    "contact_person": "Myo Brookfield Place",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 741-5525",
+    "clean_phone": "16477415525",
     "email": "myobrookfieldplacetoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1964,19 +4856,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "181, Bay Street, Toronto Centre, Toronto, Ontario, M5J 2T3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Myo%20Brookfield%20Place%20Bay%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.510Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.510Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "6d01d3d7-659e-418c-9c87-4aad25e5883e",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:47.376Z"
+      },
+      {
+        "id": "2f154630-7d31-4ca8-8fa1-14f16a800de3",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.510Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:47.372Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.510Z",
+    "updated_at": "2026-10-16T16:29:47.376Z"
   },
   {
     "id": "e65333f1-f9a4-480e-8a4c-a981f13c93ff",
     "business_name": "PhysioHealth",
+    "contact_person": "PhysioHealth",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 258-1019",
+    "clean_phone": "14162581019",
     "email": "physiohealthtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -1993,19 +4930,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Victoria Street, Toronto Centre, Toronto, Ontario, M5C 1Y2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=PhysioHealth%20Victoria%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.508Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.508Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "2d9a7318-0f07-4b36-9f98-3e603b1f9360",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:47.390Z"
+      },
+      {
+        "id": "d6db791e-1cef-487e-a214-2135d3825c2c",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.508Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:47.387Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.508Z",
+    "updated_at": "2026-10-16T16:29:47.390Z"
   },
   {
     "id": "0e7101f2-e8e6-4611-929f-77958d46b52f",
     "business_name": "Passport Health Downtown Toronto Travel Clinic",
+    "contact_person": "Passport Health Downtown Toronto Travel Clinic",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 573-4295",
+    "clean_phone": "14165734295",
     "email": "passportdowntowntorontotraveltoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2022,19 +5004,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "44, Victoria Street, Toronto Centre, Toronto, Ontario, M5C 1Y2, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Passport%20Health%20Downtown%20Toronto%20Travel%20Clinic%20Victoria%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.507Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.507Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "6bc6bd71-54ad-43fb-896f-d6ef7d71bbb0",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:47.403Z"
+      },
+      {
+        "id": "a22b2bc2-fd94-4547-9904-da02e6e8ecf8",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.507Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:47.401Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.507Z",
+    "updated_at": "2026-10-16T16:29:47.403Z"
   },
   {
     "id": "fa7de54a-14d5-40d3-8115-d3892c7105d7",
     "business_name": "b-stretched",
+    "contact_person": "b-stretched",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 260-6111",
+    "clean_phone": "16472606111",
     "email": "bstretchedtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2051,19 +5078,64 @@
       "rating": 4.5
     },
     "rating": 4.5,
+    "review_count": 35,
     "address": "PATH Main Route, Toronto Centre, Toronto, Ontario, M6K 1H3, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=b-stretched%20PATH%20Main%20Route%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.505Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.505Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "8a1eb24d-d492-4732-9729-f4b47fe42ea7",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:47.419Z"
+      },
+      {
+        "id": "ce29a3f9-e84d-4fb6-b992-8703a43e9c17",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.505Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:47.417Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.505Z",
+    "updated_at": "2026-10-16T16:29:47.419Z"
   },
   {
     "id": "30ea5570-930f-420b-9b57-6f69ab7790cd",
     "business_name": "Metro Central Ultrasound",
+    "contact_person": "Metro Central Ultrasound",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 564-2029",
+    "clean_phone": "14165642029",
     "email": "metrocentralultrasoundtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2080,19 +5152,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "Victoria Street, Toronto Centre, Toronto, Ontario, M5C 2M6, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Metro%20Central%20Ultrasound%20Victoria%20Street%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.503Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.503Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "438ffff7-27c0-44a6-a8f4-214fb0127949",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:47.448Z"
+      },
+      {
+        "id": "f700ce09-c543-4c62-ad06-b950c34ec393",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.503Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:47.444Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.503Z",
+    "updated_at": "2026-10-16T16:29:47.448Z"
   },
   {
     "id": "1aefd5a4-fb75-4dcc-bbda-55e8613b8029",
     "business_name": "TO Orthotics",
+    "contact_person": "TO Orthotics",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 634-1987",
+    "clean_phone": "14166341987",
     "email": "toorthoticstoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2109,19 +5226,64 @@
       "rating": 4.8
     },
     "rating": 4.8,
+    "review_count": 35,
     "address": "PATH, Spadina—Fort York, Toronto, Ontario, M5K 1A1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=TO%20Orthotics%20PATH%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.501Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.501Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "5165d082-cdb5-465d-99bc-1a8981848b4e",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:48.890Z"
+      },
+      {
+        "id": "84176015-3b38-49c8-a537-87a7b302a404",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.501Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:48.886Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.501Z",
+    "updated_at": "2026-10-16T16:29:48.890Z"
   },
   {
     "id": "b378e7c4-e2de-4ba8-82c6-bc166149f315",
     "business_name": "Twig Fertility",
+    "contact_person": "Twig Fertility",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (416) 808-6953",
+    "clean_phone": "14168086953",
     "email": "twigfertilitytoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2138,19 +5300,64 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "PATH Main Route, Spadina—Fort York, Toronto, Ontario, M5X 1E1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Twig%20Fertility%20PATH%20Main%20Route%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.500Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.500Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "be70ced3-3b6d-4445-88a8-77ac1b659d31",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:48.905Z"
+      },
+      {
+        "id": "dba4247f-cff2-4447-a2bc-482d7f6c25f8",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.500Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:48.902Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.500Z",
+    "updated_at": "2026-10-16T16:29:48.905Z"
   },
   {
     "id": "103fcb2c-f26b-405a-b185-096fbb15b1c2",
     "business_name": "Myodetox",
+    "contact_person": "Myodetox",
     "category": "Medical & Health Clinic",
+    "industry": "Medical & Health Clinic",
     "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
     "phone": "+1 (647) 481-8640",
+    "clean_phone": "16474818640",
     "email": "myodetoxtoronto@gmail.com",
     "website_url": null,
     "has_website": "no",
@@ -2167,11 +5374,51 @@
       "rating": 4.7
     },
     "rating": 4.7,
+    "review_count": 35,
     "address": "PATH Main Route, Spadina—Fort York, Toronto, Ontario, M5X 1E1, Canada",
     "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Myodetox%20PATH%20Main%20Route%20Toronto",
     "is_verified_real": true,
     "discovery_source": "Live OpenStreetMap (Verified Real)",
-    "status": "new",
-    "created_at": "2026-10-16T07:30:40.467Z"
+    "status": "CONTACTED",
+    "tags": [
+      "Toronto Clinic",
+      "Hot Lead"
+    ],
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "consent_status": "CONSENTED",
+    "consent_source": "Public Verified Directory",
+    "consent_date": "2026-10-16T07:30:40.467Z",
+    "custom_fields": {},
+    "internal_notes": [],
+    "timeline": [
+      {
+        "id": "5e7f19be-6757-4aac-82c1-0ae346610dbb",
+        "type": "STATUS_CHANGED",
+        "title": "Status changed to CONTACTED",
+        "description": "Previous status: NEW",
+        "timestamp": "2026-10-16T16:29:48.919Z"
+      },
+      {
+        "id": "e8ee7e5d-191d-498e-8164-73f57ec98cbe",
+        "type": "LEAD_CREATED",
+        "title": "Lead Discovered",
+        "description": "Discovered from Live OpenStreetMap (Verified Real)",
+        "timestamp": "2026-10-16T07:30:40.467Z"
+      }
+    ],
+    "last_incoming_at": null,
+    "last_outgoing_at": "2026-10-16T16:29:48.916Z",
+    "next_follow_up_at": null,
+    "created_at": "2026-10-16T07:30:40.467Z",
+    "updated_at": "2026-10-16T16:29:48.919Z"
   }
 ]

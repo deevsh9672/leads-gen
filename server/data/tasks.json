@@ -1,0 +1,23 @@
+[
+  {
+    "id": "task-cac56463",
+    "lead_id": "b9d71987-85ba-4fcd-876f-d3f9cbcb2602",
+    "lead_name": "Bathurst Lawrence Walk-In Clinic",
+    "title": "Reply to WhatsApp message",
+    "priority": "high",
+    "due_date": "2026-10-16T18:29:33.105Z",
+    "assigned_to": {
+      "id": "user-devesh",
+      "name": "Devesh Kumar",
+      "email": "deveshtesting9672@gmail.com",
+      "phone": "+91 8920608191",
+      "role": "super_admin",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80",
+      "active": true,
+      "created_at": "2026-10-16T16:29:29.703Z"
+    },
+    "completed": false,
+    "completed_at": null,
+    "created_at": "2026-10-16T16:29:33.106Z"
+  }
+]

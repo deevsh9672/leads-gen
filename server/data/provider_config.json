@@ -1,0 +1,22 @@
+{
+  "active_provider": "sandbox",
+  "test_phone_number": "+91 8920608191",
+  "wati": {
+    "endpoint_url": "https://live-server-XXXXX.wati.io",
+    "access_token": "",
+    "phone_number": "",
+    "webhook_secret": "wati_secret_token_123"
+  },
+  "meta": {
+    "waba_id": "",
+    "phone_number_id": "",
+    "access_token": "",
+    "app_secret": "",
+    "verify_token": "meta_verify_token_siteseller_2026"
+  },
+  "sandbox": {
+    "simulate_delivery_speed_ms": 800,
+    "simulate_read_receipts": true,
+    "simulate_customer_replies": false
+  }
+}

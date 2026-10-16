@@ -1,0 +1,13 @@
+[
+  {
+    "id": "exec-71b82a4b",
+    "workflow_id": "wf-reply-received",
+    "workflow_name": "On Customer Reply -> Notify & Move to REPLIED",
+    "trigger_event": "whatsapp.message_received",
+    "target_lead_id": "b9d71987-85ba-4fcd-876f-d3f9cbcb2602",
+    "target_lead_name": "Bathurst Lawrence Walk-In Clinic",
+    "status": "success",
+    "details": "Updated status to \"REPLIED\" | Created task: Reply to WhatsApp message | Added tag \"Interested\"",
+    "executed_at": "2026-10-16T16:29:33.113Z"
+  }
+]

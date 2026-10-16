@@ -1,0 +1,94 @@
+[
+  {
+    "id": "tmpl-website-demo",
+    "name": "website_demo_offer",
+    "category": "MARKETING",
+    "language": "en",
+    "status": "APPROVED",
+    "provider": "meta",
+    "header": {
+      "type": "IMAGE",
+      "preview_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80"
+    },
+    "body": "Hi {{name}}! 👋 I noticed {{company}} has great customer reviews for {{service}} in {{city}}, but does not have a modern mobile website.\n\nWe built a free, high-converting live demo website for you:\n👉 {{demo_url}}\n\nWould you like to claim this design and customize your photos/services?",
+    "variables": [
+      "name",
+      "company",
+      "service",
+      "city",
+      "demo_url"
+    ],
+    "buttons": [
+      {
+        "type": "URL",
+        "text": "View Live Demo",
+        "url": "{{demo_url}}"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "Claim Demo"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "Not Interested"
+      }
+    ],
+    "updated_at": "2026-10-16T16:11:09.775Z"
+  },
+  {
+    "id": "tmpl-clinic-outreach",
+    "name": "clinic_website_showcase",
+    "category": "MARKETING",
+    "language": "en",
+    "status": "APPROVED",
+    "provider": "wati",
+    "header": {
+      "type": "TEXT",
+      "text": "🏥 Modern Website for {{company}}"
+    },
+    "body": "Hello {{name}} team! We noticed that patients in {{city}} search daily for {{service}}, but cannot easily book online without a modern clinic site.\n\nWe prepared a 100% free live preview clinic website for {{company}}:\n👉 {{demo_url}}\n\nReply YES if you would like us to connect your domain!",
+    "variables": [
+      "name",
+      "company",
+      "city",
+      "service",
+      "demo_url"
+    ],
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "Yes, Connect Domain"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "Request Call"
+      }
+    ],
+    "updated_at": "2026-10-16T16:11:09.775Z"
+  },
+  {
+    "id": "tmpl-follow-up",
+    "name": "gentle_followup_reminder",
+    "category": "UTILITY",
+    "language": "en",
+    "status": "APPROVED",
+    "provider": "meta",
+    "header": null,
+    "body": "Hi {{name}}, just following up regarding the demo website we shared for {{company}}.\n\nDid you get a chance to review it? Let us know if you have any questions or need revisions.",
+    "variables": [
+      "name",
+      "company"
+    ],
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "Looks Great!"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "Call Me"
+      }
+    ],
+    "updated_at": "2026-10-16T16:11:09.775Z"
+  }
+]

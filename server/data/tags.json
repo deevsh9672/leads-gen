@@ -1,0 +1,72 @@
+[
+  {
+    "id": "tag-hot-lead",
+    "name": "Hot Lead",
+    "color": "#f43f5e",
+    "bg": "#ffe4e6",
+    "description": "Urgent need, high interest"
+  },
+  {
+    "id": "tag-warm-lead",
+    "name": "Warm Lead",
+    "color": "#f59e0b",
+    "bg": "#fef3c7",
+    "description": "Interested, evaluating options"
+  },
+  {
+    "id": "tag-cold-lead",
+    "name": "Cold Lead",
+    "color": "#64748b",
+    "bg": "#f1f5f9",
+    "description": "Unresponsive or low priority"
+  },
+  {
+    "id": "tag-interested",
+    "name": "Interested",
+    "color": "#10b981",
+    "bg": "#d1fae5",
+    "description": "Direct positive response"
+  },
+  {
+    "id": "tag-followup",
+    "name": "Follow-Up Due",
+    "color": "#8b5cf6",
+    "bg": "#ede9fe",
+    "description": "Follow-up scheduled or needed"
+  },
+  {
+    "id": "tag-demo-req",
+    "name": "Demo Requested",
+    "color": "#06b6d4",
+    "bg": "#cffafe",
+    "description": "Wants full custom demo or walkthrough"
+  },
+  {
+    "id": "tag-pricing-req",
+    "name": "Pricing Requested",
+    "color": "#d946ef",
+    "bg": "#fae8ff",
+    "description": "Inquired about cost & packages"
+  },
+  {
+    "id": "tag-high-priority",
+    "name": "High Priority",
+    "color": "#ef4444",
+    "bg": "#fee2e2",
+    "description": "High value or decision maker"
+  },
+  {
+    "id": "tag-toronto",
+    "name": "Toronto Clinic",
+    "color": "#0284c7",
+    "bg": "#e0f2fe",
+    "description": "Discovered healthcare clinic in Toronto"
+  },
+  {
+    "id": "tag-opt-out",
+    "name": "Do Not Contact",
+    "color": "#475569",
+    "bg": "#e2e8f0",
+    "description": "Customer requested opt-out"
+  }
+]
