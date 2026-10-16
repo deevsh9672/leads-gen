@@ -105,12 +105,12 @@ async function resolveRealValidEmail(businessName, city, candidateEmail = null) 
   // In India, 95%+ local businesses use Gmail for Google Business profiles and inquiries.
   // Standard format: [cleanname][city]@gmail.com or [cleanname]@gmail.com
   let nameSlug = lowerBiz
-    .replace(/\b(cafe|restaurant|coffee|house|lounge|bistro|dhaba|hotel|and|the|kitchen)\b/gi, '')
+    .replace(/\b(clinic|medical|health|dental|care|doctor|wellness|physio|chiro|eye|family|therapy|medicine|associates|group|centre|center|cafe|restaurant|coffee|house|lounge|bistro|dhaba|hotel|and|the|kitchen)\b/gi, '')
     .replace(/[^a-z0-9]/g, '')
     .trim();
 
   if (!nameSlug || nameSlug.length < 3) {
-    nameSlug = lowerBiz.replace(/[^a-z0-9]/g, '');
+    nameSlug = lowerBiz.replace(/[^a-z0-9]/g, '').slice(0, 15);
   }
 
   // Primary local business Gmail address

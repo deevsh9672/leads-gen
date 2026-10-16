@@ -1,8 +1,8 @@
 {
-  "target_city": "Jaipur",
-  "target_country": "india",
-  "business_niche": "cafe",
-  "max_leads_per_day": 18,
+  "target_city": "Toronto",
+  "target_country": "Canada",
+  "business_niche": "clinic",
+  "max_leads_per_day": 75,
   "discovery_source": "auto",
   "apify_api_token": "",
   "apollo_api_key": "",
