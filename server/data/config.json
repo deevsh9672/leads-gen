@@ -3,7 +3,7 @@
   "target_country": "Canada",
   "business_niche": "clinic",
   "max_leads_per_day": 75,
-  "discovery_source": "auto",
+  "discovery_source": "osm",
   "apify_api_token": "",
   "apollo_api_key": "",
   "sender_name": "Devesh Kumar ",

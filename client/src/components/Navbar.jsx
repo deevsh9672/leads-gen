@@ -8,23 +8,21 @@ import {
   Globe, 
   Send, 
   MessageSquare, 
-  Settings, 
-  MapPin, 
+  Settings,
+  MapPin,
   Briefcase,
-  Kanban
+  Radio
 } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline, isPipelineRunning, unreadCount = 0 }) {
+export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline, isPipelineRunning }) {
   const tabs = [
-    { id: 'crm', label: 'CRM Leads', icon: Users },
-    { id: 'pipeline', label: 'Sales Pipeline', icon: Kanban },
-    { id: 'inbox', label: 'Team Inbox', icon: MessageSquare, badge: unreadCount },
-    { id: 'campaigns', label: 'WhatsApp Broadcasts', icon: Send },
-    { id: 'automations', label: 'Automations', icon: Zap },
     { id: 'dashboard', label: 'Superagent Ops', icon: LayoutDashboard },
+    { id: 'prospects', label: 'Prospects Hub', icon: Users },
     { id: 'studio', label: 'AI Site Studio', icon: Globe },
     { id: 'outreach', label: 'Outreach & Logs', icon: Send },
-    { id: 'settings', label: 'WhatsApp & Settings', icon: Settings },
+    { id: 'broadcast', label: 'WhatsApp Broadcast', icon: Radio },
+    { id: 'inbox', label: 'Replies & CRM', icon: MessageSquare },
+    { id: 'settings', label: 'LeadConfig', icon: Settings },
   ];
 
   return (
@@ -33,18 +31,18 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
         <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Logo & Brand */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('crm')}>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
               <Bot className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg text-white tracking-tight">SiteSeller</span>
-                <span className="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30 uppercase tracking-wider">
-                  WATI CRM 2.0
+                <span className="bg-indigo-500/20 text-indigo-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-indigo-500/30 uppercase tracking-wider">
+                  Superagent AI
                 </span>
               </div>
-              <p className="text-xs text-slate-400 hidden sm:block">WhatsApp Marketing & Lead Management</p>
+              <p className="text-xs text-slate-400 hidden sm:block">Automated Web Agency Pipeline</p>
             </div>
           </div>
 
@@ -52,12 +50,12 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
           <div className="hidden xl:flex items-center gap-3 bg-slate-800/60 border border-slate-700/60 px-3.5 py-1.5 rounded-full text-xs text-slate-300">
             <span className="flex items-center gap-1 text-indigo-400 font-semibold">
               <MapPin className="w-3.5 h-3.5" />
-              {config?.target_city || 'Toronto'}, {config?.target_country || 'Canada'}
+              {config?.target_city || 'Austin'}, {config?.target_country || 'USA'}
             </span>
             <span className="text-slate-600">•</span>
             <span className="flex items-center gap-1 text-purple-400 font-semibold">
               <Briefcase className="w-3.5 h-3.5" />
-              {config?.business_niche || 'clinic'}
+              {config?.business_niche || 'Plumbers'}
             </span>
           </div>
 
@@ -67,7 +65,7 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
               href={`https://wa.me/${(config?.sender_whatsapp || '918920608191').replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              title="Connected WhatsApp Line (+91 8920608191)"
+              title="WhatsApp Agency Line Connected (+91 8920608191)"
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600/20 hover:bg-emerald-600 border border-emerald-500/30 text-emerald-400 hover:text-white transition shadow-sm"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -91,7 +89,7 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-1 sm:space-x-3 overflow-x-auto py-2 border-t border-slate-800/60 no-scrollbar">
+        <div className="flex space-x-1 sm:space-x-4 overflow-x-auto py-2 border-t border-slate-800/60 no-scrollbar">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.id;
@@ -99,19 +97,14 @@ export default function Navbar({ activeTab, setActiveTab, config, onRunPipeline,
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                   active
                     ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
+                <Icon className="w-4 h-4" />
                 <span>{tab.label}</span>
-                {tab.badge > 0 && (
-                  <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full ml-1">
-                    {tab.badge}
-                  </span>
-                )}
               </button>
             );
           })}

@@ -1,0 +1,317 @@
+[
+  {
+    "id": "e17accdb-a7ef-453a-99e6-a8784cbe7f86",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "messages": [
+                  {
+                    "from": "14165558888",
+                    "id": "wamid.INBOUND_STOP_TEST",
+                    "timestamp": "1792430679",
+                    "text": {
+                      "body": "STOP"
+                    },
+                    "type": "text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:24:39.445Z",
+    "created_at": "2026-10-19T17:24:39.447Z"
+  },
+  {
+    "id": "0d8a425d-8766-4d5b-8361-ce44a0299d05",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "read",
+                    "timestamp": "1792430679",
+                    "recipient_id": "14168883843"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:24:39.437Z",
+    "created_at": "2026-10-19T17:24:39.438Z"
+  },
+  {
+    "id": "5842c3ea-1c5f-42b2-a8f6-89c0cffff80a",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "delivered",
+                    "timestamp": "1792430679",
+                    "recipient_id": "14168883843"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:24:39.431Z",
+    "created_at": "2026-10-19T17:24:39.432Z"
+  },
+  {
+    "id": "39092889-ac7b-4a85-8bee-79e13f23ceeb",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "messages": [
+                  {
+                    "from": "14165558888",
+                    "id": "wamid.INBOUND_STOP_TEST",
+                    "timestamp": "1792430633",
+                    "text": {
+                      "body": "STOP"
+                    },
+                    "type": "text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:23:53.677Z",
+    "created_at": "2026-10-19T17:23:53.678Z"
+  },
+  {
+    "id": "1b70be04-938e-4291-b421-bdad2b66431f",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "read",
+                    "timestamp": "1792430633",
+                    "recipient_id": "14165550102"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:23:53.671Z",
+    "created_at": "2026-10-19T17:23:53.672Z"
+  },
+  {
+    "id": "c45c50ea-79fc-410d-91c2-578df20513da",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "delivered",
+                    "timestamp": "1792430633",
+                    "recipient_id": "14165550102"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:23:53.664Z",
+    "created_at": "2026-10-19T17:23:53.665Z"
+  },
+  {
+    "id": "987fb5dc-fee9-4521-a43e-01cd281346d3",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "messages": [
+                  {
+                    "from": "14165558888",
+                    "id": "wamid.INBOUND_STOP_TEST",
+                    "timestamp": "1792430416",
+                    "text": {
+                      "body": "STOP"
+                    },
+                    "type": "text"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:20:16.225Z",
+    "created_at": "2026-10-19T17:20:16.226Z"
+  },
+  {
+    "id": "33293b03-7164-4988-9de5-7396bab483c9",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "read",
+                    "timestamp": "1792430416",
+                    "recipient_id": "14165550102"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:20:16.217Z",
+    "created_at": "2026-10-19T17:20:16.219Z"
+  },
+  {
+    "id": "0d4a65b3-2596-4b7d-a74d-df631004d366",
+    "event_type": "whatsapp_webhook",
+    "raw_payload": {
+      "object": "whatsapp_business_account",
+      "entry": [
+        {
+          "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+          "changes": [
+            {
+              "field": "messages",
+              "value": {
+                "messaging_product": "whatsapp",
+                "metadata": {
+                  "display_phone_number": "15550199",
+                  "phone_number_id": "123456789"
+                },
+                "statuses": [
+                  {
+                    "id": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+                    "status": "delivered",
+                    "timestamp": "1792430416",
+                    "recipient_id": "14165550102"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "received_at": "2026-10-19T17:20:16.211Z",
+    "created_at": "2026-10-19T17:20:16.212Z"
+  }
+]

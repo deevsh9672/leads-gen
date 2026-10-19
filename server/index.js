@@ -1,10 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const http = require('http');
 const path = require('path');
-const fs = require('fs');
-const { Server } = require('socket.io');
-
 const db = require('./db');
 const { discoverLeads, resolveRealValidEmail } = require('./services/discover');
 const { scoreProspect } = require('./services/score');
@@ -14,53 +10,28 @@ const { sendDemoOutreach, sendWhatsAppOutreach } = require('./services/outreach'
 const { recordOutreach, getOutreachLogs } = require('./services/logger');
 const { handleIncomingReply } = require('./services/replies');
 const { runAutonomousPipeline, getPipelineStatus } = require('./services/pipeline');
-
-// New WhatsApp Marketing, CRM & Automation Services
-const whatsappProvider = require('./services/whatsappProvider');
-const campaignEngine = require('./services/campaignEngine');
-const inboxService = require('./services/inboxService');
-const automationEngine = require('./services/automationEngine');
-const aiCrmAssistant = require('./services/aiCrmAssistant');
-const complianceService = require('./services/complianceService');
+const {
+  normalizePhoneNumber,
+  validateAndFormatContact,
+  getWhatsAppCredentials,
+  fetchWhatsAppTemplates,
+  executeBroadcastCampaign,
+  pauseBroadcastCampaign,
+  verifyWebhookSignature,
+  processWebhookEvent
+} = require('./services/whatsappBroadcaster');
 
 const app = express();
-const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
-
-// Socket.IO for real-time CRM and Inbox updates
-const io = new Server(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-  }
-});
-
-io.on('connection', (socket) => {
-  console.log(`[Socket.IO] Client connected: ${socket.id}`);
-  socket.on('disconnect', () => {
-    console.log(`[Socket.IO] Client disconnected: ${socket.id}`);
-  });
-});
-
-// Broadcast helper for real-time frontend reactivity
-function emitRealtimeEvent(event, data) {
-  io.emit(event, data);
-}
 
 app.set('trust proxy', 1);
 
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Hub-Signature-256']
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-// Capture raw body for webhook verification if needed
-app.use(express.json({
-  verify: (req, res, buf) => {
-    req.rawBody = buf;
-  }
-}));
+app.use(express.json());
 
 function getAppBaseUrl(req) {
   if (process.env.RENDER_EXTERNAL_URL) return process.env.RENDER_EXTERNAL_URL.replace(/\/+$/, '');
@@ -69,616 +40,92 @@ function getAppBaseUrl(req) {
   return `${proto}://${req.get('host')}`;
 }
 
+// Initialize seed data if database is empty so user has immediate rich data
+function ensureSeedData() {
+  const prospects = db.getProspects();
+  if (prospects.length === 0) {
+    console.log('[Seed] Populating initial demo prospects...');
+    const seedData = [
+      {
+        business_name: 'Apex Rapid Plumbers',
+        category: 'Plumbing',
+        city: 'Austin',
+        phone: '(512) 555-0199',
+        email: 'service@apexrapidplumbing.com',
+        website_url: null,
+        has_website: 'no',
+        review_count: 68,
+        rating: 4.9,
+        address: '1201 S Congress Ave, Austin'
+      },
+      {
+        business_name: 'Heritage Oaks Dental Studio',
+        category: 'Dental Clinic',
+        city: 'Austin',
+        phone: '(512) 555-0233',
+        email: 'appointments@heritageoaksdental.com',
+        website_url: null,
+        has_website: 'no',
+        review_count: 135,
+        rating: 4.9,
+        address: '1114 Barton Springs Rd, Austin'
+      },
+      {
+        business_name: 'Sweet Crumb Artisan Bakery',
+        category: 'Bakery',
+        city: 'Austin',
+        phone: '(512) 555-0311',
+        email: 'hello@sweetcrumbartisanbakery.com',
+        website_url: null,
+        has_website: 'no',
+        review_count: 92,
+        rating: 4.8,
+        address: '1402 S 1st St, Austin'
+      },
+      {
+        business_name: 'Summit Shield Roofing',
+        category: 'Roofing',
+        city: 'Austin',
+        phone: '(512) 555-0422',
+        email: 'contact@summitshieldroofing.com',
+        website_url: null,
+        has_website: 'no',
+        review_count: 84,
+        rating: 4.9,
+        address: '3500 Research Blvd, Austin'
+      }
+    ];
+
+    for (const item of seedData) {
+      const scored = scoreProspect(item);
+      db.addProspect(scored);
+    }
+  }
+}
+ensureSeedData();
+
 // Health Check
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    app: 'SiteSeller WhatsApp Marketing & CRM Platform',
-    version: '2.0.0',
-    timestamp: new Date().toISOString()
-  });
+  res.json({ status: 'ok', app: 'SiteSeller Agent', timestamp: new Date().toISOString() });
 });
 
 // Config Endpoints
-app.get('/api/config', (req, res) => res.json(db.getConfig()));
-app.put('/api/config', (req, res) => res.json(db.updateConfig(req.body)));
-
-// Users & Team Endpoints
-app.get('/api/users', (req, res) => res.json(db.getUsers()));
-app.post('/api/users', (req, res) => res.status(201).json(db.addUser(req.body)));
-
-// -------------------------------------------------------------
-// CRM LEADS MANAGEMENT API
-// -------------------------------------------------------------
-app.get('/api/crm/leads', (req, res) => {
-  try {
-    const list = db.getLeads(req.query);
-    res.json(list);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+app.get('/api/config', (req, res) => {
+  res.json(db.getConfig());
 });
 
-app.get('/api/crm/leads/:id', (req, res) => {
-  const lead = db.getLeadById(req.params.id);
-  if (!lead) return res.status(404).json({ error: 'Lead not found' });
-  res.json(lead);
-});
-
-app.post('/api/crm/leads', (req, res) => {
-  try {
-    const scored = scoreProspect(req.body);
-    const created = db.addLead(scored);
-    emitRealtimeEvent('lead:created', created);
-    automationEngine.trigger('lead.created', { lead: created });
-    res.status(201).json(created);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.put('/api/crm/leads/:id', (req, res) => {
-  try {
-    const prevLead = db.getLeadById(req.params.id);
-    const updated = db.updateLead(req.params.id, req.body);
-    if (!updated) return res.status(404).json({ error: 'Lead not found' });
-
-    emitRealtimeEvent('lead:updated', updated);
-
-    // Trigger workflow if status changed
-    if (prevLead && req.body.status && req.body.status !== prevLead.status) {
-      automationEngine.trigger('lead.status_changed', { lead: updated, prev_status: prevLead.status, new_status: req.body.status });
-    }
-
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.delete('/api/crm/leads/:id', (req, res) => {
-  const success = db.deleteLead(req.params.id);
-  emitRealtimeEvent('lead:deleted', { id: req.params.id });
-  res.json({ success });
-});
-
-// Bulk Lead Operations (Bulk Tag, Bulk Status, Bulk Assign, Bulk Delete)
-app.post('/api/crm/leads/bulk-update', (req, res) => {
-  try {
-    const { lead_ids, status, assigned_to_id, add_tags, remove_tags } = req.body;
-    if (!Array.isArray(lead_ids) || lead_ids.length === 0) {
-      return res.status(400).json({ error: 'lead_ids array is required' });
-    }
-
-    const assignedUser = assigned_to_id ? db.getUserById(assigned_to_id) : null;
-    const updatedLeads = [];
-
-    for (const id of lead_ids) {
-      const lead = db.getLeadById(id);
-      if (lead) {
-        let tags = lead.tags || [];
-        if (Array.isArray(add_tags)) {
-          for (const t of add_tags) {
-            if (!tags.includes(t)) tags.push(t);
-          }
-        }
-        if (Array.isArray(remove_tags)) {
-          tags = tags.filter(t => !remove_tags.includes(t));
-        }
-
-        const updates = { tags };
-        if (status) updates.status = status;
-        if (assignedUser) updates.assigned_to = assignedUser;
-
-        const u = db.updateLead(id, updates);
-        if (u) updatedLeads.push(u);
-      }
-    }
-
-    emitRealtimeEvent('leads:bulk_updated', updatedLeads);
-    db.addAuditLog('LEADS_BULK_UPDATED', `Bulk updated ${updatedLeads.length} leads`, { count: updatedLeads.length });
-    res.json({ success: true, updated_count: updatedLeads.length, leads: updatedLeads });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// CSV / Excel Lead Import with Column Mapping & Deduplication
-app.post('/api/crm/leads/import', (req, res) => {
-  try {
-    const { leads: rawRows, mapping = {}, default_tags = [] } = req.body;
-    if (!Array.isArray(rawRows) || rawRows.length === 0) {
-      return res.status(400).json({ error: 'Rows array is required' });
-    }
-
-    const existingLeads = db.getLeads();
-    const importedLeads = [];
-    let duplicatesSkipped = 0;
-
-    for (const row of rawRows) {
-      const name = row[mapping.business_name || 'Business Name'] || row.name || row.business_name || 'Imported Lead';
-      const phone = row[mapping.phone || 'Phone'] || row.phone || '';
-      const email = row[mapping.email || 'Email'] || row.email || '';
-      const city = row[mapping.city || 'City'] || row.city || 'Toronto';
-      const category = row[mapping.category || 'Category'] || row.category || 'General Service';
-      const address = row[mapping.address || 'Address'] || row.address || `${city}, Center`;
-
-      const cleanDigits = phone.replace(/[^0-9]/g, '');
-      const isDuplicate = existingLeads.some(l => 
-        (cleanDigits && l.clean_phone && l.clean_phone.endsWith(cleanDigits)) ||
-        (email && l.email && l.email.toLowerCase() === email.toLowerCase())
-      );
-
-      if (isDuplicate) {
-        duplicatesSkipped++;
-        continue;
-      }
-
-      const newLead = db.addLead({
-        business_name: name,
-        contact_person: name,
-        phone,
-        email,
-        city,
-        category,
-        address,
-        tags: default_tags.length > 0 ? default_tags : ['Imported Lead'],
-        status: 'NEW',
-        discovery_source: 'CSV Import'
-      });
-
-      importedLeads.push(newLead);
-      automationEngine.trigger('lead.imported', { lead: newLead });
-    }
-
-    db.addAuditLog('LEADS_IMPORTED', `Imported ${importedLeads.length} leads (${duplicatesSkipped} duplicates skipped)`, { imported: importedLeads.length, duplicates: duplicatesSkipped });
-    res.json({
-      success: true,
-      imported_count: importedLeads.length,
-      duplicates_skipped: duplicatesSkipped,
-      leads: importedLeads
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Tags & Segments
-app.get('/api/crm/tags', (req, res) => res.json(db.getTags()));
-app.post('/api/crm/tags', (req, res) => res.status(201).json(db.addTag(req.body)));
-app.delete('/api/crm/tags/:id', (req, res) => res.json({ success: db.deleteTag(req.params.id) }));
-
-app.get('/api/crm/segments', (req, res) => res.json(db.getSegments()));
-app.post('/api/crm/segments', (req, res) => res.status(201).json(db.addSegment(req.body)));
-
-// -------------------------------------------------------------
-// WHATSAPP BROADCAST CAMPAIGNS API
-// -------------------------------------------------------------
-app.get('/api/campaigns', (req, res) => res.json(db.getCampaigns()));
-app.get('/api/campaigns/:id', (req, res) => {
-  const c = db.getCampaignById(req.params.id);
-  if (!c) return res.status(404).json({ error: 'Campaign not found' });
-  res.json(c);
-});
-app.post('/api/campaigns', (req, res) => res.status(201).json(db.saveCampaign(req.body)));
-app.put('/api/campaigns/:id', (req, res) => {
-  const updated = db.updateCampaign(req.params.id, req.body);
+app.put('/api/config', (req, res) => {
+  const updated = db.updateConfig(req.body);
   res.json(updated);
 });
 
-app.post('/api/campaigns/:id/launch', async (req, res) => {
-  try {
-    const result = await campaignEngine.launchCampaign(req.params.id);
-    emitRealtimeEvent('campaign:launched', result);
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/campaigns/:id/pause', (req, res) => {
-  const result = campaignEngine.pauseCampaign(req.params.id);
-  emitRealtimeEvent('campaign:paused', { id: req.params.id });
-  res.json(result);
-});
-
-app.post('/api/campaigns/:id/resume', (req, res) => {
-  const result = campaignEngine.resumeCampaign(req.params.id);
-  emitRealtimeEvent('campaign:resumed', { id: req.params.id });
-  res.json(result);
-});
-
-app.post('/api/campaigns/:id/cancel', (req, res) => {
-  const result = campaignEngine.cancelCampaign(req.params.id);
-  emitRealtimeEvent('campaign:cancelled', { id: req.params.id });
-  res.json(result);
-});
-
-app.post('/api/campaigns/test-send', async (req, res) => {
-  try {
-    const { test_phone, template_id, sample_lead } = req.body;
-    if (!test_phone) return res.status(400).json({ error: 'test_phone is required' });
-    const result = await campaignEngine.sendTestMessage(test_phone, template_id, sample_lead);
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.get('/api/campaigns/:id/recipients', (req, res) => {
-  res.json(db.getCampaignRecipients(req.params.id));
-});
-
-// -------------------------------------------------------------
-// WATI-STYLE SHARED TEAM INBOX API
-// -------------------------------------------------------------
-app.get('/api/inbox/conversations', (req, res) => {
-  try {
-    const list = inboxService.getConversations(req.query);
-    res.json(list);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.get('/api/inbox/conversations/:id/messages', (req, res) => {
-  try {
-    const data = inboxService.getConversationMessages(req.params.id);
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/inbox/conversations/:id/messages', async (req, res) => {
-  try {
-    const result = await inboxService.sendMessage({
-      conversationId: req.params.id,
-      text: req.body.text,
-      agentName: req.body.agentName || 'Devesh Kumar',
-      templateName: req.body.templateName || null,
-      mediaUrl: req.body.mediaUrl || null
-    });
-    if (result.success) {
-      emitRealtimeEvent('inbox:message_sent', { conversationId: req.params.id, message: result.message });
-    }
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/inbox/conversations/:id/notes', (req, res) => {
-  try {
-    const note = inboxService.addInternalNote(req.params.id, req.body.text, req.body.author);
-    emitRealtimeEvent('inbox:note_added', { conversationId: req.params.id, note });
-    res.json({ success: true, note });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.put('/api/inbox/conversations/:id/assign', (req, res) => {
-  try {
-    const updated = inboxService.assignConversation(req.params.id, req.body.user_id);
-    emitRealtimeEvent('inbox:assigned', updated);
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.put('/api/inbox/conversations/:id/status', (req, res) => {
-  try {
-    const updated = inboxService.updateConversationStatus(req.params.id, req.body.status);
-    emitRealtimeEvent('inbox:status_changed', updated);
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Simulate Incoming Message for zero-friction testing & demo
-app.post('/api/inbox/simulate-incoming', async (req, res) => {
-  try {
-    const { phone, text, senderName } = req.body;
-    if (!phone || !text) return res.status(400).json({ error: 'phone and text are required' });
-
-    const result = await inboxService.handleIncomingMessage({
-      fromPhone: phone,
-      text,
-      senderName: senderName || 'Customer',
-      externalId: `sim_${Date.now()}`
-    });
-
-    emitRealtimeEvent('inbox:message_received', result);
-    automationEngine.trigger('whatsapp.message_received', { phone, text, lead_id: result.lead_id });
-
-    res.json({ success: true, result });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// -------------------------------------------------------------
-// WHATSAPP PROVIDER SETTINGS & WEBHOOKS
-// -------------------------------------------------------------
-app.get('/api/providers/config', (req, res) => res.json(db.getProviderConfig()));
-app.put('/api/providers/config', (req, res) => res.json(db.updateProviderConfig(req.body)));
-
-app.post('/api/providers/test-connection', async (req, res) => {
-  try {
-    const test = await whatsappProvider.testConnection();
-    res.json(test);
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.get('/api/providers/templates', async (req, res) => {
-  try {
-    const tmpls = await whatsappProvider.fetchTemplates();
-    res.json(tmpls);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/providers/templates/sync', async (req, res) => {
-  try {
-    const synced = await whatsappProvider.fetchTemplates();
-    res.json({ success: true, count: synced.length, templates: synced });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Meta Webhook Verification (Hub Challenge)
-app.get('/api/webhooks/whatsapp', (req, res) => {
-  const config = db.getProviderConfig();
-  const verifyToken = config.meta?.verify_token || 'meta_verify_token_siteseller_2026';
-
-  const mode = req.query['hub.mode'];
-  const token = req.query['hub.verify_token'];
-  const challenge = req.query['hub.challenge'];
-
-  if (mode && token) {
-    if (mode === 'subscribe' && token === verifyToken) {
-      console.log('[Webhook: Meta] Webhook verified successfully!');
-      return res.status(200).send(challenge);
-    } else {
-      return res.sendStatus(403);
-    }
-  }
-  res.sendStatus(400);
-});
-
-// Meta Webhook Event Receiver (Incoming Messages & Status updates)
-app.post('/api/webhooks/whatsapp', async (req, res) => {
-  try {
-    const body = req.body;
-    if (body.object === 'whatsapp_business_account') {
-      for (const entry of body.entry || []) {
-        for (const change of entry.changes || []) {
-          const value = change.value;
-
-          // Process status callbacks (sent, delivered, read, failed)
-          if (value.statuses) {
-            for (const statusObj of value.statuses) {
-              const msgId = statusObj.id;
-              const status = statusObj.status; // sent, delivered, read, failed
-              db.updateMessageStatus(null, status, msgId);
-              emitRealtimeEvent('whatsapp:status_update', { messageId: msgId, status });
-            }
-          }
-
-          // Process incoming messages
-          if (value.messages) {
-            for (const msg of value.messages) {
-              const fromPhone = msg.from;
-              const text = msg.text?.body || msg.button?.text || '';
-              const contact = value.contacts?.find(c => c.wa_id === fromPhone);
-              const senderName = contact?.profile?.name || 'WhatsApp Customer';
-
-              const ingested = await inboxService.handleIncomingMessage({
-                fromPhone,
-                text,
-                senderName,
-                externalId: msg.id,
-                timestamp: new Date(Number(msg.timestamp) * 1000).toISOString()
-              });
-
-              emitRealtimeEvent('inbox:message_received', ingested);
-              automationEngine.trigger('whatsapp.message_received', { phone: fromPhone, text, lead_id: ingested.lead_id });
-            }
-          }
-        }
-      }
-      return res.status(200).send('EVENT_RECEIVED');
-    }
-    res.sendStatus(404);
-  } catch (err) {
-    console.error('[Webhook: Meta Error]:', err);
-    res.sendStatus(500);
-  }
-});
-
-// WATI Webhook Event Receiver
-app.post('/api/webhooks/wati', async (req, res) => {
-  try {
-    const payload = req.body;
-    const phone = payload.waId || payload.senderPhone;
-    const text = payload.text || payload.messageText || '';
-    const eventType = payload.eventType || payload.type;
-
-    if (phone && text) {
-      const ingested = await inboxService.handleIncomingMessage({
-        fromPhone: phone,
-        text,
-        senderName: payload.senderName || 'WATI Customer',
-        externalId: payload.id || `wati_${Date.now()}`
-      });
-      emitRealtimeEvent('inbox:message_received', ingested);
-      automationEngine.trigger('whatsapp.message_received', { phone, text, lead_id: ingested.lead_id });
-    }
-
-    res.status(200).json({ status: 'ok' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Compliance & Suppression Endpoints
-app.get('/api/compliance/suppression', (req, res) => res.json(db.getSuppressionList()));
-app.post('/api/compliance/suppression', (req, res) => {
-  const { phone, reason } = req.body;
-  const rec = complianceService.processOptOut(phone, reason || 'Manual suppression add');
-  res.json(rec);
-});
-app.delete('/api/compliance/suppression/:phone', (req, res) => {
-  const success = db.removeFromSuppressionList(req.params.phone);
-  res.json({ success });
-});
-
-// -------------------------------------------------------------
-// AUTOMATIONS & WORKFLOWS API
-// -------------------------------------------------------------
-app.get('/api/workflows', (req, res) => res.json(db.getWorkflows()));
-app.post('/api/workflows', (req, res) => res.status(201).json(db.saveWorkflow(req.body)));
-app.put('/api/workflows/:id', (req, res) => res.json(db.saveWorkflow({ id: req.params.id, ...req.body })));
-app.get('/api/workflows/executions', (req, res) => res.json(db.getWorkflowExecutions()));
-app.post('/api/workflows/:id/trigger-test', async (req, res) => {
-  try {
-    const wf = db.getWorkflows().find(w => w.id === req.params.id);
-    if (!wf) return res.status(404).json({ error: 'Workflow not found' });
-    const dummyLead = db.getLeads()[0] || { id: 'test-lead', business_name: 'Sample Clinic' };
-    const logs = await automationEngine._executeWorkflowActions(wf, { lead: dummyLead });
-    res.json({ success: true, actions_executed: logs });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// -------------------------------------------------------------
-// FOLLOW-UP TASKS API
-// -------------------------------------------------------------
-app.get('/api/crm/tasks', (req, res) => res.json(db.getTasks(req.query)));
-app.post('/api/crm/tasks', (req, res) => res.status(201).json(db.addTask(req.body)));
-app.put('/api/crm/tasks/:id', (req, res) => res.json(db.updateTask(req.params.id, req.body)));
-
-// -------------------------------------------------------------
-// AI CRM ASSISTANT API
-// -------------------------------------------------------------
-app.post('/api/ai/summarize', async (req, res) => {
-  try {
-    const { messages, lead } = req.body;
-    const summary = await aiCrmAssistant.summarizeConversation(messages, lead);
-    res.json(summary);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/ai/classify', async (req, res) => {
-  try {
-    const { text } = req.body;
-    const classification = await aiCrmAssistant.classifyIntent(text);
-    res.json(classification);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/ai/suggest-reply', async (req, res) => {
-  try {
-    const { conversation, lead } = req.body;
-    const suggestions = await aiCrmAssistant.suggestReplies(conversation, lead);
-    res.json(suggestions);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post('/api/ai/recommend-action', async (req, res) => {
-  try {
-    const { lead } = req.body;
-    const recommendation = await aiCrmAssistant.recommendNextAction(lead);
-    res.json(recommendation);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// -------------------------------------------------------------
-// EXECUTIVE ANALYTICS & AUDIT LOGS
-// -------------------------------------------------------------
-app.get('/api/analytics/dashboard', (req, res) => {
-  try {
-    const leads = db.getLeads();
-    const campaigns = db.getCampaigns();
-    const convs = db.getConversations();
-    const tasks = db.getTasks();
-
-    // Calculate real numbers from live database
-    const totalLeads = leads.length;
-    const hotLeads = leads.filter(l => l.tags && l.tags.includes('Hot Lead')).length;
-    const qualifiedLeads = leads.filter(l => l.status === 'QUALIFIED').length;
-    const contactedLeads = leads.filter(l => l.status === 'CONTACTED').length;
-    const repliedLeads = leads.filter(l => l.status === 'REPLIED' || l.status === 'INTERESTED').length;
-    const wonClients = leads.filter(l => l.status === 'WON').length;
-    const openConversations = convs.filter(c => c.status === 'OPEN').length;
-    const unreadConversations = convs.filter(c => c.unread_count > 0).length;
-    const pendingTasks = tasks.filter(t => !t.completed).length;
-
-    // Aggregate campaign metrics
-    let totalBroadcastsSent = 0;
-    let totalDelivered = 0;
-    let totalRead = 0;
-    let totalFailed = 0;
-
-    for (const c of campaigns) {
-      if (c.stats) {
-        totalBroadcastsSent += (c.stats.sent || 0) + (c.stats.delivered || 0);
-        totalDelivered += c.stats.delivered || 0;
-        totalRead += c.stats.read || 0;
-        totalFailed += c.stats.failed || 0;
-      }
-    }
-
-    const deliveryRate = totalBroadcastsSent > 0 ? Math.round((totalDelivered / totalBroadcastsSent) * 100) : 98;
-    const replyRate = contactedLeads > 0 ? Math.round((repliedLeads / contactedLeads) * 100) : 18;
-
-    res.json({
-      total_leads: totalLeads,
-      hot_leads: hotLeads,
-      qualified_leads: qualifiedLeads,
-      contacted_leads: contactedLeads,
-      replied_leads: repliedLeads,
-      won_clients: wonClients,
-      open_conversations: openConversations,
-      unread_conversations: unreadConversations,
-      pending_tasks: pendingTasks,
-      broadcasts_sent: totalBroadcastsSent,
-      delivery_rate: deliveryRate,
-      reply_rate: replyRate,
-      active_campaigns_count: campaigns.filter(c => c.status === 'IN_PROGRESS').length
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.get('/api/audit-logs', (req, res) => res.json(db.getAuditLogs()));
-
-// -------------------------------------------------------------
-// PRESERVED PROSPECTS & SKILLS API (100% Backward Compatibility)
-// -------------------------------------------------------------
+// Prospects Endpoints
 app.get('/api/prospects', (req, res) => {
   const { status, category, search } = req.query;
   let list = db.getProspects();
 
   if (status && status !== 'all') {
-    list = list.filter(p => p.status.toLowerCase() === status.toLowerCase());
+    list = list.filter(p => p.status === status);
   }
   if (category && category !== 'all') {
     list = list.filter(p => p.category.toLowerCase().includes(category.toLowerCase()));
@@ -691,6 +138,7 @@ app.get('/api/prospects', (req, res) => {
       p.category.toLowerCase().includes(q)
     );
   }
+
   res.json(list);
 });
 
@@ -711,6 +159,7 @@ app.delete('/api/prospects/:id', (req, res) => {
   res.json({ success });
 });
 
+// Live Email DNS MX Verification Endpoint
 app.post('/api/leads/verify-email', async (req, res) => {
   try {
     const { email, business_name, city } = req.body;
@@ -721,16 +170,34 @@ app.post('/api/leads/verify-email', async (req, res) => {
   }
 });
 
+// Export Leads as CSV (Excel / Google Sheets compatible)
 app.get('/api/leads/export/csv', (req, res) => {
   try {
-    const list = db.getLeads();
-    const headers = ['Lead ID', 'Business Name', 'Category', 'City', 'Phone', 'Email', 'Lead Score', 'Rating', 'Address', 'Status', 'Tags', 'Created At'];
+    const list = db.getProspects();
+    const headers = [
+      'Business Name',
+      'Category',
+      'City',
+      'Phone',
+      'Email',
+      'Lead Score',
+      'Rating',
+      'Reviews Count',
+      'Address',
+      'Google Maps URL',
+      'Has Website',
+      'Status',
+      'Discovery Source',
+      'Created At'
+    ];
+
     const escapeCsv = (str) => {
       if (str === null || str === undefined) return '""';
-      return `"${String(str).replace(/"/g, '""')}"`;
+      const s = String(str).replace(/"/g, '""');
+      return `"${s}"`;
     };
+
     const rows = list.map(p => [
-      escapeCsv(p.id),
       escapeCsv(p.business_name),
       escapeCsv(p.category),
       escapeCsv(p.city),
@@ -738,26 +205,32 @@ app.get('/api/leads/export/csv', (req, res) => {
       escapeCsv(p.email),
       escapeCsv(p.lead_score),
       escapeCsv(p.rating),
+      escapeCsv(p.review_count),
       escapeCsv(p.address),
+      escapeCsv(p.google_maps_url),
+      escapeCsv(p.has_website),
       escapeCsv(p.status),
-      escapeCsv((p.tags || []).join('; ')),
+      escapeCsv(p.discovery_source),
       escapeCsv(p.created_at)
     ].join(','));
 
+    // UTF-8 BOM for clean Excel display of phone numbers & regional names
     const csvContent = '\uFEFF' + [headers.map(h => `"${h}"`).join(','), ...rows].join('\r\n');
+
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Content-Disposition', `attachment; filename="crm_leads_${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.setHeader('Content-Disposition', `attachment; filename="leads_export_${new Date().toISOString().slice(0, 10)}.csv"`);
     res.status(200).send(csvContent);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
+// Export Leads as JSON
 app.get('/api/leads/export/json', (req, res) => {
   try {
-    const list = db.getLeads();
+    const list = db.getProspects();
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.setHeader('Content-Disposition', `attachment; filename="crm_leads_${new Date().toISOString().slice(0, 10)}.json"`);
+    res.setHeader('Content-Disposition', `attachment; filename="leads_export_${new Date().toISOString().slice(0, 10)}.json"`);
     res.status(200).send(JSON.stringify(list, null, 2));
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -795,7 +268,7 @@ app.post('/api/skills/generate/:id', async (req, res) => {
   }
 });
 
-// SKILL 4: HOST
+// SKILL 4: HOST (Get/publish demo site)
 app.post('/api/skills/host/:id', async (req, res) => {
   try {
     const baseUrl = getAppBaseUrl(req);
@@ -827,6 +300,7 @@ app.get('/demos/:siteId', (req, res) => {
   res.send(site.html_content);
 });
 
+// Get site by ID or prospect ID
 app.get('/api/sites/prospect/:prospectId', (req, res) => {
   const site = db.getSiteByProspectId(req.params.prospectId);
   if (!site) return res.status(404).json({ error: 'No site generated for this prospect yet' });
@@ -855,6 +329,7 @@ app.post('/api/skills/outreach/:id', async (req, res) => {
   }
 });
 
+// SKILL 5 (WhatsApp): DIRECT WHATSAPP OUTREACH
 app.post('/api/skills/outreach/whatsapp/:id', async (req, res) => {
   try {
     const baseUrl = getAppBaseUrl(req);
@@ -869,15 +344,18 @@ app.post('/api/skills/outreach/whatsapp/:id', async (req, res) => {
   }
 });
 
+// SKILL 5 (Multi-Channel): BOTH EMAIL & WHATSAPP SIMULTANEOUS OUTREACH
 app.post('/api/skills/outreach/both/:id', async (req, res) => {
   try {
     const baseUrl = getAppBaseUrl(req);
+    // Send email outreach
     const emailRes = await sendDemoOutreach(req.params.id, {
       baseUrl,
       subject: req.body.subject,
       body: req.body.body,
       email: req.body.email
     });
+    // Send WhatsApp outreach
     const waRes = await sendWhatsAppOutreach(req.params.id, {
       baseUrl,
       message: req.body.waMessage || req.body.message,
@@ -896,8 +374,11 @@ app.post('/api/skills/outreach/both/:id', async (req, res) => {
   }
 });
 
-app.get('/api/logs', (req, res) => res.json(getOutreachLogs()));
+app.get('/api/logs', (req, res) => {
+  res.json(getOutreachLogs());
+});
 
+// SKILL 7: REPLY HANDLING & SIMULATION
 app.post('/api/skills/replies/simulate', (req, res) => {
   try {
     const { logId, replyText } = req.body;
@@ -911,14 +392,359 @@ app.post('/api/skills/replies/simulate', (req, res) => {
   }
 });
 
+// AUTONOMOUS SUPERAGENT PIPELINE
 app.post('/api/pipeline/run', (req, res) => {
   const baseUrl = getAppBaseUrl(req);
+  // Run asynchronously so frontend receives instant kickoff
   runAutonomousPipeline({ ...req.body, baseUrl });
   res.json({ message: 'Pipeline cycle launched', status: getPipelineStatus() });
 });
 
-app.get('/api/pipeline/status', (req, res) => res.json(getPipelineStatus()));
+app.get('/api/pipeline/status', (req, res) => {
+  res.json(getPipelineStatus());
+});
 
+// ==========================================
+// WHATSAPP BROADCASTING ROUTES
+// ==========================================
+
+// Get API Connection & Configuration Status
+app.get('/api/whatsapp/broadcast/status', (req, res) => {
+  const creds = getWhatsAppCredentials();
+  const baseUrl = getAppBaseUrl(req);
+  res.json({
+    configured: creds.isConfigured,
+    phone_number_id: creds.phoneNumberId || null,
+    business_account_id: creds.businessAccountId || null,
+    api_version: creds.apiVersion,
+    webhook_url: `${baseUrl}/api/whatsapp/webhook`,
+    webhook_verify_token: creds.webhookVerifyToken
+  });
+});
+
+// Get Templates
+app.get('/api/whatsapp/broadcast/templates', async (req, res) => {
+  try {
+    const templates = await fetchWhatsAppTemplates();
+    res.json(templates);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Contacts CRUD
+app.get('/api/whatsapp/broadcast/contacts', (req, res) => {
+  const { search, consent, category } = req.query;
+  let list = db.getWhatsAppContacts();
+
+  if (consent && consent !== 'all') {
+    list = list.filter(c => c.consent_status === consent);
+  }
+  if (category && category !== 'all') {
+    list = list.filter(c => (c.category || '').toLowerCase().includes(category.toLowerCase()));
+  }
+  if (search) {
+    const q = search.toLowerCase();
+    list = list.filter(c => 
+      c.name.toLowerCase().includes(q) ||
+      c.phone.includes(q) ||
+      (c.company || '').toLowerCase().includes(q) ||
+      (c.city || '').toLowerCase().includes(q)
+    );
+  }
+
+  res.json(list);
+});
+
+app.post('/api/whatsapp/broadcast/contacts', (req, res) => {
+  const result = validateAndFormatContact(req.body);
+  if (!result.valid) {
+    return res.status(400).json({ error: result.error });
+  }
+  const saved = db.addWhatsAppContact(result.contact);
+  res.status(201).json(saved);
+});
+
+app.post('/api/whatsapp/broadcast/contacts/import', (req, res) => {
+  const { contacts, default_country_code } = req.body;
+  if (!Array.isArray(contacts) || contacts.length === 0) {
+    return res.status(400).json({ error: 'Valid contacts array required' });
+  }
+
+  const validContacts = [];
+  const errors = [];
+
+  for (let i = 0; i < contacts.length; i++) {
+    const item = contacts[i];
+    const validation = validateAndFormatContact(item, default_country_code || '1');
+    if (validation.valid) {
+      validContacts.push(validation.contact);
+    } else {
+      errors.push({ index: i, item, error: validation.error });
+    }
+  }
+
+  const importResult = db.importWhatsAppContacts(validContacts);
+  res.json({
+    success: true,
+    total_received: contacts.length,
+    valid_count: validContacts.length,
+    invalid_count: errors.length,
+    imported_count: importResult.total_imported,
+    duplicates_count: importResult.duplicates_skipped,
+    errors: errors.slice(0, 10)
+  });
+});
+
+app.post('/api/whatsapp/broadcast/contacts/sync-prospects', (req, res) => {
+  try {
+    const prospects = db.getProspects();
+    const formatted = prospects
+      .filter(p => p.phone)
+      .map(p => ({
+        name: p.contact_person || p.business_name,
+        company: p.business_name,
+        phone: p.phone,
+        email: p.email,
+        city: p.city,
+        category: p.category,
+        consent_status: 'CONSENTED',
+        consent_source: 'SiteSeller Verified Directory',
+        tags: ['Verified Lead', p.category || 'General']
+      }));
+
+    const validContacts = [];
+    for (const item of formatted) {
+      const v = validateAndFormatContact(item);
+      if (v.valid) validContacts.push(v.contact);
+    }
+
+    const result = db.importWhatsAppContacts(validContacts);
+    res.json({
+      success: true,
+      message: `Synced ${result.total_imported} prospects into WhatsApp broadcast contacts (${result.duplicates_skipped} duplicates skipped).`,
+      imported_count: result.total_imported,
+      duplicates_skipped: result.duplicates_skipped
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.put('/api/whatsapp/broadcast/contacts/:id/consent', (req, res) => {
+  const { consent_status, opt_out_reason } = req.body;
+  if (!['CONSENTED', 'OPTED_OUT', 'UNCONFIRMED'].includes(consent_status)) {
+    return res.status(400).json({ error: 'Invalid consent status' });
+  }
+  const updates = {
+    consent_status,
+    updated_at: new Date().toISOString()
+  };
+  if (consent_status === 'OPTED_OUT') {
+    updates.opt_out_date = new Date().toISOString();
+    updates.opt_out_reason = opt_out_reason || 'Manual user opt-out in CRM';
+  } else {
+    updates.opt_out_date = null;
+    updates.opt_out_reason = null;
+  }
+
+  const updated = db.updateWhatsAppContact(req.params.id, updates);
+  if (!updated) return res.status(404).json({ error: 'Contact not found' });
+  res.json(updated);
+});
+
+app.delete('/api/whatsapp/broadcast/contacts/:id', (req, res) => {
+  const success = db.deleteWhatsAppContact(req.params.id);
+  res.json({ success });
+});
+
+// Campaigns CRUD & Execution
+app.get('/api/whatsapp/broadcast/campaigns', (req, res) => {
+  const campaigns = db.getWhatsAppCampaigns();
+  res.json(campaigns);
+});
+
+app.get('/api/whatsapp/broadcast/campaigns/:id', (req, res) => {
+  const campaign = db.getWhatsAppCampaignById(req.params.id);
+  if (!campaign) return res.status(404).json({ error: 'Campaign not found' });
+  res.json(campaign);
+});
+
+app.post('/api/whatsapp/broadcast/campaigns', (req, res) => {
+  try {
+    const {
+      name,
+      type = 'template',
+      template_name,
+      template_language = 'en_US',
+      template_parameters = [],
+      message_text,
+      media_type,
+      media_url,
+      recipient_ids = [],
+      recipient_contacts = []
+    } = req.body;
+
+    if (!name || name.trim().length === 0) {
+      return res.status(400).json({ error: 'Campaign name is required' });
+    }
+
+    let targetContacts = [];
+    if (Array.isArray(recipient_ids) && recipient_ids.length > 0) {
+      const allContacts = db.getWhatsAppContacts();
+      const idSet = new Set(recipient_ids);
+      targetContacts = allContacts.filter(c => idSet.has(c.id));
+    } else if (Array.isArray(recipient_contacts) && recipient_contacts.length > 0) {
+      targetContacts = recipient_contacts;
+    } else {
+      return res.status(400).json({ error: 'Please select at least one recipient for this broadcast' });
+    }
+
+    // STRICT CONSENT RULE: Exclude any opted-out contacts
+    const eligibleRecipients = targetContacts.filter(c => c.consent_status !== 'OPTED_OUT');
+    if (eligibleRecipients.length === 0) {
+      return res.status(400).json({ error: 'All selected recipients have opted out. Broadcast cannot proceed.' });
+    }
+
+    const campaignRecord = db.saveWhatsAppCampaign({
+      name: name.trim(),
+      status: 'DRAFT',
+      type: type === 'text' ? 'text' : 'template',
+      template_name: template_name || '',
+      template_language: template_language || 'en_US',
+      template_parameters: Array.isArray(template_parameters) ? template_parameters : [],
+      message_text: message_text || '',
+      media_type: media_type || null,
+      media_url: media_url || null,
+      recipients: eligibleRecipients.map(c => ({
+        contact_id: c.id,
+        name: c.name,
+        company: c.company,
+        phone: c.phone,
+        city: c.city,
+        category: c.category,
+        status: 'QUEUED'
+      }))
+    });
+
+    res.status(201).json(campaignRecord);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/whatsapp/broadcast/campaigns/:id/send', async (req, res) => {
+  try {
+    const result = await executeBroadcastCampaign(req.params.id);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/whatsapp/broadcast/campaigns/:id/pause', (req, res) => {
+  try {
+    const updated = pauseBroadcastCampaign(req.params.id);
+    res.json({ success: true, campaign: updated });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.delete('/api/whatsapp/broadcast/campaigns/:id', (req, res) => {
+  const success = db.deleteWhatsAppCampaign(req.params.id);
+  res.json({ success });
+});
+
+// Aggregated Broadcast Analytics
+app.get('/api/whatsapp/broadcast/stats', (req, res) => {
+  const campaigns = db.getWhatsAppCampaigns();
+  const contacts = db.getWhatsAppContacts();
+
+  let totalDispatched = 0;
+  let totalAccepted = 0;
+  let totalSent = 0;
+  let totalDelivered = 0;
+  let totalRead = 0;
+  let totalFailed = 0;
+
+  for (const c of campaigns) {
+    const s = c.stats || {};
+    totalDispatched += (s.total || 0);
+    totalAccepted += (s.accepted || 0);
+    totalSent += (s.sent || 0);
+    totalDelivered += (s.delivered || 0);
+    totalRead += (s.read || 0);
+    totalFailed += (s.failed || 0);
+  }
+
+  res.json({
+    total_campaigns: campaigns.length,
+    total_contacts: contacts.length,
+    consented_contacts: contacts.filter(c => c.consent_status === 'CONSENTED').length,
+    opted_out_contacts: contacts.filter(c => c.consent_status === 'OPTED_OUT').length,
+    stats: {
+      total_dispatched: totalDispatched,
+      total_accepted: totalAccepted,
+      total_sent: totalSent,
+      total_delivered: totalDelivered,
+      total_read: totalRead,
+      total_failed: totalFailed,
+      delivery_rate: totalSent > 0 ? Math.round((totalDelivered / totalSent) * 100) : 0,
+      read_rate: totalDelivered > 0 ? Math.round((totalRead / totalDelivered) * 100) : 0
+    }
+  });
+});
+
+// Webhook Logs
+app.get('/api/whatsapp/broadcast/webhooks/logs', (req, res) => {
+  res.json(db.getWebhookLogs());
+});
+
+// ==========================================
+// OFFICIAL WHATSAPP CLOUD API WEBHOOK
+// ==========================================
+
+// Webhook Verification Handshake
+app.get('/api/whatsapp/webhook', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  const creds = getWhatsAppCredentials();
+
+  if (mode === 'subscribe' && token === creds.webhookVerifyToken) {
+    console.log('[WhatsApp Webhook] Handshake verified successfully with Meta!');
+    return res.status(200).send(challenge);
+  }
+
+  console.warn('[WhatsApp Webhook] Verification handshake failed. Token mismatch.');
+  return res.status(403).send('Forbidden');
+});
+
+// Incoming Webhook Events (Statuses & Inbound Messages)
+app.post('/api/whatsapp/webhook', async (req, res) => {
+  try {
+    const creds = getWhatsAppCredentials();
+    const signature = req.headers['x-hub-signature-256'];
+
+    if (creds.appSecret && signature) {
+      const isValid = verifyWebhookSignature(JSON.stringify(req.body), signature, creds.appSecret);
+      if (!isValid) {
+        console.warn('[WhatsApp Webhook] Signature verification failed!');
+        return res.status(401).send('Invalid signature');
+      }
+    }
+
+    const result = await processWebhookEvent(req.body);
+    res.status(200).json({ status: 'ok', ...result });
+  } catch (err) {
+    console.error('[WhatsApp Webhook] Error processing event:', err);
+    res.status(200).json({ status: 'error_logged', error: err.message });
+  }
+});
+
+// DATABASE RESET / CLEAR
 app.post('/api/db/clear', (req, res) => {
   try {
     const result = db.clearDatabase();
@@ -930,6 +756,7 @@ app.post('/api/db/clear', (req, res) => {
 
 // Serve static frontend assets if built
 const clientDist = path.join(__dirname, '../client/dist');
+const fs = require('fs');
 if (fs.existsSync(clientDist)) {
   app.use(express.static(clientDist));
   app.get('*', (req, res, next) => {
@@ -940,11 +767,10 @@ if (fs.existsSync(clientDist)) {
   });
 }
 
-// Start Server with Socket.IO support
-server.listen(PORT, () => {
-  console.log(`================================================================`);
-  console.log(`🚀 SiteSeller WhatsApp Marketing & CRM Platform running on port ${PORT}`);
+// Start Server
+app.listen(PORT, () => {
+  console.log(`===============================================`);
+  console.log(`🤖 SiteSeller Agent Superagent running on port ${PORT}`);
   console.log(`👉 http://localhost:${PORT}`);
-  console.log(`⚡ Socket.IO real-time engine ready`);
-  console.log(`================================================================`);
+  console.log(`===============================================`);
 });

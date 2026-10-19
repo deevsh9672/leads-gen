@@ -2,6 +2,11 @@
 const CATEGORY_DEMAND_WEIGHTS = {
   dentist: 95,
   dental: 95,
+  clinic: 95,
+  medical: 95,
+  doctor: 95,
+  healthcare: 90,
+  physiotherapy: 90,
   roofer: 95,
   roofing: 95,
   hvac: 90,

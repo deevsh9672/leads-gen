@@ -1,43 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { io } from 'socket.io-client';
 import Navbar from './components/Navbar';
 import DashboardView from './components/DashboardView';
-import CrmLeadsView from './components/crm/CrmLeadsView';
-import KanbanPipelineView from './components/crm/KanbanPipelineView';
-import SharedInboxView from './components/inbox/SharedInboxView';
-import CampaignsView from './components/campaigns/CampaignsView';
-import AutomationsView from './components/automations/AutomationsView';
-import WhatsAppSettingsView from './components/settings/WhatsAppSettingsView';
+import ProspectsView from './components/ProspectsView';
 import SiteStudioView from './components/SiteStudioView';
 import OutreachView from './components/OutreachView';
+import BroadcastView from './components/BroadcastView';
+import InboxCRMView from './components/InboxCRMView';
+import SettingsView from './components/SettingsView';
 import AutonomousModal from './components/AutonomousModal';
 import { 
-  getLeads, 
   getProspects, 
-  getTags, 
-  getUsers, 
   getLogs, 
   getConfig, 
-  getConversations,
   runAutonomousPipeline, 
   getPipelineStatus,
   runDiscoverSkill,
   runGenerateSkill,
   runOutreachSkill,
   runWhatsAppOutreachSkill,
-  runBothOutreachSkill
+  runBothOutreachSkill,
+  updateProspect,
+  deleteProspect,
+  addProspect
 } from './api';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('crm');
-  const [leads, setLeads] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [prospects, setProspects] = useState([]);
   const [logs, setLogs] = useState([]);
   const [config, setConfig] = useState(null);
-  const [conversations, setConversations] = useState([]);
-  const [selectedLeadForStudio, setSelectedLeadForStudio] = useState(null);
-  const [inboxTargetPhone, setInboxTargetPhone] = useState(null);
+  const [selectedProspect, setSelectedProspect] = useState(null);
+  const [preselectedLog, setPreselectedLog] = useState(null);
   
   // Pipeline State
   const [isPipelineModalOpen, setIsPipelineModalOpen] = useState(false);
@@ -45,30 +38,6 @@ export default function App() {
 
   useEffect(() => {
     loadInitialData();
-
-    // Connect real-time socket.io client
-    const socketUrl = window.location.hostname === 'localhost' ? 'http://localhost:5000' : window.location.origin;
-    const socket = io(socketUrl, { transports: ['websocket', 'polling'] });
-
-    socket.on('inbox:message_received', () => {
-      loadInitialData();
-    });
-
-    socket.on('lead:created', () => {
-      loadInitialData();
-    });
-
-    socket.on('lead:updated', () => {
-      loadInitialData();
-    });
-
-    socket.on('campaign:progress', () => {
-      loadInitialData();
-    });
-
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   // Poll pipeline status if running
@@ -80,6 +49,7 @@ export default function App() {
           const res = await getPipelineStatus();
           setPipelineStatus(res.data);
           if (!res.data.running && pipelineStatus?.running) {
+            // Pipeline just finished!
             loadInitialData();
           }
         } catch (err) {
@@ -94,24 +64,18 @@ export default function App() {
 
   const loadInitialData = async () => {
     try {
-      const [leadsRes, tagsRes, usersRes, logsRes, configRes, convRes, statusRes] = await Promise.all([
-        getLeads(),
-        getTags(),
-        getUsers(),
+      const [prospectsRes, logsRes, configRes, statusRes] = await Promise.all([
+        getProspects(),
         getLogs(),
         getConfig(),
-        getConversations(),
         getPipelineStatus()
       ]);
-      setLeads(leadsRes.data);
-      setTags(tagsRes.data);
-      setUsers(usersRes.data);
+      setProspects(prospectsRes.data);
       setLogs(logsRes.data);
       setConfig(configRes.data);
-      setConversations(convRes.data);
       setPipelineStatus(statusRes.data);
-      if (leadsRes.data.length > 0 && !selectedLeadForStudio) {
-        setSelectedLeadForStudio(leadsRes.data[0]);
+      if (prospectsRes.data.length > 0 && !selectedProspect) {
+        setSelectedProspect(prospectsRes.data[0]);
       }
     } catch (err) {
       console.error('Error loading initial data:', err);
@@ -129,11 +93,26 @@ export default function App() {
     }
   };
 
-  const handleGenerateSite = async (leadId) => {
+  const handleDiscover = async (customParams) => {
     try {
-      await runGenerateSkill(leadId);
-      const l = leads.find(item => item.id === leadId);
-      if (l) setSelectedLeadForStudio(l);
+      const res = await runDiscoverSkill({
+        city: customParams?.city || config?.target_city,
+        niche: customParams?.niche || config?.business_niche,
+        limit: customParams?.limit || config?.max_leads_per_day || 10,
+        source: customParams?.source || config?.discovery_source || 'auto'
+      });
+      alert(`Discovery Complete! Found ${res.data.discovered_count} qualified businesses lacking websites from ${res.data.discovery_source || 'selected source'} in ${res.data.city}!`);
+      loadInitialData();
+    } catch (err) {
+      alert('Error running discovery skill: ' + err.message);
+    }
+  };
+
+  const handleGenerateSite = async (prospectId) => {
+    try {
+      await runGenerateSkill(prospectId);
+      const p = prospects.find(item => item.id === prospectId);
+      if (p) setSelectedProspect(p);
       setActiveTab('studio');
       loadInitialData();
     } catch (err) {
@@ -141,12 +120,69 @@ export default function App() {
     }
   };
 
-  const handleOpenInboxForPhone = (phone) => {
-    setInboxTargetPhone(phone);
-    setActiveTab('inbox');
+  const handleSendOutreach = async (prospectId) => {
+    try {
+      await runOutreachSkill(prospectId, {});
+      alert('Outreach email dispatched successfully!');
+      loadInitialData();
+    } catch (err) {
+      alert('Error sending outreach: ' + err.message);
+    }
   };
 
-  const unreadMessagesCount = conversations.reduce((acc, c) => acc + (c.unread_count || 0), 0);
+  const handleSendWhatsAppOutreach = async (prospectId) => {
+    try {
+      const res = await runWhatsAppOutreachSkill(prospectId, {});
+      if (res.data?.wa_web_link) {
+        window.open(res.data.wa_web_link, '_blank');
+      }
+      alert(`WhatsApp outreach logged! Ready to send to ${res.data?.prospect?.business_name || 'prospect'}.`);
+      loadInitialData();
+    } catch (err) {
+      alert('Error initiating WhatsApp outreach: ' + err.message);
+    }
+  };
+
+  const handleSendBothOutreach = async (prospectId) => {
+    try {
+      const res = await runBothOutreachSkill(prospectId, {});
+      if (res.data?.wa_web_link) {
+        window.open(res.data.wa_web_link, '_blank');
+      }
+      alert(`🚀 Multi-Channel Outreach Dispatched!\n\n📧 Email sent & logged in CRM.\n📲 WhatsApp demo message prepared! Opening WhatsApp Web...`);
+      loadInitialData();
+    } catch (err) {
+      alert('Error sending multi-channel outreach: ' + err.message);
+    }
+  };
+
+  const handleUpdateStatus = async (prospectId, status) => {
+    try {
+      await updateProspect(prospectId, { status });
+      loadInitialData();
+    } catch (err) {
+      alert('Error updating status: ' + err.message);
+    }
+  };
+
+  const handleDeleteProspect = async (prospectId) => {
+    if (!window.confirm('Are you sure you want to remove this prospect?')) return;
+    try {
+      await deleteProspect(prospectId);
+      loadInitialData();
+    } catch (err) {
+      alert('Error deleting prospect: ' + err.message);
+    }
+  };
+
+  const handleAddProspect = async (prospectData) => {
+    try {
+      await addProspect(prospectData);
+      loadInitialData();
+    } catch (err) {
+      alert('Error adding prospect: ' + err.message);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white">
@@ -158,123 +194,90 @@ export default function App() {
         config={config}
         onRunPipeline={handleRunPipeline}
         isPipelineRunning={pipelineStatus?.running}
-        unreadCount={unreadMessagesCount}
       />
 
-      {/* Main App Body */}
+      {/* Main Body */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        {/* TAB 1: CRM LEADS */}
-        {activeTab === 'crm' && (
-          <CrmLeadsView
-            leads={leads}
-            tags={tags}
-            users={users}
-            onRefresh={loadInitialData}
-            onOpenInboxForPhone={handleOpenInboxForPhone}
-            onGenerateSite={handleGenerateSite}
-          />
-        )}
-
-        {/* TAB 2: VISUAL SALES PIPELINE (KANBAN) */}
-        {activeTab === 'pipeline' && (
-          <KanbanPipelineView
-            leads={leads}
-            onRefresh={loadInitialData}
-            onOpenLead={(lead) => {
-              handleOpenInboxForPhone(lead.phone);
-            }}
-          />
-        )}
-
-        {/* TAB 3: WATI-STYLE SHARED TEAM INBOX */}
-        {activeTab === 'inbox' && (
-          <SharedInboxView
-            users={users}
-            onRefreshAll={loadInitialData}
-            initialPhoneFilter={inboxTargetPhone}
-          />
-        )}
-
-        {/* TAB 4: WHATSAPP BROADCAST CAMPAIGNS */}
-        {activeTab === 'campaigns' && (
-          <CampaignsView
-            leads={leads}
-            tags={tags}
-            onRefreshAll={loadInitialData}
-          />
-        )}
-
-        {/* TAB 5: AUTOMATIONS & N8N WORKFLOWS */}
-        {activeTab === 'automations' && (
-          <AutomationsView />
-        )}
-
-        {/* TAB 6: SUPERAGENT OPS & ANALYTICS */}
         {activeTab === 'dashboard' && (
           <DashboardView
-            prospects={leads}
+            prospects={prospects}
             logs={logs}
             config={config}
             onRunPipeline={handleRunPipeline}
             setActiveTab={setActiveTab}
             onSelectProspectForStudio={(p) => {
-              setSelectedLeadForStudio(p);
+              setSelectedProspect(p);
               setActiveTab('studio');
             }}
           />
         )}
 
-        {/* TAB 7: AI SITE STUDIO */}
-        {activeTab === 'studio' && (
-          <SiteStudioView
-            prospects={leads}
-            selectedProspect={selectedLeadForStudio}
-            onSelectProspect={setSelectedLeadForStudio}
-            onSendOutreach={async (id) => {
-              await runOutreachSkill(id, {});
-              alert('Outreach email dispatched!');
-              loadInitialData();
-            }}
-            onSendWhatsAppOutreach={async (id) => {
-              const res = await runWhatsAppOutreachSkill(id, {});
-              if (res.data?.wa_web_link) window.open(res.data.wa_web_link, '_blank');
-              loadInitialData();
-            }}
-            onSendBothOutreach={async (id) => {
-              const res = await runBothOutreachSkill(id, {});
-              if (res.data?.wa_web_link) window.open(res.data.wa_web_link, '_blank');
-              loadInitialData();
+        {activeTab === 'prospects' && (
+          <ProspectsView
+            prospects={prospects}
+            onRefresh={loadInitialData}
+            onDiscover={handleDiscover}
+            onAddProspect={handleAddProspect}
+            onUpdateStatus={handleUpdateStatus}
+            onDeleteProspect={handleDeleteProspect}
+            onGenerateSite={handleGenerateSite}
+            onSendOutreach={handleSendOutreach}
+            onSendWhatsAppOutreach={handleSendWhatsAppOutreach}
+            onSendBothOutreach={handleSendBothOutreach}
+            onSelectForStudio={(p) => {
+              setSelectedProspect(p);
+              setActiveTab('studio');
             }}
           />
         )}
 
-        {/* TAB 8: OUTREACH & LOGS */}
+        {activeTab === 'studio' && (
+          <SiteStudioView
+            prospects={prospects}
+            selectedProspect={selectedProspect}
+            onSelectProspect={setSelectedProspect}
+            onSendOutreach={handleSendOutreach}
+            onSendWhatsAppOutreach={handleSendWhatsAppOutreach}
+            onSendBothOutreach={handleSendBothOutreach}
+          />
+        )}
+
         {activeTab === 'outreach' && (
           <OutreachView
-            prospects={leads}
+            prospects={prospects}
             logs={logs}
             config={config}
             onRefreshLogs={loadInitialData}
-            onSendBothOutreach={async (id) => {
-              const res = await runBothOutreachSkill(id, {});
-              if (res.data?.wa_web_link) window.open(res.data.wa_web_link, '_blank');
-              loadInitialData();
-            }}
-            onSimulateReplyClick={() => {
+            onSendBothOutreach={handleSendBothOutreach}
+            onSimulateReplyClick={(log) => {
+              setPreselectedLog(log);
               setActiveTab('inbox');
             }}
           />
         )}
 
-        {/* TAB 9: SETTINGS & WHATSAPP CONFIG */}
-        {activeTab === 'settings' && (
-          <WhatsAppSettingsView />
+        {activeTab === 'broadcast' && (
+          <BroadcastView prospects={prospects} />
         )}
 
+        {activeTab === 'inbox' && (
+          <InboxCRMView
+            logs={logs}
+            prospects={prospects}
+            onRefreshData={loadInitialData}
+            preselectedLog={preselectedLog}
+          />
+        )}
+
+        {activeTab === 'settings' && (
+          <SettingsView
+            config={config}
+            onConfigSaved={(updated) => setConfig(updated)}
+          />
+        )}
       </main>
 
-      {/* Autonomous Pipeline Kickoff Modal */}
+      {/* Autonomous Pipeline Modal */}
       <AutonomousModal
         isOpen={isPipelineModalOpen}
         onClose={() => setIsPipelineModalOpen(false)}
@@ -284,7 +287,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
-        SiteSeller Agent • WhatsApp Marketing, WATI-Style CRM & Lead Management SaaS Platform • Meta & CAN-SPAM Compliant
+        SiteSeller Agent • Autonomous Web Agency Lead-Generation & Demo Engine • CAN-SPAM Compliant
       </footer>
 
     </div>

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "51d3a140-bcbd-4f0a-8781-9126ab9e5751",
+    "name": "Test Broadcast Campaign",
+    "status": "DRAFT",
+    "type": "template",
+    "template_name": "website_demo_announcement",
+    "template_language": "en_US",
+    "template_parameters": [],
+    "message_text": "",
+    "media_type": null,
+    "media_url": null,
+    "recipient_count": 4,
+    "recipients": [
+      {
+        "id": "d4e369b3-665c-4a2e-a50b-b0c0977ff0af",
+        "contact_id": "d478c73d-941e-4760-8688-0d1cd82441d0",
+        "name": "Clinic B",
+        "phone": "+14168883843",
+        "status": "READ",
+        "wamid": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+        "error_code": null,
+        "error_message": null,
+        "sent_at": "2026-10-19T17:24:39.429Z",
+        "delivered_at": "2026-10-19T17:24:39.000Z",
+        "read_at": "2026-10-19T17:24:39.000Z"
+      },
+      {
+        "id": "7c3abb56-b00e-4d57-9514-c4b0790ac761",
+        "contact_id": "1b2a8f7b-fc37-4477-be6b-a3195424044d",
+        "name": "Clinic A",
+        "phone": "+14167773843",
+        "status": "QUEUED",
+        "wamid": null,
+        "error_code": null,
+        "error_message": null,
+        "sent_at": null,
+        "delivered_at": null,
+        "read_at": null
+      },
+      {
+        "id": "274b804e-9d34-457a-bb18-ef869b8d1a42",
+        "contact_id": "f294077f-7567-4a62-9df4-e7823134000b",
+        "name": "Clinic B",
+        "phone": "+14165550102",
+        "status": "QUEUED",
+        "wamid": null,
+        "error_code": null,
+        "error_message": null,
+        "sent_at": null,
+        "delivered_at": null,
+        "read_at": null
+      },
+      {
+        "id": "67884bf0-f004-4cfa-b0c5-65ced46ac653",
+        "contact_id": "68cd1e18-94e0-46ee-892e-a1e97554f8e6",
+        "name": "Clinic A",
+        "phone": "+14165550101",
+        "status": "QUEUED",
+        "wamid": null,
+        "error_code": null,
+        "error_message": null,
+        "sent_at": null,
+        "delivered_at": null,
+        "read_at": null
+      }
+    ],
+    "stats": {
+      "total": 4,
+      "queued": 3,
+      "accepted": 0,
+      "sent": 1,
+      "delivered": 1,
+      "read": 1,
+      "failed": 0
+    },
+    "created_at": "2026-10-19T17:24:39.427Z",
+    "started_at": null,
+    "completed_at": null
+  },
+  {
+    "id": "334cb4f9-14d5-4d61-a736-ac80957c84a9",
+    "name": "Test Broadcast Campaign",
+    "status": "DRAFT",
+    "type": "template",
+    "template_name": "website_demo_announcement",
+    "template_language": "en_US",
+    "template_parameters": [],
+    "message_text": "",
+    "media_type": null,
+    "media_url": null,
+    "recipient_count": 2,
+    "recipients": [
+      {
+        "id": "019e0d52-2051-4026-aab3-cdd6be2705d6",
+        "contact_id": "f294077f-7567-4a62-9df4-e7823134000b",
+        "name": "Clinic B",
+        "phone": "+14165550102",
+        "status": "READ",
+        "wamid": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+        "error_code": null,
+        "error_message": null,
+        "sent_at": "2026-10-19T17:23:53.661Z",
+        "delivered_at": "2026-10-19T17:23:53.000Z",
+        "read_at": "2026-10-19T17:23:53.000Z"
+      },
+      {
+        "id": "e4c4e788-21d7-4748-9cc0-332caa1760f7",
+        "contact_id": "68cd1e18-94e0-46ee-892e-a1e97554f8e6",
+        "name": "Clinic A",
+        "phone": "+14165550101",
+        "status": "QUEUED",
+        "wamid": null,
+        "error_code": null,
+        "error_message": null,
+        "sent_at": null,
+        "delivered_at": null,
+        "read_at": null
+      }
+    ],
+    "stats": {
+      "total": 2,
+      "queued": 1,
+      "accepted": 0,
+      "sent": 1,
+      "delivered": 1,
+      "read": 1,
+      "failed": 0
+    },
+    "created_at": "2026-10-19T17:23:53.659Z",
+    "started_at": null,
+    "completed_at": null
+  },
+  {
+    "id": "54f03d8c-1280-44ed-8272-c028f260ed7b",
+    "name": "Test Broadcast Campaign",
+    "status": "DRAFT",
+    "type": "template",
+    "template_name": "website_demo_announcement",
+    "template_language": "en_US",
+    "template_parameters": [],
+    "message_text": "",
+    "media_type": null,
+    "media_url": null,
+    "recipient_count": 2,
+    "recipients": [
+      {
+        "id": "c211056c-265e-479a-bb5a-63346622806b",
+        "contact_id": "f294077f-7567-4a62-9df4-e7823134000b",
+        "name": "Clinic B",
+        "phone": "+14165550102",
+        "status": "READ",
+        "wamid": "wamid.HBgLMTQxNjUwNjA4MDQVAgARGBI2ODQ4NTY0ODU0OTk5OTk5AA",
+        "error_code": null,
+        "error_message": null,
+        "sent_at": "2026-10-19T17:20:16.208Z",
+        "delivered_at": "2026-10-19T17:20:16.000Z",
+        "read_at": "2026-10-19T17:20:16.000Z"
+      },
+      {
+        "id": "97352d20-9ff9-4a12-b44f-25b3d291a86a",
+        "contact_id": "68cd1e18-94e0-46ee-892e-a1e97554f8e6",
+        "name": "Clinic A",
+        "phone": "+14165550101",
+        "status": "QUEUED",
+        "wamid": null,
+        "error_code": null,
+        "error_message": null,
+        "sent_at": null,
+        "delivered_at": null,
+        "read_at": null
+      }
+    ],
+    "stats": {
+      "total": 2,
+      "queued": 1,
+      "accepted": 0,
+      "sent": 1,
+      "delivered": 1,
+      "read": 1,
+      "failed": 0
+    },
+    "created_at": "2026-10-19T17:20:16.205Z",
+    "started_at": null,
+    "completed_at": null
+  }
+]
