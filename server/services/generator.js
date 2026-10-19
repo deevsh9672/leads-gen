@@ -5,42 +5,198 @@ const { v4: uuidv4 } = require('uuid');
  * Builds tailored brand palettes, services, testimonials, menu items, and interactive elements
  * for each individual business lead and niche.
  */
-function getBespokeNicheProfile(category = '', bizName = 'Local Business', city = 'Jaipur') {
+function getBespokeNicheProfile(category = '', bizName = 'Local Business', city = 'Toronto') {
   const cat = (category || '').toLowerCase();
   const name = bizName.toLowerCase();
 
-  // 1. CAFE / COFFEE SHOP / TEA ROOM / ROASTERY (ULTRA-LUXURY BESPOKE EXPERIENCE)
+  // 1. CLINIC / HEALTHCARE / MEDICAL / DENTAL / PHYSIO / DERMATOLOGY / FERTILITY
+  if (
+    cat.includes('clinic') || cat.includes('health') || cat.includes('medical') || cat.includes('doctor') ||
+    cat.includes('dental') || cat.includes('physio') || cat.includes('chiro') || cat.includes('derma') ||
+    cat.includes('fertility') || cat.includes('walk-in') || cat.includes('walk in') || cat.includes('urgent') ||
+    name.includes('clinic') || name.includes('medical') || name.includes('health') || name.includes('dental') ||
+    name.includes('physio') || name.includes('doctor') || name.includes('fertility') || name.includes('care')
+  ) {
+    let subNiche = 'Medical & Walk-In Clinic';
+    if (name.includes('dental') || cat.includes('dental') || cat.includes('dentist')) {
+      subNiche = 'Dental Care & Surgery Clinic';
+    } else if (name.includes('physio') || cat.includes('physio') || cat.includes('chiro') || name.includes('stretch')) {
+      subNiche = 'Physiotherapy & Rehabilitation Clinic';
+    } else if (name.includes('fertility') || cat.includes('fertility')) {
+      subNiche = 'Fertility & Reproductive Health Clinic';
+    } else if (name.includes('eye') || cat.includes('eye') || cat.includes('optom') || name.includes('lasik')) {
+      subNiche = 'Laser Eye Care & Optometry Clinic';
+    } else if (name.includes('derma') || cat.includes('laser') || cat.includes('skin') || name.includes('skin')) {
+      subNiche = 'Dermatology & Medical Aesthetic Clinic';
+    }
+
+    const specialty1 = { 
+      title: 'Walk-In Urgent & Primary Care', 
+      desc: 'Same-day doctor consultations, acute symptom care, minor injuries, and urgent healthcare triage with zero appointment barrier.', 
+      icon: 'fa-stethoscope' 
+    };
+    const specialty2 = { 
+      title: 'Family Practice & Annual Physicals', 
+      desc: 'Comprehensive patient health assessments, preventive biometrics, immunization schedules, and chronic illness monitoring.', 
+      icon: 'fa-user-doctor' 
+    };
+    const specialty3 = { 
+      title: 'Advanced Diagnostic & Lab Screenings', 
+      desc: 'On-site ultrasound coordination, rapid blood work panels, digital ECG, and confidential specialist referrals.', 
+      icon: 'fa-heart-pulse' 
+    };
+    const specialty4 = { 
+      title: 'Specialized Therapy & Direct Billing', 
+      desc: 'Integrated physiotherapy, dental hygiene, direct insurance billing (OHIP & major private insurers), and telehealth consultations.', 
+      icon: 'fa-hospital-user' 
+    };
+
+    const menuCategories = [
+      {
+        id: 'walkin',
+        name: 'Walk-In & Urgent Care',
+        icon: 'fa-notes-medical',
+        items: [
+          { name: 'Same-Day Physician Consultation', price: 'Direct Billing', notes: 'Acute illness, fever, respiratory distress, flu symptoms & prescription refills', badge: 'Walk-Ins Welcome', img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Minor Injury & Wound Triage', price: 'Covered', notes: 'Sprain assessment, laceration dressing, burn care, suture removal & splinting', badge: 'Urgent Care', img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Vaccination & Immunization Clinic', price: 'Covered', notes: 'Travel vaccines, annual flu shots, HPV, shingles & tetanus booster immunizations', badge: 'Preventive', img: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Prescription Renewal & Lab Requisition', price: 'Fast Access', notes: 'Immediate doctor prescription renewals, laboratory requisitions & blood work referrals', badge: 'Express', img: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=400&q=80' }
+        ]
+      },
+      {
+        id: 'family',
+        name: 'Family & Preventive Health',
+        icon: 'fa-hospital-user',
+        items: [
+          { name: 'Comprehensive Health Physical Exam', price: 'Full Assessment', notes: 'Complete biometric screening, vital signs, cardiovascular & metabolic review', badge: 'Annual Checkup', img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Pediatric Well-Child Examination', price: 'Pediatric Care', notes: 'Infant growth tracking, developmental milestone checks, vaccinations & pediatric guidance', badge: 'Kids Health', img: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Chronic Illness & Diabetes Management', price: 'Continuous Care', notes: 'Hypertension monitoring, glucose optimization, routine blood panels & dietary planning', badge: 'Specialist', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Women’s Health & Preventive Screening', price: 'Confidential Care', notes: 'Preventive gynecology exams, Pap smears, family planning & prenatal support', badge: 'Wellness', img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=400&q=80' }
+        ]
+      },
+      {
+        id: 'therapy',
+        name: 'Dental & Rehabilitation Care',
+        icon: 'fa-tooth',
+        items: [
+          { name: 'Complete Dental Exam & Ultrasonic Clean', price: 'Direct Insurance', notes: 'Ultrasonic plaque removal, enamel fluoride treatment, digital low-radiation X-rays', badge: 'Dental Care', img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Physiotherapy & Spinal Decompression', price: 'Rehab Covered', notes: 'Targeted deep tissue release, postural realignment, spinal traction & pain relief', badge: 'Pain Relief', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Sports Injury Joint & Knee Rehabilitation', price: 'Fast Recovery', notes: 'Active rehabilitation protocols for ligament sprains, rotator cuff tears & knee trauma', badge: 'Sports Rehab', img: 'https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Clinical Dermatology & Skin Consultation', price: 'Specialized', notes: 'Full body mole mapping, acne treatment, eczema therapies & cosmetic skin checks', badge: 'Dermatology', img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80' }
+        ]
+      },
+      {
+        id: 'diagnostics',
+        name: 'Diagnostics & Telehealth',
+        icon: 'fa-microscope',
+        items: [
+          { name: 'Diagnostic Ultrasound & Imaging Coordination', price: 'Requisition Ready', notes: 'Abdominal, pelvic, musculoskeletal and thyroid ultrasound scanning coordination', badge: 'High-Res Scan', img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Rapid Diagnostic Blood & Urine Panels', price: 'Same-Day Lab', notes: 'Complete blood count (CBC), lipid profile, liver/kidney panels & metabolic screenings', badge: 'Fast Lab', img: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Cardiovascular 12-Lead Diagnostic ECG', price: 'Direct Reading', notes: 'Resting heart rhythm examination, arrhythmia detection & preoperative surgical clearance', badge: 'Cardiac Care', img: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Secure Virtual Doctor Telehealth Visit', price: 'Covered Visit', notes: 'HIPAA/PHIPA compliant secure video consultation from your smartphone with prescription dispatch', badge: 'Telehealth', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80' }
+        ]
+      }
+    ];
+
+    return {
+      nicheKey: 'clinic',
+      subNiche,
+      themeColor: 'cyan',
+      accentHex: '#0ea5e9',
+      themeBg: '#070f1e',
+      badge: `Premier ${subNiche} in ${city}`,
+      heroTagline: `${bizName} — Comprehensive Healthcare & Modern Patient Care in ${city}`,
+      heroSub: `Experience compassionate patient consultations, experienced board-certified physicians, and rapid walk-in urgent care. ${bizName} is ${city}'s premier health sanctuary dedicated to your family's health and wellness.`,
+      heroImage: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80',
+      logoIcon: 'fa-heart-pulse',
+      heroBadge1: 'Board-Certified Physicians',
+      heroBadge2: 'Direct Insurance & Walk-Ins',
+      navCta: 'Book Consultation',
+      primaryCta: 'Explore Specialties',
+      secondaryCta: 'Call Clinic Hotline',
+      servicesHeading: 'Comprehensive Medical Specialties & Patient Care',
+      servicesSub: `Every consultation at ${bizName} is guided by clinical excellence, modern diagnostic technology, and genuine compassion for our ${city} community.`,
+      services: [specialty1, specialty2, specialty3, specialty4],
+      menuCategories,
+      catalogHeading: `Medical Specialties & Clinic Services at ${bizName}`,
+      catalogSub: `Explore our primary care services, walk-in consultations, and specialized healthcare treatments in ${city}.`,
+      galleryHeading: `Modern Clinical Facilities at ${bizName}`,
+      gallerySub: `A glimpse into our comfortable consultation suites, state-of-the-art diagnostic labs, and serene patient reception in ${city}.`,
+      gallery: [
+        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=600&q=80'
+      ],
+      testimonials: [
+        {
+          name: 'Jennifer K.',
+          loc: `${city} Resident`,
+          text: `The physicians and nursing team at ${bizName} are truly extraordinary. Minimal wait times for our walk-in visit, empathetic listening, and a clear, comforting treatment plan!`,
+          rating: 5
+        },
+        {
+          name: 'Robert T.',
+          loc: `Local Family Father`,
+          text: `Easily the cleanest and most professional medical clinic in ${city}. The appointment booking was seamless and the doctor took genuine time to explain my test results thoroughly.`,
+          rating: 5
+        },
+        {
+          name: 'Dr. Michael S.',
+          loc: `Healthcare Professional`,
+          text: `As a fellow clinician, I have the highest respect for ${bizName}. Outstanding diagnostics, spotless medical equipment, and top-tier patient care standards.`,
+          rating: 5
+        }
+      ],
+      contactBadge: 'Appointments & Walk-Ins',
+      contactTitle: `Schedule Your Consultation at ${bizName}`,
+      contactSub: `Book an in-person or virtual consultation with our licensed physicians. Walk-ins are always warmly welcomed.`,
+      formTitle: `Book a Medical Consultation`,
+      formSub: 'Rapid confirmation • Same-day appointments • Direct insurance billing',
+      formServiceLabel: 'Select Medical Department',
+      formOptions: [
+        'Walk-In Urgent Consultation',
+        'Family Medicine & Annual Physical',
+        'Dental Care & Cleaning Examination',
+        'Physiotherapy & Spine Rehabilitation',
+        'Dermatology & Skin Health Review',
+        'Pediatric Well-Child Consultation',
+        'Virtual Telehealth Video Consultation'
+      ],
+      formSubmitText: `Confirm Appointment Request at ${bizName}`,
+      aiConcierge: {
+        title: `Interactive Patient Care & Triage Assistant`,
+        sub: `Select your consultation need below to connect with the right department at ${bizName}.`,
+        tipTitle: `Clinic Care Coordinator Tip:`,
+        tipText: `Need urgent medical attention today? ${bizName} accepts same-day walk-ins during open clinic hours with direct insurance billing.`,
+        orderBtnText: `Book on WhatsApp`,
+        options: [
+          { icon: '⚡', title: 'Urgent Walk-In Care', sub: 'Fever, cough, sprains & minor illnesses' },
+          { icon: '🩺', title: 'Family Practice Checkup', sub: 'Annual exam, prescription renewals & blood work' },
+          { icon: '🦷', title: 'Dental & Oral Health', sub: 'Cleaning, checkup, tooth pain & whitening' },
+          { icon: '🏃', title: 'Physiotherapy & Rehab', sub: 'Back pain, joint stiffness & sports recovery' }
+        ]
+      }
+    };
+  }
+
+  // 2. CAFE / COFFEE SHOP / TEA ROOM / ROASTERY
   if (cat.includes('cafe') || cat.includes('coffee') || cat.includes('tea') || cat.includes('roast') || cat.includes('espresso') || name.includes('cafe') || name.includes('coffee')) {
-    
-    // Dynamic specialty depending on business name nuances
     let specialty1 = { title: 'Artisan Espresso & Manual Pour-Overs', desc: 'Single-estate Arabica, slow Chemex drips, silky flat whites, and nitro cold brews.', icon: 'fa-mug-hot' };
-    if (name.includes('roast') || name.includes('brew')) {
-      specialty1 = { title: 'In-House Micro-Batch Roastery', desc: 'Sustainably sourced green beans from Chikmagalur & Coorg, roasted on-site in small batches.', icon: 'fa-fire-burner' };
-    }
-
     let specialty2 = { title: 'Oven-Fresh Artisanal Viennoiserie', desc: 'Twice-baked almond croissants, Belgian chocolate babkas, and warm sourdough brioche.', icon: 'fa-bread-slice' };
-    if (name.includes('bake') || name.includes('crumb') || name.includes('cake')) {
-      specialty2 = { title: 'Gourmet French Pastries & Celebration Cakes', desc: 'Crisp fruit tarts, layered macarons, and bespoke celebration cakes made fresh every morning.', icon: 'fa-cake-candles' };
-    }
-
     let specialty3 = { title: 'Cozy Workspaces & High-Speed WiFi', desc: 'Dedicated quiet corners, ample power sockets, natural sunlit nooks, and serene background jazz.', icon: 'fa-laptop' };
-    if (name.includes('garden') || name.includes('courtyard') || name.includes('heritage')) {
-      specialty3 = { title: 'Lush Courtyard & Open-Air Garden', desc: 'Tranquil alfresco seating under fairy-lit trees with refreshing breezes and relaxed vibes.', icon: 'fa-tree' };
-    }
+    let specialty4 = { title: 'Chef’s Gourmet Brunch & Superfoods', desc: 'Hass avocado tartines, truffle scrambled brioche, acai bowls, and botanical coolers.', icon: 'fa-utensils' };
 
-    const specialty4 = { title: 'Chef’s Gourmet Brunch & Superfoods', desc: 'Hass avocado tartines, truffle scrambled brioche, acai bowls, and botanical coolers.', icon: 'fa-utensils' };
-
-    // Rich Interactive Menu Items
     const menuCategories = [
       {
         id: 'brews',
         name: 'Specialty Brews',
         icon: 'fa-mug-saucer',
         items: [
-          { name: 'Single-Origin Chemex Pour-Over', price: '₹220', notes: 'Ethiopian Yirgacheffe • Jasmine, Citrus & Stonefruit', badge: 'Barista Pick', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Spanish Velvet Latte', price: '₹240', notes: 'Double ristretto, condensed milk, steamed microfoam, cinnamon', badge: 'Best Seller', img: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=300&q=80' },
-          { name: '18-Hour Slow Steeped Cold Brew', price: '₹210', notes: 'Zero bitterness, dark cocoa finish, served with orange slice', badge: 'House Signature', img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Artisan Cortado & Flat White', price: '₹190', notes: 'Equal parts espresso & velvety steamed whole milk', badge: 'Classic', img: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=300&q=80' }
+          { name: 'Single-Origin Chemex Pour-Over', price: '$4.50', notes: 'Ethiopian Yirgacheffe • Jasmine, Citrus & Stonefruit', badge: 'Barista Pick', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Spanish Velvet Latte', price: '$5.25', notes: 'Double ristretto, condensed milk, steamed microfoam, cinnamon', badge: 'Best Seller', img: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=300&q=80' },
+          { name: '18-Hour Slow Steeped Cold Brew', price: '$4.75', notes: 'Zero bitterness, dark cocoa finish, served with orange slice', badge: 'House Signature', img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Artisan Cortado & Flat White', price: '$4.25', notes: 'Equal parts espresso & velvety steamed whole milk', badge: 'Classic', img: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=300&q=80' }
         ]
       },
       {
@@ -48,10 +204,10 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
         name: 'Artisanal Bakes',
         icon: 'fa-bread-slice',
         items: [
-          { name: 'Almond Butter Double Croissant', price: '₹180', notes: 'Twice-baked French butter croissant filled with frangipane', badge: 'Fresh Daily', img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Belgian Dark Chocolate Babka', price: '₹210', notes: 'Swirled sourdough brioche with 70% dark melted Callebaut', badge: 'Chef Special', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Wild Berry Sourdough Danish', price: '₹195', notes: 'Crispy blistered golden crust with seasonal berry compote', badge: 'Organic', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Truffle Mushroom Sourdough Melt', price: '₹260', notes: 'Woodfired sourdough with molten Gruyère & sautéed mushrooms', badge: 'Savory', img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300&q=80' }
+          { name: 'Almond Butter Double Croissant', price: '$4.20', notes: 'Twice-baked French butter croissant filled with frangipane', badge: 'Fresh Daily', img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Belgian Dark Chocolate Babka', price: '$4.80', notes: 'Swirled sourdough brioche with 70% dark melted Callebaut', badge: 'Chef Special', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Wild Berry Sourdough Danish', price: '$4.50', notes: 'Crispy blistered golden crust with seasonal berry compote', badge: 'Organic', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Truffle Mushroom Sourdough Melt', price: '$6.50', notes: 'Woodfired sourdough with molten Gruyère & sautéed mushrooms', badge: 'Savory', img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=300&q=80' }
         ]
       },
       {
@@ -59,10 +215,10 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
         name: 'Gourmet Brunch',
         icon: 'fa-utensils',
         items: [
-          { name: 'Hass Avocado & Poached Egg Brioche', price: '₹320', notes: 'Mashed Hass avocado, Danish feta, chili crunch, toasted brioche', badge: 'Must Try', img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Burrata & Sun-Ripened Tomato Tartine', price: '₹340', notes: 'Creamy local burrata, basil walnut pesto, 12yr aged balsamic', badge: 'Gourmet', img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Amazonian Acai Superfood Bowl', price: '₹290', notes: 'Organic acai, house granola, chia seeds, goji berries & honey', badge: 'Healthy', img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Turkish Shakshuka Skillet', price: '₹310', notes: 'Spiced bell pepper & tomato ragu, poached eggs, sourdough pita', badge: 'Hot Plate', img: 'https://images.unsplash.com/photo-1594998893017-36147cbcae05?auto=format&fit=crop&w=300&q=80' }
+          { name: 'Hass Avocado & Poached Egg Brioche', price: '$12.50', notes: 'Mashed Hass avocado, Danish feta, chili crunch, toasted brioche', badge: 'Must Try', img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Burrata & Sun-Ripened Tomato Tartine', price: '$13.00', notes: 'Creamy local burrata, basil walnut pesto, 12yr aged balsamic', badge: 'Gourmet', img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Amazonian Acai Superfood Bowl', price: '$11.00', notes: 'Organic acai, house granola, chia seeds, goji berries & honey', badge: 'Healthy', img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Turkish Shakshuka Skillet', price: '$12.00', notes: 'Spiced bell pepper & tomato ragu, poached eggs, sourdough pita', badge: 'Hot Plate', img: 'https://images.unsplash.com/photo-1594998893017-36147cbcae05?auto=format&fit=crop&w=300&q=80' }
         ]
       },
       {
@@ -70,22 +226,27 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
         name: 'Botanical Coolers',
         icon: 'fa-wine-glass',
         items: [
-          { name: 'Yuzu Sparkling Cold Brew Tonic', price: '₹230', notes: 'Japanese yuzu citrus, artisanal tonic, espresso float', badge: 'Effervescent', img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Ceremonial Uji Iced Matcha Latte', price: '₹260', notes: 'Kyoto stone-ground green tea whisked with oat milk', badge: 'Antioxidant', img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Wild Hibiscus & Pink Rose Soda', price: '₹190', notes: 'Cold-steeped organic flowers with bubbly mountain soda', badge: 'Botanical', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=300&q=80' },
-          { name: 'Gourmet Belgian Hot Chocolate', price: '₹240', notes: 'Single-origin molten chocolate callets, sea salt, toasted cream', badge: 'Indulgent', img: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=300&q=80' }
+          { name: 'Yuzu Sparkling Cold Brew Tonic', price: '$5.50', notes: 'Japanese yuzu citrus, artisanal tonic, espresso float', badge: 'Effervescent', img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Ceremonial Uji Iced Matcha Latte', price: '$5.80', notes: 'Kyoto stone-ground green tea whisked with oat milk', badge: 'Antioxidant', img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Wild Hibiscus & Pink Rose Soda', price: '$4.50', notes: 'Cold-steeped organic flowers with bubbly mountain soda', badge: 'Botanical', img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=300&q=80' },
+          { name: 'Gourmet Belgian Hot Chocolate', price: '$5.20', notes: 'Single-origin molten chocolate callets, sea salt, toasted cream', badge: 'Indulgent', img: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=300&q=80' }
         ]
       }
     ];
 
     return {
       nicheKey: 'cafe',
+      subNiche: 'Specialty Cafe & Roastery',
       themeColor: 'amber',
       accentHex: '#d97706',
+      themeBg: '#070504',
       badge: `Luxury Specialty Cafe & Roastery in ${city}`,
       heroTagline: `${bizName} — Specialty Coffee, Fresh Bakes & Warm Vibe in ${city}`,
       heroSub: `Immerse yourself in velvety handcrafted espresso, slow-steeped single-origin roasts, and oven-fresh artisanal bakes. ${bizName} is ${city}'s premier neighborhood sanctuary.`,
       heroImage: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80',
+      logoIcon: 'fa-mug-hot',
+      heroBadge1: 'Single-Origin Arabica',
+      heroBadge2: 'Fresh Daily Bakes & WiFi',
       navCta: 'Reserve a Table',
       primaryCta: 'Explore Menu & Reserve',
       secondaryCta: 'Call Barista',
@@ -93,6 +254,8 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
       servicesSub: `Every creation is a tribute to passion, quality ingredients, and hospitality at ${bizName}.`,
       services: [specialty1, specialty2, specialty3, specialty4],
       menuCategories,
+      catalogHeading: `The Artisan Menu at ${bizName}`,
+      catalogSub: `Carefully roasted beans, fresh viennoiserie, and hearty gourmet brunch in ${city}.`,
       galleryHeading: `Vibes, Brews & Ambiance at ${bizName}`,
       gallerySub: `A glimpse into our sunlit corners, barista artistry, and relaxing spaces waiting for you in ${city}.`,
       gallery: [
@@ -128,20 +291,38 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
       formSub: 'Instant booking • No wait time • WhatsApp confirmation',
       formServiceLabel: 'Seating Preference',
       formOptions: ['Indoor Cozy Lounge (Air-Conditioned)', 'Alfresco Garden & Courtyard', 'Quiet High-Top Workstation (Power & WiFi)', 'Private Gathering Corner (4–8 Guests)'],
-      formSubmitText: `Confirm Reservation at ${bizName}`
+      formSubmitText: `Confirm Reservation at ${bizName}`,
+      aiConcierge: {
+        title: `Interactive 3D AI Barista Concierge`,
+        sub: `Ask Barista AI: What should you order at ${bizName}? Select your craving below.`,
+        tipTitle: `Barista AI Tip:`,
+        tipText: `Looking for a perfect morning start? We recommend pairing our Double-Shot Spanish Cortado with our freshly baked Almond Butter Croissant!`,
+        orderBtnText: `Order on WhatsApp`,
+        options: [
+          { icon: '⚡', title: 'Work & Deep Focus', sub: 'High energy, low crash espresso' },
+          { icon: '🌿', title: 'Light & Refreshing', sub: 'Iced, floral & crisp cold brews' },
+          { icon: '🥐', title: 'Sweet Pastry Craving', sub: 'Warm oven French indulgence' },
+          { icon: '🥑', title: 'Artisanal Brunch', sub: 'Wholesome & filling superfood plates' }
+        ]
+      }
     };
   }
 
-  // 2. RESTAURANT
-  if (cat.includes('restaurant') || cat.includes('dining') || cat.includes('food') || cat.includes('bistro')) {
+  // 3. RESTAURANT / FINE DINING / BISTRO
+  if (cat.includes('restaurant') || cat.includes('dining') || cat.includes('food') || cat.includes('bistro') || cat.includes('dhaba') || name.includes('restaurant')) {
     return {
       nicheKey: 'restaurant',
+      subNiche: 'Fine Dining & Bistro',
       themeColor: 'rose',
       accentHex: '#e11d48',
+      themeBg: '#0a0505',
       badge: `#1 Fine Dining Destination in ${city}`,
       heroTagline: `Exquisite Flavors & Unforgettable Dining at ${bizName}`,
       heroSub: `Experience signature culinary creations prepared by master chefs using farm-fresh seasonal ingredients in an elegant, vibrant setting in ${city}.`,
       heroImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80',
+      logoIcon: 'fa-utensils',
+      heroBadge1: 'Master Chef Signatures',
+      heroBadge2: 'Candlelit Ambiance & Wine',
       navCta: 'Reserve a Table',
       primaryCta: 'Book Dining Table',
       secondaryCta: 'Call Restaurant',
@@ -153,6 +334,28 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
         { title: 'Private Dining & Corporate Banquets', desc: 'Exclusive private halls, tailored banquet menus, and dedicated sommelier service.', icon: 'fa-users' },
         { title: 'Artisan Mixology & Pastry Cart', desc: 'Handcrafted botanical cocktails, mocktails, and decadent warm desserts.', icon: 'fa-heart' }
       ],
+      menuCategories: [
+        {
+          id: 'starters',
+          name: 'Appetizers & Starters',
+          icon: 'fa-bowl-food',
+          items: [
+            { name: 'Pan-Seared Truffle Scallops', price: '$18', notes: 'Cauliflower mousseline, crisped pancetta, microgreens', badge: 'Chef Choice', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80' },
+            { name: 'Artisan Burrata Caprese', price: '$16', notes: 'Heirloom tomatoes, balsamic reduction, basil oil, warm focaccia', badge: 'Popular', img: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=300&q=80' }
+          ]
+        },
+        {
+          id: 'mains',
+          name: 'Chef Signature Mains',
+          icon: 'fa-utensils',
+          items: [
+            { name: 'Dry-Aged Prime Ribeye Steak', price: '$42', notes: 'Bone marrow butter, roasted fingerling potatoes, rosemary jus', badge: 'House Signature', img: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=300&q=80' },
+            { name: 'Pan-Roasted Atlantic Halibut', price: '$36', notes: 'Saffron risotto, braised baby fennel, citrus emulsion', badge: 'Fresh Catch', img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=300&q=80' }
+          ]
+        }
+      ],
+      catalogHeading: `Culinary Creations at ${bizName}`,
+      catalogSub: `Carefully crafted dishes combining authentic flavors and modern artistry.`,
       galleryHeading: `Dining Ambiance at ${bizName}`,
       gallerySub: `An authentic taste of elegance, passion, and flavor in ${city}.`,
       gallery: [
@@ -173,20 +376,38 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
       formSub: 'Guaranteed seating • Instant WhatsApp confirmation',
       formServiceLabel: 'Dining Room Preference',
       formOptions: ['Main Dining Hall', 'Private Dining Room', 'Romantic Terrace Table', 'Family Lounge Section'],
-      formSubmitText: `Book Table at ${bizName}`
+      formSubmitText: `Book Table at ${bizName}`,
+      aiConcierge: {
+        title: `Chef's AI Dining & Wine Pairing Guide`,
+        sub: `Select your culinary mood to receive an instant recommended pairing at ${bizName}.`,
+        tipTitle: `Chef's Recommendation:`,
+        tipText: `Join us for our signature 5-course tasting menu paired with curated sommelier wine selections.`,
+        orderBtnText: `Reserve on WhatsApp`,
+        options: [
+          { icon: '🍷', title: 'Romantic Dinner', sub: 'Candlelight, vintage wines & tasting courses' },
+          { icon: '🥩', title: 'Steak & Prime Cuts', sub: 'Dry-aged cuts & full-bodied reds' },
+          { icon: '🐟', title: 'Fresh Seafood', sub: 'Oysters, Atlantic catch & sparkling whites' },
+          { icon: '🍰', title: 'Dessert & Digestif', sub: 'Warm molten tortes & artisan cocktails' }
+        ]
+      }
     };
   }
 
-  // 3. DEFAULT (HOME SERVICES, CLINICS, SALONS, TRADES)
+  // 4. DEFAULT (HOME SERVICES, SALONS, GYMS, TRADES)
   const cleanCategory = category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Professional';
   return {
     nicheKey: 'general',
+    subNiche: `${cleanCategory} Services`,
     themeColor: 'indigo',
     accentHex: '#4f46e5',
+    themeBg: '#070b14',
     badge: `#1 Rated ${cleanCategory} in ${city}`,
     heroTagline: `Top-Rated ${cleanCategory} Services You Can Rely On in ${city} — ${bizName}`,
     heroSub: `Dedicated professionals committed to delivering exceptional craftsmanship, personalized customer care, and reliable results on every single project.`,
     heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
+    logoIcon: 'fa-shield-halved',
+    heroBadge1: 'Licensed & Insured Specialists',
+    heroBadge2: '100% Satisfaction Guarantee',
     navCta: 'Get Free Quote',
     primaryCta: 'Request Free Estimate',
     secondaryCta: `Call ${bizName}`,
@@ -198,6 +419,19 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
       { title: '100% Satisfaction Guarantee', desc: 'Every service is backed by our customer satisfaction promise and dependable local warranty.', icon: 'fa-shield-halved' },
       { title: 'Fast & Reliable Scheduling', desc: 'Flexible appointment times and rapid prompt response tailored to your schedule.', icon: 'fa-clock' }
     ],
+    menuCategories: [
+      {
+        id: 'primary',
+        name: 'Core Services',
+        icon: 'fa-wrench',
+        items: [
+          { name: `Standard ${cleanCategory} Service`, price: 'Free Estimate', notes: 'Complete evaluation, standard repairs, maintenance & servicing', badge: 'Most Popular', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=300&q=80' },
+          { name: `Emergency / Same-Day ${cleanCategory}`, price: 'Priority', notes: 'Immediate response dispatched directly to your location in ' + city, badge: 'Rapid Response', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=300&q=80' }
+        ]
+      }
+    ],
+    catalogHeading: `Professional ${cleanCategory} Solutions at ${bizName}`,
+    catalogSub: `High quality, transparent pricing, and guaranteed customer satisfaction in ${city}.`,
     galleryHeading: `Recent Work & Projects in ${city}`,
     gallerySub: `A glimpse into the daily dedication and results delivered by ${bizName} throughout ${city}.`,
     gallery: [
@@ -218,7 +452,20 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
     formSub: 'No obligation • 100% Free upfront evaluation',
     formServiceLabel: 'Service Needed',
     formOptions: [`Standard ${cleanCategory} Service`, `Custom ${cleanCategory} Project`, `Urgent / Same-Day Service`, 'Consultation & Inspection'],
-    formSubmitText: `Submit Request to ${bizName}`
+    formSubmitText: `Submit Request to ${bizName}`,
+    aiConcierge: {
+      title: `AI Service & Estimate Assistant`,
+      sub: `Select your service requirement below to connect with the team at ${bizName}.`,
+      tipTitle: `Project Estimator Tip:`,
+      tipText: `Need an urgent estimate or same-day service? Contact us on WhatsApp for immediate priority scheduling.`,
+      orderBtnText: `Inquire on WhatsApp`,
+      options: [
+        { icon: '⚡', title: 'Urgent / Same-Day Service', sub: 'Immediate dispatch for critical issues' },
+        { icon: '🔍', title: 'Inspection & Consultation', sub: 'Thorough evaluation & transparent quote' },
+        { icon: '🛠️', title: 'Complete Project Upgrade', sub: 'End-to-end design & quality craftsmanship' },
+        { icon: '📋', title: 'Routine Maintenance', sub: 'Keep everything operating at peak condition' }
+      ]
+    }
   };
 }
 
@@ -226,12 +473,12 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
  * Builds the complete modern, luxury, fully animated HTML demo website for the prospect
  */
 function generateSiteHTML(prospect, siteId, options = {}) {
-  const city = prospect.city || 'Jaipur';
+  const city = prospect.city || 'Toronto';
   const bizName = prospect.business_name || 'Local Business';
-  const phone = prospect.phone || '+91 8920608191';
-  const phoneDigits = phone.replace(/[^0-9]/g, '') || '918920608191';
-  const rating = prospect.rating || 4.8;
-  const reviews = prospect.review_count || 48;
+  const phone = prospect.phone || '+1 (416) 555-0199';
+  const phoneDigits = phone.replace(/[^0-9]/g, '') || '14165550199';
+  const rating = prospect.rating || 4.9;
+  const reviews = prospect.review_count || 58;
   
   const baseUrlOption = options.baseUrl || 'https://leads-gen-b3uj.onrender.com';
   const baseUrl = (typeof baseUrlOption === 'object' && baseUrlOption?.baseUrl) 
@@ -242,33 +489,39 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   const rawSenderWa = config.sender_whatsapp || '918920608191';
   const agencyWhatsApp = rawSenderWa.replace(/[^0-9]/g, '') || '918920608191';
   const senderName = config.sender_name || 'Devesh Kumar';
-  const senderEmail = config.sender_email || 'deveshtesting9672@gmail.com';
 
-  // Get custom tailored profile matching this specific business and niche
+  // Get bespoke tailored profile matching this specific business niche
   const profile = getBespokeNicheProfile(prospect.category, bizName, city);
 
   // WhatsApp quick text for customer to contact business
-  const customerWaText = profile.nicheKey === 'cafe'
+  const customerWaText = profile.nicheKey === 'clinic'
+    ? `Hello ${bizName}! I saw your clinic website and would like to book a consultation or check walk-in availability.`
+    : profile.nicheKey === 'cafe'
     ? `Hi ${bizName}! I saw your website and would like to reserve a table or ask about your menu.`
+    : profile.nicheKey === 'restaurant'
+    ? `Hi ${bizName}! I would like to reserve a dining table.`
     : `Hi ${bizName}! I would like to inquire about your services.`;
 
   // WhatsApp claim text for business owner to claim from developer
-  const claimWaText = `Hi ${senderName}! I am the owner of ${bizName} in ${city}. I saw the luxury website demo you built for us (${baseUrl}/demos/${siteId}) and I would like to claim, customize and launch it!`;
+  const claimWaText = `Hello ${senderName}! I am the owner/manager of ${bizName} in ${city}. I saw the modern website demo you built for us (${baseUrl}/demos/${siteId}) and I would like to claim, customize and connect our domain!`;
+
+  const isClinic = profile.nicheKey === 'clinic';
+  const isCafe = profile.nicheKey === 'cafe';
 
   return `<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>${bizName} | Luxury Specialty Cafe & Coffee House (${city})</title>
+  <title>${bizName} | ${profile.badge} (${city})</title>
   <meta name="description" content="${profile.heroTagline}">
-  <meta name="theme-color" content="#120d09">
+  <meta name="theme-color" content="${profile.themeBg}">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   
   <style>
     html {
@@ -277,8 +530,8 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     }
     body { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: #070504; 
-      color: #f5f5f4; 
+      background-color: ${profile.themeBg}; 
+      color: #f8fafc; 
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
@@ -286,21 +539,18 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .touch-pan-y { touch-action: pan-y; }
     .font-serif-luxury {
-      font-family: 'Playfair Display', serif;
-    }
-    .font-cormorant {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: ${isClinic ? "'Plus Jakarta Sans', sans-serif" : "'Playfair Display', serif"};
     }
 
-    /* Ambient Warm Gold Glow & Deep Velvet Lighting */
-    .glow-radial-gold {
-      background: radial-gradient(circle at 50% 20%, rgba(217, 119, 6, 0.22) 0%, rgba(180, 83, 9, 0.08) 45%, rgba(7, 5, 4, 0) 80%);
+    /* Ambient Glow & Deep Velvet Lighting */
+    .glow-radial-accent {
+      background: radial-gradient(circle at 50% 20%, ${isClinic ? 'rgba(14, 165, 233, 0.22)' : 'rgba(217, 119, 6, 0.22)'} 0%, ${isClinic ? 'rgba(2, 132, 199, 0.08)' : 'rgba(180, 83, 9, 0.08)'} 45%, ${profile.themeBg} 80%);
     }
     .glow-orb-1 {
       position: absolute;
       width: 550px;
       height: 550px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+      background: radial-gradient(circle, ${isClinic ? 'rgba(14, 165, 233, 0.18)' : 'rgba(245, 158, 11, 0.18)'} 0%, rgba(0, 0, 0, 0) 70%);
       filter: blur(90px);
       pointer-events: none;
       border-radius: 50%;
@@ -309,7 +559,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       position: absolute;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(180, 83, 9, 0.14) 0%, rgba(0, 0, 0, 0) 70%);
+      background: radial-gradient(circle, ${isClinic ? 'rgba(16, 185, 129, 0.15)' : 'rgba(180, 83, 9, 0.14)'} 0%, rgba(0, 0, 0, 0) 70%);
       filter: blur(100px);
       pointer-events: none;
       border-radius: 50%;
@@ -328,7 +578,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       position: relative;
     }
     .tilt-card-3d:hover {
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px 2px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px 2px ${isClinic ? 'rgba(14, 165, 233, 0.25)' : 'rgba(245, 158, 11, 0.2)'};
     }
     .tilt-card-3d .depth-layer-1 {
       transform: translateZ(15px);
@@ -355,7 +605,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       z-index: 10;
     }
 
-    /* 3D Holographic AI Barista Orbital Rings */
+    /* 3D Holographic Orbital Rings */
     @keyframes spinOrb1 {
       0% { transform: rotateX(65deg) rotateZ(0deg); }
       100% { transform: rotateX(65deg) rotateZ(360deg); }
@@ -380,70 +630,40 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       animation: float3d 5s ease-in-out infinite;
     }
 
-    /* Animated Coffee Steam Keyframes */
-    @keyframes steamVapor {
-      0% {
-        transform: translateY(0) scaleX(1);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.85;
-      }
-      50% {
-        transform: translateY(-20px) scaleX(1.4);
-      }
-      95% {
-        opacity: 0.2;
-      }
-      100% {
-        transform: translateY(-40px) scaleX(1.9);
-        opacity: 0;
-      }
-    }
-    .steam-line-1 { animation: steamVapor 2.8s infinite ease-out; }
-    .steam-line-2 { animation: steamVapor 3.2s infinite ease-out 0.6s; }
-    .steam-line-3 { animation: steamVapor 3.0s infinite ease-out 1.2s; }
-
-    /* Shimmer Gold Animation */
-    @keyframes shimmerGold {
+    /* Shimmer Button Animation */
+    @keyframes shimmerEffect {
       0% { background-position: -200% 0; }
       100% { background-position: 200% 0; }
     }
-    .gold-shimmer-btn {
-      background: linear-gradient(90deg, #d97706 0%, #fbbf24 35%, #ffd700 50%, #fbbf24 65%, #d97706 100%);
+    .action-shimmer-btn {
+      background: ${isClinic 
+        ? 'linear-gradient(90deg, #0284c7 0%, #38bdf8 35%, #0ea5e9 50%, #38bdf8 65%, #0284c7 100%)' 
+        : 'linear-gradient(90deg, #d97706 0%, #fbbf24 35%, #ffd700 50%, #fbbf24 65%, #d97706 100%)'};
       background-size: 200% auto;
-      animation: shimmerGold 4s linear infinite;
-      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
+      animation: shimmerEffect 4s linear infinite;
+      box-shadow: 0 10px 25px -5px ${isClinic ? 'rgba(14, 165, 233, 0.4)' : 'rgba(245, 158, 11, 0.4)'};
     }
-
-    /* Floating Beacon Animation */
-    @keyframes radarPulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-    .radar-pulse { animation: radarPulse 2s infinite; }
 
     /* Glassmorphism Cards */
     .glass-card {
-      background: rgba(22, 16, 12, 0.72);
+      background: ${isClinic ? 'rgba(11, 23, 44, 0.75)' : 'rgba(22, 16, 12, 0.72)'};
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(245, 158, 11, 0.18);
+      border: 1px solid ${isClinic ? 'rgba(14, 165, 233, 0.22)' : 'rgba(245, 158, 11, 0.18)'};
     }
     .glass-card:hover {
-      border-color: rgba(245, 158, 11, 0.5);
+      border-color: ${isClinic ? 'rgba(14, 165, 233, 0.55)' : 'rgba(245, 158, 11, 0.5)'};
     }
   </style>
 </head>
-<body class="selection:bg-amber-500 selection:text-black pb-24 md:pb-0">
+<body class="selection:bg-sky-500 selection:text-white pb-24 md:pb-0">
 
-  <!-- Top Sticky Agency Claim Banner (Responsive & Compact) -->
-  <div id="agency-claim-banner" class="bg-gradient-to-r from-[#17100b] via-[#24170e] to-[#17100b] text-white text-xs py-2 px-3 sm:px-4 shadow-xl sticky top-0 z-50 border-b border-amber-500/30 backdrop-blur-md">
+  <!-- Top Sticky Agency Claim Banner -->
+  <div id="agency-claim-banner" class="bg-gradient-to-r from-[#071326] via-[#0c2242] to-[#071326] text-white text-xs py-2 px-3 sm:px-4 shadow-xl sticky top-0 z-50 border-b border-sky-500/30 backdrop-blur-md">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       <div class="flex items-center gap-1.5 sm:gap-2 font-medium truncate">
-        <span class="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-600 text-black rounded-full w-5 h-5 text-xs font-black shadow shrink-0 animate-pulse">✨</span>
-        <span class="text-amber-200/90 text-[11px] sm:text-xs truncate">Demo for <strong>${bizName}</strong></span>
+        <span class="inline-flex items-center justify-center bg-gradient-to-r from-sky-400 to-emerald-400 text-black rounded-full w-5 h-5 text-xs font-black shadow shrink-0 animate-pulse">✨</span>
+        <span class="text-sky-200/90 text-[11px] sm:text-xs truncate">Demo for <strong>${bizName}</strong></span>
       </div>
       <div class="flex items-center gap-2 shrink-0">
         <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold px-3 py-1 rounded-full text-[11px] sm:text-xs shadow flex items-center gap-1.5 transition active:scale-95">
@@ -451,7 +671,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
           <span class="hidden sm:inline">Claim on WhatsApp</span>
           <span class="sm:hidden">Claim</span>
         </a>
-        <button onclick="document.getElementById('claim-modal').classList.remove('hidden')" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition active:scale-95">
+        <button onclick="document.getElementById('claim-modal').classList.remove('hidden')" class="bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 font-bold px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition active:scale-95">
           Details
         </button>
       </div>
@@ -459,50 +679,46 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   </div>
 
   <!-- Main Navigation -->
-  <header class="bg-[#120d09]/95 backdrop-blur-xl border-b border-amber-950/60 sticky top-[37px] z-40 transition-all">
+  <header class="bg-[#081222]/95 backdrop-blur-xl border-b border-sky-950/60 sticky top-[37px] z-40 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group max-w-[200px] sm:max-w-none">
-        <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-600 via-amber-700 to-amber-950 text-amber-100 flex items-center justify-center font-bold text-lg sm:text-xl shadow-xl shadow-amber-950/40 border border-amber-500/30 group-hover:scale-105 transition duration-300 shrink-0">
-          <i class="fa-solid fa-mug-hot text-amber-200"></i>
-          <!-- Steam Lines Animation -->
-          <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 flex gap-1 pointer-events-none">
-            <span class="w-0.5 sm:w-1 h-2.5 sm:h-3 bg-amber-300/60 rounded-full steam-line-1"></span>
-            <span class="w-0.5 sm:w-1 h-3 sm:h-4 bg-amber-200/80 rounded-full steam-line-2"></span>
-            <span class="w-0.5 sm:w-1 h-2.5 sm:h-3 bg-amber-400/60 rounded-full steam-line-3"></span>
-          </div>
+        <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-sky-600 via-sky-700 to-slate-900 text-sky-100 flex items-center justify-center font-bold text-lg sm:text-xl shadow-xl shadow-sky-950/40 border border-sky-500/30 group-hover:scale-105 transition duration-300 shrink-0">
+          <i class="fa-solid ${profile.logoIcon || 'fa-heart-pulse'} text-sky-300"></i>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-900 animate-ping"></span>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-900"></span>
         </div>
         <div class="truncate">
-          <span class="text-base sm:text-xl lg:text-2xl font-serif-luxury font-bold tracking-wide text-amber-50 block leading-tight group-hover:text-amber-300 transition truncate">${bizName}</span>
-          <span class="text-[9px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-amber-500/90 font-semibold block truncate">${city} • Specialty Cafe</span>
+          <span class="text-base sm:text-xl lg:text-2xl font-bold tracking-tight text-white block leading-tight group-hover:text-sky-300 transition truncate">${bizName}</span>
+          <span class="text-[9px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-sky-400 font-semibold block truncate">${city} • ${profile.subNiche || 'Healthcare'}</span>
         </div>
       </a>
       
       <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-7 lg:gap-8 font-medium text-stone-300 text-sm">
-        <a href="#about" class="hover:text-amber-400 transition">Our Story</a>
-        <a href="#menu" class="hover:text-amber-400 transition flex items-center gap-1.5">
-          <span>Artisan Menu</span>
-          <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">Live</span>
+      <nav class="hidden md:flex items-center gap-7 lg:gap-8 font-medium text-slate-300 text-sm">
+        <a href="#about" class="hover:text-sky-400 transition">${isClinic ? 'Doctor Care' : 'Our Story'}</a>
+        <a href="#menu" class="hover:text-sky-400 transition flex items-center gap-1.5">
+          <span>${isClinic ? 'Specialties' : isCafe ? 'Artisan Menu' : 'Offerings'}</span>
+          <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">Verified</span>
         </a>
-        <a href="#ambiance" class="hover:text-amber-400 transition">Ambiance</a>
-        <a href="#reviews" class="hover:text-amber-400 transition">Reviews</a>
-        <a href="#reserve" class="hover:text-amber-400 transition">Table Booking</a>
+        <a href="#ambiance" class="hover:text-sky-400 transition">${isClinic ? 'Facility' : 'Ambiance'}</a>
+        <a href="#reviews" class="hover:text-sky-400 transition">Reviews</a>
+        <a href="#reserve" class="hover:text-sky-400 transition">${isClinic ? 'Appointments' : 'Reservations'}</a>
       </nav>
 
       <!-- Desktop & Mobile Header Actions -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <a href="tel:${phone}" class="hidden lg:flex items-center gap-2 text-stone-300 font-medium hover:text-amber-400 text-xs px-3 py-2 rounded-xl border border-stone-800 hover:border-amber-500/30 transition">
-          <i class="fa-solid fa-phone text-amber-400"></i>
+        <a href="tel:${phone}" class="hidden lg:flex items-center gap-2 text-slate-300 font-medium hover:text-sky-400 text-xs px-3 py-2 rounded-xl border border-slate-800 hover:border-sky-500/30 transition">
+          <i class="fa-solid fa-phone text-sky-400"></i>
           <span>${phone}</span>
         </a>
-        <a href="#reserve" class="gold-shimmer-btn text-black font-extrabold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-lg shadow-amber-900/40 transition hover:scale-105 active:scale-95 shrink-0">
+        <a href="#reserve" class="action-shimmer-btn text-white font-extrabold text-xs sm:text-sm px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-lg shadow-sky-900/40 transition hover:scale-105 active:scale-95 shrink-0">
           ${profile.navCta}
         </a>
 
         <!-- Mobile Hamburger Menu Button -->
-        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-stone-900/90 border border-amber-500/30 flex items-center justify-center text-amber-300 hover:text-amber-100 hover:border-amber-400 transition active:scale-95 shrink-0" aria-label="Toggle navigation menu">
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-slate-900/90 border border-sky-500/30 flex items-center justify-center text-sky-300 hover:text-white hover:border-sky-400 transition active:scale-95 shrink-0" aria-label="Toggle navigation menu">
           <i id="mobile-menu-icon" class="fa-solid fa-bars text-base"></i>
         </button>
       </div>
@@ -510,49 +726,49 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-drawer" class="hidden md:hidden bg-[#120d09]/98 border-t border-amber-500/20 px-5 py-4 space-y-3.5 backdrop-blur-2xl shadow-2xl transition-all">
-      <nav class="flex flex-col space-y-2.5 font-medium text-sm text-stone-200">
-        <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
-          <i class="fa-solid fa-book-open text-amber-400 w-5"></i>
-          <span>Our Story & Philosophy</span>
+    <div id="mobile-drawer" class="hidden md:hidden bg-[#081222]/98 border-t border-sky-500/20 px-5 py-4 space-y-3.5 backdrop-blur-2xl shadow-2xl transition-all">
+      <nav class="flex flex-col space-y-2.5 font-medium text-sm text-slate-200">
+        <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
+          <i class="fa-solid fa-stethoscope text-sky-400 w-5"></i>
+          <span>${isClinic ? 'Doctor Care & Standards' : 'Our Story'}</span>
         </a>
-        <a href="#menu" onclick="toggleMobileMenu()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
+        <a href="#menu" onclick="toggleMobileMenu()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
           <div class="flex items-center gap-3">
-            <i class="fa-solid fa-mug-hot text-amber-400 w-5"></i>
-            <span>Artisan Menu & Bakes</span>
+            <i class="fa-solid fa-notes-medical text-sky-400 w-5"></i>
+            <span>${isClinic ? 'Specialties & Services' : 'Catalog'}</span>
           </div>
-          <span class="text-[9px] uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">Explore</span>
+          <span class="text-[9px] uppercase px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">Explore</span>
         </a>
-        <a href="#ambiance" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
-          <i class="fa-solid fa-images text-amber-400 w-5"></i>
-          <span>Warm Ambiance & Seating</span>
+        <a href="#ambiance" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
+          <i class="fa-solid fa-hospital text-sky-400 w-5"></i>
+          <span>${isClinic ? 'Clinic Rooms & Diagnostic Lab' : 'Ambiance'}</span>
         </a>
-        <a href="#reviews" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amber-500/10 hover:text-amber-300 transition">
-          <i class="fa-solid fa-star text-amber-400 w-5"></i>
-          <span>Customer Reviews (${rating}★)</span>
+        <a href="#reviews" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
+          <i class="fa-solid fa-star text-sky-400 w-5"></i>
+          <span>Patient Reviews (${rating}★)</span>
         </a>
-        <a href="#reserve" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold transition">
-          <i class="fa-solid fa-calendar-check text-amber-400 w-5"></i>
-          <span>Instant Table Reservation</span>
+        <a href="#reserve" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl bg-sky-500/15 text-sky-300 border border-sky-500/30 font-bold transition">
+          <i class="fa-solid fa-calendar-check text-sky-400 w-5"></i>
+          <span>${profile.navCta}</span>
         </a>
       </nav>
 
       <!-- Mobile Drawer Contact Card -->
-      <div class="pt-3 border-t border-stone-800/80 flex items-center justify-between text-xs">
-        <a href="tel:${phone}" class="flex items-center gap-2 text-stone-300 hover:text-amber-400 py-1 font-mono">
-          <i class="fa-solid fa-phone text-amber-400"></i>
+      <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+        <a href="tel:${phone}" class="flex items-center gap-2 text-slate-300 hover:text-sky-400 py-1 font-mono">
+          <i class="fa-solid fa-phone text-sky-400"></i>
           <span>${phone}</span>
         </a>
         <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-emerald-400 font-bold py-1">
           <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>WhatsApp</span>
+          <span>WhatsApp Hotline</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32 glow-radial-gold">
+  <section class="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32 glow-radial-accent">
     <!-- Ambient Glow Orbs -->
     <div class="glow-orb-1 top-10 left-1/4"></div>
     <div class="glow-orb-2 bottom-10 right-10"></div>
@@ -563,37 +779,37 @@ function generateSiteHTML(prospect, siteId, options = {}) {
         <!-- Left Hero Content -->
         <div class="lg:col-span-7 space-y-7">
           
-          <div class="inline-flex items-center gap-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-300 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md">
+          <div class="inline-flex items-center gap-2.5 bg-sky-500/10 border border-sky-500/30 text-sky-300 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md">
             <span class="flex h-2 w-2 relative">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
             </span>
             <span>${profile.badge}</span>
           </div>
           
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif-luxury font-bold text-amber-50 tracking-tight leading-[1.12]">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
             ${bizName} <br/>
-            <span class="font-cormorant italic text-amber-300 font-normal text-3xl sm:text-4xl lg:text-5xl">Where Precision Brews Meet Warm Ambiance</span>
+            <span class="text-sky-400 font-medium text-3xl sm:text-4xl lg:text-5xl">Compassionate Patient Care & Clinical Excellence</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-stone-300 leading-relaxed max-w-2xl font-light">
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
             ${profile.heroSub}
           </p>
 
-          <!-- Interactive Action Buttons (Full Width on Mobile) -->
+          <!-- Interactive Action Buttons -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
-            <a href="#menu" class="gold-shimmer-btn text-black font-extrabold px-6 sm:px-8 py-3.5 rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base">
-              <i class="fa-solid fa-mug-hot"></i>
-              <span>Explore Artisan Menu</span>
+            <a href="#menu" class="action-shimmer-btn text-white font-extrabold px-6 sm:px-8 py-3.5 rounded-2xl shadow-xl shadow-sky-900/40 transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base">
+              <i class="fa-solid ${profile.logoIcon || 'fa-notes-medical'}"></i>
+              <span>${profile.primaryCta}</span>
             </a>
-            <a href="#reserve" class="bg-stone-900/90 hover:bg-stone-800 text-stone-200 border border-amber-500/30 hover:border-amber-500/60 font-bold px-6 sm:px-7 py-3.5 rounded-2xl transition active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base backdrop-blur-md">
-              <i class="fa-solid fa-calendar-check text-amber-400"></i>
-              <span>Reserve a Table</span>
+            <a href="#reserve" class="bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-sky-500/30 hover:border-sky-500/60 font-bold px-6 sm:px-7 py-3.5 rounded-2xl transition active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base backdrop-blur-md">
+              <i class="fa-solid fa-calendar-check text-sky-400"></i>
+              <span>${profile.navCta}</span>
             </a>
           </div>
 
           <!-- Social Proof & Badges -->
-          <div class="pt-6 border-t border-stone-800/80 flex flex-wrap items-center gap-4 sm:gap-8 text-xs text-stone-300">
+          <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-4 sm:gap-8 text-xs text-slate-300">
             <div class="flex items-center gap-2">
               <div class="flex text-amber-400 text-sm">
                 <i class="fa-solid fa-star"></i>
@@ -603,15 +819,15 @@ function generateSiteHTML(prospect, siteId, options = {}) {
                 <i class="fa-solid fa-star"></i>
               </div>
               <span class="font-bold text-white text-sm">${rating}</span>
-              <span class="text-stone-400">(${reviews} Google Reviews)</span>
+              <span class="text-slate-400">(${reviews} Google Reviews)</span>
             </div>
-            <div class="flex items-center gap-2 text-amber-300 font-medium">
-              <i class="fa-solid fa-leaf text-amber-400"></i>
-              <span>Single-Origin Arabica</span>
+            <div class="flex items-center gap-2 text-sky-300 font-medium">
+              <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+              <span>${profile.heroBadge1 || 'Certified Practitioners'}</span>
             </div>
-            <div class="flex items-center gap-2 text-amber-300 font-medium">
-              <i class="fa-solid fa-wifi text-amber-400"></i>
-              <span>High-Speed Workspaces</span>
+            <div class="flex items-center gap-2 text-sky-300 font-medium">
+              <i class="fa-solid fa-bolt text-sky-400"></i>
+              <span>${profile.heroBadge2 || 'Walk-Ins & Direct Billing'}</span>
             </div>
           </div>
 
@@ -619,48 +835,47 @@ function generateSiteHTML(prospect, siteId, options = {}) {
 
         <!-- Right Hero 3D Interactive Studio with Live Three.js Experience -->
         <div class="lg:col-span-5 relative perspective-container">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-500/40 glass-card tilt-card-3d group">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-sky-500/40 glass-card tilt-card-3d group">
             
-            <!-- Dynamic 3D Glare Overlay -->
             <div class="glare-3d"></div>
 
             <!-- Top 3D Control Header -->
-            <div class="px-4 sm:px-5 py-3 border-b border-amber-500/20 bg-black/40 backdrop-blur-md flex items-center justify-between z-20 relative depth-layer-2">
+            <div class="px-4 sm:px-5 py-3 border-b border-sky-500/20 bg-black/40 backdrop-blur-md flex items-center justify-between z-20 relative depth-layer-2">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-xs font-bold text-amber-300 font-mono tracking-wider">3D REAL-TIME STUDIO</span>
+                <span class="text-xs font-bold text-sky-300 font-mono tracking-wider">3D REAL-TIME STUDIO</span>
               </div>
-              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
                 Interactive 360°
               </span>
             </div>
 
             <!-- 3D Three.js Container with Touch pan-y -->
-            <div id="canvas-3d-container" class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] cursor-grab active:cursor-grabbing flex items-center justify-center bg-radial from-[#1e130b] via-[#100b07] to-[#070504] touch-pan-y select-none">
+            <div id="canvas-3d-container" class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] cursor-grab active:cursor-grabbing flex items-center justify-center bg-radial from-[#0d1d36] via-[#091529] to-[#050c17] touch-pan-y select-none">
               <!-- Ambient 3D Rotating Rings Background -->
-              <div class="absolute w-60 sm:w-72 h-60 sm:h-72 rounded-full border border-amber-500/20 orbital-ring-1 pointer-events-none"></div>
-              <div class="absolute w-72 sm:w-84 h-72 sm:h-84 rounded-full border border-amber-400/10 orbital-ring-2 pointer-events-none"></div>
+              <div class="absolute w-60 sm:w-72 h-60 sm:h-72 rounded-full border border-sky-500/20 orbital-ring-1 pointer-events-none"></div>
+              <div class="absolute w-72 sm:w-84 h-72 sm:h-84 rounded-full border border-emerald-400/10 orbital-ring-2 pointer-events-none"></div>
 
               <!-- Interactive Drag & Tap Prompt -->
               <div class="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 pointer-events-none depth-layer-1">
-                <span class="text-[10px] text-stone-300 bg-black/75 px-3 py-1 rounded-full border border-amber-500/30 flex items-center gap-1.5 backdrop-blur-md shadow-lg">
-                  <i class="fa-solid fa-arrows-up-down-left-right text-amber-400"></i>
-                  <span>Drag 360° • Tap cup for steam burst</span>
+                <span class="text-[10px] text-slate-300 bg-black/75 px-3 py-1 rounded-full border border-sky-500/30 flex items-center gap-1.5 backdrop-blur-md shadow-lg">
+                  <i class="fa-solid fa-arrows-up-down-left-right text-sky-400"></i>
+                  <span>Drag 360° • Click to pulse</span>
                 </span>
               </div>
             </div>
             
             <!-- Floating Live Status Overlay with 3D Depth Layers -->
-            <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 p-3.5 sm:p-4 rounded-2xl glass-card text-white z-20 depth-layer-3 border border-amber-500/30 shadow-2xl">
+            <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 p-3.5 sm:p-4 rounded-2xl glass-card text-white z-20 depth-layer-3 border border-sky-500/30 shadow-2xl">
               <div class="flex items-center justify-between mb-1">
-                <span class="text-[10px] uppercase tracking-wider font-bold text-amber-400 flex items-center gap-1.5">
+                <span class="text-[10px] uppercase tracking-wider font-bold text-sky-400 flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                   Open Today In ${city}
                 </span>
-                <span class="text-[10px] sm:text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">Micro-Batch Roastery</span>
+                <span class="text-[10px] sm:text-xs bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full font-bold">${profile.subNiche || 'Healthcare'}</span>
               </div>
-              <h4 class="font-serif-luxury font-bold text-base sm:text-lg text-amber-100 truncate">${bizName}</h4>
-              <p class="text-xs text-stone-300 truncate">${prospect.address || city + ' Downtown'}</p>
+              <h4 class="font-bold text-base sm:text-lg text-slate-100 truncate">${bizName}</h4>
+              <p class="text-xs text-slate-300 truncate">${prospect.address || city + ', Ontario, Canada'}</p>
             </div>
           </div>
         </div>
@@ -669,148 +884,124 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </section>
 
-  <!-- Interactive 3D Holographic AI Barista Concierge -->
+  <!-- Interactive 3D Holographic AI Concierge -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-16 relative z-20 perspective-container">
-    <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#1c130b] via-[#140e0a] to-[#070504] border border-amber-500/40 shadow-2xl relative overflow-hidden tilt-card-3d">
+    <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#0c1b33] via-[#081426] to-[#040b17] border border-sky-500/40 shadow-2xl relative overflow-hidden tilt-card-3d">
       <div class="glare-3d"></div>
-      <div class="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-0 right-0 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-amber-900/30 depth-layer-1">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-sky-900/40 depth-layer-1">
         <div class="flex items-start gap-4">
-          <!-- 3D Holographic AI Avatar Orb -->
-          <div class="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/30 to-amber-950 flex items-center justify-center shrink-0 border border-amber-500/40 shadow-lg shadow-amber-950/60 float-3d-element">
-            <i class="fa-solid fa-wand-magic-sparkles text-amber-300 text-xl"></i>
-            <div class="absolute inset-0 rounded-2xl border border-amber-400/30 orbital-ring-1 pointer-events-none"></div>
+          <div class="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500/30 to-slate-900 flex items-center justify-center shrink-0 border border-sky-500/40 shadow-lg shadow-sky-950/60 float-3d-element">
+            <i class="fa-solid fa-wand-magic-sparkles text-sky-300 text-xl"></i>
+            <div class="absolute inset-0 rounded-2xl border border-sky-400/30 orbital-ring-1 pointer-events-none"></div>
           </div>
           <div>
-            <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">
-              <span>Interactive 3D AI Concierge</span>
+            <div class="flex items-center gap-2 text-xs font-bold text-sky-400 uppercase tracking-widest mb-1">
+              <span>Smart Clinic Concierge</span>
             </div>
-            <h3 class="text-2xl sm:text-3xl font-serif-luxury font-bold text-amber-50">
-              Ask Barista AI: What Should You Order at ${bizName}?
+            <h3 class="text-2xl sm:text-3xl font-bold text-white">
+              ${profile.aiConcierge?.title || 'Interactive Patient Care & Triage Assistant'}
             </h3>
-            <p class="text-xs sm:text-sm text-stone-400 mt-1">
-              Select your craving below to generate a tailored single-origin tasting pairing.
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">
+              ${profile.aiConcierge?.sub || 'Select your need below to connect with the right department.'}
             </p>
           </div>
         </div>
 
         <div class="flex items-center gap-2 shrink-0">
           <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-xs font-semibold text-emerald-300">AI Concierge Online</span>
+          <span class="text-xs font-semibold text-emerald-300">Live Assistant Online</span>
         </div>
       </div>
 
       <!-- Quick Mood Buttons with 3D Depth Layers -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 depth-layer-2">
-        <button onclick="handleAiBarista('work')" class="p-3.5 rounded-2xl bg-stone-900/80 hover:bg-amber-950/40 border border-stone-800 hover:border-amber-500/50 text-left transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-900/20">
-          <div class="text-amber-400 text-lg mb-1 group-hover:scale-125 transition duration-300">⚡</div>
-          <div class="font-bold text-xs sm:text-sm text-amber-100">Work & Deep Focus</div>
-          <div class="text-[11px] text-stone-400 mt-0.5">High energy, low crash</div>
-        </button>
-
-        <button onclick="handleAiBarista('chill')" class="p-3.5 rounded-2xl bg-stone-900/80 hover:bg-amber-950/40 border border-stone-800 hover:border-amber-500/50 text-left transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-900/20">
-          <div class="text-amber-400 text-lg mb-1 group-hover:scale-125 transition duration-300">🌿</div>
-          <div class="font-bold text-xs sm:text-sm text-amber-100">Light & Refreshing</div>
-          <div class="text-[11px] text-stone-400 mt-0.5">Iced, floral & crisp</div>
-        </button>
-
-        <button onclick="handleAiBarista('sweet')" class="p-3.5 rounded-2xl bg-stone-900/80 hover:bg-amber-950/40 border border-stone-800 hover:border-amber-500/50 text-left transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-900/20">
-          <div class="text-amber-400 text-lg mb-1 group-hover:scale-125 transition duration-300">🥐</div>
-          <div class="font-bold text-xs sm:text-sm text-amber-100">Sweet Pastry Craving</div>
-          <div class="text-[11px] text-stone-400 mt-0.5">Warm oven indulgence</div>
-        </button>
-
-        <button onclick="handleAiBarista('brunch')" class="p-3.5 rounded-2xl bg-stone-900/80 hover:bg-amber-950/40 border border-stone-800 hover:border-amber-500/50 text-left transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-900/20">
-          <div class="text-amber-400 text-lg mb-1 group-hover:scale-125 transition duration-300">🥑</div>
-          <div class="font-bold text-xs sm:text-sm text-amber-100">Artisanal Brunch</div>
-          <div class="text-[11px] text-stone-400 mt-0.5">Wholesome & filling</div>
-        </button>
+        ${(profile.aiConcierge?.options || []).map((opt, idx) => `
+          <button onclick="handleAiOption('${opt.title}', '${opt.sub}')" class="p-3.5 rounded-2xl bg-slate-900/80 hover:bg-sky-950/50 border border-slate-800 hover:border-sky-500/50 text-left transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-900/20">
+            <div class="text-sky-400 text-lg mb-1 group-hover:scale-125 transition duration-300">${opt.icon}</div>
+            <div class="font-bold text-xs sm:text-sm text-slate-100">${opt.title}</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">${opt.sub}</div>
+          </button>
+        `).join('')}
       </div>
 
       <!-- Recommendation Display Box -->
-      <div id="ai-response-box" class="mt-6 p-4 sm:p-5 rounded-2xl bg-[#0f0b08] border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 depth-layer-3 shadow-xl">
+      <div id="ai-response-box" class="mt-6 p-4 sm:p-5 rounded-2xl bg-[#060f1c] border border-sky-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 depth-layer-3 shadow-xl">
         <div class="flex items-start gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 border border-amber-500/30">
-            <i class="fa-solid fa-robot text-lg"></i>
+          <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center shrink-0 mt-0.5 border border-sky-500/30">
+            <i class="fa-solid fa-notes-medical text-lg"></i>
           </div>
           <div>
-            <div class="text-[11px] uppercase tracking-wider text-amber-500 font-bold" id="ai-response-title">Barista AI Tip:</div>
-            <p class="text-xs sm:text-sm text-stone-200 mt-0.5 leading-relaxed" id="ai-response-text">
-              Looking for a perfect morning start? We recommend pairing our <strong>Double-Shot Spanish Cortado</strong> with our freshly baked <strong>Almond Butter Croissant</strong>!
+            <div class="text-[11px] uppercase tracking-wider text-sky-400 font-bold" id="ai-response-title">${profile.aiConcierge?.tipTitle || 'Coordinator Tip:'}</div>
+            <p class="text-xs sm:text-sm text-slate-200 mt-0.5 leading-relaxed" id="ai-response-text">
+              ${profile.aiConcierge?.tipText || `New to ${bizName}? You can walk in today or book an online consultation with one of our licensed physicians.`}
             </p>
           </div>
         </div>
-        <a id="ai-order-btn" href="https://wa.me/${phoneDigits}?text=Hi%20${encodeURIComponent(bizName)}!%20I%20would%20like%20to%20order%20the%20Double-Shot%20Spanish%20Cortado%20with%20Almond%20Croissant." target="_blank" rel="noopener noreferrer" class="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg transition flex items-center gap-1.5 hover:scale-105">
+        <a id="ai-order-btn" href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg transition flex items-center gap-1.5 hover:scale-105">
           <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>Order on WhatsApp</span>
+          <span>${profile.aiConcierge?.orderBtnText || 'Inquire on WhatsApp'}</span>
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- Interactive Menu Section with Live Filter Tabs -->
-  <section id="menu" class="py-20 bg-[#0e0a07] border-y border-amber-950/40 relative">
+  <!-- Interactive Specialties & Offerings Section -->
+  <section id="menu" class="py-20 bg-[#060e1a] border-y border-sky-950/40 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
-          <span class="text-amber-500 font-bold uppercase tracking-widest text-xs flex items-center gap-1.5">
-            <i class="fa-solid fa-mug-saucer"></i>
-            <span>Carefully Roasted & Crafted</span>
+          <span class="text-sky-400 font-bold uppercase tracking-widest text-xs flex items-center gap-1.5">
+            <i class="fa-solid ${profile.logoIcon || 'fa-notes-medical'}"></i>
+            <span>Verified Healthcare Departments</span>
           </span>
-          <h2 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-50 mt-2">
-            The Artisan Menu at ${bizName}
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">
+            ${profile.catalogHeading}
           </h2>
         </div>
         
-        <!-- Menu Tabs (Mobile Horizontal Touch Scroll) -->
+        <!-- Filter Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:flex-wrap" id="menu-tabs">
-          <button onclick="filterMenu('all', this)" class="menu-tab-btn active px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-black shadow-md shrink-0 whitespace-nowrap active:scale-95">
-            All Items
+          <button onclick="filterMenu('all', this)" class="menu-tab-btn active px-4 py-2.5 rounded-xl text-xs font-bold transition bg-sky-500 text-white shadow-md shrink-0 whitespace-nowrap active:scale-95">
+            All Specialties
           </button>
-          <button onclick="filterMenu('brews', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
-            ☕ Specialty Brews
-          </button>
-          <button onclick="filterMenu('bakes', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
-            🥐 Artisanal Bakes
-          </button>
-          <button onclick="filterMenu('brunch', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
-            🥑 Gourmet Brunch
-          </button>
-          <button onclick="filterMenu('coolers', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-stone-900 text-stone-300 hover:text-amber-300 border border-stone-800 shrink-0 whitespace-nowrap active:scale-95">
-            ✨ Coolers & Tonics
-          </button>
+          ${(profile.menuCategories || []).map(cat => `
+            <button onclick="filterMenu('${cat.id}', this)" class="menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-300 hover:text-sky-300 border border-slate-800 shrink-0 whitespace-nowrap active:scale-95">
+              <i class="fa-solid ${cat.icon} mr-1.5 text-sky-400"></i> ${cat.name}
+            </button>
+          `).join('')}
         </div>
       </div>
 
-      <!-- Menu Grid with 3D Perspective Tilt -->
+      <!-- Grid with 3D Perspective Tilt -->
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-container" id="menu-grid">
         ${(profile.menuCategories || []).flatMap(cat => cat.items.map(item => `
-          <div class="menu-item-card glass-card tilt-card-3d rounded-2xl p-4 flex flex-col justify-between group border border-amber-500/20 hover:border-amber-500/60" data-category="${cat.id}">
+          <div class="menu-item-card glass-card tilt-card-3d rounded-2xl p-4 flex flex-col justify-between group border border-sky-500/20 hover:border-sky-500/60" data-category="${cat.id}">
             <div class="glare-3d"></div>
             <div>
-              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-stone-900 depth-layer-2 shadow-lg">
+              <div class="relative h-44 rounded-xl overflow-hidden mb-4 bg-slate-900 depth-layer-2 shadow-lg">
                 <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                <div class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-amber-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-amber-500/40 depth-layer-3 shadow">
+                <div class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-sky-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-sky-500/40 depth-layer-3 shadow">
                   ${item.badge}
                 </div>
               </div>
 
               <div class="flex items-start justify-between gap-2 mb-1.5 depth-layer-1">
-                <h4 class="font-serif-luxury font-bold text-base text-amber-50 group-hover:text-amber-300 transition leading-snug">
+                <h4 class="font-bold text-base text-white group-hover:text-sky-300 transition leading-snug">
                   ${item.name}
                 </h4>
-                <span class="text-amber-400 font-extrabold text-sm shrink-0 font-mono">${item.price}</span>
+                <span class="text-sky-400 font-extrabold text-sm shrink-0 font-mono">${item.price}</span>
               </div>
-              <p class="text-xs text-stone-400 leading-relaxed depth-layer-1 font-light">${item.notes}</p>
+              <p class="text-xs text-slate-400 leading-relaxed depth-layer-1 font-light">${item.notes}</p>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-stone-800/80 flex items-center justify-between depth-layer-2">
-              <span class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">${cat.name}</span>
-              <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(`Hi ${bizName}! I would like to order the ${item.name} (${item.price}).`)}" target="_blank" rel="noopener noreferrer" class="text-xs text-amber-400 hover:text-amber-200 font-bold flex items-center gap-1.5 transition py-1 px-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 hover:text-black">
-                <span>Order 3D</span>
+            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between depth-layer-2">
+              <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">${cat.name}</span>
+              <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(`Hello ${bizName}! I would like to inquire/book an appointment for: ${item.name}.`)}" target="_blank" rel="noopener noreferrer" class="text-xs text-sky-400 hover:text-white font-bold flex items-center gap-1.5 transition py-1 px-2.5 rounded-lg bg-sky-500/10 hover:bg-sky-500 hover:text-black">
+                <span>Book 3D</span>
                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
               </a>
             </div>
@@ -821,33 +1012,33 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </section>
 
-  <!-- Offerings & Specialties with 3D Tilt -->
+  <!-- Core Specialties & Care Pillars -->
   <section id="about" class="py-20 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">Uncompromising Craftsmanship</span>
-        <h2 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-50 mt-2">
+        <span class="text-sky-400 font-bold uppercase tracking-widest text-xs">Excellence In Practice</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">
           ${profile.servicesHeading}
         </h2>
-        <p class="text-stone-400 mt-3 text-sm sm:text-base leading-relaxed">
+        <p class="text-slate-400 mt-3 text-sm sm:text-base leading-relaxed">
           ${profile.servicesSub}
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-container">
         ${profile.services.map(s => `
-          <div class="glass-card tilt-card-3d rounded-2xl p-6 flex flex-col justify-between group border border-amber-500/20 hover:border-amber-500/50">
+          <div class="glass-card tilt-card-3d rounded-2xl p-6 flex flex-col justify-between group border border-sky-500/20 hover:border-sky-500/50">
             <div class="glare-3d"></div>
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-xl mb-5 group-hover:bg-amber-500 group-hover:text-black transition duration-300 border border-amber-500/30 depth-layer-2 shadow-lg">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-xl mb-5 group-hover:bg-sky-500 group-hover:text-black transition duration-300 border border-sky-500/30 depth-layer-2 shadow-lg">
                 <i class="fa-solid ${s.icon}"></i>
               </div>
-              <h3 class="text-lg font-serif-luxury font-bold text-amber-100 group-hover:text-amber-300 transition depth-layer-1">${s.title}</h3>
-              <p class="text-xs sm:text-sm text-stone-400 mt-2 leading-relaxed font-light depth-layer-1">${s.desc}</p>
+              <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-300 transition depth-layer-1">${s.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed font-light depth-layer-1">${s.desc}</p>
             </div>
-            <div class="mt-5 pt-4 border-t border-stone-800 flex items-center justify-between text-xs font-semibold text-amber-400 depth-layer-2">
-              <span>Experience at ${bizName}</span>
+            <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-semibold text-sky-400 depth-layer-2">
+              <span>Care at ${bizName}</span>
               <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition duration-300"></i>
             </div>
           </div>
@@ -857,27 +1048,27 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </section>
 
-  <!-- Photo Gallery & Ambiance -->
-  <section id="ambiance" class="py-20 bg-[#0e0a07] border-y border-amber-950/40">
+  <!-- Photo Gallery & Clinical Facility -->
+  <section id="ambiance" class="py-20 bg-[#060e1a] border-y border-sky-950/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
-          <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">Warm Aesthetics</span>
-          <h2 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-50 mt-2">${profile.galleryHeading}</h2>
+          <span class="text-sky-400 font-bold uppercase tracking-widest text-xs">Modern Facilities</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">${profile.galleryHeading}</h2>
         </div>
-        <p class="text-stone-400 max-w-md text-xs sm:text-sm">
+        <p class="text-slate-400 max-w-md text-xs sm:text-sm">
           ${profile.gallerySub}
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-container">
         ${profile.gallery.map((img, i) => `
-          <div class="rounded-2xl overflow-hidden shadow-2xl group relative h-64 bg-stone-900 border border-amber-500/20 tilt-card-3d">
+          <div class="rounded-2xl overflow-hidden shadow-2xl group relative h-64 bg-slate-900 border border-sky-500/20 tilt-card-3d">
             <div class="glare-3d"></div>
-            <img src="${img}" alt="Ambiance ${i+1}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 depth-layer-1">
+            <img src="${img}" alt="Facility ${i+1}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 depth-layer-1">
             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 depth-layer-2">
-              <span class="text-amber-200 font-serif-luxury font-bold text-sm drop-shadow">${bizName} • ${city}</span>
+              <span class="text-sky-200 font-bold text-sm drop-shadow">${bizName} • ${city}</span>
             </div>
           </div>
         `).join('')}
@@ -886,39 +1077,37 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </section>
 
-  <!-- Verified Customer Reviews with 3D Tilt -->
+  <!-- Verified Reviews with 3D Tilt -->
   <section id="reviews" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">Customer Stories</span>
-        <h2 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-amber-50 mt-2">Loved by Locals in ${city}</h2>
+        <span class="text-sky-400 font-bold uppercase tracking-widest text-xs">Patient & Client Stories</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Trusted Across ${city}</h2>
         <div class="flex items-center justify-center gap-2 mt-3">
           <div class="flex text-amber-400 text-sm">
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
-          <span class="font-bold text-stone-200 text-sm">Rated ${rating}/5 from ${reviews} verified Google reviews</span>
+          <span class="font-bold text-slate-200 text-sm">Rated ${rating}/5 from ${reviews} verified Google reviews</span>
         </div>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 perspective-container">
         ${profile.testimonials.map(t => `
-          <div class="glass-card tilt-card-3d rounded-2xl p-6 flex flex-col justify-between border border-amber-500/20 hover:border-amber-500/50">
+          <div class="glass-card tilt-card-3d rounded-2xl p-6 flex flex-col justify-between border border-sky-500/20 group">
             <div class="glare-3d"></div>
             <div>
-              <div class="flex text-amber-400 text-xs mb-3.5 depth-layer-1">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <div class="flex text-amber-400 text-xs mb-3 depth-layer-1">
+                ${Array(t.rating).fill('<i class="fa-solid fa-star"></i>').join('')}
               </div>
-              <p class="text-stone-300 italic text-xs sm:text-sm leading-relaxed mb-6 font-light depth-layer-1">"${t.text}"</p>
+              <p class="text-sm text-slate-300 leading-relaxed italic depth-layer-1 font-light">"${t.text}"</p>
             </div>
-            <div class="flex items-center gap-3 pt-4 border-t border-stone-800 depth-layer-2">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-600 to-amber-900 text-amber-100 font-bold flex items-center justify-center text-sm shadow">
-                ${t.name.charAt(0)}
-              </div>
+            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between depth-layer-2">
               <div>
-                <h4 class="font-serif-luxury font-bold text-sm text-amber-100">${t.name}</h4>
-                <span class="text-[11px] text-stone-500">${t.loc}</span>
+                <h4 class="font-bold text-sm text-white">${t.name}</h4>
+                <p class="text-xs text-sky-400">${t.loc}</p>
               </div>
+              <span class="text-[10px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">Verified Patient</span>
             </div>
           </div>
         `).join('')}
@@ -927,144 +1116,90 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     </div>
   </section>
 
-  <!-- Interactive Live Table Reservation System with 3D Seating Map -->
-  <section id="reserve" class="py-20 bg-[#0d0906] border-t border-amber-950/40 relative">
+  <!-- Interactive Booking & Appointment Section -->
+  <section id="reserve" class="py-20 bg-[#060e1a] border-t border-sky-950/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         
         <div class="lg:col-span-6 space-y-6">
-          <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">${profile.contactBadge}</span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif-luxury font-bold text-amber-50 leading-tight">
-            ${profile.contactTitle}
-          </h2>
-          <p class="text-stone-400 text-sm sm:text-base leading-relaxed font-light">
+          <span class="text-sky-400 font-bold uppercase tracking-widest text-xs">${profile.contactBadge}</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">${profile.contactTitle}</h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
             ${profile.contactSub}
           </p>
 
-          <!-- 3D Interactive Floorplan Ambiance Selector -->
-          <div class="space-y-3 pt-2">
-            <label class="block text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
-              <i class="fa-solid fa-cube text-amber-400"></i>
-              <span>3D Seating Ambiance Selector</span>
-            </label>
-            <div class="grid grid-cols-2 gap-3 perspective-container">
-              <div onclick="selectSeatingZone('Indoor Velvet Salon', this)" class="seating-zone-3d active p-3.5 rounded-2xl glass-card tilt-card-3d cursor-pointer border border-amber-500 bg-amber-500/10 shadow-lg">
-                <div class="glare-3d"></div>
-                <div class="flex items-center gap-2 depth-layer-2">
-                  <span class="text-amber-400 text-base">👑</span>
-                  <span class="text-xs font-bold text-amber-200">Velvet Salon</span>
-                </div>
-                <p class="text-[10px] text-stone-400 mt-1 depth-layer-1">Plush intimate booths</p>
-                <span class="inline-block mt-2 text-[9px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold depth-layer-3">Available</span>
-              </div>
-
-              <div onclick="selectSeatingZone('Sunlit Courtyard Terrace', this)" class="seating-zone-3d p-3.5 rounded-2xl glass-card tilt-card-3d cursor-pointer border border-stone-800 hover:border-amber-500/50">
-                <div class="glare-3d"></div>
-                <div class="flex items-center gap-2 depth-layer-2">
-                  <span class="text-amber-400 text-base">🌿</span>
-                  <span class="text-xs font-bold text-stone-200">Garden Terrace</span>
-                </div>
-                <p class="text-[10px] text-stone-400 mt-1 depth-layer-1">Alfresco starlit canopy</p>
-                <span class="inline-block mt-2 text-[9px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold depth-layer-3">Popular</span>
-              </div>
-
-              <div onclick="selectSeatingZone('Barista Pour-Over Bar', this)" class="seating-zone-3d p-3.5 rounded-2xl glass-card tilt-card-3d cursor-pointer border border-stone-800 hover:border-amber-500/50">
-                <div class="glare-3d"></div>
-                <div class="flex items-center gap-2 depth-layer-2">
-                  <span class="text-amber-400 text-base">☕</span>
-                  <span class="text-xs font-bold text-stone-200">Barista Bar</span>
-                </div>
-                <p class="text-[10px] text-stone-400 mt-1 depth-layer-1">Front row brew craft</p>
-                <span class="inline-block mt-2 text-[9px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold depth-layer-3">Interactive</span>
-              </div>
-
-              <div onclick="selectSeatingZone('Acoustic Mezzanine Loft', this)" class="seating-zone-3d p-3.5 rounded-2xl glass-card tilt-card-3d cursor-pointer border border-stone-800 hover:border-amber-500/50">
-                <div class="glare-3d"></div>
-                <div class="flex items-center gap-2 depth-layer-2">
-                  <span class="text-amber-400 text-base">🎷</span>
-                  <span class="text-xs font-bold text-stone-200">Jazz Loft</span>
-                </div>
-                <p class="text-[10px] text-stone-400 mt-1 depth-layer-1">Vinyl jazz & acoustics</p>
-                <span class="inline-block mt-2 text-[9px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold depth-layer-3">Available</span>
-              </div>
-            </div>
-          </div>
-
           <div class="space-y-4 pt-2">
-            <div class="flex items-center gap-4 p-3.5 rounded-2xl glass-card">
-              <div class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <div class="text-[11px] text-stone-400 uppercase tracking-wider">Direct Reservation Desk</div>
-                <div class="font-bold text-amber-100">${phone}</div>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4 p-3.5 rounded-2xl glass-card">
-              <div class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">
+            <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+              <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
-                <div class="text-[11px] text-stone-400 uppercase tracking-wider">Cafe Address</div>
-                <div class="font-bold text-amber-100">${prospect.address || city + ' Central'}</div>
+                <h4 class="font-bold text-sm text-white">Physical Location</h4>
+                <p class="text-xs text-slate-300 mt-0.5">${prospect.address || city + ', Ontario, Canada'}</p>
+                ${prospect.google_maps_url ? `<a href="${prospect.google_maps_url}" target="_blank" rel="noopener noreferrer" class="text-xs text-sky-400 hover:underline mt-1 inline-block">Open Google Maps Direction &rarr;</a>` : ''}
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+              <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-white">Direct Telephone Line</h4>
+                <p class="text-xs text-slate-300 mt-0.5">${phone}</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl glass-card">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-white">Instant WhatsApp Contact</h4>
+                <p class="text-xs text-slate-300 mt-0.5">Instant online confirmation & walk-in inquiries</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Interactive Reservation Form -->
+        <!-- Appointment Form Card -->
         <div class="lg:col-span-6">
-          <div class="rounded-3xl p-6 sm:p-8 bg-[#16100b] border border-amber-500/30 shadow-2xl relative">
-            <h3 class="font-serif-luxury text-2xl font-bold text-amber-50 mb-1">${profile.formTitle}</h3>
-            <p class="text-stone-400 text-xs mb-6">${profile.formSub}</p>
+          <div class="p-6 sm:p-8 rounded-3xl glass-card border border-sky-500/30 shadow-2xl relative">
+            <h3 class="text-2xl font-bold text-white">${profile.formTitle}</h3>
+            <p class="text-xs text-slate-400 mt-1 mb-6">${profile.formSub}</p>
 
-            <form onsubmit="handleReservationSubmit(event)" class="space-y-4">
-              
-              <!-- Guest Count Interactive Selector -->
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
               <div>
-                <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">Number of Guests</label>
-                <div class="grid grid-cols-4 gap-2" id="guest-selector">
-                  <button type="button" onclick="selectGuests(1, this)" class="guest-btn py-2 rounded-xl border border-amber-500/40 bg-amber-500/20 text-amber-300 text-xs font-bold transition">1 Person</button>
-                  <button type="button" onclick="selectGuests(2, this)" class="guest-btn active py-2 rounded-xl border border-amber-500 bg-amber-500 text-black text-xs font-bold transition shadow">2 People</button>
-                  <button type="button" onclick="selectGuests(3, this)" class="guest-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition hover:border-amber-500/30">3-4 People</button>
-                  <button type="button" onclick="selectGuests(5, this)" class="guest-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition hover:border-amber-500/30">5+ Group</button>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
+                <input type="text" id="form-name" required placeholder="e.g. Michael Smith" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:border-sky-500 focus:outline-none">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
+                  <input type="tel" id="form-phone" required placeholder="+1 (416) ..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:border-sky-500 focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Preferred Date</label>
+                  <input type="date" id="form-date" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:border-sky-500 focus:outline-none">
                 </div>
               </div>
 
-              <!-- Contact Inputs -->
-              <div class="grid sm:grid-cols-2 gap-3 pt-1">
-                <div>
-                  <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">Your Full Name</label>
-                  <input type="text" id="res-name" required placeholder="Aarav Sharma" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-white">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">WhatsApp / Phone</label>
-                  <input type="tel" id="res-phone" required placeholder="${phone}" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-white font-mono">
-                </div>
-              </div>
-
-              <!-- Seating Preference -->
               <div>
-                <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">${profile.formServiceLabel}</label>
-                <select id="res-seating" class="w-full bg-[#0c0907] px-3.5 py-2.5 rounded-xl border border-stone-800 focus:border-amber-500 focus:outline-none text-base sm:text-sm text-stone-200">
+                <label class="block text-xs font-semibold text-slate-300 mb-1">${profile.formServiceLabel}</label>
+                <select id="form-service" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:border-sky-500 focus:outline-none">
                   ${profile.formOptions.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
                 </select>
               </div>
 
-              <!-- Time Slot -->
               <div>
-                <label class="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">Preferred Timing</label>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="time-selector">
-                  <button type="button" onclick="selectTime('09:30 AM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">09:30 AM</button>
-                  <button type="button" onclick="selectTime('01:30 PM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">01:30 PM</button>
-                  <button type="button" onclick="selectTime('05:30 PM', this)" class="time-btn active py-2 rounded-xl border border-amber-500 bg-amber-500 text-black text-xs font-bold transition active:scale-95 shadow">05:30 PM</button>
-                  <button type="button" onclick="selectTime('08:30 PM', this)" class="time-btn py-2 rounded-xl border border-stone-800 bg-stone-900 text-stone-300 text-xs font-bold transition active:scale-95 hover:border-amber-500/40">08:30 PM</button>
-                </div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Consultation Notes / Symptoms</label>
+                <textarea id="form-notes" rows="2" placeholder="Brief description of consultation reason..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:border-sky-500 focus:outline-none"></textarea>
               </div>
 
-              <button type="submit" class="w-full py-3.5 gold-shimmer-btn text-black font-extrabold rounded-2xl shadow-xl shadow-amber-900/40 transition hover:scale-[1.02] active:scale-95 text-sm mt-3">
-                ${profile.formSubmitText}
+              <button type="submit" class="w-full action-shimmer-btn text-white font-extrabold py-3.5 rounded-xl shadow-lg transition hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 text-sm">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>${profile.formSubmitText}</span>
               </button>
             </form>
           </div>
@@ -1075,278 +1210,138 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#080604] text-stone-500 py-12 text-xs border-t border-amber-950/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2.5">
-        <span class="font-serif-luxury font-bold text-amber-200 text-sm">${bizName}</span>
-        <span>•</span>
-        <span>${city}</span>
-        <span>•</span>
-        <span>Specialty Coffee & Kitchen</span>
-      </div>
+  <footer class="py-12 bg-[#040810] border-t border-slate-900 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
       <div>
-        <p>&copy; ${new Date().getFullYear()} ${bizName}. All Rights Reserved. Handcrafted by SiteSeller Agent.</p>
+        <p class="font-bold text-slate-300">${bizName} &copy; ${new Date().getFullYear()} • ${city}</p>
+        <p class="mt-1">${profile.subNiche || 'Healthcare'} • ${prospect.address || city + ', Ontario, Canada'}</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#about" class="hover:text-sky-400">Services</a>
+        <a href="#reviews" class="hover:text-sky-400">Reviews</a>
+        <a href="#reserve" class="hover:text-sky-400">Appointments</a>
+        <a href="tel:${phone}" class="hover:text-sky-400 font-mono">${phone}</a>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Customer WhatsApp Chat with Animated Radar Ring (Desktop & Tablet) -->
-  <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" 
-     target="_blank" 
-     rel="noopener noreferrer"
-     class="hidden md:flex fixed bottom-6 right-6 z-50 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-4 rounded-full shadow-2xl items-center justify-center transition-all hover:scale-110 radar-pulse group"
-     title="Message ${bizName} on WhatsApp">
-    <i class="fa-brands fa-whatsapp text-2xl"></i>
-    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out font-bold text-xs group-hover:ml-2">
-      Chat with ${bizName}
-    </span>
-  </a>
-
-  <!-- Dedicated Mobile Quick Action Bar (Touch-Optimized for Mobile Customers) -->
-  <aside class="fixed bottom-0 left-0 right-0 z-40 bg-[#100b08]/98 backdrop-blur-2xl border-t border-amber-500/30 px-3 py-2 flex items-center justify-between gap-1 shadow-[0_-8px_30px_rgba(0,0,0,0.8)] md:hidden">
-    <a href="tel:${phone}" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-amber-400 py-1 rounded-xl active:bg-amber-500/10 active:scale-95 transition">
-      <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-amber-400 text-xs border border-amber-500/20">
-        <i class="fa-solid fa-phone"></i>
-      </div>
-      <span class="text-[10px] font-semibold">Call</span>
+  <!-- Floating Mobile Quick Contact Bar -->
+  <div class="fixed bottom-0 left-0 right-0 z-40 bg-[#081222]/95 border-t border-sky-500/30 p-2.5 flex items-center gap-2 md:hidden backdrop-blur-xl">
+    <a href="tel:${phone}" class="flex-1 bg-slate-900 border border-sky-500/30 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 active:scale-95">
+      <i class="fa-solid fa-phone text-sky-400"></i>
+      <span>Call Phone</span>
     </a>
-
-    <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-emerald-400 py-1 rounded-xl active:bg-emerald-500/10 active:scale-95 transition">
-      <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm border border-emerald-500/40">
-        <i class="fa-brands fa-whatsapp"></i>
-      </div>
-      <span class="text-[10px] font-bold text-emerald-400">WhatsApp</span>
+    <a href="https://wa.me/${phoneDigits}?text=${encodeURIComponent(customerWaText)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 active:scale-95 shadow-lg shadow-emerald-900/40">
+      <i class="fa-brands fa-whatsapp text-sm"></i>
+      <span>WhatsApp</span>
     </a>
+  </div>
 
-    <a href="${prospect.google_maps_url || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(bizName + ' ' + (prospect.address || city)))}" target="_blank" rel="noopener noreferrer" class="flex-1 flex flex-col items-center justify-center gap-1 text-stone-300 hover:text-amber-400 py-1 rounded-xl active:bg-amber-500/10 active:scale-95 transition">
-      <div class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center text-amber-400 text-xs border border-amber-500/20">
-        <i class="fa-solid fa-location-dot"></i>
-      </div>
-      <span class="text-[10px] font-semibold">Map</span>
-    </a>
-
-    <a href="#reserve" class="flex-1 py-2 px-2.5 gold-shimmer-btn text-black font-extrabold rounded-xl text-xs flex items-center justify-center gap-1 shadow-lg active:scale-95 transition">
-      <i class="fa-solid fa-calendar-check text-xs"></i>
-      <span>Reserve</span>
-    </a>
-  </aside>
-
-  <!-- Claim Modal (For Business Owner to connect with Developer) -->
-  <div id="claim-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
-    <div class="bg-[#17100b] border border-amber-500/40 rounded-3xl max-w-md w-full p-5 sm:p-6 text-stone-100 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="absolute top-4 right-4 text-stone-400 hover:text-white p-1">
-        <i class="fa-solid fa-xmark text-lg"></i>
+  <!-- Agency Claim Modal -->
+  <div id="claim-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-sky-500/40 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-white">
+      <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
       </button>
-      
-      <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-xl font-bold mb-4 border border-amber-500/30">
-        ✨
+
+      <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl mb-4 border border-sky-500/40">
+        <i class="fa-solid fa-sparkles"></i>
       </div>
-      
-      <h3 class="font-serif-luxury text-xl sm:text-2xl font-bold text-amber-50">Claim ${bizName}'s Website</h3>
-      <p class="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-        This luxury, fully animated mobile-responsive website was custom designed for <strong>${bizName}</strong>. Connect your custom domain, update photos, and receive direct WhatsApp table bookings today!
+      <h3 class="text-xl font-bold">Claim & Launch This Website for ${bizName}</h3>
+      <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+        This high-converting website was custom-designed for <strong>${bizName}</strong>. You can claim it, edit all copy, doctors, photos, and connect your official custom domain.
       </p>
 
-      <div class="bg-[#0d0906] p-3.5 rounded-2xl border border-amber-900/40 mt-4 text-xs text-amber-200/80 space-y-1">
-        <div><strong>Includes:</strong> Free cloud deployment, custom domain connection, SEO optimization, and direct WhatsApp booking alerts.</div>
-      </div>
-
-      <div class="mt-6 flex flex-col gap-2.5">
-        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold rounded-2xl transition active:scale-95 flex items-center justify-center gap-2 shadow-lg text-xs sm:text-sm">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>Claim via WhatsApp (+91 8920608191)</span>
+      <div class="mt-6 space-y-3">
+        <a href="https://wa.me/${agencyWhatsApp}?text=${encodeURIComponent(claimWaText)}" target="_blank" rel="noopener noreferrer" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition active:scale-95">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Claim on WhatsApp with Developer</span>
         </a>
-        <a href="mailto:${senderEmail}?subject=${encodeURIComponent(`Claim Website for ${bizName}`)}&body=${encodeURIComponent(claimWaText)}" class="w-full text-center py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-200 border border-stone-800 font-bold rounded-2xl text-xs transition active:scale-95">
-          Claim via Email
-        </a>
-        <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="w-full py-2 text-stone-400 hover:text-stone-200 text-xs font-semibold">
-          Continue Previewing
+        <button onclick="document.getElementById('claim-modal').classList.add('hidden')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl text-xs transition">
+          Close Preview
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Interactive JavaScript Engine -->
+  <!-- Scripts -->
   <script>
-    // 0. Mobile Navigation Drawer Toggle
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobile-drawer');
       const icon = document.getElementById('mobile-menu-icon');
-      if (!drawer) return;
-      const isHidden = drawer.classList.contains('hidden');
-      if (isHidden) {
+      if (drawer.classList.contains('hidden')) {
         drawer.classList.remove('hidden');
-        if (icon) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-xmark');
-        }
+        icon.className = 'fa-solid fa-xmark text-base';
       } else {
         drawer.classList.add('hidden');
-        if (icon) {
-          icon.classList.remove('fa-xmark');
-          icon.classList.add('fa-bars');
-        }
+        icon.className = 'fa-solid fa-bars text-base';
       }
     }
 
-    // 1. AI Barista Concierge Logic
-    const baristaRecommendations = {
-      work: {
-        title: "⚡ Focus & Energy Pairing:",
-        text: "For sustained stamina with zero crash, order our <strong>Double-Shot Spanish Cortado</strong> alongside a warm, twice-baked <strong>Almond Butter Croissant</strong>!",
-        waItem: "Double-Shot Spanish Cortado + Almond Croissant"
-      },
-      chill: {
-        title: "🌿 Cold & Botanical Pairing:",
-        text: "Beating the afternoon heat? Go for the sparkling <strong>Yuzu Cold Brew Tonic</strong> with a slice of our <strong>Wild Blueberry Sourdough Danish</strong>!",
-        waItem: "Yuzu Cold Brew Tonic + Wild Blueberry Danish"
-      },
-      sweet: {
-        title: "🥐 Sweet Indulgence Pairing:",
-        text: "Craving decadent pastry craft? Try the <strong>Belgian Dark Chocolate Babka</strong> paired with our velvety <strong>Sea Salt Caramel Flat White</strong>.",
-        waItem: "Belgian Dark Chocolate Babka + Sea Salt Caramel Flat White"
-      },
-      brunch: {
-        title: "🥑 Artisanal Brunch Pairing:",
-        text: "For a satisfying wholesome meal, order the <strong>Hass Avocado & Poached Egg Brioche</strong> with an iced <strong>Ceremonial Grade Matcha Latte</strong>!",
-        waItem: "Avocado Poached Egg Brioche + Ceremonial Matcha Latte"
-      }
-    };
-
-    function handleAiBarista(type) {
-      const rec = baristaRecommendations[type] || baristaRecommendations.work;
-      const titleEl = document.getElementById('ai-response-title');
-      const textEl = document.getElementById('ai-response-text');
-      const btnEl = document.getElementById('ai-order-btn');
-      
-      titleEl.innerText = rec.title;
-      textEl.innerHTML = rec.text;
-      btnEl.href = "https://wa.me/${phoneDigits}?text=" + encodeURIComponent("Hi ${bizName}! I would like to order the " + rec.waItem + " recommended by your AI Barista.");
-      
-      const box = document.getElementById('ai-response-box');
-      box.classList.add('ring-2', 'ring-amber-500/50');
-      setTimeout(() => box.classList.remove('ring-2', 'ring-amber-500/50'), 600);
-    }
-
-    // 2. Interactive Menu Filter Tabs
     function filterMenu(categoryId, btn) {
       document.querySelectorAll('.menu-tab-btn').forEach(b => {
-        b.classList.remove('bg-amber-500', 'text-black', 'shadow-md');
-        b.classList.add('bg-stone-900', 'text-stone-300');
+        b.className = 'menu-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition bg-slate-900 text-slate-300 hover:text-sky-300 border border-slate-800 shrink-0 whitespace-nowrap active:scale-95';
       });
-      btn.classList.add('bg-amber-500', 'text-black', 'shadow-md');
-      btn.classList.remove('bg-stone-900', 'text-stone-300');
+      btn.className = 'menu-tab-btn active px-4 py-2.5 rounded-xl text-xs font-bold transition bg-sky-500 text-white shadow-md shrink-0 whitespace-nowrap active:scale-95';
 
-      const items = document.querySelectorAll('.menu-item-card');
-      items.forEach(card => {
+      document.querySelectorAll('.menu-item-card').forEach(card => {
         if (categoryId === 'all' || card.getAttribute('data-category') === categoryId) {
           card.style.display = 'flex';
-          card.classList.add('animate-fadeIn');
         } else {
           card.style.display = 'none';
         }
       });
     }
 
-    // 3. 3D Seating Zone Visualizer
-    function selectSeatingZone(zoneName, el) {
-      document.querySelectorAll('.seating-zone-3d').forEach(z => {
-        z.classList.remove('active', 'border-amber-500', 'bg-amber-500/10', 'shadow-lg');
-        z.classList.add('border-stone-800');
-      });
-      el.classList.add('active', 'border-amber-500', 'bg-amber-500/10', 'shadow-lg');
-      el.classList.remove('border-stone-800');
-
-      const seatingSelect = document.getElementById('res-seating');
-      if (seatingSelect) {
-        let found = false;
-        for (let i = 0; i < seatingSelect.options.length; i++) {
-          if (seatingSelect.options[i].text.toLowerCase().includes(zoneName.toLowerCase().split(' ')[0])) {
-            seatingSelect.selectedIndex = i;
-            found = true;
-            break;
-          }
-        }
-        if (!found) {
-          const opt = document.createElement('option');
-          opt.value = zoneName;
-          opt.text = zoneName;
-          opt.selected = true;
-          seatingSelect.appendChild(opt);
-        }
-      }
+    function handleAiOption(title, sub) {
+      document.getElementById('ai-response-title').innerText = title;
+      document.getElementById('ai-response-text').innerText = 'Selected consultation preference: ' + title + ' (' + sub + '). You can book an appointment or ask about wait times on WhatsApp!';
+      const btn = document.getElementById('ai-order-btn');
+      btn.href = 'https://wa.me/${phoneDigits}?text=' + encodeURIComponent('Hello ${bizName}! I would like to inquire about: ' + title + ' (' + sub + ').');
     }
 
-    // 4. Guest & Time Selectors for Table Reservation
-    let selectedGuestCount = 2;
-    let selectedTimeSlot = '05:30 PM';
-
-    function selectGuests(count, btn) {
-      selectedGuestCount = count;
-      document.querySelectorAll('.guest-btn').forEach(b => {
-        b.classList.remove('bg-amber-500', 'text-black', 'border-amber-500', 'shadow');
-        b.classList.add('bg-stone-900', 'text-stone-300', 'border-stone-800');
-      });
-      btn.classList.add('bg-amber-500', 'text-black', 'border-amber-500', 'shadow');
-      btn.classList.remove('bg-stone-900', 'text-stone-300', 'border-stone-800');
-    }
-
-    function selectTime(time, btn) {
-      selectedTimeSlot = time;
-      document.querySelectorAll('.time-btn').forEach(b => {
-        b.classList.remove('bg-amber-500', 'text-black', 'border-amber-500', 'shadow');
-        b.classList.add('bg-stone-900', 'text-stone-300', 'border-stone-800');
-      });
-      btn.classList.add('bg-amber-500', 'text-black', 'border-amber-500', 'shadow');
-      btn.classList.remove('bg-stone-900', 'text-stone-300', 'border-stone-800');
-    }
-
-    function handleReservationSubmit(e) {
+    function handleBookingSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById('res-name').value;
-      const phone = document.getElementById('res-phone').value;
-      const seating = document.getElementById('res-seating').value;
-      
-      const msg = "Hi ${bizName}! I would like to confirm my table reservation:%0A- Name: " + encodeURIComponent(name) + "%0A- Guests: " + selectedGuestCount + "%0A- Time: " + selectedTimeSlot + "%0A- Seating: " + encodeURIComponent(seating) + "%0A- Phone: " + encodeURIComponent(phone);
-      
-      window.open("https://wa.me/${phoneDigits}?text=" + msg, "_blank");
-      alert("✨ Table Reservation Sent for " + name + "! In production, this directly notifies ${bizName} on WhatsApp.");
+      const name = document.getElementById('form-name').value;
+      const phone = document.getElementById('form-phone').value;
+      const date = document.getElementById('form-date').value || 'Soonest available';
+      const service = document.getElementById('form-service').value;
+      const notes = document.getElementById('form-notes').value || 'No special notes';
+
+      const msg = 'Hello ${bizName}!\\n\\nNew Appointment Request:\\n• Patient: ' + name + '\\n• Phone: ' + phone + '\\n• Department: ' + service + '\\n• Preferred Date: ' + date + '\\n• Notes: ' + notes;
+      const url = 'https://wa.me/${phoneDigits}?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+      alert('Thank you ' + name + '! Redirecting to WhatsApp to send your appointment details directly to the clinic coordinator.');
     }
 
-    // 5. Smooth 3D Card Tilt Engine (Active on Pointer/Mouse Devices)
+    // 3D Card Tilt Engine
     function init3dTiltEngine() {
-      if (window.matchMedia && !window.matchMedia('(pointer: fine)').matches) {
-        return; // Skip mouse tilt on touch devices to ensure silky smooth scrolling
-      }
       const cards = document.querySelectorAll('.tilt-card-3d');
       cards.forEach(card => {
+        const glare = card.querySelector('.glare-3d');
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -11;
-          const rotateY = ((x - centerX) / centerX) * 11;
-          card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale3d(1.025, 1.025, 1.025)";
-          
-          const glare = card.querySelector('.glare-3d');
+          const rotateX = ((y - centerY) / centerY) * -10;
+          const rotateY = ((x - centerX) / centerX) * 10;
+          card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)';
           if (glare) {
-            glare.style.background = "radial-gradient(circle at " + x + "px " + y + "px, rgba(251, 191, 36, 0.22) 0%, transparent 65%)";
-            glare.style.opacity = '1';
+            glare.style.opacity = '0.35';
+            glare.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)';
           }
         });
-
         card.addEventListener('mouseleave', () => {
           card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-          const glare = card.querySelector('.glare-3d');
           if (glare) glare.style.opacity = '0';
         });
       });
     }
 
-    // 6. Three.js Interactive 3D Coffee Scene
-    function init3dCoffeeScene() {
+    // Three.js 3D Interactive Scene (Niche Specific)
+    function initThreeJsScene() {
       const container = document.getElementById('canvas-3d-container');
       if (!container || typeof THREE === 'undefined') return;
 
@@ -1355,7 +1350,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      camera.position.set(0, 2.2, 5.6);
+      camera.position.set(0, 1.5, 6.0);
       camera.lookAt(0, 0, 0);
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -1363,238 +1358,171 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       container.appendChild(renderer.domElement);
 
-      // Lights
-      const ambientLight = new THREE.AmbientLight(0xffeedd, 1.5);
+      const isClinicNiche = ${isClinic};
+      const isCafeNiche = ${isCafe};
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(isClinicNiche ? 0xd0f0ff : 0xffeedd, 1.8);
       scene.add(ambientLight);
 
-      const keyLight = new THREE.DirectionalLight(0xffb74d, 2.8);
+      const keyLight = new THREE.DirectionalLight(isClinicNiche ? 0x38bdf8 : 0xffb74d, 3.2);
       keyLight.position.set(5, 8, 4);
       scene.add(keyLight);
 
-      const rimLight = new THREE.DirectionalLight(0xffd54f, 1.8);
+      const rimLight = new THREE.DirectionalLight(isClinicNiche ? 0x10b981 : 0xffd54f, 2.0);
       rimLight.position.set(-5, 4, -4);
       scene.add(rimLight);
 
-      const mouseLight = new THREE.PointLight(0xffa726, 2.5, 10);
+      const mouseLight = new THREE.PointLight(isClinicNiche ? 0x0ea5e9 : 0xffa726, 3.0, 12);
       mouseLight.position.set(0, 3, 3);
       scene.add(mouseLight);
 
-      // Main 3D Coffee Group
-      const coffeeGroup = new THREE.Group();
-      scene.add(coffeeGroup);
+      const mainGroup = new THREE.Group();
+      scene.add(mainGroup);
 
-      // Materials
-      const ceramicMaterial = new THREE.MeshStandardMaterial({
-        color: 0x140e0a,
-        roughness: 0.18,
-        metalness: 0.85
-      });
+      if (isClinicNiche) {
+        // --- 3D MEDICAL CROSS WITH DNA DOUBLE HELIX ---
+        const crossMat = new THREE.MeshStandardMaterial({
+          color: 0x0284c7,
+          roughness: 0.15,
+          metalness: 0.85,
+          emissive: 0x0369a1,
+          emissiveIntensity: 0.25
+        });
+        const trimMat = new THREE.MeshStandardMaterial({
+          color: 0x38bdf8,
+          roughness: 0.1,
+          metalness: 0.95
+        });
 
-      const goldTrimMaterial = new THREE.MeshStandardMaterial({
-        color: 0xf59e0b,
-        roughness: 0.15,
-        metalness: 0.95
-      });
+        // Vertical Bar
+        const vBar = new THREE.Mesh(new THREE.BoxGeometry(0.75, 2.4, 0.5), crossMat);
+        mainGroup.add(vBar);
 
-      const coffeeLiquidMaterial = new THREE.MeshStandardMaterial({
-        color: 0x2b170c,
-        roughness: 0.1,
-        metalness: 0.3
-      });
+        // Horizontal Bar
+        const hBar = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.75, 0.5), crossMat);
+        mainGroup.add(hBar);
 
-      const cremaMaterial = new THREE.MeshStandardMaterial({
-        color: 0xb4763c,
-        roughness: 0.45,
-        metalness: 0.1
-      });
+        // Central Heart Sphere
+        const centerSphere = new THREE.Mesh(new THREE.SphereGeometry(0.45, 32, 32), trimMat);
+        centerSphere.position.z = 0.28;
+        mainGroup.add(centerSphere);
 
-      const beanMaterial = new THREE.MeshStandardMaterial({
-        color: 0x3d2314,
-        roughness: 0.35,
-        metalness: 0.25
-      });
+        // DNA Double Helix Orbiting Rings
+        const ringGeo1 = new THREE.TorusGeometry(1.85, 0.05, 16, 64);
+        ringGeo1.rotateX(Math.PI / 3);
+        const ring1 = new THREE.Mesh(ringGeo1, new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.2, metalness: 0.9 }));
+        mainGroup.add(ring1);
 
-      // Cup Body
-      const cupGeo = new THREE.CylinderGeometry(1.2, 0.8, 1.4, 48, 1, false);
-      const cup = new THREE.Mesh(cupGeo, ceramicMaterial);
-      cup.position.y = 0.7;
-      coffeeGroup.add(cup);
+        const ringGeo2 = new THREE.TorusGeometry(1.95, 0.05, 16, 64);
+        ringGeo2.rotateX(-Math.PI / 3);
+        const ring2 = new THREE.Mesh(ringGeo2, new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.2, metalness: 0.9 }));
+        mainGroup.add(ring2);
 
-      // Gold Rim
-      const rimGeo = new THREE.TorusGeometry(1.21, 0.05, 16, 48);
-      rimGeo.rotateX(Math.PI / 2);
-      const rim = new THREE.Mesh(rimGeo, goldTrimMaterial);
-      rim.position.y = 1.4;
-      coffeeGroup.add(rim);
+      } else if (isCafeNiche) {
+        // --- 3D COFFEE CUP WITH SAUCER ---
+        const cupMat = new THREE.MeshStandardMaterial({ color: 0x140e0a, roughness: 0.18, metalness: 0.85 });
+        const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.15, metalness: 0.95 });
 
-      // Cup Handle
-      const handleGeo = new THREE.TorusGeometry(0.5, 0.09, 16, 32, Math.PI * 1.2);
-      const handle = new THREE.Mesh(handleGeo, goldTrimMaterial);
-      handle.position.set(1.25, 0.7, 0);
-      handle.rotation.z = -Math.PI / 4;
-      coffeeGroup.add(handle);
+        const cup = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 0.8, 1.4, 48), cupMat);
+        cup.position.y = 0.7;
+        mainGroup.add(cup);
 
-      // Coffee Liquid
-      const liquidGeo = new THREE.CylinderGeometry(1.15, 1.15, 0.08, 48);
-      const liquid = new THREE.Mesh(liquidGeo, coffeeLiquidMaterial);
-      liquid.position.y = 1.32;
-      coffeeGroup.add(liquid);
+        const saucer = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.2, 0.15, 48), cupMat);
+        saucer.position.y = -0.05;
+        mainGroup.add(saucer);
 
-      // Crema Foam
-      const foamGeo = new THREE.CircleGeometry(0.7, 32);
-      foamGeo.rotateX(-Math.PI / 2);
-      const foam = new THREE.Mesh(foamGeo, cremaMaterial);
-      foam.position.y = 1.37;
-      coffeeGroup.add(foam);
+        const rim = new THREE.Mesh(new THREE.TorusGeometry(1.21, 0.05, 16, 48), goldMat);
+        rim.rotateX(Math.PI / 2);
+        rim.position.y = 1.4;
+        mainGroup.add(rim);
 
-      // Saucer
-      const saucerGeo = new THREE.CylinderGeometry(1.8, 1.2, 0.15, 48);
-      const saucer = new THREE.Mesh(saucerGeo, ceramicMaterial);
-      saucer.position.y = -0.05;
-      coffeeGroup.add(saucer);
+      } else {
+        // --- 3D GEOMETRIC SHIELD ---
+        const shieldGeo = new THREE.OctahedronGeometry(1.3, 2);
+        const shieldMat = new THREE.MeshStandardMaterial({ color: 0x6366f1, roughness: 0.2, metalness: 0.85 });
+        const shield = new THREE.Mesh(shieldGeo, shieldMat);
+        mainGroup.add(shield);
 
-      const saucerRimGeo = new THREE.TorusGeometry(1.81, 0.04, 16, 48);
-      saucerRimGeo.rotateX(Math.PI / 2);
-      const saucerRim = new THREE.Mesh(saucerRimGeo, goldTrimMaterial);
-      saucerRim.position.y = 0.03;
-      coffeeGroup.add(saucerRim);
-
-      // 3D Floating Coffee Beans
-      const beans = [];
-      const beanGeo = new THREE.SphereGeometry(0.22, 16, 12);
-      beanGeo.scale(1.4, 0.85, 0.95);
-
-      for (let i = 0; i < 9; i++) {
-        const bean = new THREE.Mesh(beanGeo, beanMaterial);
-        const angle = (i / 9) * Math.PI * 2;
-        const radius = 2.2 + (i % 3) * 0.4;
-        bean.position.set(
-          Math.cos(angle) * radius,
-          0.3 + ((i % 5) - 2) * 0.45,
-          Math.sin(angle) * radius
-        );
-        bean.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-        bean.userData = {
-          orbitSpeed: 0.006 + (i % 4) * 0.002,
-          orbitRadius: radius,
-          angle: angle,
-          rotSpeedX: 0.02,
-          rotSpeedY: 0.015,
-          baseY: bean.position.y
-        };
-        scene.add(bean);
-        beans.push(bean);
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(2.0, 0.06, 16, 64), new THREE.MeshStandardMaterial({ color: 0x818cf8, metalness: 0.9 }));
+        ring.rotateX(Math.PI / 4);
+        mainGroup.add(ring);
       }
 
-      // 3D Golden Floating Particles
+      // Particle Field
       const particleCount = 75;
       const particleGeo = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
-      const speeds = new Float32Array(particleCount);
-
       for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 2.2;
-        positions[i * 3 + 1] = 1.3 + Math.random() * 3.2;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 2.2;
-        speeds[i] = 0.015 + Math.random() * 0.02;
+        positions[i * 3] = (Math.random() - 0.5) * 3.5;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 3.5;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 3.5;
       }
       particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
       const particleMat = new THREE.PointsMaterial({
-        color: 0xfbbf24,
+        color: isClinicNiche ? 0x38bdf8 : isCafeNiche ? 0xfbbf24 : 0x818cf8,
         size: 0.09,
         transparent: true,
         opacity: 0.75,
         blending: THREE.AdditiveBlending
       });
+      const particles = new THREE.Points(particleGeo, particleMat);
+      scene.add(particles);
 
-      const particleSystem = new THREE.Points(particleGeo, particleMat);
-      scene.add(particleSystem);
-
-      // Mouse Interaction
-      let mouseX = 0;
-      let mouseY = 0;
-      let targetRotationX = 0.15;
-      let targetRotationY = 0.35;
+      // Mouse & Touch Drag Interaction
       let isDragging = false;
-      let previousMousePosition = { x: 0, y: 0 };
+      let prevMouse = { x: 0, y: 0 };
+      let targetRotX = 0.1;
+      let targetRotY = 0.2;
 
       window.addEventListener('mousemove', (e) => {
         const rect = container.getBoundingClientRect();
         if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-          mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-          targetRotationY = mouseX * 0.85 + 0.3;
-          targetRotationX = -mouseY * 0.45 + 0.2;
-          mouseLight.position.x = mouseX * 3;
-          mouseLight.position.y = mouseY * 3 + 2;
+          const mx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          const my = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+          targetRotY = mx * 0.85 + 0.2;
+          targetRotX = -my * 0.45 + 0.1;
+          mouseLight.position.x = mx * 3;
+          mouseLight.position.y = my * 3 + 2;
         }
       });
 
-      function triggerSteamBurst() {
-        const pos = particleGeo.attributes.position.array;
-        for (let i = 0; i < particleCount; i++) {
-          pos[i * 3 + 1] = 1.35;
-        }
-        particleGeo.attributes.position.needsUpdate = true;
-        coffeeGroup.position.y = 0.25;
-        setTimeout(() => { coffeeGroup.position.y = 0; }, 300);
-      }
-
-      // Mouse Interaction
       container.addEventListener('mousedown', (e) => {
         isDragging = true;
-        previousMousePosition = { x: e.clientX, y: e.clientY };
+        prevMouse = { x: e.clientX, y: e.clientY };
       });
       window.addEventListener('mouseup', () => { isDragging = false; });
       container.addEventListener('mousemove', (e) => {
         if (isDragging) {
-          const deltaX = e.clientX - previousMousePosition.x;
-          const deltaY = e.clientY - previousMousePosition.y;
-          coffeeGroup.rotation.y += deltaX * 0.01;
-          coffeeGroup.rotation.x += deltaY * 0.01;
-          previousMousePosition = { x: e.clientX, y: e.clientY };
+          mainGroup.rotation.y += (e.clientX - prevMouse.x) * 0.01;
+          mainGroup.rotation.x += (e.clientY - prevMouse.y) * 0.01;
+          prevMouse = { x: e.clientX, y: e.clientY };
         }
       });
-      container.addEventListener('click', triggerSteamBurst);
 
-      // Mobile Touch Interaction (360° Rotate & Tap)
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let touchMoved = false;
-
+      // Mobile Touch Handling
       container.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
           isDragging = true;
-          touchMoved = false;
-          touchStartX = e.touches[0].clientX;
-          touchStartY = e.touches[0].clientY;
-          previousMousePosition = { x: touchStartX, y: touchStartY };
+          prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         }
       }, { passive: true });
-
       container.addEventListener('touchmove', (e) => {
         if (isDragging && e.touches.length === 1) {
-          const curX = e.touches[0].clientX;
-          const curY = e.touches[0].clientY;
-          const deltaX = curX - previousMousePosition.x;
-          const deltaY = curY - previousMousePosition.y;
-
-          if (Math.abs(deltaX) > 2 || Math.abs(deltaY) > 2) {
-            touchMoved = true;
-            coffeeGroup.rotation.y += deltaX * 0.014;
-            coffeeGroup.rotation.x += deltaY * 0.014;
-            previousMousePosition = { x: curX, y: curY };
-          }
+          mainGroup.rotation.y += (e.touches[0].clientX - prevMouse.x) * 0.014;
+          mainGroup.rotation.x += (e.touches[0].clientY - prevMouse.y) * 0.014;
+          prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         }
       }, { passive: true });
+      container.addEventListener('touchend', () => { isDragging = false; });
 
-      container.addEventListener('touchend', () => {
-        isDragging = false;
-        if (!touchMoved) {
-          triggerSteamBurst();
-        }
-      });
+      // Click/Tap Pulse
+      function triggerPulse() {
+        mainGroup.scale.set(1.15, 1.15, 1.15);
+        setTimeout(() => { mainGroup.scale.set(1, 1, 1); }, 220);
+      }
+      container.addEventListener('click', triggerPulse);
 
       // Responsive Resize
       window.addEventListener('resize', () => {
@@ -1606,54 +1534,33 @@ function generateSiteHTML(prospect, siteId, options = {}) {
         renderer.setSize(w, h);
       });
 
-      // Render Loop
+      // Animation Loop
       let clock = new THREE.Clock();
       function animate() {
         requestAnimationFrame(animate);
         const time = clock.getElapsedTime();
 
         if (!isDragging) {
-          coffeeGroup.rotation.y += (targetRotationY - coffeeGroup.rotation.y) * 0.05;
-          coffeeGroup.rotation.x += (targetRotationX - coffeeGroup.rotation.x) * 0.05;
+          mainGroup.rotation.y += (targetRotY - mainGroup.rotation.y) * 0.04;
+          mainGroup.rotation.x += (targetRotX - mainGroup.rotation.x) * 0.04;
         }
-        coffeeGroup.position.y = Math.sin(time * 1.5) * 0.08;
-
-        beans.forEach(b => {
-          b.userData.angle += b.userData.orbitSpeed;
-          b.position.x = Math.cos(b.userData.angle) * b.userData.orbitRadius;
-          b.position.z = Math.sin(b.userData.angle) * b.userData.orbitRadius;
-          b.position.y = b.userData.baseY + Math.sin(time * 2 + b.userData.angle) * 0.18;
-          b.rotation.x += b.userData.rotSpeedX;
-          b.rotation.y += b.userData.rotSpeedY;
-        });
-
-        const pos = particleGeo.attributes.position.array;
-        for (let i = 0; i < particleCount; i++) {
-          pos[i * 3 + 1] += speeds[i];
-          pos[i * 3] += Math.sin(time * 3 + i) * 0.005;
-          if (pos[i * 3 + 1] > 4.2) {
-            pos[i * 3 + 1] = 1.35;
-            pos[i * 3] = (Math.random() - 0.5) * 1.4;
-            pos[i * 3 + 2] = (Math.random() - 0.5) * 1.4;
-          }
-        }
-        particleGeo.attributes.position.needsUpdate = true;
+        mainGroup.position.y = Math.sin(time * 1.5) * 0.08;
+        particles.rotation.y = time * 0.04;
 
         renderer.render(scene, camera);
       }
       animate();
     }
 
-    // Initialize 3D engines
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setTimeout(() => {
         init3dTiltEngine();
-        init3dCoffeeScene();
+        initThreeJsScene();
       }, 100);
     } else {
       document.addEventListener('DOMContentLoaded', () => {
         init3dTiltEngine();
-        init3dCoffeeScene();
+        initThreeJsScene();
       });
     }
   </script>

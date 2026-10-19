@@ -6,7 +6,7 @@ const { discoverLeads, resolveRealValidEmail } = require('./services/discover');
 const { scoreProspect } = require('./services/score');
 const { generateWebsiteForProspect } = require('./services/generator');
 const { hostDemoSite } = require('./services/host');
-const { sendDemoOutreach, sendWhatsAppOutreach } = require('./services/outreach');
+const { sendDemoOutreach, sendWhatsAppOutreach, getNicheOutreachTemplates } = require('./services/outreach');
 const { recordOutreach, getOutreachLogs } = require('./services/logger');
 const { handleIncomingReply } = require('./services/replies');
 const { runAutonomousPipeline, getPipelineStatus } = require('./services/pipeline');
@@ -369,6 +369,19 @@ app.post('/api/skills/outreach/both/:id', async (req, res) => {
       wa_app_link: waRes.wa_app_link,
       prospect: waRes.prospect
     });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET NICHE-TAILORED OUTREACH TEMPLATES FOR A PROSPECT
+app.get('/api/skills/outreach/template/:id', (req, res) => {
+  try {
+    const prospect = db.getProspectById(req.params.id);
+    if (!prospect) return res.status(404).json({ error: 'Prospect not found' });
+    const config = db.getConfig();
+    const tmpl = getNicheOutreachTemplates(prospect, config);
+    res.json({ success: true, ...tmpl });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -16,6 +16,85 @@ import {
 } from 'lucide-react';
 import { runOutreachSkill, runWhatsAppOutreachSkill, runBothOutreachSkill } from '../api';
 
+const NICHE_PRESETS = {
+  clinic: {
+    id: 'clinic',
+    label: '🏥 Clinic & Healthcare',
+    badge: 'Medical & Healthcare Clinic',
+    subject: 'Complimentary modern website & online patient booking demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! 🏥\n\nWe noticed that {{business_name}} has exceptional patient reviews in {{city}}, but currently doesn't have an official modern, mobile-friendly clinic website with online patient booking.\n\nTo help your patients easily find your clinic, review doctor specialties, and book appointments online, we built a complimentary live demo clinic website for you:\n👉 Live Clinic Demo: {{demo_url}}\n\n✨ Key Features Included:\n• Seamless Online Patient Appointment & Walk-In Booking\n• Doctors, Specialties & Treatment Showcase\n• Direct WhatsApp & Telephone Hotline Integration\n• 100% Mobile & Google SEO Optimized Speed\n\nIf you'd like to claim this design for your clinic or customize your doctor profiles and timings, simply reply here! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Dear {{business_name}} Team,\n\nWe noticed that {{business_name}} is highly regarded by patients in {{city}}, yet lacks an official modern website with online appointment scheduling.\n\nPatients in {{city}} increasingly search on Google and smartphones to find clinic timings, review doctor credentials, and book visits. Without an official website, prospective patients often end up booking elsewhere.\n\nTo help out, our web team designed a complete, mobile-friendly demo clinic website specifically for {{business_name}} — 100% free with no obligation:\n👉 View your live clinic demo here: {{demo_url}}\n\nHighlights of your demo website:\n• Patient Appointment Request & Department Routing\n• Comprehensive Treatment & Specialist Catalog\n• Direct WhatsApp & Phone Hotline Click-to-Call\n• Verified Google Review Badges & Direct Map Directions\n\nIf you would like to claim this website, customize your doctors and services, or connect your official domain, please reply directly to this email or reach us on WhatsApp: {{whatsapp_link}}\n\nBest regards,\n{{sender_name}}\nHealthcare Web Development Team\nWhatsApp: +{{sender_whatsapp}}\n\n---\nCAN-SPAM Notice: You are receiving this because your business is publicly listed in {{city}}.\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  },
+  restaurant: {
+    id: 'restaurant',
+    label: '🍽️ Restaurant & Dining',
+    badge: 'Restaurant & Dining',
+    subject: 'Modern dining website & table reservation demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! 🍽️\n\nWe noticed that {{business_name}} has wonderful customer reviews in {{city}}, but doesn't have a modern official website for guests to browse your culinary menu and reserve tables online.\n\nWe designed a luxury, fully animated live demo dining website for {{business_name}} — 100% free:\n👉 Live Demo Link: {{demo_url}}\n\n✨ Key Features:\n• Chef's Special Live Food & Dining Menu\n• Instant Online Table Reservation System\n• Customer Reviews & Ambiance Showcase\n• 100% Mobile & Google Optimized Speed\n\nIf you would like to claim this design or customize your menu/photos, simply reply here! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Dear {{business_name}} Team,\n\nWe noticed your great food ratings in {{city}}! However, you don't have an official modern website with online table booking.\n\nWe built a complimentary live demo website for {{business_name}}:\n👉 View your live demo here: {{demo_url}}\n\nFeatures include digital food menus, table reservations, and direct WhatsApp contact.\n\nReply directly to claim or connect your domain!\n\nBest regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}\n\n---\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  },
+  cafe: {
+    id: 'cafe',
+    label: '☕ Cafe & Coffee',
+    badge: 'Specialty Cafe & Roastery',
+    subject: 'Free modern website & digital menu demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! ☕\n\nWe noticed your cafe has great reviews in {{city}}, but no modern official website. We built a luxury, fully 3D animated demo website for you — 100% free:\n👉 Live demo link: {{demo_url}}\n\n✨ Features:\n• 3D Interactive Coffee Showcase & Artisan Menu\n• Seating & Table Pre-Order System\n• Direct WhatsApp Table Booking\n• Mobile & Google Fast Speed\n\nReply here to claim or add your custom menu! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Dear {{business_name}} Team,\n\nWe noticed your popular cafe reviews in {{city}}, but no modern official website with your digital menu.\n\nTo help out, we designed a complimentary live 3D website demo for {{business_name}}:\n👉 View live demo: {{demo_url}}\n\nReply to claim or connect your domain!\n\nBest regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}\n\n---\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  },
+  salon: {
+    id: 'salon',
+    label: '✂️ Salon & Spa',
+    badge: 'Beauty Salon & Spa',
+    subject: 'Modern salon website & appointment booking demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! ✨\n\nWe noticed that {{business_name}} has fabulous client reviews for beauty & styling in {{city}}, but lacks an official modern website with online booking.\n\nWe designed a luxury live demo website for {{business_name}} — 100% free:\n👉 Live Demo Link: {{demo_url}}\n\n✨ Key Features:\n• Online Stylist & Treatment Appointment Booking\n• Complete Service & Beauty Treatment Catalog\n• Client Testimonials & Salon Portfolio Showcase\n• Instant WhatsApp Booking Integration\n\nReply here to claim this design for your salon! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Dear {{business_name}} Team,\n\nWe love your beauty styling and customer reviews in {{city}}! However, you don't have an official modern website with online booking.\n\nWe built a complimentary live demo website for {{business_name}}:\n👉 View your live demo here: {{demo_url}}\n\nReply directly to claim or connect your domain!\n\nBest regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}\n\n---\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  },
+  gym: {
+    id: 'gym',
+    label: '🏋️ Gym & Fitness',
+    badge: 'Fitness Center & Gym',
+    subject: 'Modern gym website & trial pass demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! 🏋️\n\nWe noticed that {{business_name}} has great fitness reviews in {{city}}, but lacks a modern website with trial pass booking and class schedules.\n\nWe built a high-converting live demo fitness website for you — 100% free:\n👉 Live Demo Link: {{demo_url}}\n\n✨ Key Features:\n• Free Trial Pass & Membership Booking System\n• Interactive Workout Class Schedule & Trainers\n• Member Testimonials & Facility Showcase\n• Direct WhatsApp Hotline\n\nReply here to claim this design! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Dear {{business_name}} Team,\n\nWe noticed your fitness community in {{city}}! We built a complimentary live demo website for {{business_name}} with online class schedules and trial passes:\n👉 View live demo: {{demo_url}}\n\nReply directly to claim or connect your domain!\n\nBest regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}\n\n---\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  },
+  general: {
+    id: 'general',
+    label: '💼 General Business',
+    badge: 'Professional Services',
+    subject: 'Free modern website & estimate booking demo for {{business_name}}',
+    waMessage: `Hello {{business_name}} team! 💼\n\nWe noticed that {{business_name}} has great local reviews in {{city}}, but lacks a modern official website for customers to request quotes and book services online.\n\nWe built a high-converting live demo website for {{business_name}} — 100% free:\n👉 Live Demo Link: {{demo_url}}\n\n✨ Key Features:\n• Online Service Estimate & Booking Request Form\n• Core Services & Project Portfolio Showcase\n• Verified Google Reviews & Local Trust Badges\n• Instant WhatsApp & Phone Call Integration\n\nReply here to claim this design! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+    emailBody: `Hi team at {{business_name}},\n\nI noticed you don't have a website listed for {{business_name}} in {{city}}, even though you have great local customer reviews!\n\nCustomers are searching online every day for {{category}} services, and you might be missing out on valuable jobs.\n\nTo help out, my team and I built you a complete, high-converting demo website — 100% free with no strings attached:\n👉 View your live website demo here: {{demo_url}}\n\nIf you'd like to claim this design, customize the text/photos, or connect it to your own custom domain:\n💬 Quick WhatsApp: {{whatsapp_link}}\nOr simply reply directly to this email!\n\nBest regards,\n{{sender_name}}\nGrowth & Web Development\nWhatsApp: +{{sender_whatsapp}}\n\n---\nCAN-SPAM Notice: You are receiving this because your business is publicly listed in {{city}}.\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+  }
+};
+
+function detectNiche(p) {
+  if (!p) return 'clinic';
+  const cat = (p.category || '').toLowerCase();
+  const name = (p.business_name || '').toLowerCase();
+  if (
+    cat.includes('clinic') || cat.includes('health') || cat.includes('medical') || cat.includes('doctor') ||
+    cat.includes('dental') || cat.includes('physio') || cat.includes('chiro') || cat.includes('derma') ||
+    cat.includes('fertility') || cat.includes('walk-in') || cat.includes('urgent') ||
+    name.includes('clinic') || name.includes('medical') || name.includes('doctor') || name.includes('dental') ||
+    name.includes('physio') || name.includes('care')
+  ) {
+    return 'clinic';
+  }
+  if (cat.includes('restaurant') || cat.includes('dining') || cat.includes('food') || cat.includes('bistro') || name.includes('restaurant')) {
+    return 'restaurant';
+  }
+  if (cat.includes('cafe') || cat.includes('coffee') || cat.includes('tea') || cat.includes('roast') || name.includes('cafe') || name.includes('coffee')) {
+    return 'cafe';
+  }
+  if (cat.includes('salon') || cat.includes('spa') || cat.includes('beauty') || cat.includes('hair') || name.includes('salon') || name.includes('spa')) {
+    return 'salon';
+  }
+  if (cat.includes('gym') || cat.includes('fitness') || cat.includes('yoga') || cat.includes('crossfit') || name.includes('gym') || name.includes('fitness')) {
+    return 'gym';
+  }
+  return 'general';
+}
+
 export default function OutreachView({ 
   prospects, 
   logs, 
@@ -27,33 +106,37 @@ export default function OutreachView({
   const [activeChannel, setActiveChannel] = useState('both'); // 'both', 'email', or 'whatsapp'
   const [selectedProspectId, setSelectedProspectId] = useState(prospects[0]?.id || '');
   
-  // Email Form State
-  const [customSubject, setCustomSubject] = useState(
-    config?.email_subject_template || 'Free modern website demo for {{business_name}}'
-  );
-  const [customBody, setCustomBody] = useState(
-    config?.email_body_template || ''
-  );
+  const selectedProspect = prospects.find(p => p.id === selectedProspectId) || prospects[0];
+  const initialNiche = detectNiche(selectedProspect);
+  const initialPreset = NICHE_PRESETS[initialNiche] || NICHE_PRESETS.clinic;
 
-  // WhatsApp Form State (Hinglish for Indian local businesses & cafes)
-  const [customWaMessage, setCustomWaMessage] = useState(
-    config?.whatsapp_message_template || 
-    `Namaste {{business_name}} team! ☕\n\nMaine dekha ki Google par {{city}} me aapke cafe ke reviews aur rating kaafi ache hain, par online koi official modern website nahi hai.\n\nAapke cafe ke liye humne ek luxury, fully 3D animated demo website design ki hai — bilkul free:\n👉 Live demo website link: {{demo_url}}\n\n✨ Features:\n• Realistic 3D Espresso Cup & Latte Art\n• Interactive Digital Menu & Special Blends\n• AI Barista Table & Coffee Recommendation\n• Direct WhatsApp Table Booking & Order System\n\nAgar aap ise claim karna chahte hain ya apna custom menu/photos add karwana chahte hain, toh bas yahan WhatsApp par reply karein! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`
-  );
+  const [activePresetKey, setActivePresetKey] = useState(initialNiche);
+  const [customSubject, setCustomSubject] = useState(initialPreset.subject);
+  const [customBody, setCustomBody] = useState(initialPreset.emailBody);
+  const [customWaMessage, setCustomWaMessage] = useState(initialPreset.waMessage);
 
   const [sending, setSending] = useState(false);
   const [previewLog, setPreviewLog] = useState(null);
 
+  // Automatically update preset when changing selected prospect
   useEffect(() => {
-    if (config?.email_body_template && !customBody) {
-      setCustomBody(config.email_body_template);
+    if (selectedProspect) {
+      const niche = detectNiche(selectedProspect);
+      setActivePresetKey(niche);
+      const preset = NICHE_PRESETS[niche] || NICHE_PRESETS.clinic;
+      setCustomSubject(preset.subject);
+      setCustomBody(preset.emailBody);
+      setCustomWaMessage(preset.waMessage);
     }
-    if (config?.whatsapp_message_template) {
-      setCustomWaMessage(config.whatsapp_message_template);
-    }
-  }, [config]);
+  }, [selectedProspectId]);
 
-  const selectedProspect = prospects.find(p => p.id === selectedProspectId) || prospects[0];
+  const handleApplyPreset = (key) => {
+    const preset = NICHE_PRESETS[key] || NICHE_PRESETS.clinic;
+    setActivePresetKey(key);
+    setCustomSubject(preset.subject);
+    setCustomBody(preset.emailBody);
+    setCustomWaMessage(preset.waMessage);
+  };
 
   const handleSendEmail = async () => {
     if (!selectedProspect) return;
@@ -237,6 +320,32 @@ export default function OutreachView({
                   </option>
                 ))}
               </select>
+            </div>
+          </div>
+
+          {/* Niche Presets Quick Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 bg-slate-950/80 border border-slate-800 rounded-xl">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-slate-300">Niche Presets:</span>
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-semibold border border-sky-500/30">
+                Matched: {NICHE_PRESETS[activePresetKey]?.badge || 'Clinic'}
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+              {Object.entries(NICHE_PRESETS).map(([key, p]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => handleApplyPreset(key)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition shrink-0 whitespace-nowrap ${
+                    activePresetKey === key
+                      ? 'bg-sky-500 text-white shadow-md'
+                      : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
             </div>
           </div>
 

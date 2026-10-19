@@ -892,6 +892,53 @@ export default function BroadcastView({ prospects = [] }) {
                       <span className="cursor-pointer hover:underline" onClick={() => setCustomTextMessage(prev => prev + ' {{demo_url}}')}>+demo</span>
                     </div>
                   </div>
+
+                  {/* Niche Presets Bar */}
+                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 mb-2">
+                    <span className="text-[10px] uppercase font-bold text-slate-500 mr-1 shrink-0">Niche Presets:</span>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hello {{name}}! 🏥 We built a modern demo clinic website for {{business_name}} in {{city}} with online appointment booking.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim or customize doctor specialties!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30 hover:bg-sky-500/30 whitespace-nowrap"
+                    >
+                      🏥 Clinic
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hello {{name}}! 🍽️ We built a luxury demo dining website for {{business_name}} in {{city}} with online table reservations.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim or add your custom menu!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30 whitespace-nowrap"
+                    >
+                      🍽️ Restaurant
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hi {{name}}! ☕ We built a luxury 3D demo website for {{business_name}} in {{city}} with digital artisan menu.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim or customize!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30 whitespace-nowrap"
+                    >
+                      ☕ Cafe
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hello {{name}}! ✨ We built a luxury demo website for {{business_name}} in {{city}} with online stylist & beauty booking.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 hover:bg-fuchsia-500/30 whitespace-nowrap"
+                    >
+                      ✂️ Salon
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hello {{name}}! 🏋️ We built a high-converting demo fitness website for {{business_name}} in {{city}} with trial pass booking.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/30 whitespace-nowrap"
+                    >
+                      🏋️ Gym
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustomTextMessage(`Hello {{name}}! 💼 We built a modern demo website for {{business_name}} in {{city}} with online service estimates.\n\n👉 View Live Demo: {{demo_url}}\n\nReply here to claim!`)}
+                      className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/30 whitespace-nowrap"
+                    >
+                      💼 General
+                    </button>
+                  </div>
                   <textarea
                     rows={5}
                     value={customTextMessage}
