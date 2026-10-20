@@ -59,7 +59,23 @@ function getNicheOutreachTemplates(prospect, config = {}) {
     };
   }
 
-  // 4. SALON / SPA / BEAUTY
+  // 4. FASHION / CLOTHING / BOUTIQUE / BRIDAL / ETHNIC WEAR
+  if (
+    cat.includes('fashion') || cat.includes('cloth') || cat.includes('boutique') || cat.includes('saree') ||
+    cat.includes('lehenga') || cat.includes('apparel') || cat.includes('ethnic') || cat.includes('tailor') ||
+    name.includes('fashion') || name.includes('boutique') || name.includes('saree') || name.includes('ethnic') ||
+    name.includes('couture') || name.includes('apparel') || name.includes('cloth')
+  ) {
+    return {
+      niche: 'fashion',
+      niche_name: 'Fashion Boutique & Bridal Studio',
+      whatsapp: `Hello {{business_name}} team! ✨👗\n\nWe noticed that {{business_name}} has fabulous customer reviews for bridal lehengas and ethnic wear in {{city}}, but currently lacks an official modern, mobile-friendly website with digital lookbook and WhatsApp catalog shopping.\n\nShoppers searching on Google and Instagram want to view your latest bridal designs, saree collections, and store photos before visiting your showroom in {{city}}.\n\nTo help your boutique showcase your collections and get more customer orders, our web team built a complimentary, luxury live demo website for {{business_name}} — 100% free with no strings attached:\n👉 View your live boutique demo here: {{demo_url}}\n\n✨ Key Features Included:\n• Luxury Bridal Lehenga & Saree Digital Lookbook\n• Direct WhatsApp Catalog Inquiries & Video Shopping\n• Bridal Consultation & Fitting Appointment Booking\n• 100% Mobile & Ultra-Fast Google Loading Speed\n\nIf you'd like to claim this design for your boutique or customize your collections and pricing, simply reply here! 🙌\n\nWarm regards,\n{{sender_name}}\nWhatsApp: +{{sender_whatsapp}}`,
+      email_subject: `Complimentary modern website & digital catalog demo for {{business_name}}`,
+      email_body: `Dear {{business_name}} Team,\n\nWe noticed that {{business_name}} has exceptional customer reviews for bridal and ethnic fashion in {{city}}, yet lacks an official modern website with an online collection showcase.\n\nToday's fashion shoppers in {{city}} heavily rely on smartphones and Google searches to explore bridal lehenga catalogs, designer saree varieties, and showroom timings. Without an official website, prospective clients often visit competing boutiques.\n\nTo help out, our design team created a luxury, mobile-friendly demo website specifically tailored for {{business_name}} — 100% free with no obligation:\n👉 View your live boutique demo here: {{demo_url}}\n\nHighlights of your demo website:\n• Full-Screen Bridal & Festive Collection Showcase\n• Direct WhatsApp Video Shopping & Fitting Appointment System\n• Verified Google Reviews & Social Media Integration\n• Instant Mobile Ordering & Pan-India Inquiry Routing\n\nIf you would like to claim this design, customize your photographs and collection details, or connect your official domain, please reply directly to this email or reach us on WhatsApp: {{whatsapp_link}}\n\nBest regards,\n{{sender_name}}\nFashion & Retail Web Development Team\nWhatsApp: +{{sender_whatsapp}}\n\n---\nCAN-SPAM Notice: You are receiving this because your business is publicly listed in {{city}}.\nPhysical Address: {{physical_mailing_address}}\nTo opt out, reply with 'UNSUBSCRIBE'.`
+    };
+  }
+
+  // 5. SALON / SPA / BEAUTY
   if (cat.includes('salon') || cat.includes('spa') || cat.includes('beauty') || cat.includes('hair') || cat.includes('nail') || name.includes('salon') || name.includes('spa')) {
     return {
       niche: 'salon',

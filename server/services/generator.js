@@ -393,7 +393,158 @@ function getBespokeNicheProfile(category = '', bizName = 'Local Business', city 
     };
   }
 
-  // 4. DEFAULT (HOME SERVICES, SALONS, GYMS, TRADES)
+  // 4. FASHION / CLOTHING / ETHNIC WEAR / BOUTIQUE / BRIDAL COUTURE
+  if (
+    cat.includes('fashion') || cat.includes('cloth') || cat.includes('boutique') || cat.includes('saree') ||
+    cat.includes('lehenga') || cat.includes('apparel') || cat.includes('ethnic') || cat.includes('tailor') ||
+    name.includes('fashion') || name.includes('boutique') || name.includes('saree') || name.includes('ethnic') ||
+    name.includes('couture') || name.includes('apparel') || name.includes('cloth')
+  ) {
+    let subNiche = 'Haute Couture & Royal Ethnic Studio';
+    if (name.includes('saree') || cat.includes('saree')) {
+      subNiche = 'Heritage Sarees & Handloom Atelier';
+    } else if (name.includes('bridal') || cat.includes('bridal') || name.includes('lehenga')) {
+      subNiche = 'Bridal Lehengas & Wedding Couture';
+    }
+
+    const specialty1 = {
+      title: 'Handcrafted Bridal Lehengas & Reception Gowns',
+      desc: 'Exclusive handcrafted Zardozi, Resham, and cutdana bridal ensembles tailored with custom drapes and double dupattas.',
+      icon: 'fa-gem'
+    };
+    const specialty2 = {
+      title: 'Pure Silk, Bandhani & Leheriya Sarees',
+      desc: 'Authentic Jaipuri handlooms, pure Georgette Bandhej, Gota-Patti borders, and heritage Banarasi silk bridal drapes.',
+      icon: 'fa-wand-magic-sparkles'
+    };
+    const specialty3 = {
+      title: 'Bespoke Fitting & Personalized Master Styling',
+      desc: 'One-on-one appointments with master stylists for personalized sizing, custom color palettes, and blouse embroideries.',
+      icon: 'fa-scissors'
+    };
+    const specialty4 = {
+      title: 'Global Video Shopping & Express Dispatch',
+      desc: 'High-definition WhatsApp video call walkthrough of all store collections with insured doorstep delivery worldwide.',
+      icon: 'fa-truck-fast'
+    };
+
+    const menuCategories = [
+      {
+        id: 'bridal',
+        name: 'Bridal Lehengas & Gowns',
+        icon: 'fa-crown',
+        items: [
+          { name: 'Royal Crimson Heritage Bridal Lehenga', price: '₹48,000+', notes: 'Heavy velvet Zardozi embroidery, hand-set micro-pearls & double designer dupatta', badge: 'Bridal Masterpiece', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Rose Quartz Pastel Reception Lehenga', price: '₹36,500', notes: 'Blush pink raw silk with Swarovski cutdana work, feather-light flare & can-can', badge: 'Trendsetter', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Midnight Emerald Velvet Sangeet Lehenga', price: '₹32,000', notes: 'Deep emerald velvet skirt with intricate antique peacock zari and sequin motifs', badge: 'Sangeet Special', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Sculpted Cocktail Indo-Western Gown', price: '₹24,500', notes: 'Metallic champagne shimmer organza with hand-pleated corset & dramatic trail', badge: 'Reception Chic', img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80' }
+        ]
+      },
+      {
+        id: 'sarees',
+        name: 'Heritage Sarees & Drapes',
+        icon: 'fa-wand-magic-sparkles',
+        items: [
+          { name: 'Pure Georgette Jaipuri Bandhani Saree', price: '₹14,500', notes: 'Hand-knotted authentic Bandhej with heavy scalloped gold Gota-Patti border', badge: 'Jaipuri Classic', img: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Pure Kanjeevaram & Banarasi Silk Saree', price: '₹22,000', notes: 'Woven in pure zari with royal temple border, heavy pallu & unstitched silk blouse', badge: 'Pure Silk Mark', img: 'https://images.unsplash.com/photo-1610030469668-93510cb28666?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Designer Organza Pastel Floral Saree', price: '₹8,900', notes: 'Translucent Italian organza with hand-painted floral bouquets & zari border', badge: 'Daytime Festive', img: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Authentic Mothra Leheriya Chiffon Saree', price: '₹6,500', notes: 'Traditional Rajasthani diagonal striped silk chiffon with mirror-embellished pallu', badge: 'Handloom', img: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80' }
+        ]
+      },
+      {
+        id: 'festive',
+        name: 'Anarkalis & Sharara Sets',
+        icon: 'fa-shirt',
+        items: [
+          { name: 'Floor-Length Zari Work Georgette Anarkali', price: '₹12,800', notes: '32-kali voluminous flared silhouette with heavily embroidered neck yoke & dupatta', badge: 'Festive Luxury', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Silk Peplum Kurti & Flared Sharara Set', price: '₹9,500', notes: 'Mulberry silk peplum with Gota-Patti trims, paired with twirling tiered sharara', badge: 'Best Seller', img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Chanderi Hand-Block Print Festive Kurta Set', price: '₹5,800', notes: 'Hand-block printed Chanderi kurta with straight cigarette pants & Kota Doria drape', badge: 'Summer Festive', img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80' },
+          { name: 'Mirror-Work Indo-Western Co-Ord Ensemble', price: '₹8,200', notes: 'Embroidered bustier, flared palazzo pants & matching fluid georgette cape shrug', badge: 'Modern Ethnic', img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80' }
+        ]
+      }
+    ];
+
+    return {
+      nicheKey: 'fashion',
+      subNiche,
+      themeColor: 'amber',
+      accentHex: '#d97706',
+      themeBg: '#090503',
+      badge: `Premier Bridal Couture & Ethnic Wear Destination in ${city}`,
+      heroTagline: `${bizName} — Exclusive Bridal Lehengas, Heritage Sarees & Royal Ethnic Studio in ${city}`,
+      heroSub: `Step into pure royalty. Discover handcrafted bridal lehengas, pure Georgette Bandhani sarees, intricate Gota Patti & Zardozi embroidery, and bespoke festive couture crafted to make every celebration unforgettable at ${bizName}.`,
+      heroImage: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=80',
+      logoIcon: 'fa-gem',
+      heroBadge1: 'Handcrafted Bridal Couture',
+      heroBadge2: 'Pure Handloom & WhatsApp Video Shopping',
+      navCta: 'Book Bridal Consultation',
+      primaryCta: 'Explore Bridal Collection',
+      secondaryCta: 'WhatsApp Video Shopping',
+      servicesHeading: 'Handcrafted Elegance & Master Tailoring',
+      servicesSub: `Every weave tells a story of royal Rajasthani craftsmanship, authentic fabrics, and bridal perfection at ${bizName}.`,
+      services: [specialty1, specialty2, specialty3, specialty4],
+      menuCategories,
+      catalogHeading: `Exclusive Collections at ${bizName}`,
+      catalogSub: `Explore our bridal lehengas, handwoven sarees, and festive party wear available in-store in ${city} and via global video shopping.`,
+      galleryHeading: `Boutique Ambiance & Bridal Looks at ${bizName}`,
+      gallerySub: `A glimpse into real brides, festive showcases, and intricate artisan craftsmanship at ${bizName} in ${city}.`,
+      gallery: [
+        'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80',
+        'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80'
+      ],
+      testimonials: [
+        {
+          name: 'Pooja Sharma',
+          loc: `${city} Bride`,
+          text: `Got my dream wedding lehenga from ${bizName}! The Zardozi handwork is breathtaking, the fitting was 100% exact on the first trial, and their team was so warm and helpful.`,
+          rating: 5
+        },
+        {
+          name: 'Meenakshi Rathore',
+          loc: `Festive Shopper, ${city}`,
+          text: `Hands down the most authentic Bandhani and Gota-Patti sarees in ${city}. Unbeatable fabric richness, vibrant colors, and very reasonable pricing. My entire family shops here!`,
+          rating: 5
+        },
+        {
+          name: 'Simran Walia',
+          loc: `NRI Bride (Video Shopping Client)`,
+          text: `Did my entire wedding shopping over WhatsApp video call with ${bizName}. They showed every minute detail with patience, customized my blouses perfectly, and delivered safely to my doorstep!`,
+          rating: 5
+        }
+      ],
+      contactBadge: 'Bridal Appointments',
+      contactTitle: `Schedule Your Bridal Consultation at ${bizName}`,
+      contactSub: `Book an in-person showroom fitting or a personalized WhatsApp video shopping session with our master stylist.`,
+      formTitle: `Book a Styling Consultation`,
+      formSub: 'Complimentary bridal consultation • Custom blouse fitting • Global dispatch',
+      formServiceLabel: 'Occasion / Requirement',
+      formOptions: [
+        'Bridal Wedding Lehenga Consultation',
+        'Sangeet & Cocktail Reception Wear',
+        'Traditional Bandhani & Silk Sarees',
+        'Festive Anarkali & Sharara Sets',
+        'WhatsApp Live Video Shopping Session'
+      ],
+      formSubmitText: `Book Consultation at ${bizName}`,
+      aiConcierge: {
+        title: `Interactive AI Bridal & Festive Stylist`,
+        sub: `Select your upcoming occasion below to receive instant personalized outfit recommendations from ${bizName}.`,
+        tipTitle: `Stylist Recommendation:`,
+        tipText: `Shopping for your wedding? We recommend scheduling your bridal fitting at least 4-6 weeks before the wedding for customized master embroidery & blouse tailoring.`,
+        orderBtnText: `Inquire on WhatsApp`,
+        options: [
+          { icon: '👑', title: 'Royal Wedding Bride', sub: 'Crimson & maroon heavy Zardozi lehengas' },
+          { icon: '✨', title: 'Sangeet & Reception', sub: 'Pastel crystals, sequins & cocktail gowns' },
+          { icon: '🪔', title: 'Festive & Puja Wear', sub: 'Pure Bandhani, Leheriya & Gota Patti' },
+          { icon: '📱', title: 'Video Call Shopping', sub: 'Live store tour with doorstep worldwide delivery' }
+        ]
+      }
+    };
+  }
+
+  // 5. DEFAULT (HOME SERVICES, SALONS, GYMS, TRADES)
   const cleanCategory = category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Professional';
   return {
     nicheKey: 'general',
@@ -496,6 +647,8 @@ function generateSiteHTML(prospect, siteId, options = {}) {
   // WhatsApp quick text for customer to contact business
   const customerWaText = profile.nicheKey === 'clinic'
     ? `Hello ${bizName}! I saw your clinic website and would like to book a consultation or check walk-in availability.`
+    : profile.nicheKey === 'fashion'
+    ? `Hello ${bizName}! I saw your boutique website and would like to inquire about your bridal collections, sarees, and custom fitting.`
     : profile.nicheKey === 'cafe'
     ? `Hi ${bizName}! I saw your website and would like to reserve a table or ask about your menu.`
     : profile.nicheKey === 'restaurant'
@@ -507,6 +660,7 @@ function generateSiteHTML(prospect, siteId, options = {}) {
 
   const isClinic = profile.nicheKey === 'clinic';
   const isCafe = profile.nicheKey === 'cafe';
+  const isFashion = profile.nicheKey === 'fashion';
 
   return `<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -697,14 +851,14 @@ function generateSiteHTML(prospect, siteId, options = {}) {
       
       <!-- Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-7 lg:gap-8 font-medium text-slate-300 text-sm">
-        <a href="#about" class="hover:text-sky-400 transition">${isClinic ? 'Doctor Care' : 'Our Story'}</a>
+        <a href="#about" class="hover:text-sky-400 transition">${isClinic ? 'Doctor Care' : isFashion ? 'Boutique Story' : 'Our Story'}</a>
         <a href="#menu" class="hover:text-sky-400 transition flex items-center gap-1.5">
-          <span>${isClinic ? 'Specialties' : isCafe ? 'Artisan Menu' : 'Offerings'}</span>
+          <span>${isClinic ? 'Specialties' : isFashion ? 'Bridal & Sarees' : isCafe ? 'Artisan Menu' : 'Offerings'}</span>
           <span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">Verified</span>
         </a>
-        <a href="#ambiance" class="hover:text-sky-400 transition">${isClinic ? 'Facility' : 'Ambiance'}</a>
+        <a href="#ambiance" class="hover:text-sky-400 transition">${isClinic ? 'Facility' : isFashion ? 'Lookbook' : 'Ambiance'}</a>
         <a href="#reviews" class="hover:text-sky-400 transition">Reviews</a>
-        <a href="#reserve" class="hover:text-sky-400 transition">${isClinic ? 'Appointments' : 'Reservations'}</a>
+        <a href="#reserve" class="hover:text-sky-400 transition">${isClinic ? 'Appointments' : isFashion ? 'Bridal Fitting' : 'Reservations'}</a>
       </nav>
 
       <!-- Desktop & Mobile Header Actions -->
@@ -729,23 +883,23 @@ function generateSiteHTML(prospect, siteId, options = {}) {
     <div id="mobile-drawer" class="hidden md:hidden bg-[#081222]/98 border-t border-sky-500/20 px-5 py-4 space-y-3.5 backdrop-blur-2xl shadow-2xl transition-all">
       <nav class="flex flex-col space-y-2.5 font-medium text-sm text-slate-200">
         <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
-          <i class="fa-solid fa-stethoscope text-sky-400 w-5"></i>
-          <span>${isClinic ? 'Doctor Care & Standards' : 'Our Story'}</span>
+          <i class="fa-solid ${isClinic ? 'fa-stethoscope' : isFashion ? 'fa-gem' : 'fa-circle-info'} text-sky-400 w-5"></i>
+          <span>${isClinic ? 'Doctor Care & Standards' : isFashion ? 'Boutique Story' : 'Our Story'}</span>
         </a>
         <a href="#menu" onclick="toggleMobileMenu()" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
           <div class="flex items-center gap-3">
-            <i class="fa-solid fa-notes-medical text-sky-400 w-5"></i>
-            <span>${isClinic ? 'Specialties & Services' : 'Catalog'}</span>
+            <i class="fa-solid ${isClinic ? 'fa-notes-medical' : isFashion ? 'fa-shirt' : 'fa-bars'} text-sky-400 w-5"></i>
+            <span>${isClinic ? 'Specialties & Services' : isFashion ? 'Bridal & Saree Collection' : 'Catalog'}</span>
           </div>
           <span class="text-[9px] uppercase px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 font-bold">Explore</span>
         </a>
         <a href="#ambiance" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
-          <i class="fa-solid fa-hospital text-sky-400 w-5"></i>
-          <span>${isClinic ? 'Clinic Rooms & Diagnostic Lab' : 'Ambiance'}</span>
+          <i class="fa-solid ${isClinic ? 'fa-hospital' : isFashion ? 'fa-camera-retro' : 'fa-image'} text-sky-400 w-5"></i>
+          <span>${isClinic ? 'Clinic Rooms & Diagnostic Lab' : isFashion ? 'Lookbook & Studio' : 'Ambiance'}</span>
         </a>
         <a href="#reviews" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-sky-500/10 hover:text-sky-300 transition">
           <i class="fa-solid fa-star text-sky-400 w-5"></i>
-          <span>Patient Reviews (${rating}★)</span>
+          <span>${isClinic ? 'Patient' : isFashion ? 'Client' : 'Customer'} Reviews (${rating}★)</span>
         </a>
         <a href="#reserve" onclick="toggleMobileMenu()" class="flex items-center gap-3 p-2.5 rounded-xl bg-sky-500/15 text-sky-300 border border-sky-500/30 font-bold transition">
           <i class="fa-solid fa-calendar-check text-sky-400 w-5"></i>

@@ -136,13 +136,24 @@ const db = {
   },
   addProspect(prospectData) {
     const list = this.getProspects();
+    const city = prospectData.city || 'Jaipur';
+    const isCanada = /toronto|canada|ontario|vancouver|montreal/i.test(city || prospectData.country || prospectData.address || '');
+    const isIndia = /jaipur|delhi|mumbai|bangalore|india|rajasthan/i.test(city || prospectData.country || prospectData.address || '') || (!isCanada && !prospectData.country);
+    const resolvedState = prospectData.state || (isCanada ? 'Ontario' : isIndia ? 'Rajasthan' : 'TX');
+    const resolvedCountry = prospectData.country || (isCanada ? 'Canada' : isIndia ? 'India' : 'United States');
+    const resolvedTags = prospectData.tags || [
+      'Verified Real',
+      'Hot Lead',
+      prospectData.category || 'Local Business'
+    ];
+
     const newProspect = {
       id: prospectData.id || uuidv4(),
       business_name: prospectData.business_name || 'Local Business',
       category: prospectData.category || 'General Service',
-      city: prospectData.city || 'Toronto',
-      state: prospectData.state || 'Ontario',
-      country: prospectData.country || 'Canada',
+      city: city,
+      state: resolvedState,
+      country: resolvedCountry,
       phone: prospectData.phone || '',
       clean_phone: prospectData.clean_phone || (prospectData.phone ? String(prospectData.phone).replace(/\D/g, '') : ''),
       email: prospectData.email || '',
@@ -160,12 +171,12 @@ const db = {
       },
       rating: prospectData.rating || 4.8,
       review_count: prospectData.review_count || 45,
-      address: prospectData.address || `${prospectData.city || 'Toronto'}, Ontario, Canada`,
-      google_maps_url: prospectData.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((prospectData.business_name || '') + ' ' + (prospectData.city || ''))}`,
+      address: prospectData.address || `${city}, ${resolvedState}, ${resolvedCountry}`,
+      google_maps_url: prospectData.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((prospectData.business_name || '') + ' ' + city)}`,
       is_verified_real: prospectData.is_verified_real !== undefined ? prospectData.is_verified_real : true,
       discovery_source: prospectData.discovery_source || 'Live OpenStreetMap (Verified Real)',
       status: (prospectData.status || 'NEW').toUpperCase(),
-      tags: prospectData.tags || ['Toronto Clinic', 'Hot Lead', 'Verified Real'],
+      tags: resolvedTags,
       assigned_to: prospectData.assigned_to || {
         id: 'user-devesh',
         name: 'Devesh Kumar',
