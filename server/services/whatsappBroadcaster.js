@@ -90,12 +90,12 @@ function validateAndFormatContact(rawContact, defaultCountryCode = '1') {
  * Never exposed to frontend!
  */
 function getWhatsAppCredentials() {
-  const config = db.getConfig();
-  const token = process.env.WHATSAPP_ACCESS_TOKEN || config.whatsapp_access_token || '';
-  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID || config.whatsapp_phone_number_id || '';
-  const businessAccountId = process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || config.whatsapp_business_account_id || '';
-  const webhookVerifyToken = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || config.whatsapp_webhook_verify_token || DEFAULT_VERIFY_TOKEN;
-  const appSecret = process.env.WHATSAPP_APP_SECRET || config.whatsapp_app_secret || '';
+  const rawConfig = typeof db.getRawConfig === 'function' ? db.getRawConfig() : db.getConfig();
+  const token = process.env.WHATSAPP_ACCESS_TOKEN || rawConfig.whatsapp_access_token || '';
+  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID || rawConfig.whatsapp_phone_number_id || '';
+  const businessAccountId = process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || rawConfig.whatsapp_business_account_id || '';
+  const webhookVerifyToken = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || rawConfig.whatsapp_webhook_verify_token || DEFAULT_VERIFY_TOKEN;
+  const appSecret = process.env.WHATSAPP_APP_SECRET || rawConfig.whatsapp_app_secret || '';
 
   return {
     isConfigured: Boolean(token && phoneNumberId),

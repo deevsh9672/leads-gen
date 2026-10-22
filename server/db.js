@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const { validateWhatsAppMobile } = require('./services/whatsappValidator');
 
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {
@@ -141,11 +142,16 @@ const db = {
     const isIndia = /jaipur|delhi|mumbai|bangalore|india|rajasthan/i.test(city || prospectData.country || prospectData.address || '') || (!isCanada && !prospectData.country);
     const resolvedState = prospectData.state || (isCanada ? 'Ontario' : isIndia ? 'Rajasthan' : 'TX');
     const resolvedCountry = prospectData.country || (isCanada ? 'Canada' : isIndia ? 'India' : 'United States');
-    const resolvedTags = prospectData.tags || [
+
+    const wa = validateWhatsAppMobile(prospectData.phone, resolvedCountry, city);
+    const resolvedTags = Array.isArray(prospectData.tags) ? [...prospectData.tags] : [
       'Verified Real',
       'Hot Lead',
       prospectData.category || 'Local Business'
     ];
+    if (wa.isValid && !resolvedTags.includes('WhatsApp Verified')) {
+      resolvedTags.push('WhatsApp Verified');
+    }
 
     const newProspect = {
       id: prospectData.id || uuidv4(),
@@ -154,8 +160,12 @@ const db = {
       city: city,
       state: resolvedState,
       country: resolvedCountry,
-      phone: prospectData.phone || '',
-      clean_phone: prospectData.clean_phone || (prospectData.phone ? String(prospectData.phone).replace(/\D/g, '') : ''),
+      phone: wa.isValid ? wa.formattedPhone : (prospectData.phone || ''),
+      clean_phone: wa.isValid ? wa.cleanPhone : (prospectData.clean_phone || (prospectData.phone ? String(prospectData.phone).replace(/\D/g, '') : '')),
+      has_whatsapp: wa.isValid,
+      whatsapp_number: wa.isValid ? wa.whatsappNumber : null,
+      whatsapp_status: wa.isValid ? 'verified_active' : 'unverified',
+      whatsapp_link: wa.isValid ? wa.whatsappLink : null,
       email: prospectData.email || '',
       is_email_verified: prospectData.is_email_verified !== undefined ? prospectData.is_email_verified : true,
       email_status: prospectData.email_status || 'verified_deliverable_gmail',

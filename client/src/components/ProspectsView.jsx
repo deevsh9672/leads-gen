@@ -42,6 +42,7 @@ export default function ProspectsView({
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [whatsappOnly, setWhatsappOnly] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDiscoverModal, setShowDiscoverModal] = useState(false);
   const [discovering, setDiscovering] = useState(false);
@@ -73,7 +74,8 @@ export default function ProspectsView({
       p.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       p.category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || p.status === statusFilter;
-    return matchesSearch && matchesStatus;
+    const matchesWhatsApp = !whatsappOnly || p.has_whatsapp === true || (Array.isArray(p.tags) && p.tags.includes('WhatsApp Verified'));
+    return matchesSearch && matchesStatus && matchesWhatsApp;
   });
 
   const handleAddSubmit = (e) => {
@@ -105,6 +107,9 @@ export default function ProspectsView({
       'Category',
       'City',
       'Phone Number',
+      'WhatsApp Ready',
+      'WhatsApp Number',
+      'WhatsApp Direct Link',
       'Email Address',
       'MX Verified',
       'Lead Score',
@@ -129,6 +134,9 @@ export default function ProspectsView({
       escapeCsv(p.category),
       escapeCsv(p.city),
       escapeCsv(p.phone),
+      escapeCsv(p.has_whatsapp ? 'Yes (Verified Active)' : 'No'),
+      escapeCsv(p.whatsapp_number || p.clean_phone || p.phone || ''),
+      escapeCsv(p.whatsapp_link || (p.clean_phone ? `https://wa.me/${p.clean_phone}` : '')),
       escapeCsv(p.email),
       escapeCsv(p.is_email_verified ? 'Yes (Valid MX)' : 'Standard'),
       escapeCsv(p.lead_score),
@@ -175,12 +183,14 @@ export default function ProspectsView({
 
   const handleCopyToClipboard = (leadsToExport = filtered) => {
     if (!leadsToExport || leadsToExport.length === 0) return;
-    const headers = ['Business Name', 'Category', 'City', 'Phone', 'Email', 'Lead Score', 'Rating', 'Reviews', 'Address', 'Google Maps'];
+    const headers = ['Business Name', 'Category', 'City', 'Phone', 'WhatsApp Number', 'WhatsApp Link', 'Email', 'Lead Score', 'Rating', 'Reviews', 'Address', 'Google Maps'];
     const rows = leadsToExport.map(p => [
       p.business_name || '',
       p.category || '',
       p.city || '',
       p.phone || '',
+      p.whatsapp_number || p.clean_phone || p.phone || '',
+      p.whatsapp_link || (p.clean_phone ? `https://wa.me/${p.clean_phone}` : ''),
       p.email || '',
       p.lead_score || '',
       p.rating || '',
@@ -333,6 +343,20 @@ export default function ProspectsView({
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
+          <button
+            onClick={() => setWhatsappOnly(!whatsappOnly)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition border shadow-sm ${
+              whatsappOnly 
+                ? 'bg-emerald-600 text-white border-emerald-500 shadow-md ring-2 ring-emerald-500/30'
+                : 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
+            }`}
+            title="Filter only leads with verified WhatsApp mobile numbers"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>WhatsApp Verified</span>
+            {whatsappOnly && <span className="ml-1 text-[9px] bg-white text-emerald-800 px-1 py-0.2 rounded font-black">ACTIVE</span>}
+          </button>
+
           {['all', 'new', 'contacted', 'replied', 'client', 'opted-out'].map((st) => (
             <button
               key={st}
@@ -409,6 +433,12 @@ export default function ProspectsView({
                                   <span>100% Real Business</span>
                                 </span>
                               )}
+                              {p.has_whatsapp !== false && (
+                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                                  <MessageCircle className="w-2.5 h-2.5 text-emerald-400" />
+                                  <span>WhatsApp Active</span>
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -424,7 +454,7 @@ export default function ProspectsView({
                             📍 {p.address}
                           </div>
                         )}
-                        <div className="text-slate-300 text-[11px] flex items-center gap-2 mt-1">
+                        <div className="text-slate-300 text-[11px] flex flex-wrap items-center gap-2 mt-1">
                           <a 
                             href={`tel:${p.phone}`}
                             className="flex items-center gap-1 font-mono text-emerald-400 font-semibold hover:underline"
@@ -433,6 +463,19 @@ export default function ProspectsView({
                             <Phone className="w-3 h-3 text-emerald-400" />
                             {p.phone || 'N/A'}
                           </a>
+
+                          {p.has_whatsapp !== false && (
+                            <a
+                              href={p.whatsapp_link || `https://wa.me/${p.clean_phone || (p.phone ? p.phone.replace(/\D/g, '') : '')}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 border border-emerald-500/40 text-[10px] font-bold transition shadow-sm"
+                              title="Open direct WhatsApp conversation (Verified Mobile)"
+                            >
+                              <MessageCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                              <span>Chat on WA ↗</span>
+                            </a>
+                          )}
                         </div>
                         {p.email && (
                           <div className="text-slate-300 text-[11px] flex items-center gap-1.5 mt-1 truncate max-w-[260px]">
@@ -836,9 +879,15 @@ export default function ProspectsView({
                   <option value="apollo">Apollo.io B2B Intelligence (Requires Apollo API Key)</option>
                   <option value="smart">Smart AI Engine (Synthetic Profiles Fallback)</option>
                 </select>
-                <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 mt-1.5 font-semibold">
-                  <CheckCircle2 className="w-3 h-3" />
-                  <span>Verified: Finds actual physical businesses that exist on maps with exact street addresses.</span>
+                <div className="flex flex-col gap-1 mt-2">
+                  <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-semibold">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span>Verified: Finds actual physical businesses that exist on maps with exact street addresses.</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] text-emerald-300 font-semibold">
+                    <MessageCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span>🟢 Deep Research: 100% active WhatsApp mobile numbers only (Fixed landlines rejected automatically).</span>
+                  </div>
                 </div>
               </div>
 

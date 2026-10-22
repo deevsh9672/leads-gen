@@ -37,7 +37,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -61,7 +62,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:43.424Z",
-    "updated_at": "2026-10-20T10:58:43.424Z"
+    "updated_at": "2026-10-20T10:58:43.424Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+918890539867",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/918890539867"
   },
   {
     "id": "a57faa8e-3ad7-4899-881a-a059a766446c",
@@ -70,8 +75,8 @@
     "city": "Jaipur",
     "state": "Rajasthan",
     "country": "India",
-    "phone": "+91 141 4007244",
-    "clean_phone": "911414007244",
+    "phone": "+91 70145 34034",
+    "clean_phone": "917014534034",
     "email": "anokhijaipur@gmail.com",
     "is_email_verified": true,
     "email_status": "verified_active_mx",
@@ -101,7 +106,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -125,7 +131,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:52.677Z",
-    "updated_at": "2026-10-20T10:58:52.677Z"
+    "updated_at": "2026-10-20T10:58:52.677Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+917014534034",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/917014534034"
   },
   {
     "id": "4f028d15-fdb4-4e86-bd3e-6d7d086e35a4",
@@ -165,7 +175,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -189,7 +200,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:51.692Z",
-    "updated_at": "2026-10-20T10:58:51.692Z"
+    "updated_at": "2026-10-20T10:58:51.692Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+917208916158",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/917208916158"
   },
   {
     "id": "676232b8-663a-4ff2-992b-efd9bf6d85f9",
@@ -229,7 +244,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -253,7 +269,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:50.885Z",
-    "updated_at": "2026-10-20T10:58:50.885Z"
+    "updated_at": "2026-10-20T10:58:50.885Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+918441965882",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/918441965882"
   },
   {
     "id": "3396f721-ec4d-4245-b862-03ac48c35c7b",
@@ -293,7 +313,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -317,7 +338,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:49.679Z",
-    "updated_at": "2026-10-20T10:58:49.679Z"
+    "updated_at": "2026-10-20T10:58:49.679Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919414845498",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919414845498"
   },
   {
     "id": "56925147-8bde-4368-8f67-c0cea74d2696",
@@ -357,7 +382,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -381,7 +407,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:48.997Z",
-    "updated_at": "2026-10-20T10:58:48.997Z"
+    "updated_at": "2026-10-20T10:58:48.997Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919829053123",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919829053123"
   },
   {
     "id": "bdcc6a59-6c1c-4387-b90d-0f8e4bb9a7da",
@@ -421,7 +451,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -445,7 +476,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:48.278Z",
-    "updated_at": "2026-10-20T10:58:48.278Z"
+    "updated_at": "2026-10-20T10:58:48.278Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919057240787",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919057240787"
   },
   {
     "id": "11989bd7-c80b-4a98-8606-40f90fd5b3c4",
@@ -485,7 +520,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -509,7 +545,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:47.475Z",
-    "updated_at": "2026-10-20T10:58:47.475Z"
+    "updated_at": "2026-10-20T10:58:47.475Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919694926238",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919694926238"
   },
   {
     "id": "fc636f1e-c34b-4e6c-9f05-053b415e4dc2",
@@ -549,7 +589,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -573,7 +614,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:45.979Z",
-    "updated_at": "2026-10-20T10:58:45.979Z"
+    "updated_at": "2026-10-20T10:58:45.979Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919057232568",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919057232568"
   },
   {
     "id": "72cce27a-64c0-4e68-a51c-dedd0fefc4c3",
@@ -613,7 +658,8 @@
       "Jaipur Fashion",
       "Bridal Boutique",
       "Verified Real",
-      "Hot Lead"
+      "Hot Lead",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -637,7 +683,11 @@
       }
     ],
     "created_at": "2026-10-20T10:58:44.878Z",
-    "updated_at": "2026-10-20T10:58:44.878Z"
+    "updated_at": "2026-10-20T10:58:44.878Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+919694848457",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/919694848457"
   },
   {
     "id": "c195d1c1-b342-4f81-bfdd-23abd5b0d886",
@@ -648,7 +698,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-506-0804",
+    "phone": "+1 (416) 506-0804",
     "clean_phone": "14165060804",
     "email": "info@triofertility.com",
     "is_email_verified": true,
@@ -667,7 +717,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -704,7 +755,11 @@
       "reputation_score": 9,
       "rating": 4.6
     },
-    "last_contacted_at": "2026-10-19T20:24:42.411Z"
+    "last_contacted_at": "2026-10-19T20:24:42.411Z",
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165060804",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165060804"
   },
   {
     "id": "77e39949-20fd-47f8-9932-276f1d17933c",
@@ -715,7 +770,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-362-8677",
+    "phone": "+1 (416) 362-8677",
     "clean_phone": "14163628677",
     "email": "lasikmdtoronto@gmail.com",
     "is_email_verified": true,
@@ -734,7 +789,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -770,7 +826,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14163628677",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14163628677"
   },
   {
     "id": "33750e65-a9e9-4de9-815c-cb9002375f6e",
@@ -800,7 +860,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -836,7 +897,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165469864",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165469864"
   },
   {
     "id": "7cdb65a3-68f4-4635-82ff-639c38c37b95",
@@ -866,7 +931,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -902,7 +968,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14372087505",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14372087505"
   },
   {
     "id": "feb5bb38-be76-4e7d-bc4f-a04cf0bce2c9",
@@ -932,7 +1002,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -968,7 +1039,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14375143588",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14375143588"
   },
   {
     "id": "9ca65ddb-9437-4e5b-ba90-ebefab027dab",
@@ -979,7 +1054,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-361-6000",
+    "phone": "+1 (416) 361-6000",
     "clean_phone": "14163616000",
     "email": "info@cloudcareclinics.ca",
     "is_email_verified": true,
@@ -998,7 +1073,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1034,7 +1110,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14163616000",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14163616000"
   },
   {
     "id": "8fdbfa17-12fd-4fde-9531-d418d50c526c",
@@ -1064,7 +1144,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1100,7 +1181,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14372295241",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14372295241"
   },
   {
     "id": "4a4bea65-9f21-4518-ac97-f9a2e514b471",
@@ -1130,7 +1215,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1166,7 +1252,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165859955",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165859955"
   },
   {
     "id": "6743e376-cf35-4a70-abc7-d25e084dbf6d",
@@ -1177,7 +1267,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-833-904-4844",
+    "phone": "+1 (833) 904-4844",
     "clean_phone": "18339044844",
     "email": "toronto_bay@myhealthcentre.ca",
     "is_email_verified": true,
@@ -1196,7 +1286,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1232,7 +1323,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+18339044844",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/18339044844"
   },
   {
     "id": "c8e9f460-b2f4-4d6c-93bc-3091561b77af",
@@ -1262,7 +1357,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1298,7 +1394,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16475998714",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16475998714"
   },
   {
     "id": "848d8b72-e8eb-4552-8d76-cae9dbef7a94",
@@ -1328,7 +1428,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1364,7 +1465,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14162382366",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14162382366"
   },
   {
     "id": "28a749f9-91b6-49ee-b4c3-7554ded1b27c",
@@ -1394,7 +1499,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1430,7 +1536,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14374819082",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14374819082"
   },
   {
     "id": "324b855d-2b44-40cc-a099-9d334859659a",
@@ -1441,7 +1551,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-591-1535",
+    "phone": "+1 (416) 591-1535",
     "clean_phone": "14165911535",
     "email": "acupuncturetorontoaliveholisticfertilitytoronto@gmail.com",
     "is_email_verified": true,
@@ -1460,7 +1570,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1496,7 +1607,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165911535",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165911535"
   },
   {
     "id": "06d2dfd4-0c1a-4924-9fff-d80c44b1f803",
@@ -1507,7 +1622,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-922-0566",
+    "phone": "+1 (416) 922-0566",
     "clean_phone": "14169220566",
     "email": "hasslefreetoronto@gmail.com",
     "is_email_verified": true,
@@ -1526,7 +1641,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1562,7 +1678,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169220566",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169220566"
   },
   {
     "id": "714d338b-5142-4014-9b79-6ce5ec48a9e7",
@@ -1592,7 +1712,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1628,7 +1749,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16472098137",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16472098137"
   },
   {
     "id": "303d1ad8-c447-4ee5-a0ae-26935a76b9ee",
@@ -1658,7 +1783,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1694,7 +1820,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14374545382",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14374545382"
   },
   {
     "id": "092af76c-acb3-440a-984b-27c9ae4afc77",
@@ -1724,7 +1854,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1760,7 +1891,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14166941346",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14166941346"
   },
   {
     "id": "7d8b4522-e8dd-49b7-b093-eb3fad458035",
@@ -1790,7 +1925,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1826,7 +1962,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16476661230",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16476661230"
   },
   {
     "id": "ef9c2aee-5451-4d72-9843-3c36e7bcc4ba",
@@ -1837,7 +1977,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-925-9950",
+    "phone": "+1 (416) 925-9950",
     "clean_phone": "14169259950",
     "email": "enerhealthwellnesstoronto@gmail.com",
     "is_email_verified": true,
@@ -1856,7 +1996,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1892,7 +2033,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169259950",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169259950"
   },
   {
     "id": "8c6c4da1-6868-477c-adde-6903a7220854",
@@ -1922,7 +2067,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -1958,7 +2104,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16475058095",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16475058095"
   },
   {
     "id": "8ea0fda0-b674-4bbe-a5ce-ae105c2f515e",
@@ -1969,7 +2119,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-922-8688",
+    "phone": "+1 (416) 922-8688",
     "clean_phone": "14169228688",
     "email": "lifemedtoronto@gmail.com",
     "is_email_verified": true,
@@ -1988,7 +2138,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2024,7 +2175,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169228688",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169228688"
   },
   {
     "id": "8f7a140b-1ab2-4591-9496-a041d72afad7",
@@ -2035,7 +2190,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1 416-663-5433",
+    "phone": "+1 (416) 663-5433",
     "clean_phone": "14166635433",
     "email": "info@healthone.ca",
     "is_email_verified": true,
@@ -2054,7 +2209,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2090,7 +2246,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14166635433",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14166635433"
   },
   {
     "id": "09719225-2311-4f8b-a6be-85a48f40e2be",
@@ -2120,7 +2280,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2156,7 +2317,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14379821088",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14379821088"
   },
   {
     "id": "23168732-3a8a-4713-b29d-c8e64d04661a",
@@ -2186,7 +2351,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2222,7 +2388,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16476603344",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16476603344"
   },
   {
     "id": "7e3e06d3-0be5-4c5c-8657-3e155e624831",
@@ -2252,7 +2422,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2288,7 +2459,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16473935078",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16473935078"
   },
   {
     "id": "fbc71c21-917a-4b3d-96a9-c9834c35fe1e",
@@ -2318,7 +2493,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2354,7 +2530,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14376546989",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14376546989"
   },
   {
     "id": "11836c29-f33f-4e66-bd0c-31ddc78b468c",
@@ -2384,7 +2564,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2420,7 +2601,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14167896784",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14167896784"
   },
   {
     "id": "8dc40758-f884-4642-b54f-6ebdc2459e82",
@@ -2431,7 +2616,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-647-249-1200",
+    "phone": "+1 (647) 249-1200",
     "clean_phone": "16472491200",
     "email": "beacontoronto@gmail.com",
     "is_email_verified": true,
@@ -2450,7 +2635,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2486,7 +2672,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16472491200",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16472491200"
   },
   {
     "id": "5b7b4a97-9a46-4f7c-a9c9-12c37ef6fb31",
@@ -2516,7 +2706,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2552,7 +2743,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16479069798",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16479069798"
   },
   {
     "id": "c07d82fc-8a9c-4cbf-9d87-677f78768a81",
@@ -2563,7 +2758,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-647-827-9200",
+    "phone": "+1 (647) 827-9200",
     "clean_phone": "16478279200",
     "email": "queensquayfamilymedicinetoronto@gmail.com",
     "is_email_verified": true,
@@ -2582,7 +2777,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2618,7 +2814,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16478279200",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16478279200"
   },
   {
     "id": "74cef511-57d9-4933-8285-1c7396e02d31",
@@ -2629,7 +2829,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-647-697-8746",
+    "phone": "+1 (647) 697-8746",
     "clean_phone": "16476978746",
     "email": "antechhairskinclinicshairlosstorontotoronto@gmail.com",
     "is_email_verified": true,
@@ -2648,7 +2848,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2684,7 +2885,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16476978746",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16476978746"
   },
   {
     "id": "2686d636-172e-4990-9c25-01fd9082fbb1",
@@ -2695,7 +2900,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-962-0001",
+    "phone": "+1 (416) 962-0001",
     "clean_phone": "14169620001",
     "email": "avenueskintoronto@gmail.com",
     "is_email_verified": true,
@@ -2714,7 +2919,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2750,7 +2956,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169620001",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169620001"
   },
   {
     "id": "afed2cc9-7d29-4a09-a074-84c4749a765f",
@@ -2780,7 +2990,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2816,7 +3027,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16477233909",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16477233909"
   },
   {
     "id": "91808fb9-d42f-47a8-af54-fa7b6848eeb3",
@@ -2846,7 +3061,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2882,7 +3098,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14164008914",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14164008914"
   },
   {
     "id": "760dbcf9-7f98-4aa3-863b-2636020c990b",
@@ -2893,7 +3113,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+14163464535",
+    "phone": "+1 (416) 346-4535",
     "clean_phone": "14163464535",
     "email": "contact@travelmed.ca",
     "is_email_verified": true,
@@ -2912,7 +3132,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -2948,7 +3169,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14163464535",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14163464535"
   },
   {
     "id": "78ac9471-6a76-49b4-90ae-b89b25abd148",
@@ -2959,7 +3184,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+16472622302",
+    "phone": "+1 (647) 262-2302",
     "clean_phone": "16472622302",
     "email": "eeshatoronto@gmail.com",
     "is_email_verified": true,
@@ -2978,7 +3203,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3014,7 +3240,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16472622302",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16472622302"
   },
   {
     "id": "31b7fbb2-643a-4ac6-b3b0-52279d8dac6a",
@@ -3044,7 +3274,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3080,7 +3311,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14377583579",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14377583579"
   },
   {
     "id": "b86dc9ac-a8bf-476a-a106-fce9bec6b244",
@@ -3110,7 +3345,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3146,7 +3382,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14373846655",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14373846655"
   },
   {
     "id": "ac90b445-311e-4a2f-a492-5ccdd2ec3ffe",
@@ -3176,7 +3416,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3212,7 +3453,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16473729155",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16473729155"
   },
   {
     "id": "fdfe4d93-c699-4775-8ea5-d8b048477f86",
@@ -3242,7 +3487,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3278,7 +3524,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14375519781",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14375519781"
   },
   {
     "id": "345bb162-6eea-4645-8978-b13f7864a0d8",
@@ -3308,7 +3558,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3344,7 +3595,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16477133505",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16477133505"
   },
   {
     "id": "a0c48d20-8054-46c7-8fed-4732a5ee2702",
@@ -3355,7 +3610,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-285-7575",
+    "phone": "+1 (416) 285-7575",
     "clean_phone": "14162857575",
     "email": "goldenmileprimacywalkintoronto@gmail.com",
     "is_email_verified": true,
@@ -3374,7 +3629,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3410,7 +3666,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14162857575",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14162857575"
   },
   {
     "id": "98f14c79-01d5-4603-baed-37defe450402",
@@ -3440,7 +3700,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3476,7 +3737,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16472705212",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16472705212"
   },
   {
     "id": "ea57eec8-8584-4d9b-9642-91e7c15e9d0b",
@@ -3506,7 +3771,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3542,7 +3808,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14379718914",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14379718914"
   },
   {
     "id": "8973c211-5618-47b5-9964-4a7a297bd644",
@@ -3572,7 +3842,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3608,7 +3879,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14378418939",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14378418939"
   },
   {
     "id": "b9288510-07d2-4691-be66-15f0a19f67f0",
@@ -3638,7 +3913,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3674,7 +3950,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14373233276",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14373233276"
   },
   {
     "id": "d00660b0-1605-43d4-a3f5-8376ea7fab0a",
@@ -3704,7 +3984,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3740,7 +4021,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16479326347",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16479326347"
   },
   {
     "id": "d6251d99-2c3f-49ba-9b72-ac3e182d6963",
@@ -3751,7 +4036,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-291-2248",
+    "phone": "+1 (416) 291-2248",
     "clean_phone": "14162912248",
     "email": "kontosdenturetoronto@gmail.com",
     "is_email_verified": true,
@@ -3770,7 +4055,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3806,7 +4092,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14162912248",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14162912248"
   },
   {
     "id": "a9375f87-b085-47ad-880a-193008fb3262",
@@ -3836,7 +4126,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3872,7 +4163,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14376329781",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14376329781"
   },
   {
     "id": "2a6f5cb2-d194-4d33-9c5f-d13d1a9fca3f",
@@ -3902,7 +4197,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -3938,7 +4234,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16473009462",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16473009462"
   },
   {
     "id": "1df3016f-5942-4ed6-9dab-8ff7f2601e6a",
@@ -3949,7 +4249,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-321-3718",
+    "phone": "+1 (416) 321-3718",
     "clean_phone": "14163213718",
     "email": "totaltoronto@gmail.com",
     "is_email_verified": true,
@@ -3968,7 +4268,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4004,7 +4305,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14163213718",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14163213718"
   },
   {
     "id": "f8b87463-afb4-4ac9-bb29-33ad3772a836",
@@ -4034,7 +4339,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4070,7 +4376,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14373461263",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14373461263"
   },
   {
     "id": "0030c556-80df-456f-920e-098217994333",
@@ -4100,7 +4410,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4136,7 +4447,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16473508517",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16473508517"
   },
   {
     "id": "4fbc60eb-0cfc-4549-87e7-98d0e084e97d",
@@ -4166,7 +4481,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4202,7 +4518,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14166428101",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14166428101"
   },
   {
     "id": "d664221a-eb06-4221-bc50-f2f18eae3650",
@@ -4232,7 +4552,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4268,7 +4589,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16479579110",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16479579110"
   },
   {
     "id": "816db64a-118d-4f96-b4e5-471bb2e789f9",
@@ -4298,7 +4623,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4334,7 +4660,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16474015798",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16474015798"
   },
   {
     "id": "89e5a810-083a-4e33-82b6-aeb83c7e0cc3",
@@ -4345,7 +4675,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1 647-498-7117",
+    "phone": "+1 (647) 498-7117",
     "clean_phone": "16474987117",
     "email": "metaversetoronto@gmail.com",
     "is_email_verified": true,
@@ -4364,7 +4694,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4400,7 +4731,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16474987117",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16474987117"
   },
   {
     "id": "05603ee0-4b3b-42c2-a281-12ac3eb2ebec",
@@ -4430,7 +4765,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4466,7 +4802,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14376633013",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14376633013"
   },
   {
     "id": "9150eea1-d546-40d7-97f2-9a1a88471ca2",
@@ -4496,7 +4836,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4532,7 +4873,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14168226531",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14168226531"
   },
   {
     "id": "ceedad3f-e25b-4d8f-bd10-1f5118cfc21f",
@@ -4543,7 +4888,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-240-6179",
+    "phone": "+1 (416) 240-6179",
     "clean_phone": "14162406179",
     "email": "panelphysicianscarboroughtoronto@gmail.com",
     "is_email_verified": true,
@@ -4562,7 +4907,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4598,7 +4944,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14162406179",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14162406179"
   },
   {
     "id": "da00321a-e0ea-4593-9e2c-762590b56345",
@@ -4628,7 +4978,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4664,7 +5015,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14374278165",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14374278165"
   },
   {
     "id": "9ba1e4f3-feff-49f1-974e-8aefdf4e3027",
@@ -4694,7 +5049,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4730,7 +5086,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14374865818",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14374865818"
   },
   {
     "id": "dd0ded81-baf2-4383-bd86-ad22ab95ede0",
@@ -4760,7 +5120,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4796,7 +5157,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16475679251",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16475679251"
   },
   {
     "id": "ed9f646a-9287-4ac9-a3f3-fb3aa3f7b570",
@@ -4826,7 +5191,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4862,7 +5228,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165399910",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165399910"
   },
   {
     "id": "99211c02-ca0e-454c-a1c7-3c3a18cc3d29",
@@ -4892,7 +5262,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4928,7 +5299,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.6
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14167821700",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14167821700"
   },
   {
     "id": "f9f0da90-7f23-415d-8e7e-0bca82ca0792",
@@ -4939,7 +5314,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-646-0808",
+    "phone": "+1 (416) 646-0808",
     "clean_phone": "14166460808",
     "email": "finchwoodtoronto@gmail.com",
     "is_email_verified": true,
@@ -4958,7 +5333,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -4994,7 +5370,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14166460808",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14166460808"
   },
   {
     "id": "a3966ef9-e6e7-4fcf-9781-bf3f345779d4",
@@ -5005,7 +5385,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-748-2444",
+    "phone": "+1 (416) 748-2444",
     "clean_phone": "14167482444",
     "email": "westmoretoronto@gmail.com",
     "is_email_verified": true,
@@ -5024,7 +5404,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5060,7 +5441,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14167482444",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14167482444"
   },
   {
     "id": "0a0f194a-9377-4508-b48e-de6fe5fd9608",
@@ -5071,7 +5456,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-461-9471",
+    "phone": "+1 (416) 461-9471",
     "clean_phone": "14164619471",
     "email": "albanytoronto@gmail.com",
     "is_email_verified": true,
@@ -5090,7 +5475,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5126,7 +5512,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14164619471",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14164619471"
   },
   {
     "id": "1471767b-a695-4c29-83ad-82a10fa3426f",
@@ -5137,7 +5527,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-647-722-2370",
+    "phone": "+1 (647) 722-2370",
     "clean_phone": "16477222370",
     "email": "contact@appletreemedicalgroup.com",
     "is_email_verified": true,
@@ -5156,7 +5546,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5192,7 +5583,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+16477222370",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/16477222370"
   },
   {
     "id": "c3781255-b0bd-458d-8fb5-9523b8ac6f4f",
@@ -5203,7 +5598,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-921-2121",
+    "phone": "+1 (416) 921-2121",
     "clean_phone": "14169212121",
     "email": "carltonmedicaltoronto@gmail.com",
     "is_email_verified": true,
@@ -5222,7 +5617,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5258,7 +5654,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169212121",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169212121"
   },
   {
     "id": "4fd3c2e1-5969-4bd6-bdce-82cafa63f08b",
@@ -5269,7 +5669,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-538-2882",
+    "phone": "+1 (416) 538-2882",
     "clean_phone": "14165382882",
     "email": "bloorwalkinclinic@gmail.com",
     "is_email_verified": true,
@@ -5288,7 +5688,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5324,7 +5725,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14165382882",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14165382882"
   },
   {
     "id": "96569074-c3c5-419b-8c90-a3c72131c783",
@@ -5335,7 +5740,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-977-8024",
+    "phone": "+1 (416) 977-8024",
     "clean_phone": "14169778024",
     "email": "queenwestmedicalcentre@gmail.com",
     "is_email_verified": true,
@@ -5354,7 +5759,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5390,7 +5796,11 @@
       "website_need_score": 25,
       "reputation_score": 9,
       "rating": 4.7
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14169778024",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14169778024"
   },
   {
     "id": "bb2b905e-4c15-4a30-b93b-6f4e97d165bc",
@@ -5401,7 +5811,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-351-3700",
+    "phone": "+1 (416) 351-3700",
     "clean_phone": "14163513700",
     "email": "baycentrebirthcontrol@gmail.com",
     "is_email_verified": true,
@@ -5420,7 +5830,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5456,7 +5867,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14163513700",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14163513700"
   },
   {
     "id": "b65e1735-3148-4d5e-85ce-8293c1c7fcd6",
@@ -5467,7 +5882,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-487-1111",
+    "phone": "+1 (416) 487-1111",
     "clean_phone": "14164871111",
     "email": "foresthillmedicaltoronto@gmail.com",
     "is_email_verified": true,
@@ -5486,7 +5901,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5522,7 +5938,11 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.8
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14164871111",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14164871111"
   },
   {
     "id": "e727080a-2b7a-43c7-b52c-6628918d3f2f",
@@ -5533,7 +5953,7 @@
     "city": "Toronto",
     "state": "Ontario",
     "country": "Canada",
-    "phone": "+1-416-484-8848",
+    "phone": "+1 (416) 484-8848",
     "clean_phone": "14164848848",
     "email": "yongeeglintonclinic@gmail.com",
     "is_email_verified": true,
@@ -5552,7 +5972,8 @@
       "Toronto Clinic",
       "Ontario Canada",
       "Verified Real",
-      "High Priority"
+      "High Priority",
+      "WhatsApp Verified"
     ],
     "assigned_to": {
       "id": "user-devesh",
@@ -5588,6 +6009,10 @@
       "website_need_score": 25,
       "reputation_score": 10,
       "rating": 4.9
-    }
+    },
+    "has_whatsapp": true,
+    "whatsapp_number": "+14164848848",
+    "whatsapp_status": "verified_active",
+    "whatsapp_link": "https://wa.me/14164848848"
   }
 ]
