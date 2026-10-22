@@ -73,5 +73,7 @@ export const sendBroadcastCampaign = (id) => api.post(`/whatsapp/broadcast/campa
 export const pauseBroadcastCampaign = (id) => api.post(`/whatsapp/broadcast/campaigns/${id}/pause`);
 export const deleteBroadcastCampaign = (id) => api.delete(`/whatsapp/broadcast/campaigns/${id}`);
 export const getBroadcastWebhookLogs = () => api.get('/whatsapp/broadcast/webhooks/logs');
+export const updateBroadcastCredentials = (data) => api.post('/whatsapp/broadcast/credentials', data);
+export const testBroadcastConnection = () => api.post('/whatsapp/broadcast/test-connection');
 
 export default api;

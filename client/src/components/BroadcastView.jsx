@@ -28,7 +28,10 @@ import {
   Image as ImageIcon, 
   UserCheck, 
   UserX, 
-  Layers
+  Layers,
+  Key,
+  Lock,
+  EyeOff
 } from 'lucide-react';
 import { 
   getBroadcastStatus, 
@@ -46,7 +49,9 @@ import {
   sendBroadcastCampaign, 
   pauseBroadcastCampaign, 
   deleteBroadcastCampaign, 
-  getBroadcastWebhookLogs 
+  getBroadcastWebhookLogs,
+  updateBroadcastCredentials,
+  testBroadcastConnection
 } from '../api';
 
 export default function BroadcastView({ prospects = [] }) {
@@ -59,6 +64,14 @@ export default function BroadcastView({ prospects = [] }) {
   const [templates, setTemplates] = useState([]);
   const [webhookLogs, setWebhookLogs] = useState([]);
   
+  // Credentials Update State
+  const [tokenInput, setTokenInput] = useState('');
+  const [phoneIdInput, setPhoneIdInput] = useState('');
+  const [savingCreds, setSavingCreds] = useState(false);
+  const [testingConnection, setTestingConnection] = useState(false);
+  const [credsFeedback, setCredsFeedback] = useState(null);
+  const [showTokenText, setShowTokenText] = useState(false);
+
   // Selected Campaign Drill-down Modal
   const [activeCampaignDetail, setActiveCampaignDetail] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -119,7 +132,12 @@ export default function BroadcastView({ prospects = [] }) {
         getBroadcastTemplates().catch(() => ({ data: [] }))
       ]);
 
-      if (statusRes?.data) setStatusInfo(statusRes.data);
+      if (statusRes?.data) {
+        setStatusInfo(statusRes.data);
+        if (statusRes.data.phone_number_id) {
+          setPhoneIdInput(prev => prev || statusRes.data.phone_number_id);
+        }
+      }
       if (statsRes?.data) setStats(statsRes.data);
       if (campaignsRes?.data) setCampaigns(campaignsRes.data);
       if (contactsRes?.data) {
@@ -135,6 +153,66 @@ export default function BroadcastView({ prospects = [] }) {
       console.error('Error loading broadcast data:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSaveCredentials = async (e) => {
+    if (e) e.preventDefault();
+    if (!tokenInput && !phoneIdInput) {
+      setCredsFeedback({ type: 'error', message: 'Please enter a WhatsApp Access Token or Phone Number ID.' });
+      return;
+    }
+    setSavingCreds(true);
+    setCredsFeedback(null);
+    try {
+      const res = await updateBroadcastCredentials({
+        whatsapp_access_token: tokenInput,
+        whatsapp_phone_number_id: phoneIdInput
+      });
+      const data = res.data || {};
+      const isOk = data.connection?.connected;
+      setCredsFeedback({
+        type: isOk ? 'success' : 'error',
+        message: data.message || (isOk ? 'Credentials saved and verified with Meta!' : 'Token saved, but Meta verification failed.')
+      });
+      const freshStatus = await getBroadcastStatus();
+      if (freshStatus?.data) setStatusInfo(freshStatus.data);
+    } catch (err) {
+      setCredsFeedback({
+        type: 'error',
+        message: err.response?.data?.error || err.message || 'Failed to update credentials'
+      });
+    } finally {
+      setSavingCreds(false);
+    }
+  };
+
+  const handleTestConnection = async () => {
+    setTestingConnection(true);
+    setCredsFeedback(null);
+    try {
+      const res = await testBroadcastConnection();
+      const data = res.data || {};
+      if (data.connected) {
+        setCredsFeedback({
+          type: 'success',
+          message: `🟢 Active & Verified! Number: ${data.display_phone_number || data.phone_id} | Name: ${data.verified_name} | Quality: ${data.quality_rating}`
+        });
+      } else {
+        setCredsFeedback({
+          type: 'error',
+          message: data.error_message || 'Connection test failed with Meta.'
+        });
+      }
+      const freshStatus = await getBroadcastStatus();
+      if (freshStatus?.data) setStatusInfo(freshStatus.data);
+    } catch (err) {
+      setCredsFeedback({
+        type: 'error',
+        message: err.response?.data?.error || err.message || 'Connection test failed'
+      });
+    } finally {
+      setTestingConnection(false);
     }
   };
 
@@ -880,6 +958,15 @@ export default function BroadcastView({ prospects = [] }) {
               ) : (
                 /* If Direct Text Selected: Freeform Textarea */
                 <div>
+                  {/* Meta 24-Hour Policy Notice */}
+                  <div className="p-3 mb-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-start gap-2.5">
+                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
+                    <div>
+                      <span className="font-bold">Meta 24-Hour Outreach Policy: </span>
+                      Direct text messages can only reach contacts who messaged your WhatsApp number in the last 24 hours. For cold outreach to new leads, select <strong>Meta Approved Template</strong> above (e.g. <code>hello_world</code>) to avoid delivery errors (Error 131047).
+                    </div>
+                  </div>
+
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                       Message Content
@@ -1399,28 +1486,157 @@ export default function BroadcastView({ prospects = [] }) {
             </div>
 
             {/* Connection Status Card */}
-            <div className={`p-4 rounded-xl border flex items-center justify-between ${
-              statusInfo?.configured 
-                ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300' 
+            <div className={`p-4 rounded-xl border flex flex-col md:flex-row md:items-center justify-between gap-3 ${
+              statusInfo?.connected && statusInfo?.token_status === 'ACTIVE'
+                ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300'
+                : statusInfo?.token_status === 'EXPIRED'
+                ? 'bg-rose-950/30 border-rose-500/40 text-rose-300'
+                : statusInfo?.token_status === 'ERROR'
+                ? 'bg-rose-950/20 border-rose-500/30 text-rose-300'
                 : 'bg-amber-950/20 border-amber-500/30 text-amber-300'
             }`}>
-              <div className="flex items-center gap-3">
-                <div className={`w-3.5 h-3.5 rounded-full ${statusInfo?.configured ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></div>
+              <div className="flex items-start md:items-center gap-3">
+                <div className={`w-3.5 h-3.5 rounded-full shrink-0 mt-1 md:mt-0 ${
+                  statusInfo?.connected && statusInfo?.token_status === 'ACTIVE'
+                    ? 'bg-emerald-400 animate-pulse'
+                    : statusInfo?.token_status === 'EXPIRED'
+                    ? 'bg-rose-500 animate-bounce'
+                    : 'bg-amber-400'
+                }`}></div>
                 <div>
-                  <div className="font-bold text-sm">
-                    {statusInfo?.configured ? 'Meta Cloud API Credentials Configured' : 'Credentials Awaiting Server Environment Variables'}
+                  <div className="font-bold text-sm flex items-center gap-2">
+                    <span>
+                      {statusInfo?.connected && statusInfo?.token_status === 'ACTIVE'
+                        ? '🟢 Meta WhatsApp Cloud API Connected & Live'
+                        : statusInfo?.token_status === 'EXPIRED'
+                        ? '🔴 Meta WhatsApp Access Token Expired (OAuth 190)'
+                        : statusInfo?.token_status === 'ERROR'
+                        ? '🔴 Meta Connection Error'
+                        : '🟡 Meta Credentials Awaiting Configuration'}
+                    </span>
+                    {statusInfo?.token_status === 'EXPIRED' && (
+                      <span className="text-[10px] bg-rose-500 text-white font-black px-1.5 py-0.5 rounded uppercase">Action Required</span>
+                    )}
                   </div>
-                  <div className="text-xs opacity-80">
-                    {statusInfo?.configured 
-                      ? 'Phone ID and access token active on backend server.' 
-                      : 'Set WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in server environment.'}
+                  <div className="text-xs opacity-90 mt-0.5">
+                    {statusInfo?.connected && statusInfo?.token_status === 'ACTIVE'
+                      ? `Verified Phone: ${statusInfo?.display_phone_number || statusInfo?.phone_number_id} • Verified Name: ${statusInfo?.verified_name || 'Active'} • Quality: ${statusInfo?.quality_rating || 'GREEN'}`
+                      : statusInfo?.token_status === 'EXPIRED'
+                      ? 'Your 24-hour Meta developer token has expired. Paste a fresh token below or generate a permanent System User Token to resume broadcasting immediately.'
+                      : statusInfo?.error_message
+                      ? statusInfo.error_message
+                      : 'Set WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID below to activate broadcasting.'}
                   </div>
                 </div>
               </div>
 
-              <span className="text-xs font-mono font-bold px-2 py-1 rounded bg-black/40">
-                Graph {statusInfo?.api_version || 'v21.0'}
-              </span>
+              <div className="flex items-center gap-2 self-end md:self-auto">
+                <button
+                  type="button"
+                  onClick={handleTestConnection}
+                  disabled={testingConnection}
+                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition flex items-center gap-1.5 shrink-0"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${testingConnection ? 'animate-spin text-indigo-400' : ''}`} />
+                  <span>{testingConnection ? 'Testing...' : 'Test Connection'}</span>
+                </button>
+                <span className="text-xs font-mono font-bold px-2 py-1.5 rounded bg-black/40">
+                  Graph {statusInfo?.api_version || 'v21.0'}
+                </span>
+              </div>
+            </div>
+
+            {/* Live Meta Credentials Updater Card */}
+            <div className="bg-slate-950 border border-slate-800 p-5 rounded-xl space-y-4">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <Key className="w-4 h-4 text-emerald-400" />
+                  <h3 className="text-sm font-bold text-white">Update / Renew Meta Cloud API Credentials</h3>
+                </div>
+                <span className="text-[11px] text-slate-400">Updates live server without manual restarts</span>
+              </div>
+
+              {credsFeedback && (
+                <div className={`p-3 rounded-xl border text-xs flex items-center gap-2 ${
+                  credsFeedback.type === 'success'
+                    ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-300'
+                    : 'bg-rose-950/30 border-rose-500/40 text-rose-300'
+                }`}>
+                  {credsFeedback.type === 'success' ? <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> : <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />}
+                  <span>{credsFeedback.message}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleSaveCredentials} className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {/* WhatsApp Phone Number ID */}
+                  <div className="md:col-span-1">
+                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                      Phone Number ID *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. 1364119720126734"
+                      value={phoneIdInput}
+                      onChange={(e) => setPhoneIdInput(e.target.value)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                    />
+                  </div>
+
+                  {/* WhatsApp Access Token */}
+                  <div className="md:col-span-2">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        Access Token (Paste New / Permanent Token) *
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setShowTokenText(!showTokenText)}
+                        className="text-[11px] text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+                      >
+                        {showTokenText ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
+                        <span>{showTokenText ? 'Hide' : 'Reveal'}</span>
+                      </button>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type={showTokenText ? 'text' : 'password'}
+                        required
+                        placeholder="Paste EAA... access token from Meta for Developers"
+                        value={tokenInput}
+                        onChange={(e) => setTokenInput(e.target.value)}
+                        className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-3 pr-24 py-2 text-xs font-mono text-cyan-300 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                      />
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          try {
+                            const text = await navigator.clipboard.readText();
+                            if (text) setTokenInput(text.trim());
+                          } catch {
+                            alert('Please paste manually using Ctrl+V');
+                          }
+                        }}
+                        className="absolute right-1.5 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300 border border-slate-700"
+                      >
+                        Paste
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-end gap-3 pt-2">
+                  <button
+                    type="submit"
+                    disabled={savingCreds}
+                    className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-md flex items-center gap-1.5 transition"
+                  >
+                    <Check className="w-4 h-4" />
+                    <span>{savingCreds ? 'Verifying with Meta...' : 'Save & Verify Live Connection'}</span>
+                  </button>
+                </div>
+              </form>
             </div>
 
             {/* Webhook Configuration Boxes */}

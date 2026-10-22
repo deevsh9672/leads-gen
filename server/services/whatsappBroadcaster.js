@@ -91,11 +91,11 @@ function validateAndFormatContact(rawContact, defaultCountryCode = '1') {
  */
 function getWhatsAppCredentials() {
   const rawConfig = typeof db.getRawConfig === 'function' ? db.getRawConfig() : db.getConfig();
-  const token = process.env.WHATSAPP_ACCESS_TOKEN || rawConfig.whatsapp_access_token || '';
-  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID || rawConfig.whatsapp_phone_number_id || '';
-  const businessAccountId = process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || rawConfig.whatsapp_business_account_id || '';
-  const webhookVerifyToken = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || rawConfig.whatsapp_webhook_verify_token || DEFAULT_VERIFY_TOKEN;
-  const appSecret = process.env.WHATSAPP_APP_SECRET || rawConfig.whatsapp_app_secret || '';
+  const token = rawConfig.whatsapp_access_token || process.env.WHATSAPP_ACCESS_TOKEN || '';
+  const phoneNumberId = rawConfig.whatsapp_phone_number_id || process.env.WHATSAPP_PHONE_NUMBER_ID || '';
+  const businessAccountId = rawConfig.whatsapp_business_account_id || process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || '';
+  const webhookVerifyToken = rawConfig.whatsapp_webhook_verify_token || process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN || DEFAULT_VERIFY_TOKEN;
+  const appSecret = rawConfig.whatsapp_app_secret || process.env.WHATSAPP_APP_SECRET || '';
 
   return {
     isConfigured: Boolean(token && phoneNumberId),
@@ -106,6 +106,56 @@ function getWhatsAppCredentials() {
     appSecret,
     apiVersion: META_GRAPH_VERSION
   };
+}
+
+/**
+ * Tests live connection to Meta WhatsApp Cloud API using current or provided credentials.
+ */
+async function testWhatsAppConnection(customCreds = null) {
+  const creds = customCreds || getWhatsAppCredentials();
+  const { token, phoneNumberId, apiVersion } = creds;
+
+  if (!token || !phoneNumberId) {
+    return {
+      connected: false,
+      status: 'UNCONFIGURED',
+      error_message: 'WhatsApp Access Token or Phone Number ID is missing.'
+    };
+  }
+
+  try {
+    const res = await axios.get(`https://graph.facebook.com/${apiVersion}/${phoneNumberId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      timeout: 10000
+    });
+
+    const data = res.data || {};
+    return {
+      connected: true,
+      status: 'ACTIVE',
+      phone_id: phoneNumberId,
+      verified_name: data.verified_name || 'Verified Business',
+      display_phone_number: data.display_phone_number || '',
+      quality_rating: data.quality_rating || 'GREEN',
+      code_verification_status: data.code_verification_status || 'VERIFIED'
+    };
+  } catch (err) {
+    const errDetails = err.response?.data?.error || {};
+    const code = errDetails.code || err.response?.status;
+    const subcode = errDetails.error_subcode;
+    const isExpired = code === 190 || subcode === 463;
+
+    return {
+      connected: false,
+      status: isExpired ? 'EXPIRED' : 'ERROR',
+      error_code: code,
+      error_subcode: subcode,
+      error_message: isExpired
+        ? 'Meta WhatsApp Access Token has expired (OAuth 190). Please generate a new token from developers.facebook.com.'
+        : (errDetails.message || err.message),
+      raw_error: errDetails
+    };
+  }
 }
 
 /**
@@ -390,6 +440,32 @@ async function executeBroadcastCampaign(campaignId) {
     throw new Error('WhatsApp API credentials not configured on server.');
   }
 
+  // Pre-flight check: verify token is active and not expired before starting queue
+  const conn = await testWhatsAppConnection(creds);
+  if (!conn.connected) {
+    const errorMsg = conn.status === 'EXPIRED' 
+      ? 'Meta WhatsApp Access Token has expired (OAuth 190). Please generate a new token from developers.facebook.com and update it in the API & Webhooks tab.'
+      : `Meta API Connection Failed: ${conn.error_message || 'Access token invalid'}`;
+
+    db.updateWhatsAppCampaign(campaignId, {
+      status: 'FAILED',
+      failure_reason: errorMsg
+    });
+
+    const camp = db.getWhatsAppCampaignById(campaignId);
+    if (camp && Array.isArray(camp.recipients)) {
+      camp.recipients.forEach(r => {
+        if (r.status === 'QUEUED') {
+          db.updateRecipientStatus(r.id, 'FAILED', {
+            error_code: conn.error_code || 'AUTH_EXPIRED',
+            error_message: errorMsg
+          });
+        }
+      });
+    }
+    throw new Error(errorMsg);
+  }
+
   // Set running lock
   activeCampaignJobs.set(campaignId, { isCancelled: false, isPaused: false });
 
@@ -450,12 +526,21 @@ async function executeBroadcastCampaign(campaignId) {
             wamid: result.wamid,
             sent_at: result.sent_at
           });
-        } else {
           failedCount++;
           db.updateRecipientStatus(r.id, 'FAILED', {
             error_code: result.error_code,
             error_message: result.error_message
           });
+
+          // If authentication expired, halt the queue instead of continuing to fail all contacts
+          if (result.error_code === 190 || result.error_code === 401 || result.error_subcode === 463) {
+            console.error(`[WhatsApp Broadcast] Meta access token expired. Halting remaining queue for campaign ${campaignId}.`);
+            db.updateWhatsAppCampaign(campaignId, {
+              status: 'FAILED',
+              failure_reason: 'Meta WhatsApp Access Token has expired. Please update token in API & Webhooks tab.'
+            });
+            break;
+          }
         }
       }
 
@@ -597,6 +682,7 @@ module.exports = {
   normalizePhoneNumber,
   validateAndFormatContact,
   getWhatsAppCredentials,
+  testWhatsAppConnection,
   fetchWhatsAppTemplates,
   buildWhatsAppPayload,
   dispatchWhatsAppMessage,

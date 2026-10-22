@@ -15,6 +15,7 @@ const {
   normalizePhoneNumber,
   validateAndFormatContact,
   getWhatsAppCredentials,
+  testWhatsAppConnection,
   fetchWhatsAppTemplates,
   executeBroadcastCampaign,
   pauseBroadcastCampaign,
@@ -422,18 +423,81 @@ app.get('/api/pipeline/status', (req, res) => {
 // WHATSAPP BROADCASTING ROUTES
 // ==========================================
 
-// Get API Connection & Configuration Status
-app.get('/api/whatsapp/broadcast/status', (req, res) => {
+// Get API Connection & Configuration Status (with live Meta Graph API check)
+app.get('/api/whatsapp/broadcast/status', async (req, res) => {
   const creds = getWhatsAppCredentials();
   const baseUrl = getAppBaseUrl(req);
+  const conn = await testWhatsAppConnection(creds);
+
   res.json({
     configured: creds.isConfigured,
+    connected: conn.connected,
+    token_status: conn.status, // 'ACTIVE', 'EXPIRED', 'ERROR', 'UNCONFIGURED'
     phone_number_id: creds.phoneNumberId || null,
     business_account_id: creds.businessAccountId || null,
     api_version: creds.apiVersion,
     webhook_url: `${baseUrl}/api/whatsapp/webhook`,
-    webhook_verify_token: creds.webhookVerifyToken
+    webhook_verify_token: creds.webhookVerifyToken,
+    verified_name: conn.verified_name || null,
+    display_phone_number: conn.display_phone_number || null,
+    quality_rating: conn.quality_rating || null,
+    error_message: conn.error_message || null,
+    error_code: conn.error_code || null
   });
+});
+
+// Update Meta Cloud API Credentials with immediate live Meta verification
+app.post('/api/whatsapp/broadcast/credentials', async (req, res) => {
+  try {
+    const { whatsapp_access_token, whatsapp_phone_number_id, whatsapp_business_account_id } = req.body;
+    
+    if (!whatsapp_access_token && !whatsapp_phone_number_id) {
+      return res.status(400).json({ error: 'WhatsApp Access Token and Phone Number ID are required.' });
+    }
+
+    const updates = {};
+    if (whatsapp_access_token) {
+      updates.whatsapp_access_token = whatsapp_access_token.trim();
+      process.env.WHATSAPP_ACCESS_TOKEN = whatsapp_access_token.trim();
+    }
+    if (whatsapp_phone_number_id) {
+      updates.whatsapp_phone_number_id = whatsapp_phone_number_id.trim();
+      process.env.WHATSAPP_PHONE_NUMBER_ID = whatsapp_phone_number_id.trim();
+    }
+    if (whatsapp_business_account_id !== undefined) {
+      updates.whatsapp_business_account_id = (whatsapp_business_account_id || '').trim();
+      process.env.WHATSAPP_BUSINESS_ACCOUNT_ID = (whatsapp_business_account_id || '').trim();
+    }
+
+    db.updateConfig(updates);
+
+    // Test new credentials live against Meta API
+    const conn = await testWhatsAppConnection({
+      token: updates.whatsapp_access_token || process.env.WHATSAPP_ACCESS_TOKEN,
+      phoneNumberId: updates.whatsapp_phone_number_id || process.env.WHATSAPP_PHONE_NUMBER_ID,
+      apiVersion: 'v21.0'
+    });
+
+    res.json({
+      success: true,
+      message: conn.connected 
+        ? 'WhatsApp credentials saved and verified with Meta!' 
+        : `Credentials saved, but Meta verification returned: ${conn.error_message}`,
+      connection: conn
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Test current connection
+app.post('/api/whatsapp/broadcast/test-connection', async (req, res) => {
+  try {
+    const conn = await testWhatsAppConnection();
+    res.json(conn);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Get Templates
