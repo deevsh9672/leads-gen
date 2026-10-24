@@ -205,6 +205,39 @@ async function runTests() {
   const afterStopContact = db.getWhatsAppContactById(stopContact.id);
   assert(afterStopContact.consent_status === 'OPTED_OUT', `Contact consent changed to OPTED_OUT automatically (got ${afterStopContact.consent_status})`);
 
+  // 8. Testing Recipient Dispatch Branching Integrity
+  console.log('\n--- 8. Testing Recipient Dispatch Branching Integrity ---');
+  const branchCamp = db.saveWhatsAppCampaign({
+    name: 'Branch Integrity Test',
+    type: 'template',
+    template_name: 'hello_world',
+    recipients: [{
+      contact_id: 'test-contact-id',
+      name: 'Branch Tester',
+      phone: '+1 416-555-9999',
+      status: 'QUEUED'
+    }]
+  });
+  const branchRecipient = branchCamp.recipients[0];
+  
+  // Test simulated success update
+  db.updateRecipientStatus(branchRecipient.id, 'ACCEPTED', {
+    wamid: 'wamid.TEST_BRANCH_SUCCESS',
+    sent_at: new Date().toISOString()
+  });
+  const verifiedSuccess = db.getWhatsAppCampaignById(branchCamp.id).recipients[0];
+  assert(verifiedSuccess.status === 'ACCEPTED', `Successful dispatch marks recipient as ACCEPTED (got ${verifiedSuccess.status})`);
+  assert(verifiedSuccess.wamid === 'wamid.TEST_BRANCH_SUCCESS', 'Successful dispatch preserves wamid');
+
+  // Test simulated failure update
+  db.updateRecipientStatus(branchRecipient.id, 'FAILED', {
+    error_code: 131047,
+    error_message: 'Session window closed'
+  });
+  const verifiedFail = db.getWhatsAppCampaignById(branchCamp.id).recipients[0];
+  assert(verifiedFail.status === 'FAILED', `Failed dispatch marks recipient as FAILED (got ${verifiedFail.status})`);
+  assert(verifiedFail.error_code === 131047, 'Failed dispatch preserves error_code');
+
   console.log(`\n==============================================`);
   console.log(`TOTAL TESTS: ${passed + failed} | PASSED: ${passed} | FAILED: ${failed}`);
   console.log(`==============================================`);

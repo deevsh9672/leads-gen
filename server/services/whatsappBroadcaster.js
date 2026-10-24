@@ -526,6 +526,7 @@ async function executeBroadcastCampaign(campaignId) {
             wamid: result.wamid,
             sent_at: result.sent_at
           });
+        } else {
           failedCount++;
           db.updateRecipientStatus(r.id, 'FAILED', {
             error_code: result.error_code,
